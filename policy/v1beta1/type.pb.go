@@ -28,7 +28,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion3	// please upgrade the proto package
 
 // An instance field of type Value denotes that the expression for the field is of dynamic type and can evaluate to any
 // [ValueType][istio.policy.v1beta1.ValueType] enum values. For example, when
@@ -55,8 +55,8 @@ type Value struct {
 	Value isValue_Value `protobuf_oneof:"value"`
 }
 
-func (m *Value) Reset()      { *m = Value{} }
-func (*Value) ProtoMessage() {}
+func (m *Value) Reset()		{ *m = Value{} }
+func (*Value) ProtoMessage()	{}
 func (*Value) Descriptor() ([]byte, []int) {
 	return fileDescriptor_81aa672910c4f44d, []int{0}
 }
@@ -128,17 +128,17 @@ type Value_StringMapValue struct {
 	StringMapValue *StringMap `protobuf:"bytes,11,opt,name=string_map_value,json=stringMapValue,proto3,oneof"`
 }
 
-func (*Value_StringValue) isValue_Value()       {}
-func (*Value_Int64Value) isValue_Value()        {}
-func (*Value_DoubleValue) isValue_Value()       {}
-func (*Value_BoolValue) isValue_Value()         {}
-func (*Value_IpAddressValue) isValue_Value()    {}
-func (*Value_TimestampValue) isValue_Value()    {}
-func (*Value_DurationValue) isValue_Value()     {}
-func (*Value_EmailAddressValue) isValue_Value() {}
-func (*Value_DnsNameValue) isValue_Value()      {}
-func (*Value_UriValue) isValue_Value()          {}
-func (*Value_StringMapValue) isValue_Value()    {}
+func (*Value_StringValue) isValue_Value()	{}
+func (*Value_Int64Value) isValue_Value()	{}
+func (*Value_DoubleValue) isValue_Value()	{}
+func (*Value_BoolValue) isValue_Value()		{}
+func (*Value_IpAddressValue) isValue_Value()	{}
+func (*Value_TimestampValue) isValue_Value()	{}
+func (*Value_DurationValue) isValue_Value()	{}
+func (*Value_EmailAddressValue) isValue_Value()	{}
+func (*Value_DnsNameValue) isValue_Value()	{}
+func (*Value_UriValue) isValue_Value()		{}
+func (*Value_StringMapValue) isValue_Value()	{}
 
 func (m *Value) GetValue() isValue_Value {
 	if m != nil {
@@ -251,8 +251,8 @@ type IPAddress struct {
 	Value []byte `protobuf:"bytes,1,opt,name=value,proto3" json:"value,omitempty"`
 }
 
-func (m *IPAddress) Reset()      { *m = IPAddress{} }
-func (*IPAddress) ProtoMessage() {}
+func (m *IPAddress) Reset()		{ *m = IPAddress{} }
+func (*IPAddress) ProtoMessage()	{}
 func (*IPAddress) Descriptor() ([]byte, []int) {
 	return fileDescriptor_81aa672910c4f44d, []int{1}
 }
@@ -300,8 +300,8 @@ type Duration struct {
 	Value *types.Duration `protobuf:"bytes,1,opt,name=value,proto3" json:"value,omitempty"`
 }
 
-func (m *Duration) Reset()      { *m = Duration{} }
-func (*Duration) ProtoMessage() {}
+func (m *Duration) Reset()	{ *m = Duration{} }
+func (*Duration) ProtoMessage()	{}
 func (*Duration) Descriptor() ([]byte, []int) {
 	return fileDescriptor_81aa672910c4f44d, []int{2}
 }
@@ -349,8 +349,8 @@ type TimeStamp struct {
 	Value *types.Timestamp `protobuf:"bytes,1,opt,name=value,proto3" json:"value,omitempty"`
 }
 
-func (m *TimeStamp) Reset()      { *m = TimeStamp{} }
-func (*TimeStamp) ProtoMessage() {}
+func (m *TimeStamp) Reset()		{ *m = TimeStamp{} }
+func (*TimeStamp) ProtoMessage()	{}
 func (*TimeStamp) Descriptor() ([]byte, []int) {
 	return fileDescriptor_81aa672910c4f44d, []int{3}
 }
@@ -398,8 +398,8 @@ type DNSName struct {
 	Value string `protobuf:"bytes,1,opt,name=value,proto3" json:"value,omitempty"`
 }
 
-func (m *DNSName) Reset()      { *m = DNSName{} }
-func (*DNSName) ProtoMessage() {}
+func (m *DNSName) Reset()	{ *m = DNSName{} }
+func (*DNSName) ProtoMessage()	{}
 func (*DNSName) Descriptor() ([]byte, []int) {
 	return fileDescriptor_81aa672910c4f44d, []int{4}
 }
@@ -447,8 +447,8 @@ type StringMap struct {
 	Value map[string]string `protobuf:"bytes,1,rep,name=value,proto3" json:"value,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
-func (m *StringMap) Reset()      { *m = StringMap{} }
-func (*StringMap) ProtoMessage() {}
+func (m *StringMap) Reset()		{ *m = StringMap{} }
+func (*StringMap) ProtoMessage()	{}
 func (*StringMap) Descriptor() ([]byte, []int) {
 	return fileDescriptor_81aa672910c4f44d, []int{5}
 }
@@ -497,8 +497,8 @@ type EmailAddress struct {
 	Value string `protobuf:"bytes,1,opt,name=value,proto3" json:"value,omitempty"`
 }
 
-func (m *EmailAddress) Reset()      { *m = EmailAddress{} }
-func (*EmailAddress) ProtoMessage() {}
+func (m *EmailAddress) Reset()		{ *m = EmailAddress{} }
+func (*EmailAddress) ProtoMessage()	{}
 func (*EmailAddress) Descriptor() ([]byte, []int) {
 	return fileDescriptor_81aa672910c4f44d, []int{6}
 }
@@ -547,8 +547,8 @@ type Uri struct {
 	Value string `protobuf:"bytes,1,opt,name=value,proto3" json:"value,omitempty"`
 }
 
-func (m *Uri) Reset()      { *m = Uri{} }
-func (*Uri) ProtoMessage() {}
+func (m *Uri) Reset()		{ *m = Uri{} }
+func (*Uri) ProtoMessage()	{}
 func (*Uri) Descriptor() ([]byte, []int) {
 	return fileDescriptor_81aa672910c4f44d, []int{7}
 }
@@ -598,7 +598,7 @@ func init() {
 	proto.RegisterType((*Uri)(nil), "istio.policy.v1beta1.Uri")
 }
 
-func init() { proto.RegisterFile("policy/v1beta1/type.proto", fileDescriptor_81aa672910c4f44d) }
+func init()	{ proto.RegisterFile("policy/v1beta1/type.proto", fileDescriptor_81aa672910c4f44d) }
 
 var fileDescriptor_81aa672910c4f44d = []byte{
 	// 598 bytes of a gzipped FileDescriptorProto
@@ -3401,6 +3401,6 @@ func skipType(dAtA []byte) (n int, err error) {
 }
 
 var (
-	ErrInvalidLengthType = fmt.Errorf("proto: negative length found during unmarshaling")
-	ErrIntOverflowType   = fmt.Errorf("proto: integer overflow")
+	ErrInvalidLengthType	= fmt.Errorf("proto: negative length found during unmarshaling")
+	ErrIntOverflowType	= fmt.Errorf("proto: integer overflow")
 )

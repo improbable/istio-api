@@ -9,7 +9,7 @@ import (
 	proto "github.com/gogo/protobuf/proto"
 	github_com_gogo_protobuf_sortkeys "github.com/gogo/protobuf/sortkeys"
 	io "io"
-	_ "istio.io/gogo-genproto/googleapis/google/api"
+
 	math "math"
 	math_bits "math/bits"
 	reflect "reflect"
@@ -25,7 +25,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion3	// please upgrade the proto package
 
 // Determines the quotas used for individual requests.
 //
@@ -52,8 +52,8 @@ type QuotaSpec struct {
 	Rules []*QuotaRule `protobuf:"bytes,1,rep,name=rules,proto3" json:"rules,omitempty"`
 }
 
-func (m *QuotaSpec) Reset()      { *m = QuotaSpec{} }
-func (*QuotaSpec) ProtoMessage() {}
+func (m *QuotaSpec) Reset()		{ *m = QuotaSpec{} }
+func (*QuotaSpec) ProtoMessage()	{}
 func (*QuotaSpec) Descriptor() ([]byte, []int) {
 	return fileDescriptor_81777b5d047af315, []int{0}
 }
@@ -85,13 +85,13 @@ var xxx_messageInfo_QuotaSpec proto.InternalMessageInfo
 type QuotaRule struct {
 	// If empty, match all request.
 	// If any of match is true, it is matched.
-	Match []*AttributeMatch `protobuf:"bytes,1,rep,name=match,proto3" json:"match,omitempty"`
+	Match	[]*AttributeMatch	`protobuf:"bytes,1,rep,name=match,proto3" json:"match,omitempty"`
 	// The list of quotas to charge.
-	Quotas []*Quota `protobuf:"bytes,2,rep,name=quotas,proto3" json:"quotas,omitempty"`
+	Quotas	[]*Quota	`protobuf:"bytes,2,rep,name=quotas,proto3" json:"quotas,omitempty"`
 }
 
-func (m *QuotaRule) Reset()      { *m = QuotaRule{} }
-func (*QuotaRule) ProtoMessage() {}
+func (m *QuotaRule) Reset()		{ *m = QuotaRule{} }
+func (*QuotaRule) ProtoMessage()	{}
 func (*QuotaRule) Descriptor() ([]byte, []int) {
 	return fileDescriptor_81777b5d047af315, []int{1}
 }
@@ -128,8 +128,8 @@ type StringMatch struct {
 	MatchType isStringMatch_MatchType `protobuf_oneof:"match_type"`
 }
 
-func (m *StringMatch) Reset()      { *m = StringMatch{} }
-func (*StringMatch) ProtoMessage() {}
+func (m *StringMatch) Reset()		{ *m = StringMatch{} }
+func (*StringMatch) ProtoMessage()	{}
 func (*StringMatch) Descriptor() ([]byte, []int) {
 	return fileDescriptor_81777b5d047af315, []int{2}
 }
@@ -172,9 +172,9 @@ type StringMatch_Regex struct {
 	Regex string `protobuf:"bytes,3,opt,name=regex,proto3,oneof"`
 }
 
-func (*StringMatch_Exact) isStringMatch_MatchType()  {}
-func (*StringMatch_Prefix) isStringMatch_MatchType() {}
-func (*StringMatch_Regex) isStringMatch_MatchType()  {}
+func (*StringMatch_Exact) isStringMatch_MatchType()	{}
+func (*StringMatch_Prefix) isStringMatch_MatchType()	{}
+func (*StringMatch_Regex) isStringMatch_MatchType()	{}
 
 func (m *StringMatch) GetMatchType() isStringMatch_MatchType {
 	if m != nil {
@@ -228,8 +228,8 @@ type AttributeMatch struct {
 	Clause map[string]*StringMatch `protobuf:"bytes,1,rep,name=clause,proto3" json:"clause,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
-func (m *AttributeMatch) Reset()      { *m = AttributeMatch{} }
-func (*AttributeMatch) ProtoMessage() {}
+func (m *AttributeMatch) Reset()	{ *m = AttributeMatch{} }
+func (*AttributeMatch) ProtoMessage()	{}
 func (*AttributeMatch) Descriptor() ([]byte, []int) {
 	return fileDescriptor_81777b5d047af315, []int{3}
 }
@@ -259,13 +259,13 @@ var xxx_messageInfo_AttributeMatch proto.InternalMessageInfo
 // Specifies a quota to use with quota name and amount.
 type Quota struct {
 	// The quota name to charge
-	Quota string `protobuf:"bytes,1,opt,name=quota,proto3" json:"quota,omitempty"`
+	Quota	string	`protobuf:"bytes,1,opt,name=quota,proto3" json:"quota,omitempty"`
 	// The quota amount to charge
-	Charge int32 `protobuf:"varint,2,opt,name=charge,proto3" json:"charge,omitempty"`
+	Charge	int32	`protobuf:"varint,2,opt,name=charge,proto3" json:"charge,omitempty"`
 }
 
-func (m *Quota) Reset()      { *m = Quota{} }
-func (*Quota) ProtoMessage() {}
+func (m *Quota) Reset()		{ *m = Quota{} }
+func (*Quota) ProtoMessage()	{}
 func (*Quota) Descriptor() ([]byte, []int) {
 	return fileDescriptor_81777b5d047af315, []int{4}
 }
@@ -315,15 +315,15 @@ var xxx_messageInfo_Quota proto.InternalMessageInfo
 // -->
 type QuotaSpecBinding struct {
 	// One or more services to map the listed QuotaSpec onto.
-	Services []*IstioService `protobuf:"bytes,1,rep,name=services,proto3" json:"services,omitempty"`
+	Services	[]*IstioService	`protobuf:"bytes,1,rep,name=services,proto3" json:"services,omitempty"`
 	// One or more QuotaSpec references that should be mapped to
 	// the specified service(s). The aggregate collection of match
 	// conditions defined in the QuotaSpecs should not overlap.
-	QuotaSpecs []*QuotaSpecBinding_QuotaSpecReference `protobuf:"bytes,2,rep,name=quota_specs,json=quotaSpecs,proto3" json:"quota_specs,omitempty"`
+	QuotaSpecs	[]*QuotaSpecBinding_QuotaSpecReference	`protobuf:"bytes,2,rep,name=quota_specs,json=quotaSpecs,proto3" json:"quota_specs,omitempty"`
 }
 
-func (m *QuotaSpecBinding) Reset()      { *m = QuotaSpecBinding{} }
-func (*QuotaSpecBinding) ProtoMessage() {}
+func (m *QuotaSpecBinding) Reset()	{ *m = QuotaSpecBinding{} }
+func (*QuotaSpecBinding) ProtoMessage()	{}
 func (*QuotaSpecBinding) Descriptor() ([]byte, []int) {
 	return fileDescriptor_81777b5d047af315, []int{5}
 }
@@ -355,14 +355,14 @@ var xxx_messageInfo_QuotaSpecBinding proto.InternalMessageInfo
 type QuotaSpecBinding_QuotaSpecReference struct {
 	// The short name of the QuotaSpec. This is the resource
 	// name defined by the metadata name field.
-	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Name	string	`protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Optional namespace of the QuotaSpec. Defaults to the value of the
 	// metadata namespace field.
-	Namespace string `protobuf:"bytes,2,opt,name=namespace,proto3" json:"namespace,omitempty"`
+	Namespace	string	`protobuf:"bytes,2,opt,name=namespace,proto3" json:"namespace,omitempty"`
 }
 
-func (m *QuotaSpecBinding_QuotaSpecReference) Reset()      { *m = QuotaSpecBinding_QuotaSpecReference{} }
-func (*QuotaSpecBinding_QuotaSpecReference) ProtoMessage() {}
+func (m *QuotaSpecBinding_QuotaSpecReference) Reset()		{ *m = QuotaSpecBinding_QuotaSpecReference{} }
+func (*QuotaSpecBinding_QuotaSpecReference) ProtoMessage()	{}
 func (*QuotaSpecBinding_QuotaSpecReference) Descriptor() ([]byte, []int) {
 	return fileDescriptor_81777b5d047af315, []int{5, 0}
 }
@@ -400,7 +400,7 @@ func init() {
 	proto.RegisterType((*QuotaSpecBinding_QuotaSpecReference)(nil), "istio.mixer.v1.config.client.QuotaSpecBinding.QuotaSpecReference")
 }
 
-func init() { proto.RegisterFile("mixer/v1/config/client/quota.proto", fileDescriptor_81777b5d047af315) }
+func init()	{ proto.RegisterFile("mixer/v1/config/client/quota.proto", fileDescriptor_81777b5d047af315) }
 
 var fileDescriptor_81777b5d047af315 = []byte{
 	// 569 bytes of a gzipped FileDescriptorProto
@@ -2084,6 +2084,6 @@ func skipQuota(dAtA []byte) (n int, err error) {
 }
 
 var (
-	ErrInvalidLengthQuota = fmt.Errorf("proto: negative length found during unmarshaling")
-	ErrIntOverflowQuota   = fmt.Errorf("proto: integer overflow")
+	ErrInvalidLengthQuota	= fmt.Errorf("proto: negative length found during unmarshaling")
+	ErrIntOverflowQuota	= fmt.Errorf("proto: integer overflow")
 )

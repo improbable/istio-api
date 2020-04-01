@@ -186,7 +186,7 @@ import (
 	proto "github.com/gogo/protobuf/proto"
 	types "github.com/gogo/protobuf/types"
 	io "io"
-	_ "istio.io/gogo-genproto/googleapis/google/api"
+
 	math "math"
 	math_bits "math/bits"
 )
@@ -200,61 +200,61 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion3	// please upgrade the proto package
 
 // ApplyTo specifies where in the Envoy configuration, the given patch should be applied.
 type EnvoyFilter_ApplyTo int32
 
 const (
-	EnvoyFilter_INVALID EnvoyFilter_ApplyTo = 0
+	EnvoyFilter_INVALID	EnvoyFilter_ApplyTo	= 0
 	// Applies the patch to the listener.
-	EnvoyFilter_LISTENER EnvoyFilter_ApplyTo = 1
+	EnvoyFilter_LISTENER	EnvoyFilter_ApplyTo	= 1
 	// Applies the patch to the filter chain.
-	EnvoyFilter_FILTER_CHAIN EnvoyFilter_ApplyTo = 2
+	EnvoyFilter_FILTER_CHAIN	EnvoyFilter_ApplyTo	= 2
 	// Applies the patch to the network filter chain, to modify an
 	// existing filter or add a new filter.
-	EnvoyFilter_NETWORK_FILTER EnvoyFilter_ApplyTo = 3
+	EnvoyFilter_NETWORK_FILTER	EnvoyFilter_ApplyTo	= 3
 	// Applies the patch to the HTTP filter chain in the http
 	// connection manager, to modify an existing filter or add a new
 	// filter.
-	EnvoyFilter_HTTP_FILTER EnvoyFilter_ApplyTo = 4
+	EnvoyFilter_HTTP_FILTER	EnvoyFilter_ApplyTo	= 4
 	// Applies the patch to the Route configuration (rds output)
 	// inside a HTTP connection manager. This does not apply to the
 	// virtual host. Currently, only MERGE operation is allowed on the
 	// route configuration objects.
-	EnvoyFilter_ROUTE_CONFIGURATION EnvoyFilter_ApplyTo = 5
+	EnvoyFilter_ROUTE_CONFIGURATION	EnvoyFilter_ApplyTo	= 5
 	// Applies the patch to a virtual host inside a route configuration.
-	EnvoyFilter_VIRTUAL_HOST EnvoyFilter_ApplyTo = 6
+	EnvoyFilter_VIRTUAL_HOST	EnvoyFilter_ApplyTo	= 6
 	// Applies the patch to a route object inside the matched virtual
 	// host in a route configuration. Currently, only MERGE operation
 	// is allowed on the route objects.
-	EnvoyFilter_HTTP_ROUTE EnvoyFilter_ApplyTo = 7
+	EnvoyFilter_HTTP_ROUTE	EnvoyFilter_ApplyTo	= 7
 	// Applies the patch to a cluster in a CDS output. Also used to add new clusters.
-	EnvoyFilter_CLUSTER EnvoyFilter_ApplyTo = 8
+	EnvoyFilter_CLUSTER	EnvoyFilter_ApplyTo	= 8
 )
 
 var EnvoyFilter_ApplyTo_name = map[int32]string{
-	0: "INVALID",
-	1: "LISTENER",
-	2: "FILTER_CHAIN",
-	3: "NETWORK_FILTER",
-	4: "HTTP_FILTER",
-	5: "ROUTE_CONFIGURATION",
-	6: "VIRTUAL_HOST",
-	7: "HTTP_ROUTE",
-	8: "CLUSTER",
+	0:	"INVALID",
+	1:	"LISTENER",
+	2:	"FILTER_CHAIN",
+	3:	"NETWORK_FILTER",
+	4:	"HTTP_FILTER",
+	5:	"ROUTE_CONFIGURATION",
+	6:	"VIRTUAL_HOST",
+	7:	"HTTP_ROUTE",
+	8:	"CLUSTER",
 }
 
 var EnvoyFilter_ApplyTo_value = map[string]int32{
-	"INVALID":             0,
-	"LISTENER":            1,
-	"FILTER_CHAIN":        2,
-	"NETWORK_FILTER":      3,
-	"HTTP_FILTER":         4,
-	"ROUTE_CONFIGURATION": 5,
-	"VIRTUAL_HOST":        6,
-	"HTTP_ROUTE":          7,
-	"CLUSTER":             8,
+	"INVALID":		0,
+	"LISTENER":		1,
+	"FILTER_CHAIN":		2,
+	"NETWORK_FILTER":	3,
+	"HTTP_FILTER":		4,
+	"ROUTE_CONFIGURATION":	5,
+	"VIRTUAL_HOST":		6,
+	"HTTP_ROUTE":		7,
+	"CLUSTER":		8,
 }
 
 func (x EnvoyFilter_ApplyTo) String() string {
@@ -271,27 +271,27 @@ type EnvoyFilter_PatchContext int32
 
 const (
 	// All listeners/routes/clusters in both sidecars and gateways.
-	EnvoyFilter_ANY EnvoyFilter_PatchContext = 0
+	EnvoyFilter_ANY	EnvoyFilter_PatchContext	= 0
 	// Inbound listener/route/cluster in sidecar.
-	EnvoyFilter_SIDECAR_INBOUND EnvoyFilter_PatchContext = 1
+	EnvoyFilter_SIDECAR_INBOUND	EnvoyFilter_PatchContext	= 1
 	// Outbound listener/route/cluster in sidecar.
-	EnvoyFilter_SIDECAR_OUTBOUND EnvoyFilter_PatchContext = 2
+	EnvoyFilter_SIDECAR_OUTBOUND	EnvoyFilter_PatchContext	= 2
 	// Gateway listener/route/cluster.
-	EnvoyFilter_GATEWAY EnvoyFilter_PatchContext = 3
+	EnvoyFilter_GATEWAY	EnvoyFilter_PatchContext	= 3
 )
 
 var EnvoyFilter_PatchContext_name = map[int32]string{
-	0: "ANY",
-	1: "SIDECAR_INBOUND",
-	2: "SIDECAR_OUTBOUND",
-	3: "GATEWAY",
+	0:	"ANY",
+	1:	"SIDECAR_INBOUND",
+	2:	"SIDECAR_OUTBOUND",
+	3:	"GATEWAY",
 }
 
 var EnvoyFilter_PatchContext_value = map[string]int32{
-	"ANY":              0,
-	"SIDECAR_INBOUND":  1,
-	"SIDECAR_OUTBOUND": 2,
-	"GATEWAY":          3,
+	"ANY":			0,
+	"SIDECAR_INBOUND":	1,
+	"SIDECAR_OUTBOUND":	2,
+	"GATEWAY":		3,
 }
 
 func (x EnvoyFilter_PatchContext) String() string {
@@ -306,27 +306,27 @@ type EnvoyFilter_DeprecatedListenerMatch_ListenerType int32
 
 const (
 	// All listeners
-	EnvoyFilter_DeprecatedListenerMatch_ANY EnvoyFilter_DeprecatedListenerMatch_ListenerType = 0
+	EnvoyFilter_DeprecatedListenerMatch_ANY	EnvoyFilter_DeprecatedListenerMatch_ListenerType	= 0
 	// Inbound listener in sidecar
-	EnvoyFilter_DeprecatedListenerMatch_SIDECAR_INBOUND EnvoyFilter_DeprecatedListenerMatch_ListenerType = 1
+	EnvoyFilter_DeprecatedListenerMatch_SIDECAR_INBOUND	EnvoyFilter_DeprecatedListenerMatch_ListenerType	= 1
 	// Outbound listener in sidecar
-	EnvoyFilter_DeprecatedListenerMatch_SIDECAR_OUTBOUND EnvoyFilter_DeprecatedListenerMatch_ListenerType = 2
+	EnvoyFilter_DeprecatedListenerMatch_SIDECAR_OUTBOUND	EnvoyFilter_DeprecatedListenerMatch_ListenerType	= 2
 	// Gateway listener
-	EnvoyFilter_DeprecatedListenerMatch_GATEWAY EnvoyFilter_DeprecatedListenerMatch_ListenerType = 3
+	EnvoyFilter_DeprecatedListenerMatch_GATEWAY	EnvoyFilter_DeprecatedListenerMatch_ListenerType	= 3
 )
 
 var EnvoyFilter_DeprecatedListenerMatch_ListenerType_name = map[int32]string{
-	0: "ANY",
-	1: "SIDECAR_INBOUND",
-	2: "SIDECAR_OUTBOUND",
-	3: "GATEWAY",
+	0:	"ANY",
+	1:	"SIDECAR_INBOUND",
+	2:	"SIDECAR_OUTBOUND",
+	3:	"GATEWAY",
 }
 
 var EnvoyFilter_DeprecatedListenerMatch_ListenerType_value = map[string]int32{
-	"ANY":              0,
-	"SIDECAR_INBOUND":  1,
-	"SIDECAR_OUTBOUND": 2,
-	"GATEWAY":          3,
+	"ANY":			0,
+	"SIDECAR_INBOUND":	1,
+	"SIDECAR_OUTBOUND":	2,
+	"GATEWAY":		3,
 }
 
 func (x EnvoyFilter_DeprecatedListenerMatch_ListenerType) String() string {
@@ -341,23 +341,23 @@ type EnvoyFilter_DeprecatedListenerMatch_ListenerProtocol int32
 
 const (
 	// All protocols
-	EnvoyFilter_DeprecatedListenerMatch_ALL EnvoyFilter_DeprecatedListenerMatch_ListenerProtocol = 0
+	EnvoyFilter_DeprecatedListenerMatch_ALL	EnvoyFilter_DeprecatedListenerMatch_ListenerProtocol	= 0
 	// HTTP or HTTPS (with termination) / HTTP2/gRPC
-	EnvoyFilter_DeprecatedListenerMatch_HTTP EnvoyFilter_DeprecatedListenerMatch_ListenerProtocol = 1
+	EnvoyFilter_DeprecatedListenerMatch_HTTP	EnvoyFilter_DeprecatedListenerMatch_ListenerProtocol	= 1
 	// Any non-HTTP listener
-	EnvoyFilter_DeprecatedListenerMatch_TCP EnvoyFilter_DeprecatedListenerMatch_ListenerProtocol = 2
+	EnvoyFilter_DeprecatedListenerMatch_TCP	EnvoyFilter_DeprecatedListenerMatch_ListenerProtocol	= 2
 )
 
 var EnvoyFilter_DeprecatedListenerMatch_ListenerProtocol_name = map[int32]string{
-	0: "ALL",
-	1: "HTTP",
-	2: "TCP",
+	0:	"ALL",
+	1:	"HTTP",
+	2:	"TCP",
 }
 
 var EnvoyFilter_DeprecatedListenerMatch_ListenerProtocol_value = map[string]int32{
-	"ALL":  0,
-	"HTTP": 1,
-	"TCP":  2,
+	"ALL":	0,
+	"HTTP":	1,
+	"TCP":	2,
 }
 
 func (x EnvoyFilter_DeprecatedListenerMatch_ListenerProtocol) String() string {
@@ -373,27 +373,27 @@ type EnvoyFilter_InsertPosition_Index int32
 
 const (
 	// Insert first
-	EnvoyFilter_InsertPosition_FIRST EnvoyFilter_InsertPosition_Index = 0
+	EnvoyFilter_InsertPosition_FIRST	EnvoyFilter_InsertPosition_Index	= 0
 	// Insert last
-	EnvoyFilter_InsertPosition_LAST EnvoyFilter_InsertPosition_Index = 1
+	EnvoyFilter_InsertPosition_LAST	EnvoyFilter_InsertPosition_Index	= 1
 	// Insert before the named filter.
-	EnvoyFilter_InsertPosition_BEFORE EnvoyFilter_InsertPosition_Index = 2
+	EnvoyFilter_InsertPosition_BEFORE	EnvoyFilter_InsertPosition_Index	= 2
 	// Insert after the named filter.
-	EnvoyFilter_InsertPosition_AFTER EnvoyFilter_InsertPosition_Index = 3
+	EnvoyFilter_InsertPosition_AFTER	EnvoyFilter_InsertPosition_Index	= 3
 )
 
 var EnvoyFilter_InsertPosition_Index_name = map[int32]string{
-	0: "FIRST",
-	1: "LAST",
-	2: "BEFORE",
-	3: "AFTER",
+	0:	"FIRST",
+	1:	"LAST",
+	2:	"BEFORE",
+	3:	"AFTER",
 }
 
 var EnvoyFilter_InsertPosition_Index_value = map[string]int32{
-	"FIRST":  0,
-	"LAST":   1,
-	"BEFORE": 2,
-	"AFTER":  3,
+	"FIRST":	0,
+	"LAST":		1,
+	"BEFORE":	2,
+	"AFTER":	3,
 }
 
 func (x EnvoyFilter_InsertPosition_Index) String() string {
@@ -408,23 +408,23 @@ type EnvoyFilter_Filter_FilterType int32
 
 const (
 	// placeholder
-	EnvoyFilter_Filter_INVALID EnvoyFilter_Filter_FilterType = 0
+	EnvoyFilter_Filter_INVALID	EnvoyFilter_Filter_FilterType	= 0
 	// Http filter
-	EnvoyFilter_Filter_HTTP EnvoyFilter_Filter_FilterType = 1
+	EnvoyFilter_Filter_HTTP	EnvoyFilter_Filter_FilterType	= 1
 	// Network filter
-	EnvoyFilter_Filter_NETWORK EnvoyFilter_Filter_FilterType = 2
+	EnvoyFilter_Filter_NETWORK	EnvoyFilter_Filter_FilterType	= 2
 )
 
 var EnvoyFilter_Filter_FilterType_name = map[int32]string{
-	0: "INVALID",
-	1: "HTTP",
-	2: "NETWORK",
+	0:	"INVALID",
+	1:	"HTTP",
+	2:	"NETWORK",
 }
 
 var EnvoyFilter_Filter_FilterType_value = map[string]int32{
-	"INVALID": 0,
-	"HTTP":    1,
-	"NETWORK": 2,
+	"INVALID":	0,
+	"HTTP":		1,
+	"NETWORK":	2,
 }
 
 func (x EnvoyFilter_Filter_FilterType) String() string {
@@ -440,27 +440,27 @@ type EnvoyFilter_RouteConfigurationMatch_RouteMatch_Action int32
 
 const (
 	// All three route actions
-	EnvoyFilter_RouteConfigurationMatch_RouteMatch_ANY EnvoyFilter_RouteConfigurationMatch_RouteMatch_Action = 0
+	EnvoyFilter_RouteConfigurationMatch_RouteMatch_ANY	EnvoyFilter_RouteConfigurationMatch_RouteMatch_Action	= 0
 	// Route traffic to a cluster / weighted clusters.
-	EnvoyFilter_RouteConfigurationMatch_RouteMatch_ROUTE EnvoyFilter_RouteConfigurationMatch_RouteMatch_Action = 1
+	EnvoyFilter_RouteConfigurationMatch_RouteMatch_ROUTE	EnvoyFilter_RouteConfigurationMatch_RouteMatch_Action	= 1
 	// Redirect request.
-	EnvoyFilter_RouteConfigurationMatch_RouteMatch_REDIRECT EnvoyFilter_RouteConfigurationMatch_RouteMatch_Action = 2
+	EnvoyFilter_RouteConfigurationMatch_RouteMatch_REDIRECT	EnvoyFilter_RouteConfigurationMatch_RouteMatch_Action	= 2
 	// directly respond to a request with specific payload.
-	EnvoyFilter_RouteConfigurationMatch_RouteMatch_DIRECT_RESPONSE EnvoyFilter_RouteConfigurationMatch_RouteMatch_Action = 3
+	EnvoyFilter_RouteConfigurationMatch_RouteMatch_DIRECT_RESPONSE	EnvoyFilter_RouteConfigurationMatch_RouteMatch_Action	= 3
 )
 
 var EnvoyFilter_RouteConfigurationMatch_RouteMatch_Action_name = map[int32]string{
-	0: "ANY",
-	1: "ROUTE",
-	2: "REDIRECT",
-	3: "DIRECT_RESPONSE",
+	0:	"ANY",
+	1:	"ROUTE",
+	2:	"REDIRECT",
+	3:	"DIRECT_RESPONSE",
 }
 
 var EnvoyFilter_RouteConfigurationMatch_RouteMatch_Action_value = map[string]int32{
-	"ANY":             0,
-	"ROUTE":           1,
-	"REDIRECT":        2,
-	"DIRECT_RESPONSE": 3,
+	"ANY":			0,
+	"ROUTE":		1,
+	"REDIRECT":		2,
+	"DIRECT_RESPONSE":	3,
 }
 
 func (x EnvoyFilter_RouteConfigurationMatch_RouteMatch_Action) String() string {
@@ -476,21 +476,21 @@ func (EnvoyFilter_RouteConfigurationMatch_RouteMatch_Action) EnumDescriptor() ([
 type EnvoyFilter_Patch_Operation int32
 
 const (
-	EnvoyFilter_Patch_INVALID EnvoyFilter_Patch_Operation = 0
+	EnvoyFilter_Patch_INVALID	EnvoyFilter_Patch_Operation	= 0
 	// Merge the provided config with the generated config using
 	// json merge semantics.
-	EnvoyFilter_Patch_MERGE EnvoyFilter_Patch_Operation = 1
+	EnvoyFilter_Patch_MERGE	EnvoyFilter_Patch_Operation	= 1
 	// Add the provided config to an existing list (of listeners,
 	// clusters, virtual hosts, network filters, or http
 	// filters). This operation will be ignored when applyTo is set
 	// to ROUTE_CONFIGURATION, or HTTP_ROUTE.
-	EnvoyFilter_Patch_ADD EnvoyFilter_Patch_Operation = 2
+	EnvoyFilter_Patch_ADD	EnvoyFilter_Patch_Operation	= 2
 	// Remove the selected object from the list (of listeners,
 	// clusters, virtual hosts, network filters, or http
 	// filters). Does not require a value to be specified. This
 	// operation will be ignored when applyTo is set to
 	// ROUTE_CONFIGURATION, or HTTP_ROUTE.
-	EnvoyFilter_Patch_REMOVE EnvoyFilter_Patch_Operation = 3
+	EnvoyFilter_Patch_REMOVE	EnvoyFilter_Patch_Operation	= 3
 	// Insert operation on an array of named objects. This operation
 	// is typically useful only in the context of filters, where the
 	// order of filters matter. For clusters and virtual hosts,
@@ -498,7 +498,7 @@ const (
 	// before the selected filter or sub filter. If no filter is
 	// selected, the specified filter will be inserted at the front
 	// of the list.
-	EnvoyFilter_Patch_INSERT_BEFORE EnvoyFilter_Patch_Operation = 4
+	EnvoyFilter_Patch_INSERT_BEFORE	EnvoyFilter_Patch_Operation	= 4
 	// Insert operation on an array of named objects. This operation
 	// is typically useful only in the context of filters, where the
 	// order of filters matter. For clusters and virtual hosts,
@@ -506,7 +506,7 @@ const (
 	// after the selected filter or sub filter. If no filter is
 	// selected, the specified filter will be inserted at the end
 	// of the list.
-	EnvoyFilter_Patch_INSERT_AFTER EnvoyFilter_Patch_Operation = 5
+	EnvoyFilter_Patch_INSERT_AFTER	EnvoyFilter_Patch_Operation	= 5
 	// Insert operation on an array of named objects. This operation
 	// is typically useful only in the context of filters, where the
 	// order of filters matter. For clusters and virtual hosts,
@@ -514,27 +514,27 @@ const (
 	// first in the list based on the presence of selected filter or not.
 	// This is specifically useful when you want your filter first in the
 	// list based on a match condition specified in Match clause.
-	EnvoyFilter_Patch_INSERT_FIRST EnvoyFilter_Patch_Operation = 6
+	EnvoyFilter_Patch_INSERT_FIRST	EnvoyFilter_Patch_Operation	= 6
 )
 
 var EnvoyFilter_Patch_Operation_name = map[int32]string{
-	0: "INVALID",
-	1: "MERGE",
-	2: "ADD",
-	3: "REMOVE",
-	4: "INSERT_BEFORE",
-	5: "INSERT_AFTER",
-	6: "INSERT_FIRST",
+	0:	"INVALID",
+	1:	"MERGE",
+	2:	"ADD",
+	3:	"REMOVE",
+	4:	"INSERT_BEFORE",
+	5:	"INSERT_AFTER",
+	6:	"INSERT_FIRST",
 }
 
 var EnvoyFilter_Patch_Operation_value = map[string]int32{
-	"INVALID":       0,
-	"MERGE":         1,
-	"ADD":           2,
-	"REMOVE":        3,
-	"INSERT_BEFORE": 4,
-	"INSERT_AFTER":  5,
-	"INSERT_FIRST":  6,
+	"INVALID":		0,
+	"MERGE":		1,
+	"ADD":			2,
+	"REMOVE":		3,
+	"INSERT_BEFORE":	4,
+	"INSERT_AFTER":		5,
+	"INSERT_FIRST":		6,
 }
 
 func (x EnvoyFilter_Patch_Operation) String() string {
@@ -568,9 +568,9 @@ func (EnvoyFilter_Patch_Operation) EnumDescriptor() ([]byte, []int) {
 type EnvoyFilter struct {
 	// Deprecated. Use workload_selector instead.
 	// $hide_from_docs
-	WorkloadLabels map[string]string `protobuf:"bytes,1,rep,name=workload_labels,json=workloadLabels,proto3" json:"workload_labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"` // Deprecated: Do not use.
+	WorkloadLabels	map[string]string	`protobuf:"bytes,1,rep,name=workload_labels,json=workloadLabels,proto3" json:"workload_labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`	// Deprecated: Do not use.
 	// $hide_from_docs
-	Filters []*EnvoyFilter_Filter `protobuf:"bytes,2,rep,name=filters,proto3" json:"filters,omitempty"` // Deprecated: Do not use.
+	Filters	[]*EnvoyFilter_Filter	`protobuf:"bytes,2,rep,name=filters,proto3" json:"filters,omitempty"`	// Deprecated: Do not use.
 	// Criteria used to select the specific set of pods/VMs on which
 	// this patch configuration should be applied. If omitted, the set
 	// of patches in this configuration will be applied to all workload
@@ -579,17 +579,17 @@ type EnvoyFilter struct {
 	// namespace. If the EnvoyFilter is present in the config root
 	// namespace, it will be applied to all applicable workloads in any
 	// namespace.
-	WorkloadSelector *WorkloadSelector `protobuf:"bytes,3,opt,name=workload_selector,json=workloadSelector,proto3" json:"workload_selector,omitempty"`
+	WorkloadSelector	*WorkloadSelector	`protobuf:"bytes,3,opt,name=workload_selector,json=workloadSelector,proto3" json:"workload_selector,omitempty"`
 	// One or more patches with match conditions.
-	ConfigPatches        []*EnvoyFilter_EnvoyConfigObjectPatch `protobuf:"bytes,4,rep,name=config_patches,json=configPatches,proto3" json:"config_patches,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                              `json:"-"`
-	XXX_unrecognized     []byte                                `json:"-"`
-	XXX_sizecache        int32                                 `json:"-"`
+	ConfigPatches		[]*EnvoyFilter_EnvoyConfigObjectPatch	`protobuf:"bytes,4,rep,name=config_patches,json=configPatches,proto3" json:"config_patches,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}				`json:"-"`
+	XXX_unrecognized	[]byte					`json:"-"`
+	XXX_sizecache		int32					`json:"-"`
 }
 
-func (m *EnvoyFilter) Reset()         { *m = EnvoyFilter{} }
-func (m *EnvoyFilter) String() string { return proto.CompactTextString(m) }
-func (*EnvoyFilter) ProtoMessage()    {}
+func (m *EnvoyFilter) Reset()		{ *m = EnvoyFilter{} }
+func (m *EnvoyFilter) String() string	{ return proto.CompactTextString(m) }
+func (*EnvoyFilter) ProtoMessage()	{}
 func (*EnvoyFilter) Descriptor() ([]byte, []int) {
 	return fileDescriptor_16d9b2922bd3e4a9, []int{0}
 }
@@ -660,32 +660,32 @@ type EnvoyFilter_DeprecatedListenerMatch struct {
 	// sent/received. If not specified, matches all listeners. Even though
 	// inbound listeners are generated for the instance/pod ports, only
 	// service ports should be used to match listeners.
-	PortNumber uint32 `protobuf:"varint,1,opt,name=port_number,json=portNumber,proto3" json:"port_number,omitempty"`
+	PortNumber	uint32	`protobuf:"varint,1,opt,name=port_number,json=portNumber,proto3" json:"port_number,omitempty"`
 	// Instead of using specific port numbers, a set of ports matching a
 	// given port name prefix can be selected. E.g., "mongo" selects ports
 	// named mongo-port, mongo, mongoDB, MONGO, etc. Matching is case
 	// insensitive.
-	PortNamePrefix string `protobuf:"bytes,2,opt,name=port_name_prefix,json=portNamePrefix,proto3" json:"port_name_prefix,omitempty"`
+	PortNamePrefix	string	`protobuf:"bytes,2,opt,name=port_name_prefix,json=portNamePrefix,proto3" json:"port_name_prefix,omitempty"`
 	// Inbound vs outbound sidecar listener or gateway listener. If not specified,
 	// matches all listeners.
-	ListenerType EnvoyFilter_DeprecatedListenerMatch_ListenerType `protobuf:"varint,3,opt,name=listener_type,json=listenerType,proto3,enum=istio.networking.v1alpha3.EnvoyFilter_DeprecatedListenerMatch_ListenerType" json:"listener_type,omitempty"`
+	ListenerType	EnvoyFilter_DeprecatedListenerMatch_ListenerType	`protobuf:"varint,3,opt,name=listener_type,json=listenerType,proto3,enum=istio.networking.v1alpha3.EnvoyFilter_DeprecatedListenerMatch_ListenerType" json:"listener_type,omitempty"`
 	// Selects a class of listeners for the same protocol. Use the protocol
 	// selection to select all HTTP listeners (includes HTTP2/gRPC/HTTPS
 	// where Envoy terminates TLS) or all TCP listeners (includes HTTPS
 	// passthrough using SNI). When adding a HTTP filter, the listenerProtocol
 	// should be set to HTTP.
-	ListenerProtocol EnvoyFilter_DeprecatedListenerMatch_ListenerProtocol `protobuf:"varint,4,opt,name=listener_protocol,json=listenerProtocol,proto3,enum=istio.networking.v1alpha3.EnvoyFilter_DeprecatedListenerMatch_ListenerProtocol" json:"listener_protocol,omitempty"`
+	ListenerProtocol	EnvoyFilter_DeprecatedListenerMatch_ListenerProtocol	`protobuf:"varint,4,opt,name=listener_protocol,json=listenerProtocol,proto3,enum=istio.networking.v1alpha3.EnvoyFilter_DeprecatedListenerMatch_ListenerProtocol" json:"listener_protocol,omitempty"`
 	// One or more IP addresses to which the listener is bound. If
 	// specified, should match at least one address in the list.
-	Address              []string `protobuf:"bytes,5,rep,name=address,proto3" json:"address,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	Address			[]string	`protobuf:"bytes,5,rep,name=address,proto3" json:"address,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *EnvoyFilter_DeprecatedListenerMatch) Reset()         { *m = EnvoyFilter_DeprecatedListenerMatch{} }
-func (m *EnvoyFilter_DeprecatedListenerMatch) String() string { return proto.CompactTextString(m) }
-func (*EnvoyFilter_DeprecatedListenerMatch) ProtoMessage()    {}
+func (m *EnvoyFilter_DeprecatedListenerMatch) Reset()		{ *m = EnvoyFilter_DeprecatedListenerMatch{} }
+func (m *EnvoyFilter_DeprecatedListenerMatch) String() string	{ return proto.CompactTextString(m) }
+func (*EnvoyFilter_DeprecatedListenerMatch) ProtoMessage()	{}
 func (*EnvoyFilter_DeprecatedListenerMatch) Descriptor() ([]byte, []int) {
 	return fileDescriptor_16d9b2922bd3e4a9, []int{0, 0}
 }
@@ -756,18 +756,18 @@ func (m *EnvoyFilter_DeprecatedListenerMatch) GetAddress() []string {
 // $hide_from_docs
 type EnvoyFilter_InsertPosition struct {
 	// Position of this filter in the filter chain.
-	Index EnvoyFilter_InsertPosition_Index `protobuf:"varint,1,opt,name=index,proto3,enum=istio.networking.v1alpha3.EnvoyFilter_InsertPosition_Index" json:"index,omitempty"`
+	Index	EnvoyFilter_InsertPosition_Index	`protobuf:"varint,1,opt,name=index,proto3,enum=istio.networking.v1alpha3.EnvoyFilter_InsertPosition_Index" json:"index,omitempty"`
 	// If BEFORE or AFTER position is specified, specify the name of the
 	// filter relative to which this filter should be inserted.
-	RelativeTo           string   `protobuf:"bytes,2,opt,name=relative_to,json=relativeTo,proto3" json:"relative_to,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	RelativeTo		string		`protobuf:"bytes,2,opt,name=relative_to,json=relativeTo,proto3" json:"relative_to,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *EnvoyFilter_InsertPosition) Reset()         { *m = EnvoyFilter_InsertPosition{} }
-func (m *EnvoyFilter_InsertPosition) String() string { return proto.CompactTextString(m) }
-func (*EnvoyFilter_InsertPosition) ProtoMessage()    {}
+func (m *EnvoyFilter_InsertPosition) Reset()		{ *m = EnvoyFilter_InsertPosition{} }
+func (m *EnvoyFilter_InsertPosition) String() string	{ return proto.CompactTextString(m) }
+func (*EnvoyFilter_InsertPosition) ProtoMessage()	{}
 func (*EnvoyFilter_InsertPosition) Descriptor() ([]byte, []int) {
 	return fileDescriptor_16d9b2922bd3e4a9, []int{0, 1}
 }
@@ -821,25 +821,25 @@ type EnvoyFilter_Filter struct {
 	// applied to all listeners where possible, potentially resulting
 	// in invalid configurations. It is recommended to specify the
 	// listener match criteria for all filter insertions.
-	ListenerMatch *EnvoyFilter_DeprecatedListenerMatch `protobuf:"bytes,1,opt,name=listener_match,json=listenerMatch,proto3" json:"listener_match,omitempty"`
+	ListenerMatch	*EnvoyFilter_DeprecatedListenerMatch	`protobuf:"bytes,1,opt,name=listener_match,json=listenerMatch,proto3" json:"listener_match,omitempty"`
 	// Insert position in the filter chain. Defaults to FIRST
-	InsertPosition *EnvoyFilter_InsertPosition `protobuf:"bytes,2,opt,name=insert_position,json=insertPosition,proto3" json:"insert_position,omitempty"`
+	InsertPosition	*EnvoyFilter_InsertPosition	`protobuf:"bytes,2,opt,name=insert_position,json=insertPosition,proto3" json:"insert_position,omitempty"`
 	// The type of filter to instantiate.
-	FilterType EnvoyFilter_Filter_FilterType `protobuf:"varint,3,opt,name=filter_type,json=filterType,proto3,enum=istio.networking.v1alpha3.EnvoyFilter_Filter_FilterType" json:"filter_type,omitempty"`
+	FilterType	EnvoyFilter_Filter_FilterType	`protobuf:"varint,3,opt,name=filter_type,json=filterType,proto3,enum=istio.networking.v1alpha3.EnvoyFilter_Filter_FilterType" json:"filter_type,omitempty"`
 	// The name of the filter to instantiate. The name must match a supported
 	// filter _compiled into_ Envoy.
-	FilterName string `protobuf:"bytes,4,opt,name=filter_name,json=filterName,proto3" json:"filter_name,omitempty"`
+	FilterName	string	`protobuf:"bytes,4,opt,name=filter_name,json=filterName,proto3" json:"filter_name,omitempty"`
 	// Filter specific configuration which depends on the filter being
 	// instantiated.
-	FilterConfig         *types.Struct `protobuf:"bytes,5,opt,name=filter_config,json=filterConfig,proto3" json:"filter_config,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
-	XXX_unrecognized     []byte        `json:"-"`
-	XXX_sizecache        int32         `json:"-"`
+	FilterConfig		*types.Struct	`protobuf:"bytes,5,opt,name=filter_config,json=filterConfig,proto3" json:"filter_config,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *EnvoyFilter_Filter) Reset()         { *m = EnvoyFilter_Filter{} }
-func (m *EnvoyFilter_Filter) String() string { return proto.CompactTextString(m) }
-func (*EnvoyFilter_Filter) ProtoMessage()    {}
+func (m *EnvoyFilter_Filter) Reset()		{ *m = EnvoyFilter_Filter{} }
+func (m *EnvoyFilter_Filter) String() string	{ return proto.CompactTextString(m) }
+func (*EnvoyFilter_Filter) ProtoMessage()	{}
 func (*EnvoyFilter_Filter) Descriptor() ([]byte, []int) {
 	return fileDescriptor_16d9b2922bd3e4a9, []int{0, 2}
 }
@@ -915,22 +915,22 @@ type EnvoyFilter_ProxyMatch struct {
 	// variable (ISTIO_META_ISTIO_VERSION) in the Istio proxy docker
 	// image. Custom proxy implementations should provide this metadata
 	// variable to take advantage of the Istio version check option.
-	ProxyVersion string `protobuf:"bytes,1,opt,name=proxy_version,json=proxyVersion,proto3" json:"proxy_version,omitempty"`
+	ProxyVersion	string	`protobuf:"bytes,1,opt,name=proxy_version,json=proxyVersion,proto3" json:"proxy_version,omitempty"`
 	// Match on the node metadata supplied by a proxy when connecting
 	// to Istio Pilot. Note that while Envoy's node metadata is of
 	// type Struct, only string key-value pairs are processed by
 	// Pilot. All keys specified in the metadata must match with exact
 	// values. The match will fail if any of the specified keys are
 	// absent or the values fail to match.
-	Metadata             map[string]string `protobuf:"bytes,2,rep,name=metadata,proto3" json:"metadata,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
-	XXX_unrecognized     []byte            `json:"-"`
-	XXX_sizecache        int32             `json:"-"`
+	Metadata		map[string]string	`protobuf:"bytes,2,rep,name=metadata,proto3" json:"metadata,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	XXX_NoUnkeyedLiteral	struct{}		`json:"-"`
+	XXX_unrecognized	[]byte			`json:"-"`
+	XXX_sizecache		int32			`json:"-"`
 }
 
-func (m *EnvoyFilter_ProxyMatch) Reset()         { *m = EnvoyFilter_ProxyMatch{} }
-func (m *EnvoyFilter_ProxyMatch) String() string { return proto.CompactTextString(m) }
-func (*EnvoyFilter_ProxyMatch) ProtoMessage()    {}
+func (m *EnvoyFilter_ProxyMatch) Reset()		{ *m = EnvoyFilter_ProxyMatch{} }
+func (m *EnvoyFilter_ProxyMatch) String() string	{ return proto.CompactTextString(m) }
+func (*EnvoyFilter_ProxyMatch) ProtoMessage()		{}
 func (*EnvoyFilter_ProxyMatch) Descriptor() ([]byte, []int) {
 	return fileDescriptor_16d9b2922bd3e4a9, []int{0, 3}
 }
@@ -980,28 +980,28 @@ func (m *EnvoyFilter_ProxyMatch) GetMetadata() map[string]string {
 type EnvoyFilter_ClusterMatch struct {
 	// The service port for which this cluster was generated.  If
 	// omitted, applies to clusters for any port.
-	PortNumber uint32 `protobuf:"varint,1,opt,name=port_number,json=portNumber,proto3" json:"port_number,omitempty"`
+	PortNumber	uint32	`protobuf:"varint,1,opt,name=port_number,json=portNumber,proto3" json:"port_number,omitempty"`
 	// The fully qualified service name for this cluster. If omitted,
 	// applies to clusters for any service. For services defined
 	// through service entries, the service name is same as the hosts
 	// defined in the service entry.
-	Service string `protobuf:"bytes,2,opt,name=service,proto3" json:"service,omitempty"`
+	Service	string	`protobuf:"bytes,2,opt,name=service,proto3" json:"service,omitempty"`
 	// The subset associated with the service. If omitted, applies to
 	// clusters for any subset of a service.
-	Subset string `protobuf:"bytes,3,opt,name=subset,proto3" json:"subset,omitempty"`
+	Subset	string	`protobuf:"bytes,3,opt,name=subset,proto3" json:"subset,omitempty"`
 	// The exact name of the cluster to match. To match a specific
 	// cluster by name, such as the internally generated "Passthrough"
 	// cluster, leave all fields in clusterMatch empty, except the
 	// name.
-	Name                 string   `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	Name			string		`protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *EnvoyFilter_ClusterMatch) Reset()         { *m = EnvoyFilter_ClusterMatch{} }
-func (m *EnvoyFilter_ClusterMatch) String() string { return proto.CompactTextString(m) }
-func (*EnvoyFilter_ClusterMatch) ProtoMessage()    {}
+func (m *EnvoyFilter_ClusterMatch) Reset()		{ *m = EnvoyFilter_ClusterMatch{} }
+func (m *EnvoyFilter_ClusterMatch) String() string	{ return proto.CompactTextString(m) }
+func (*EnvoyFilter_ClusterMatch) ProtoMessage()		{}
 func (*EnvoyFilter_ClusterMatch) Descriptor() ([]byte, []int) {
 	return fileDescriptor_16d9b2922bd3e4a9, []int{0, 4}
 }
@@ -1067,32 +1067,32 @@ type EnvoyFilter_RouteConfigurationMatch struct {
 	// The service port number or gateway server port number for which
 	// this route configuration was generated. If omitted, applies to
 	// route configurations for all ports.
-	PortNumber uint32 `protobuf:"varint,1,opt,name=port_number,json=portNumber,proto3" json:"port_number,omitempty"`
+	PortNumber	uint32	`protobuf:"varint,1,opt,name=port_number,json=portNumber,proto3" json:"port_number,omitempty"`
 	// Applicable only for GATEWAY context. The gateway server port
 	// name for which this route configuration was generated.
-	PortName string `protobuf:"bytes,2,opt,name=port_name,json=portName,proto3" json:"port_name,omitempty"`
+	PortName	string	`protobuf:"bytes,2,opt,name=port_name,json=portName,proto3" json:"port_name,omitempty"`
 	// The Istio gateway config's namespace/name for which this route
 	// configuration was generated. Applies only if the context is
 	// GATEWAY. Should be in the namespace/name format. Use this field
 	// in conjunction with the portNumber and portName to accurately
 	// select the Envoy route configuration for a specific HTTPS
 	// server within a gateway config object.
-	Gateway string `protobuf:"bytes,3,opt,name=gateway,proto3" json:"gateway,omitempty"`
+	Gateway	string	`protobuf:"bytes,3,opt,name=gateway,proto3" json:"gateway,omitempty"`
 	// Match a specific virtual host in a route configuration and
 	// apply the patch to the virtual host.
-	Vhost *EnvoyFilter_RouteConfigurationMatch_VirtualHostMatch `protobuf:"bytes,4,opt,name=vhost,proto3" json:"vhost,omitempty"`
+	Vhost	*EnvoyFilter_RouteConfigurationMatch_VirtualHostMatch	`protobuf:"bytes,4,opt,name=vhost,proto3" json:"vhost,omitempty"`
 	// Route configuration name to match on. Can be used to match a
 	// specific route configuration by name, such as the internally
 	// generated "http_proxy" route configuration for all sidecars.
-	Name                 string   `protobuf:"bytes,5,opt,name=name,proto3" json:"name,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	Name			string		`protobuf:"bytes,5,opt,name=name,proto3" json:"name,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *EnvoyFilter_RouteConfigurationMatch) Reset()         { *m = EnvoyFilter_RouteConfigurationMatch{} }
-func (m *EnvoyFilter_RouteConfigurationMatch) String() string { return proto.CompactTextString(m) }
-func (*EnvoyFilter_RouteConfigurationMatch) ProtoMessage()    {}
+func (m *EnvoyFilter_RouteConfigurationMatch) Reset()		{ *m = EnvoyFilter_RouteConfigurationMatch{} }
+func (m *EnvoyFilter_RouteConfigurationMatch) String() string	{ return proto.CompactTextString(m) }
+func (*EnvoyFilter_RouteConfigurationMatch) ProtoMessage()	{}
 func (*EnvoyFilter_RouteConfigurationMatch) Descriptor() ([]byte, []int) {
 	return fileDescriptor_16d9b2922bd3e4a9, []int{0, 5}
 }
@@ -1164,12 +1164,12 @@ type EnvoyFilter_RouteConfigurationMatch_RouteMatch struct {
 	// "default".  Route objects generated using a virtual service
 	// will carry the name used in the virtual service's HTTP
 	// routes.
-	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Name	string	`protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Match a route with specific action type.
-	Action               EnvoyFilter_RouteConfigurationMatch_RouteMatch_Action `protobuf:"varint,2,opt,name=action,proto3,enum=istio.networking.v1alpha3.EnvoyFilter_RouteConfigurationMatch_RouteMatch_Action" json:"action,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                                              `json:"-"`
-	XXX_unrecognized     []byte                                                `json:"-"`
-	XXX_sizecache        int32                                                 `json:"-"`
+	Action			EnvoyFilter_RouteConfigurationMatch_RouteMatch_Action	`protobuf:"varint,2,opt,name=action,proto3,enum=istio.networking.v1alpha3.EnvoyFilter_RouteConfigurationMatch_RouteMatch_Action" json:"action,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}						`json:"-"`
+	XXX_unrecognized	[]byte							`json:"-"`
+	XXX_sizecache		int32							`json:"-"`
 }
 
 func (m *EnvoyFilter_RouteConfigurationMatch_RouteMatch) Reset() {
@@ -1178,7 +1178,7 @@ func (m *EnvoyFilter_RouteConfigurationMatch_RouteMatch) Reset() {
 func (m *EnvoyFilter_RouteConfigurationMatch_RouteMatch) String() string {
 	return proto.CompactTextString(m)
 }
-func (*EnvoyFilter_RouteConfigurationMatch_RouteMatch) ProtoMessage() {}
+func (*EnvoyFilter_RouteConfigurationMatch_RouteMatch) ProtoMessage()	{}
 func (*EnvoyFilter_RouteConfigurationMatch_RouteMatch) Descriptor() ([]byte, []int) {
 	return fileDescriptor_16d9b2922bd3e4a9, []int{0, 5, 0}
 }
@@ -1229,12 +1229,12 @@ type EnvoyFilter_RouteConfigurationMatch_VirtualHostMatch struct {
 	// host:port, where the host typically corresponds to the
 	// VirtualService's host field or the hostname of a service in the
 	// registry.
-	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Name	string	`protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Match a specific route within the virtual host.
-	Route                *EnvoyFilter_RouteConfigurationMatch_RouteMatch `protobuf:"bytes,2,opt,name=route,proto3" json:"route,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                                        `json:"-"`
-	XXX_unrecognized     []byte                                          `json:"-"`
-	XXX_sizecache        int32                                           `json:"-"`
+	Route			*EnvoyFilter_RouteConfigurationMatch_RouteMatch	`protobuf:"bytes,2,opt,name=route,proto3" json:"route,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}					`json:"-"`
+	XXX_unrecognized	[]byte						`json:"-"`
+	XXX_sizecache		int32						`json:"-"`
 }
 
 func (m *EnvoyFilter_RouteConfigurationMatch_VirtualHostMatch) Reset() {
@@ -1243,7 +1243,7 @@ func (m *EnvoyFilter_RouteConfigurationMatch_VirtualHostMatch) Reset() {
 func (m *EnvoyFilter_RouteConfigurationMatch_VirtualHostMatch) String() string {
 	return proto.CompactTextString(m)
 }
-func (*EnvoyFilter_RouteConfigurationMatch_VirtualHostMatch) ProtoMessage() {}
+func (*EnvoyFilter_RouteConfigurationMatch_VirtualHostMatch) ProtoMessage()	{}
 func (*EnvoyFilter_RouteConfigurationMatch_VirtualHostMatch) Descriptor() ([]byte, []int) {
 	return fileDescriptor_16d9b2922bd3e4a9, []int{0, 5, 1}
 }
@@ -1296,29 +1296,29 @@ type EnvoyFilter_ListenerMatch struct {
 	// sent/received. If not specified, matches all listeners. Even though
 	// inbound listeners are generated for the instance/pod ports, only
 	// service ports should be used to match listeners.
-	PortNumber uint32 `protobuf:"varint,1,opt,name=port_number,json=portNumber,proto3" json:"port_number,omitempty"`
+	PortNumber	uint32	`protobuf:"varint,1,opt,name=port_number,json=portNumber,proto3" json:"port_number,omitempty"`
 	// Instead of using specific port numbers, a set of ports matching
 	// a given service's port name can be selected. Matching is case
 	// insensitive.
 	// Not implemented.
 	// $hide_from_docs
-	PortName string `protobuf:"bytes,2,opt,name=port_name,json=portName,proto3" json:"port_name,omitempty"`
+	PortName	string	`protobuf:"bytes,2,opt,name=port_name,json=portName,proto3" json:"port_name,omitempty"`
 	// Match a specific filter chain in a listener. If specified, the
 	// patch will be applied to the filter chain (and a specific
 	// filter if specified) and not to other filter chains in the
 	// listener.
-	FilterChain *EnvoyFilter_ListenerMatch_FilterChainMatch `protobuf:"bytes,3,opt,name=filter_chain,json=filterChain,proto3" json:"filter_chain,omitempty"`
+	FilterChain	*EnvoyFilter_ListenerMatch_FilterChainMatch	`protobuf:"bytes,3,opt,name=filter_chain,json=filterChain,proto3" json:"filter_chain,omitempty"`
 	// Match a specific listener by its name. The listeners generated
 	// by Pilot are typically named as IP:Port.
-	Name                 string   `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	Name			string		`protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *EnvoyFilter_ListenerMatch) Reset()         { *m = EnvoyFilter_ListenerMatch{} }
-func (m *EnvoyFilter_ListenerMatch) String() string { return proto.CompactTextString(m) }
-func (*EnvoyFilter_ListenerMatch) ProtoMessage()    {}
+func (m *EnvoyFilter_ListenerMatch) Reset()		{ *m = EnvoyFilter_ListenerMatch{} }
+func (m *EnvoyFilter_ListenerMatch) String() string	{ return proto.CompactTextString(m) }
+func (*EnvoyFilter_ListenerMatch) ProtoMessage()	{}
 func (*EnvoyFilter_ListenerMatch) Descriptor() ([]byte, []int) {
 	return fileDescriptor_16d9b2922bd3e4a9, []int{0, 6}
 }
@@ -1383,11 +1383,11 @@ func (m *EnvoyFilter_ListenerMatch) GetName() string {
 // to select a specific filter chain to patch.
 type EnvoyFilter_ListenerMatch_FilterChainMatch struct {
 	// The name assigned to the filter chain.
-	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Name	string	`protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// The SNI value used by a filter chain's match condition.  This
 	// condition will evaluate to false if the filter chain has no
 	// sni match.
-	Sni string `protobuf:"bytes,2,opt,name=sni,proto3" json:"sni,omitempty"`
+	Sni	string	`protobuf:"bytes,2,opt,name=sni,proto3" json:"sni,omitempty"`
 	// Applies only to SIDECAR_INBOUND context. If non-empty, a
 	// transport protocol to consider when determining a filter
 	// chain match.  This value will be compared against the
@@ -1398,7 +1398,7 @@ type EnvoyFilter_ListenerMatch_FilterChainMatch struct {
 	//
 	// * `raw_buffer` - default, used when no transport protocol is detected.
 	// * `tls` - set when TLS protocol is detected by the TLS inspector.
-	TransportProtocol string `protobuf:"bytes,3,opt,name=transport_protocol,json=transportProtocol,proto3" json:"transport_protocol,omitempty"`
+	TransportProtocol	string	`protobuf:"bytes,3,opt,name=transport_protocol,json=transportProtocol,proto3" json:"transport_protocol,omitempty"`
 	// Applies only to sidecars. If non-empty, a comma separated set
 	// of application protocols to consider when determining a
 	// filter chain match.  This value will be compared against the
@@ -1406,14 +1406,14 @@ type EnvoyFilter_ListenerMatch_FilterChainMatch struct {
 	// by one of the listener filters such as the http_inspector.
 	//
 	// Accepted values include: h2,http/1.1,http/1.0
-	ApplicationProtocols string `protobuf:"bytes,4,opt,name=application_protocols,json=applicationProtocols,proto3" json:"application_protocols,omitempty"`
+	ApplicationProtocols	string	`protobuf:"bytes,4,opt,name=application_protocols,json=applicationProtocols,proto3" json:"application_protocols,omitempty"`
 	// The name of a specific filter to apply the patch to. Set this
 	// to envoy.http_connection_manager to add a filter or apply a
 	// patch to the HTTP connection manager.
-	Filter               *EnvoyFilter_ListenerMatch_FilterMatch `protobuf:"bytes,5,opt,name=filter,proto3" json:"filter,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                               `json:"-"`
-	XXX_unrecognized     []byte                                 `json:"-"`
-	XXX_sizecache        int32                                  `json:"-"`
+	Filter			*EnvoyFilter_ListenerMatch_FilterMatch	`protobuf:"bytes,5,opt,name=filter,proto3" json:"filter,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}				`json:"-"`
+	XXX_unrecognized	[]byte					`json:"-"`
+	XXX_sizecache		int32					`json:"-"`
 }
 
 func (m *EnvoyFilter_ListenerMatch_FilterChainMatch) Reset() {
@@ -1422,7 +1422,7 @@ func (m *EnvoyFilter_ListenerMatch_FilterChainMatch) Reset() {
 func (m *EnvoyFilter_ListenerMatch_FilterChainMatch) String() string {
 	return proto.CompactTextString(m)
 }
-func (*EnvoyFilter_ListenerMatch_FilterChainMatch) ProtoMessage() {}
+func (*EnvoyFilter_ListenerMatch_FilterChainMatch) ProtoMessage()	{}
 func (*EnvoyFilter_ListenerMatch_FilterChainMatch) Descriptor() ([]byte, []int) {
 	return fileDescriptor_16d9b2922bd3e4a9, []int{0, 6, 0}
 }
@@ -1491,19 +1491,19 @@ func (m *EnvoyFilter_ListenerMatch_FilterChainMatch) GetFilter() *EnvoyFilter_Li
 // Conditions to match a specific filter within a filter chain.
 type EnvoyFilter_ListenerMatch_FilterMatch struct {
 	// The filter name to match on.
-	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Name	string	`protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// The next level filter within this filter to match
 	// upon. Typically used for HTTP Connection Manager filters and
 	// Thrift filters.
-	SubFilter            *EnvoyFilter_ListenerMatch_SubFilterMatch `protobuf:"bytes,2,opt,name=sub_filter,json=subFilter,proto3" json:"sub_filter,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                                  `json:"-"`
-	XXX_unrecognized     []byte                                    `json:"-"`
-	XXX_sizecache        int32                                     `json:"-"`
+	SubFilter		*EnvoyFilter_ListenerMatch_SubFilterMatch	`protobuf:"bytes,2,opt,name=sub_filter,json=subFilter,proto3" json:"sub_filter,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}					`json:"-"`
+	XXX_unrecognized	[]byte						`json:"-"`
+	XXX_sizecache		int32						`json:"-"`
 }
 
-func (m *EnvoyFilter_ListenerMatch_FilterMatch) Reset()         { *m = EnvoyFilter_ListenerMatch_FilterMatch{} }
-func (m *EnvoyFilter_ListenerMatch_FilterMatch) String() string { return proto.CompactTextString(m) }
-func (*EnvoyFilter_ListenerMatch_FilterMatch) ProtoMessage()    {}
+func (m *EnvoyFilter_ListenerMatch_FilterMatch) Reset()		{ *m = EnvoyFilter_ListenerMatch_FilterMatch{} }
+func (m *EnvoyFilter_ListenerMatch_FilterMatch) String() string	{ return proto.CompactTextString(m) }
+func (*EnvoyFilter_ListenerMatch_FilterMatch) ProtoMessage()	{}
 func (*EnvoyFilter_ListenerMatch_FilterMatch) Descriptor() ([]byte, []int) {
 	return fileDescriptor_16d9b2922bd3e4a9, []int{0, 6, 1}
 }
@@ -1554,17 +1554,17 @@ func (m *EnvoyFilter_ListenerMatch_FilterMatch) GetSubFilter() *EnvoyFilter_List
 // could also be applicable for thrift filters.
 type EnvoyFilter_ListenerMatch_SubFilterMatch struct {
 	// The filter name to match on.
-	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	Name			string		`protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
 func (m *EnvoyFilter_ListenerMatch_SubFilterMatch) Reset() {
 	*m = EnvoyFilter_ListenerMatch_SubFilterMatch{}
 }
-func (m *EnvoyFilter_ListenerMatch_SubFilterMatch) String() string { return proto.CompactTextString(m) }
-func (*EnvoyFilter_ListenerMatch_SubFilterMatch) ProtoMessage()    {}
+func (m *EnvoyFilter_ListenerMatch_SubFilterMatch) String() string	{ return proto.CompactTextString(m) }
+func (*EnvoyFilter_ListenerMatch_SubFilterMatch) ProtoMessage()		{}
 func (*EnvoyFilter_ListenerMatch_SubFilterMatch) Descriptor() ([]byte, []int) {
 	return fileDescriptor_16d9b2922bd3e4a9, []int{0, 6, 2}
 }
@@ -1605,18 +1605,18 @@ func (m *EnvoyFilter_ListenerMatch_SubFilterMatch) GetName() string {
 // Patch specifies how the selected object should be modified.
 type EnvoyFilter_Patch struct {
 	// Determines how the patch should be applied.
-	Operation EnvoyFilter_Patch_Operation `protobuf:"varint,1,opt,name=operation,proto3,enum=istio.networking.v1alpha3.EnvoyFilter_Patch_Operation" json:"operation,omitempty"`
+	Operation	EnvoyFilter_Patch_Operation	`protobuf:"varint,1,opt,name=operation,proto3,enum=istio.networking.v1alpha3.EnvoyFilter_Patch_Operation" json:"operation,omitempty"`
 	// The JSON config of the object being patched. This will be merged using
 	// json merge semantics with the existing proto in the path.
-	Value                *types.Struct `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
-	XXX_unrecognized     []byte        `json:"-"`
-	XXX_sizecache        int32         `json:"-"`
+	Value			*types.Struct	`protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *EnvoyFilter_Patch) Reset()         { *m = EnvoyFilter_Patch{} }
-func (m *EnvoyFilter_Patch) String() string { return proto.CompactTextString(m) }
-func (*EnvoyFilter_Patch) ProtoMessage()    {}
+func (m *EnvoyFilter_Patch) Reset()		{ *m = EnvoyFilter_Patch{} }
+func (m *EnvoyFilter_Patch) String() string	{ return proto.CompactTextString(m) }
+func (*EnvoyFilter_Patch) ProtoMessage()	{}
 func (*EnvoyFilter_Patch) Descriptor() ([]byte, []int) {
 	return fileDescriptor_16d9b2922bd3e4a9, []int{0, 7}
 }
@@ -1667,22 +1667,22 @@ type EnvoyFilter_EnvoyConfigObjectMatch struct {
 	// The specific config generation context to match on. Istio Pilot
 	// generates envoy configuration in the context of a gateway,
 	// inbound traffic to sidecar and outbound traffic from sidecar.
-	Context EnvoyFilter_PatchContext `protobuf:"varint,1,opt,name=context,proto3,enum=istio.networking.v1alpha3.EnvoyFilter_PatchContext" json:"context,omitempty"`
+	Context	EnvoyFilter_PatchContext	`protobuf:"varint,1,opt,name=context,proto3,enum=istio.networking.v1alpha3.EnvoyFilter_PatchContext" json:"context,omitempty"`
 	// Match on properties associated with a proxy.
-	Proxy *EnvoyFilter_ProxyMatch `protobuf:"bytes,2,opt,name=proxy,proto3" json:"proxy,omitempty"`
+	Proxy	*EnvoyFilter_ProxyMatch	`protobuf:"bytes,2,opt,name=proxy,proto3" json:"proxy,omitempty"`
 	// Types that are valid to be assigned to ObjectTypes:
 	//	*EnvoyFilter_EnvoyConfigObjectMatch_Listener
 	//	*EnvoyFilter_EnvoyConfigObjectMatch_RouteConfiguration
 	//	*EnvoyFilter_EnvoyConfigObjectMatch_Cluster
-	ObjectTypes          isEnvoyFilter_EnvoyConfigObjectMatch_ObjectTypes `protobuf_oneof:"object_types"`
-	XXX_NoUnkeyedLiteral struct{}                                         `json:"-"`
-	XXX_unrecognized     []byte                                           `json:"-"`
-	XXX_sizecache        int32                                            `json:"-"`
+	ObjectTypes		isEnvoyFilter_EnvoyConfigObjectMatch_ObjectTypes	`protobuf_oneof:"object_types"`
+	XXX_NoUnkeyedLiteral	struct{}						`json:"-"`
+	XXX_unrecognized	[]byte							`json:"-"`
+	XXX_sizecache		int32							`json:"-"`
 }
 
-func (m *EnvoyFilter_EnvoyConfigObjectMatch) Reset()         { *m = EnvoyFilter_EnvoyConfigObjectMatch{} }
-func (m *EnvoyFilter_EnvoyConfigObjectMatch) String() string { return proto.CompactTextString(m) }
-func (*EnvoyFilter_EnvoyConfigObjectMatch) ProtoMessage()    {}
+func (m *EnvoyFilter_EnvoyConfigObjectMatch) Reset()		{ *m = EnvoyFilter_EnvoyConfigObjectMatch{} }
+func (m *EnvoyFilter_EnvoyConfigObjectMatch) String() string	{ return proto.CompactTextString(m) }
+func (*EnvoyFilter_EnvoyConfigObjectMatch) ProtoMessage()	{}
 func (*EnvoyFilter_EnvoyConfigObjectMatch) Descriptor() ([]byte, []int) {
 	return fileDescriptor_16d9b2922bd3e4a9, []int{0, 8}
 }
@@ -1798,19 +1798,19 @@ type EnvoyFilter_EnvoyConfigObjectPatch struct {
 	// HTTP filter relative to which the insertion should be
 	// performed. Similarly, an applyTo on CLUSTER should have a match
 	// (if provided) on the cluster and not on a listener.
-	ApplyTo EnvoyFilter_ApplyTo `protobuf:"varint,1,opt,name=apply_to,json=applyTo,proto3,enum=istio.networking.v1alpha3.EnvoyFilter_ApplyTo" json:"apply_to,omitempty"`
+	ApplyTo	EnvoyFilter_ApplyTo	`protobuf:"varint,1,opt,name=apply_to,json=applyTo,proto3,enum=istio.networking.v1alpha3.EnvoyFilter_ApplyTo" json:"apply_to,omitempty"`
 	// Match on listener/route configuration/cluster.
-	Match *EnvoyFilter_EnvoyConfigObjectMatch `protobuf:"bytes,2,opt,name=match,proto3" json:"match,omitempty"`
+	Match	*EnvoyFilter_EnvoyConfigObjectMatch	`protobuf:"bytes,2,opt,name=match,proto3" json:"match,omitempty"`
 	// The patch to apply along with the operation.
-	Patch                *EnvoyFilter_Patch `protobuf:"bytes,3,opt,name=patch,proto3" json:"patch,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
-	XXX_unrecognized     []byte             `json:"-"`
-	XXX_sizecache        int32              `json:"-"`
+	Patch			*EnvoyFilter_Patch	`protobuf:"bytes,3,opt,name=patch,proto3" json:"patch,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}		`json:"-"`
+	XXX_unrecognized	[]byte			`json:"-"`
+	XXX_sizecache		int32			`json:"-"`
 }
 
-func (m *EnvoyFilter_EnvoyConfigObjectPatch) Reset()         { *m = EnvoyFilter_EnvoyConfigObjectPatch{} }
-func (m *EnvoyFilter_EnvoyConfigObjectPatch) String() string { return proto.CompactTextString(m) }
-func (*EnvoyFilter_EnvoyConfigObjectPatch) ProtoMessage()    {}
+func (m *EnvoyFilter_EnvoyConfigObjectPatch) Reset()		{ *m = EnvoyFilter_EnvoyConfigObjectPatch{} }
+func (m *EnvoyFilter_EnvoyConfigObjectPatch) String() string	{ return proto.CompactTextString(m) }
+func (*EnvoyFilter_EnvoyConfigObjectPatch) ProtoMessage()	{}
 func (*EnvoyFilter_EnvoyConfigObjectPatch) Descriptor() ([]byte, []int) {
 	return fileDescriptor_16d9b2922bd3e4a9, []int{0, 9}
 }
@@ -6149,6 +6149,6 @@ func skipEnvoyFilter(dAtA []byte) (n int, err error) {
 }
 
 var (
-	ErrInvalidLengthEnvoyFilter = fmt.Errorf("proto: negative length found during unmarshaling")
-	ErrIntOverflowEnvoyFilter   = fmt.Errorf("proto: integer overflow")
+	ErrInvalidLengthEnvoyFilter	= fmt.Errorf("proto: negative length found during unmarshaling")
+	ErrIntOverflowEnvoyFilter	= fmt.Errorf("proto: integer overflow")
 )

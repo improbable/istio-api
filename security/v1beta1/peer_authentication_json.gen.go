@@ -40,6 +40,6 @@ func (this *PeerAuthentication_MutualTLS) UnmarshalJSON(b []byte) error {
 }
 
 var (
-	PeerAuthenticationMarshaler   = &github_com_gogo_protobuf_jsonpb.Marshaler{}
-	PeerAuthenticationUnmarshaler = &github_com_gogo_protobuf_jsonpb.Unmarshaler{}
+	PeerAuthenticationMarshaler	= &github_com_gogo_protobuf_jsonpb.Marshaler{}
+	PeerAuthenticationUnmarshaler	= &github_com_gogo_protobuf_jsonpb.Unmarshaler{}
 )

@@ -11,7 +11,7 @@ import (
 	_ "github.com/gogo/protobuf/types"
 	github_com_gogo_protobuf_types "github.com/gogo/protobuf/types"
 	io "io"
-	rpc "istio.io/gogo-genproto/googleapis/google/rpc"
+
 	math "math"
 	math_bits "math/bits"
 	reflect "reflect"
@@ -29,7 +29,7 @@ var _ = time.Kitchen
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion3	// please upgrade the proto package
 
 // Expresses the quota allocation request.
 type QuotaRequest struct {
@@ -37,8 +37,8 @@ type QuotaRequest struct {
 	Quotas map[string]QuotaRequest_QuotaParams `protobuf:"bytes,1,rep,name=quotas,proto3" json:"quotas" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
-func (m *QuotaRequest) Reset()      { *m = QuotaRequest{} }
-func (*QuotaRequest) ProtoMessage() {}
+func (m *QuotaRequest) Reset()		{ *m = QuotaRequest{} }
+func (*QuotaRequest) ProtoMessage()	{}
 func (*QuotaRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_f07acf62b4429357, []int{0}
 }
@@ -72,13 +72,13 @@ var xxx_messageInfo_QuotaRequest proto.InternalMessageInfo
 // parameters for a quota allocation
 type QuotaRequest_QuotaParams struct {
 	// Amount of quota to allocate
-	Amount int64 `protobuf:"varint,1,opt,name=amount,proto3" json:"amount,omitempty"`
+	Amount	int64	`protobuf:"varint,1,opt,name=amount,proto3" json:"amount,omitempty"`
 	// When true, supports returning less quota than what was requested.
-	BestEffort bool `protobuf:"varint,2,opt,name=best_effort,json=bestEffort,proto3" json:"best_effort,omitempty"`
+	BestEffort	bool	`protobuf:"varint,2,opt,name=best_effort,json=bestEffort,proto3" json:"best_effort,omitempty"`
 }
 
-func (m *QuotaRequest_QuotaParams) Reset()      { *m = QuotaRequest_QuotaParams{} }
-func (*QuotaRequest_QuotaParams) ProtoMessage() {}
+func (m *QuotaRequest_QuotaParams) Reset()	{ *m = QuotaRequest_QuotaParams{} }
+func (*QuotaRequest_QuotaParams) ProtoMessage()	{}
 func (*QuotaRequest_QuotaParams) Descriptor() ([]byte, []int) {
 	return fileDescriptor_f07acf62b4429357, []int{0, 0}
 }
@@ -115,8 +115,8 @@ type QuotaResult struct {
 	Quotas map[string]QuotaResult_Result `protobuf:"bytes,1,rep,name=quotas,proto3" json:"quotas" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
-func (m *QuotaResult) Reset()      { *m = QuotaResult{} }
-func (*QuotaResult) ProtoMessage() {}
+func (m *QuotaResult) Reset()		{ *m = QuotaResult{} }
+func (*QuotaResult) ProtoMessage()	{}
 func (*QuotaResult) Descriptor() ([]byte, []int) {
 	return fileDescriptor_f07acf62b4429357, []int{1}
 }
@@ -150,16 +150,16 @@ var xxx_messageInfo_QuotaResult proto.InternalMessageInfo
 // Expresses the result of a quota allocation.
 type QuotaResult_Result struct {
 	// The amount of time for which this result can be considered valid.
-	ValidDuration time.Duration `protobuf:"bytes,2,opt,name=valid_duration,json=validDuration,proto3,stdduration" json:"valid_duration"`
+	ValidDuration	time.Duration	`protobuf:"bytes,2,opt,name=valid_duration,json=validDuration,proto3,stdduration" json:"valid_duration"`
 	// The amount of granted quota. When `QuotaParams.best_effort` is true, this will be >= 0.
 	// If `QuotaParams.best_effort` is false, this will be either 0 or >= `QuotaParams.amount`.
-	GrantedAmount int64 `protobuf:"varint,3,opt,name=granted_amount,json=grantedAmount,proto3" json:"granted_amount,omitempty"`
+	GrantedAmount	int64	`protobuf:"varint,3,opt,name=granted_amount,json=grantedAmount,proto3" json:"granted_amount,omitempty"`
 	// A status code of OK indicates quota was fetched successfully. Any other code indicates error in fetching quota.
-	Status rpc.Status `protobuf:"bytes,4,opt,name=status,proto3" json:"status"`
+	Status	rpc.Status	`protobuf:"bytes,4,opt,name=status,proto3" json:"status"`
 }
 
-func (m *QuotaResult_Result) Reset()      { *m = QuotaResult_Result{} }
-func (*QuotaResult_Result) ProtoMessage() {}
+func (m *QuotaResult_Result) Reset()		{ *m = QuotaResult_Result{} }
+func (*QuotaResult_Result) ProtoMessage()	{}
 func (*QuotaResult_Result) Descriptor() ([]byte, []int) {
 	return fileDescriptor_f07acf62b4429357, []int{1, 0}
 }
@@ -1272,6 +1272,6 @@ func skipQuota(dAtA []byte) (n int, err error) {
 }
 
 var (
-	ErrInvalidLengthQuota = fmt.Errorf("proto: negative length found during unmarshaling")
-	ErrIntOverflowQuota   = fmt.Errorf("proto: integer overflow")
+	ErrInvalidLengthQuota	= fmt.Errorf("proto: negative length found during unmarshaling")
+	ErrIntOverflowQuota	= fmt.Errorf("proto: integer overflow")
 )

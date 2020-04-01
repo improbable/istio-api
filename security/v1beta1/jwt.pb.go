@@ -7,7 +7,7 @@ import (
 	fmt "fmt"
 	proto "github.com/gogo/protobuf/proto"
 	io "io"
-	_ "istio.io/gogo-genproto/googleapis/google/api"
+
 	math "math"
 	math_bits "math/bits"
 )
@@ -21,7 +21,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion3	// please upgrade the proto package
 
 // JSON Web Token (JWT) token format for authentication as defined by
 // [RFC 7519](https://tools.ietf.org/html/rfc7519). See [OAuth 2.0](https://tools.ietf.org/html/rfc6749) and
@@ -58,7 +58,7 @@ type JWTRule struct {
 	//
 	// Example: https://foobar.auth0.com
 	// Example: 1234567-compute@developer.gserviceaccount.com
-	Issuer string `protobuf:"bytes,1,opt,name=issuer,proto3" json:"issuer,omitempty"`
+	Issuer	string	`protobuf:"bytes,1,opt,name=issuer,proto3" json:"issuer,omitempty"`
 	// The list of JWT
 	// [audiences](https://tools.ietf.org/html/rfc7519#section-4.1.3).
 	// that are allowed to access. A JWT containing any of these
@@ -73,7 +73,7 @@ type JWTRule struct {
 	// - bookstore_android.apps.example.com
 	//   bookstore_web.apps.example.com
 	// ```
-	Audiences []string `protobuf:"bytes,2,rep,name=audiences,proto3" json:"audiences,omitempty"`
+	Audiences	[]string	`protobuf:"bytes,2,rep,name=audiences,proto3" json:"audiences,omitempty"`
 	// URL of the provider's public key set to validate signature of the
 	// JWT. See [OpenID Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).
 	//
@@ -86,12 +86,12 @@ type JWTRule struct {
 	// Example: `https://www.googleapis.com/oauth2/v1/certs`
 	//
 	// Note: Only one of jwks_uri and jwks should be used. jwks_uri will be ignored if it does.
-	JwksUri string `protobuf:"bytes,3,opt,name=jwks_uri,json=jwksUri,proto3" json:"jwks_uri,omitempty"`
+	JwksUri	string	`protobuf:"bytes,3,opt,name=jwks_uri,json=jwksUri,proto3" json:"jwks_uri,omitempty"`
 	// JSON Web Key Set of public keys to validate signature of the JWT.
 	// See https://auth0.com/docs/jwks.
 	//
 	// Note: Only one of jwks_uri and jwks should be used. jwks_uri will be ignored if it does.
-	Jwks string `protobuf:"bytes,10,opt,name=jwks,proto3" json:"jwks,omitempty"`
+	Jwks	string	`protobuf:"bytes,10,opt,name=jwks,proto3" json:"jwks,omitempty"`
 	// List of header locations from which JWT is expected. For example, below is the location spec
 	// if JWT is expected to be found in `x-jwt-assertion` header, and have "Bearer " prefix:
 	// ```
@@ -99,28 +99,28 @@ type JWTRule struct {
 	//   - name: x-jwt-assertion
 	//     prefix: "Bearer "
 	// ```
-	FromHeaders []*JWTHeader `protobuf:"bytes,6,rep,name=from_headers,json=fromHeaders,proto3" json:"from_headers,omitempty"`
+	FromHeaders	[]*JWTHeader	`protobuf:"bytes,6,rep,name=from_headers,json=fromHeaders,proto3" json:"from_headers,omitempty"`
 	// List of query parameters from which JWT is expected. For example, if JWT is provided via query
 	// parameter `my_token` (e.g /path?my_token=<JWT>), the config is:
 	// ```
 	//   fromParams:
 	//   - "my_token"
 	// ```
-	FromParams []string `protobuf:"bytes,7,rep,name=from_params,json=fromParams,proto3" json:"from_params,omitempty"`
+	FromParams	[]string	`protobuf:"bytes,7,rep,name=from_params,json=fromParams,proto3" json:"from_params,omitempty"`
 	// This field specifies the header name to output a successfully verified JWT payload to the
 	// backend. The forwarded data is `base64_encoded(jwt_payload_in_JSON)`. If it is not specified,
 	// the payload will not be emitted.
-	OutputPayloadToHeader string `protobuf:"bytes,8,opt,name=output_payload_to_header,json=outputPayloadToHeader,proto3" json:"output_payload_to_header,omitempty"`
+	OutputPayloadToHeader	string	`protobuf:"bytes,8,opt,name=output_payload_to_header,json=outputPayloadToHeader,proto3" json:"output_payload_to_header,omitempty"`
 	// If set to true, the orginal token will be kept for the ustream request. Default is false.
-	ForwardOriginalToken bool     `protobuf:"varint,9,opt,name=forward_original_token,json=forwardOriginalToken,proto3" json:"forward_original_token,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	ForwardOriginalToken	bool		`protobuf:"varint,9,opt,name=forward_original_token,json=forwardOriginalToken,proto3" json:"forward_original_token,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *JWTRule) Reset()         { *m = JWTRule{} }
-func (m *JWTRule) String() string { return proto.CompactTextString(m) }
-func (*JWTRule) ProtoMessage()    {}
+func (m *JWTRule) Reset()		{ *m = JWTRule{} }
+func (m *JWTRule) String() string	{ return proto.CompactTextString(m) }
+func (*JWTRule) ProtoMessage()		{}
 func (*JWTRule) Descriptor() ([]byte, []int) {
 	return fileDescriptor_163ab6fd32fb6b15, []int{0}
 }
@@ -210,19 +210,19 @@ func (m *JWTRule) GetForwardOriginalToken() bool {
 // This message specifies a header location to extract JWT token.
 type JWTHeader struct {
 	// The HTTP header name.
-	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Name	string	`protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// The prefix that should be stripped before decoding the token.
 	// For example, for "Authorization: Bearer <token>", prefix="Bearer " with a space at the end.
 	// If the header doesn't have this exact prefix, it is considerred invalid.
-	Prefix               string   `protobuf:"bytes,2,opt,name=prefix,proto3" json:"prefix,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	Prefix			string		`protobuf:"bytes,2,opt,name=prefix,proto3" json:"prefix,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *JWTHeader) Reset()         { *m = JWTHeader{} }
-func (m *JWTHeader) String() string { return proto.CompactTextString(m) }
-func (*JWTHeader) ProtoMessage()    {}
+func (m *JWTHeader) Reset()		{ *m = JWTHeader{} }
+func (m *JWTHeader) String() string	{ return proto.CompactTextString(m) }
+func (*JWTHeader) ProtoMessage()	{}
 func (*JWTHeader) Descriptor() ([]byte, []int) {
 	return fileDescriptor_163ab6fd32fb6b15, []int{1}
 }
@@ -272,7 +272,7 @@ func init() {
 	proto.RegisterType((*JWTHeader)(nil), "istio.security.v1beta1.JWTHeader")
 }
 
-func init() { proto.RegisterFile("security/v1beta1/jwt.proto", fileDescriptor_163ab6fd32fb6b15) }
+func init()	{ proto.RegisterFile("security/v1beta1/jwt.proto", fileDescriptor_163ab6fd32fb6b15) }
 
 var fileDescriptor_163ab6fd32fb6b15 = []byte{
 	// 373 bytes of a gzipped FileDescriptorProto
@@ -1051,6 +1051,6 @@ func skipJwt(dAtA []byte) (n int, err error) {
 }
 
 var (
-	ErrInvalidLengthJwt = fmt.Errorf("proto: negative length found during unmarshaling")
-	ErrIntOverflowJwt   = fmt.Errorf("proto: integer overflow")
+	ErrInvalidLengthJwt	= fmt.Errorf("proto: negative length found during unmarshaling")
+	ErrIntOverflowJwt	= fmt.Errorf("proto: integer overflow")
 )

@@ -29,7 +29,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion3	// please upgrade the proto package
 
 // Describes the policy.
 type NetworkFailPolicy_FailPolicy int32
@@ -37,19 +37,19 @@ type NetworkFailPolicy_FailPolicy int32
 const (
 	// If network connection fails, request is allowed and delivered to the
 	// service.
-	FAIL_OPEN NetworkFailPolicy_FailPolicy = 0
+	FAIL_OPEN	NetworkFailPolicy_FailPolicy	= 0
 	// If network connection fails, request is rejected.
-	FAIL_CLOSE NetworkFailPolicy_FailPolicy = 1
+	FAIL_CLOSE	NetworkFailPolicy_FailPolicy	= 1
 )
 
 var NetworkFailPolicy_FailPolicy_name = map[int32]string{
-	0: "FAIL_OPEN",
-	1: "FAIL_CLOSE",
+	0:	"FAIL_OPEN",
+	1:	"FAIL_CLOSE",
 }
 
 var NetworkFailPolicy_FailPolicy_value = map[string]int32{
-	"FAIL_OPEN":  0,
-	"FAIL_CLOSE": 1,
+	"FAIL_OPEN":	0,
+	"FAIL_CLOSE":	1,
 }
 
 func (NetworkFailPolicy_FailPolicy) EnumDescriptor() ([]byte, []int) {
@@ -59,18 +59,18 @@ func (NetworkFailPolicy_FailPolicy) EnumDescriptor() ([]byte, []int) {
 // Specifies the behavior when the client is unable to connect to Mixer.
 type NetworkFailPolicy struct {
 	// Specifies the behavior when the client is unable to connect to Mixer.
-	Policy NetworkFailPolicy_FailPolicy `protobuf:"varint,1,opt,name=policy,proto3,enum=istio.mixer.v1.config.client.NetworkFailPolicy_FailPolicy" json:"policy,omitempty"`
+	Policy	NetworkFailPolicy_FailPolicy	`protobuf:"varint,1,opt,name=policy,proto3,enum=istio.mixer.v1.config.client.NetworkFailPolicy_FailPolicy" json:"policy,omitempty"`
 	// Max retries on transport error.
-	MaxRetry uint32 `protobuf:"varint,2,opt,name=max_retry,json=maxRetry,proto3" json:"max_retry,omitempty"`
+	MaxRetry	uint32	`protobuf:"varint,2,opt,name=max_retry,json=maxRetry,proto3" json:"max_retry,omitempty"`
 	// Base time to wait between retries.  Will be adjusted by exponential
 	// backoff and jitter.
-	BaseRetryWait *types.Duration `protobuf:"bytes,3,opt,name=base_retry_wait,json=baseRetryWait,proto3" json:"base_retry_wait,omitempty"`
+	BaseRetryWait	*types.Duration	`protobuf:"bytes,3,opt,name=base_retry_wait,json=baseRetryWait,proto3" json:"base_retry_wait,omitempty"`
 	// Max time to wait between retries.
-	MaxRetryWait *types.Duration `protobuf:"bytes,4,opt,name=max_retry_wait,json=maxRetryWait,proto3" json:"max_retry_wait,omitempty"`
+	MaxRetryWait	*types.Duration	`protobuf:"bytes,4,opt,name=max_retry_wait,json=maxRetryWait,proto3" json:"max_retry_wait,omitempty"`
 }
 
-func (m *NetworkFailPolicy) Reset()      { *m = NetworkFailPolicy{} }
-func (*NetworkFailPolicy) ProtoMessage() {}
+func (m *NetworkFailPolicy) Reset()		{ *m = NetworkFailPolicy{} }
+func (*NetworkFailPolicy) ProtoMessage()	{}
 func (*NetworkFailPolicy) Descriptor() ([]byte, []int) {
 	return fileDescriptor_27bf0dec365e2f6f, []int{0}
 }
@@ -100,23 +100,23 @@ var xxx_messageInfo_NetworkFailPolicy proto.InternalMessageInfo
 // Defines the per-service client configuration.
 type ServiceConfig struct {
 	// If true, do not call Mixer Check.
-	DisableCheckCalls bool `protobuf:"varint,1,opt,name=disable_check_calls,json=disableCheckCalls,proto3" json:"disable_check_calls,omitempty"`
+	DisableCheckCalls	bool	`protobuf:"varint,1,opt,name=disable_check_calls,json=disableCheckCalls,proto3" json:"disable_check_calls,omitempty"`
 	// If true, do not call Mixer Report.
-	DisableReportCalls bool `protobuf:"varint,2,opt,name=disable_report_calls,json=disableReportCalls,proto3" json:"disable_report_calls,omitempty"`
+	DisableReportCalls	bool	`protobuf:"varint,2,opt,name=disable_report_calls,json=disableReportCalls,proto3" json:"disable_report_calls,omitempty"`
 	// Send these attributes to Mixer in both Check and Report. This
 	// typically includes the "destination.service" attribute.
 	// In case of a per-route override, per-route attributes take precedence
 	// over the attributes supplied in the client configuration.
-	MixerAttributes *v1.Attributes `protobuf:"bytes,3,opt,name=mixer_attributes,json=mixerAttributes,proto3" json:"mixer_attributes,omitempty"`
+	MixerAttributes	*v1.Attributes	`protobuf:"bytes,3,opt,name=mixer_attributes,json=mixerAttributes,proto3" json:"mixer_attributes,omitempty"`
 	// HTTP API specifications to generate API attributes.
-	HttpApiSpec []*HTTPAPISpec `protobuf:"bytes,4,rep,name=http_api_spec,json=httpApiSpec,proto3" json:"http_api_spec,omitempty"`
+	HttpApiSpec	[]*HTTPAPISpec	`protobuf:"bytes,4,rep,name=http_api_spec,json=httpApiSpec,proto3" json:"http_api_spec,omitempty"`
 	// Quota specifications to generate quota requirements.
-	QuotaSpec []*QuotaSpec `protobuf:"bytes,5,rep,name=quota_spec,json=quotaSpec,proto3" json:"quota_spec,omitempty"`
+	QuotaSpec	[]*QuotaSpec	`protobuf:"bytes,5,rep,name=quota_spec,json=quotaSpec,proto3" json:"quota_spec,omitempty"`
 	// Specifies the behavior when the client is unable to connect to Mixer.
 	// This is the service-level policy. It overrides
 	// [mesh-level
 	// policy][istio.mixer.v1.config.client.TransportConfig.network_fail_policy].
-	NetworkFailPolicy *NetworkFailPolicy `protobuf:"bytes,7,opt,name=network_fail_policy,json=networkFailPolicy,proto3" json:"network_fail_policy,omitempty"`
+	NetworkFailPolicy	*NetworkFailPolicy	`protobuf:"bytes,7,opt,name=network_fail_policy,json=networkFailPolicy,proto3" json:"network_fail_policy,omitempty"`
 	// Default attributes to forward to upstream. This typically
 	// includes the "source.ip" and "source.uid" attributes.
 	// In case of a per-route override, per-route attributes take precedence
@@ -132,11 +132,11 @@ type ServiceConfig struct {
 	// 3. forwarded attributes from the source filter config (if any and not ignored);
 	// 4. forwarded attributes from the source route config (if any and not ignored);
 	// 5. derived attributes from the request metadata.
-	ForwardAttributes *v1.Attributes `protobuf:"bytes,8,opt,name=forward_attributes,json=forwardAttributes,proto3" json:"forward_attributes,omitempty"`
+	ForwardAttributes	*v1.Attributes	`protobuf:"bytes,8,opt,name=forward_attributes,json=forwardAttributes,proto3" json:"forward_attributes,omitempty"`
 }
 
-func (m *ServiceConfig) Reset()      { *m = ServiceConfig{} }
-func (*ServiceConfig) ProtoMessage() {}
+func (m *ServiceConfig) Reset()		{ *m = ServiceConfig{} }
+func (*ServiceConfig) ProtoMessage()	{}
 func (*ServiceConfig) Descriptor() ([]byte, []int) {
 	return fileDescriptor_27bf0dec365e2f6f, []int{1}
 }
@@ -166,17 +166,17 @@ var xxx_messageInfo_ServiceConfig proto.InternalMessageInfo
 // Defines the transport config on how to call Mixer.
 type TransportConfig struct {
 	// The flag to disable check cache.
-	DisableCheckCache bool `protobuf:"varint,1,opt,name=disable_check_cache,json=disableCheckCache,proto3" json:"disable_check_cache,omitempty"`
+	DisableCheckCache	bool	`protobuf:"varint,1,opt,name=disable_check_cache,json=disableCheckCache,proto3" json:"disable_check_cache,omitempty"`
 	// The flag to disable quota cache.
-	DisableQuotaCache bool `protobuf:"varint,2,opt,name=disable_quota_cache,json=disableQuotaCache,proto3" json:"disable_quota_cache,omitempty"`
+	DisableQuotaCache	bool	`protobuf:"varint,2,opt,name=disable_quota_cache,json=disableQuotaCache,proto3" json:"disable_quota_cache,omitempty"`
 	// The flag to disable report batch.
-	DisableReportBatch bool `protobuf:"varint,3,opt,name=disable_report_batch,json=disableReportBatch,proto3" json:"disable_report_batch,omitempty"`
+	DisableReportBatch	bool	`protobuf:"varint,3,opt,name=disable_report_batch,json=disableReportBatch,proto3" json:"disable_report_batch,omitempty"`
 	// Specifies the behavior when the client is unable to connect to Mixer.
 	// This is the mesh level policy. The default value for policy is FAIL_OPEN.
-	NetworkFailPolicy *NetworkFailPolicy `protobuf:"bytes,4,opt,name=network_fail_policy,json=networkFailPolicy,proto3" json:"network_fail_policy,omitempty"`
+	NetworkFailPolicy	*NetworkFailPolicy	`protobuf:"bytes,4,opt,name=network_fail_policy,json=networkFailPolicy,proto3" json:"network_fail_policy,omitempty"`
 	// Specify refresh interval to write Mixer client statistics to Envoy share
 	// memory. If not specified, the interval is 10 seconds.
-	StatsUpdateInterval *types.Duration `protobuf:"bytes,5,opt,name=stats_update_interval,json=statsUpdateInterval,proto3" json:"stats_update_interval,omitempty"`
+	StatsUpdateInterval	*types.Duration	`protobuf:"bytes,5,opt,name=stats_update_interval,json=statsUpdateInterval,proto3" json:"stats_update_interval,omitempty"`
 	// Name of the cluster that will forward check calls to a pool of mixer
 	// servers. Defaults to "mixer_server". By using different names for
 	// checkCluster and reportCluster, it is possible to have one set of
@@ -185,7 +185,7 @@ type TransportConfig struct {
 	//
 	// NOTE: Any value other than the default "mixer_server" will require the
 	// Istio Grafana dashboards to be reconfigured to use the new name.
-	CheckCluster string `protobuf:"bytes,6,opt,name=check_cluster,json=checkCluster,proto3" json:"check_cluster,omitempty"`
+	CheckCluster	string	`protobuf:"bytes,6,opt,name=check_cluster,json=checkCluster,proto3" json:"check_cluster,omitempty"`
 	// Name of the cluster that will forward report calls to a pool of mixer
 	// servers. Defaults to "mixer_server". By using different names for
 	// checkCluster and reportCluster, it is possible to have one set of
@@ -194,25 +194,25 @@ type TransportConfig struct {
 	//
 	// NOTE: Any value other than the default "mixer_server" will require the
 	// Istio Grafana dashboards to be reconfigured to use the new name.
-	ReportCluster string `protobuf:"bytes,7,opt,name=report_cluster,json=reportCluster,proto3" json:"report_cluster,omitempty"`
+	ReportCluster	string	`protobuf:"bytes,7,opt,name=report_cluster,json=reportCluster,proto3" json:"report_cluster,omitempty"`
 	// Default attributes to forward to Mixer upstream. This typically
 	// includes the "source.ip" and "source.uid" attributes. These
 	// attributes are consumed by the proxy in front of mixer.
-	AttributesForMixerProxy *v1.Attributes `protobuf:"bytes,8,opt,name=attributes_for_mixer_proxy,json=attributesForMixerProxy,proto3" json:"attributes_for_mixer_proxy,omitempty"`
+	AttributesForMixerProxy	*v1.Attributes	`protobuf:"bytes,8,opt,name=attributes_for_mixer_proxy,json=attributesForMixerProxy,proto3" json:"attributes_for_mixer_proxy,omitempty"`
 	// When disable_report_batch is false, this value specifies the maximum number
 	// of requests that are batched in report. If left unspecified, the default value
 	// of report_batch_max_entries == 0 will use the hardcoded defaults of
 	// istio::mixerclient::ReportOptions.
-	ReportBatchMaxEntries uint32 `protobuf:"varint,9,opt,name=report_batch_max_entries,json=reportBatchMaxEntries,proto3" json:"report_batch_max_entries,omitempty"`
+	ReportBatchMaxEntries	uint32	`protobuf:"varint,9,opt,name=report_batch_max_entries,json=reportBatchMaxEntries,proto3" json:"report_batch_max_entries,omitempty"`
 	// When disable_report_batch is false, this value specifies the maximum elapsed
 	// time a batched report will be sent after a user request is processed. If left
 	// unspecified, the default report_batch_max_time == 0 will use the hardcoded
 	// defaults of istio::mixerclient::ReportOptions.
-	ReportBatchMaxTime *types.Duration `protobuf:"bytes,10,opt,name=report_batch_max_time,json=reportBatchMaxTime,proto3" json:"report_batch_max_time,omitempty"`
+	ReportBatchMaxTime	*types.Duration	`protobuf:"bytes,10,opt,name=report_batch_max_time,json=reportBatchMaxTime,proto3" json:"report_batch_max_time,omitempty"`
 }
 
-func (m *TransportConfig) Reset()      { *m = TransportConfig{} }
-func (*TransportConfig) ProtoMessage() {}
+func (m *TransportConfig) Reset()	{ *m = TransportConfig{} }
+func (*TransportConfig) ProtoMessage()	{}
 func (*TransportConfig) Descriptor() ([]byte, []int) {
 	return fileDescriptor_27bf0dec365e2f6f, []int{2}
 }
@@ -242,30 +242,30 @@ var xxx_messageInfo_TransportConfig proto.InternalMessageInfo
 // Defines the client config for HTTP.
 type HttpClientConfig struct {
 	// The transport config.
-	Transport *TransportConfig `protobuf:"bytes,1,opt,name=transport,proto3" json:"transport,omitempty"`
+	Transport	*TransportConfig	`protobuf:"bytes,1,opt,name=transport,proto3" json:"transport,omitempty"`
 	// Map of control configuration indexed by destination.service. This
 	// is used to support per-service configuration for cases where a
 	// mixerclient serves multiple services.
-	ServiceConfigs map[string]*ServiceConfig `protobuf:"bytes,2,rep,name=service_configs,json=serviceConfigs,proto3" json:"service_configs,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	ServiceConfigs	map[string]*ServiceConfig	`protobuf:"bytes,2,rep,name=service_configs,json=serviceConfigs,proto3" json:"service_configs,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Default destination service name if none was specified in the
 	// client request.
-	DefaultDestinationService string `protobuf:"bytes,3,opt,name=default_destination_service,json=defaultDestinationService,proto3" json:"default_destination_service,omitempty"`
+	DefaultDestinationService	string	`protobuf:"bytes,3,opt,name=default_destination_service,json=defaultDestinationService,proto3" json:"default_destination_service,omitempty"`
 	// Default attributes to send to Mixer in both Check and
 	// Report. This typically includes "destination.ip" and
 	// "destination.uid" attributes.
-	MixerAttributes *v1.Attributes `protobuf:"bytes,4,opt,name=mixer_attributes,json=mixerAttributes,proto3" json:"mixer_attributes,omitempty"`
+	MixerAttributes	*v1.Attributes	`protobuf:"bytes,4,opt,name=mixer_attributes,json=mixerAttributes,proto3" json:"mixer_attributes,omitempty"`
 	// Default attributes to forward to upstream. This typically
 	// includes the "source.ip" and "source.uid" attributes.
-	ForwardAttributes *v1.Attributes `protobuf:"bytes,5,opt,name=forward_attributes,json=forwardAttributes,proto3" json:"forward_attributes,omitempty"`
+	ForwardAttributes	*v1.Attributes	`protobuf:"bytes,5,opt,name=forward_attributes,json=forwardAttributes,proto3" json:"forward_attributes,omitempty"`
 	// Whether or not to use attributes forwarded in the request headers to
 	// create the attribute bag to send to mixer. For intra-mesh traffic,
 	// this should be set to "false". For ingress/egress gateways, this
 	// should be set to "true".
-	IgnoreForwardedAttributes bool `protobuf:"varint,6,opt,name=ignore_forwarded_attributes,json=ignoreForwardedAttributes,proto3" json:"ignore_forwarded_attributes,omitempty"`
+	IgnoreForwardedAttributes	bool	`protobuf:"varint,6,opt,name=ignore_forwarded_attributes,json=ignoreForwardedAttributes,proto3" json:"ignore_forwarded_attributes,omitempty"`
 }
 
-func (m *HttpClientConfig) Reset()      { *m = HttpClientConfig{} }
-func (*HttpClientConfig) ProtoMessage() {}
+func (m *HttpClientConfig) Reset()	{ *m = HttpClientConfig{} }
+func (*HttpClientConfig) ProtoMessage()	{}
 func (*HttpClientConfig) Descriptor() ([]byte, []int) {
 	return fileDescriptor_27bf0dec365e2f6f, []int{3}
 }
@@ -295,26 +295,26 @@ var xxx_messageInfo_HttpClientConfig proto.InternalMessageInfo
 // Defines the client config for TCP.
 type TcpClientConfig struct {
 	// The transport config.
-	Transport *TransportConfig `protobuf:"bytes,1,opt,name=transport,proto3" json:"transport,omitempty"`
+	Transport	*TransportConfig	`protobuf:"bytes,1,opt,name=transport,proto3" json:"transport,omitempty"`
 	// Default attributes to send to Mixer in both Check and
 	// Report. This typically includes "destination.ip" and
 	// "destination.uid" attributes.
-	MixerAttributes *v1.Attributes `protobuf:"bytes,2,opt,name=mixer_attributes,json=mixerAttributes,proto3" json:"mixer_attributes,omitempty"`
+	MixerAttributes	*v1.Attributes	`protobuf:"bytes,2,opt,name=mixer_attributes,json=mixerAttributes,proto3" json:"mixer_attributes,omitempty"`
 	// If set to true, disables Mixer check calls.
-	DisableCheckCalls bool `protobuf:"varint,3,opt,name=disable_check_calls,json=disableCheckCalls,proto3" json:"disable_check_calls,omitempty"`
+	DisableCheckCalls	bool	`protobuf:"varint,3,opt,name=disable_check_calls,json=disableCheckCalls,proto3" json:"disable_check_calls,omitempty"`
 	// If set to true, disables Mixer check calls.
-	DisableReportCalls bool `protobuf:"varint,4,opt,name=disable_report_calls,json=disableReportCalls,proto3" json:"disable_report_calls,omitempty"`
+	DisableReportCalls	bool	`protobuf:"varint,4,opt,name=disable_report_calls,json=disableReportCalls,proto3" json:"disable_report_calls,omitempty"`
 	// Quota specifications to generate quota requirements.
 	// It applies on the new TCP connections.
-	ConnectionQuotaSpec *QuotaSpec `protobuf:"bytes,5,opt,name=connection_quota_spec,json=connectionQuotaSpec,proto3" json:"connection_quota_spec,omitempty"`
+	ConnectionQuotaSpec	*QuotaSpec	`protobuf:"bytes,5,opt,name=connection_quota_spec,json=connectionQuotaSpec,proto3" json:"connection_quota_spec,omitempty"`
 	// Specify report interval to send periodical reports for long TCP
 	// connections. If not specified, the interval is 10 seconds. This interval
 	// should not be less than 1 second, otherwise it will be reset to 1 second.
-	ReportInterval *types.Duration `protobuf:"bytes,6,opt,name=report_interval,json=reportInterval,proto3" json:"report_interval,omitempty"`
+	ReportInterval	*types.Duration	`protobuf:"bytes,6,opt,name=report_interval,json=reportInterval,proto3" json:"report_interval,omitempty"`
 }
 
-func (m *TcpClientConfig) Reset()      { *m = TcpClientConfig{} }
-func (*TcpClientConfig) ProtoMessage() {}
+func (m *TcpClientConfig) Reset()	{ *m = TcpClientConfig{} }
+func (*TcpClientConfig) ProtoMessage()	{}
 func (*TcpClientConfig) Descriptor() ([]byte, []int) {
 	return fileDescriptor_27bf0dec365e2f6f, []int{4}
 }
@@ -2672,6 +2672,6 @@ func skipClientConfig(dAtA []byte) (n int, err error) {
 }
 
 var (
-	ErrInvalidLengthClientConfig = fmt.Errorf("proto: negative length found during unmarshaling")
-	ErrIntOverflowClientConfig   = fmt.Errorf("proto: integer overflow")
+	ErrInvalidLengthClientConfig	= fmt.Errorf("proto: negative length found during unmarshaling")
+	ErrIntOverflowClientConfig	= fmt.Errorf("proto: integer overflow")
 )

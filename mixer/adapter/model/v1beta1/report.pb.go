@@ -23,14 +23,14 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion3	// please upgrade the proto package
 
 // Expresses the result of a report call.
 type ReportResult struct {
 }
 
-func (m *ReportResult) Reset()      { *m = ReportResult{} }
-func (*ReportResult) ProtoMessage() {}
+func (m *ReportResult) Reset()		{ *m = ReportResult{} }
+func (*ReportResult) ProtoMessage()	{}
 func (*ReportResult) Descriptor() ([]byte, []int) {
 	return fileDescriptor_abc732328b315eb4, []int{0}
 }
@@ -311,6 +311,6 @@ func skipReport(dAtA []byte) (n int, err error) {
 }
 
 var (
-	ErrInvalidLengthReport = fmt.Errorf("proto: negative length found during unmarshaling")
-	ErrIntOverflowReport   = fmt.Errorf("proto: integer overflow")
+	ErrInvalidLengthReport	= fmt.Errorf("proto: negative length found during unmarshaling")
+	ErrIntOverflowReport	= fmt.Errorf("proto: integer overflow")
 )

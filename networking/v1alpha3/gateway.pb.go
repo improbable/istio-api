@@ -335,7 +335,7 @@ import (
 	fmt "fmt"
 	proto "github.com/gogo/protobuf/proto"
 	io "io"
-	_ "istio.io/gogo-genproto/googleapis/google/api"
+
 	math "math"
 	math_bits "math/bits"
 )
@@ -349,7 +349,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion3	// please upgrade the proto package
 
 // TLS modes enforced by the proxy
 type Server_TLSOptions_TLSmode int32
@@ -358,12 +358,12 @@ const (
 	// The SNI string presented by the client will be used as the match
 	// criterion in a VirtualService TLS route to determine the
 	// destination service from the service registry.
-	Server_TLSOptions_PASSTHROUGH Server_TLSOptions_TLSmode = 0
+	Server_TLSOptions_PASSTHROUGH	Server_TLSOptions_TLSmode	= 0
 	// Secure connections with standard TLS semantics.
-	Server_TLSOptions_SIMPLE Server_TLSOptions_TLSmode = 1
+	Server_TLSOptions_SIMPLE	Server_TLSOptions_TLSmode	= 1
 	// Secure connections to the downstream using mutual TLS by presenting
 	// server certificates for authentication.
-	Server_TLSOptions_MUTUAL Server_TLSOptions_TLSmode = 2
+	Server_TLSOptions_MUTUAL	Server_TLSOptions_TLSmode	= 2
 	// Similar to the passthrough mode, except servers with this TLS mode
 	// do not require an associated VirtualService to map from the SNI
 	// value to service in the registry. The destination details such as
@@ -374,30 +374,30 @@ const (
 	// networks that otherwise do not have direct connectivity between
 	// their respective endpoints. Use of this mode assumes that both the
 	// source and the destination are using Istio mTLS to secure traffic.
-	Server_TLSOptions_AUTO_PASSTHROUGH Server_TLSOptions_TLSmode = 3
+	Server_TLSOptions_AUTO_PASSTHROUGH	Server_TLSOptions_TLSmode	= 3
 	// Secure connections from the downstream using mutual TLS by presenting
 	// server certificates for authentication.
 	// Compared to Mutual mode, this mode uses certificates, representing
 	// gateway workload identity, generated automatically by Istio for
 	// mTLS authentication. When this mode is used, all other fields in
 	// `TLSOptions` should be empty.
-	Server_TLSOptions_ISTIO_MUTUAL Server_TLSOptions_TLSmode = 4
+	Server_TLSOptions_ISTIO_MUTUAL	Server_TLSOptions_TLSmode	= 4
 )
 
 var Server_TLSOptions_TLSmode_name = map[int32]string{
-	0: "PASSTHROUGH",
-	1: "SIMPLE",
-	2: "MUTUAL",
-	3: "AUTO_PASSTHROUGH",
-	4: "ISTIO_MUTUAL",
+	0:	"PASSTHROUGH",
+	1:	"SIMPLE",
+	2:	"MUTUAL",
+	3:	"AUTO_PASSTHROUGH",
+	4:	"ISTIO_MUTUAL",
 }
 
 var Server_TLSOptions_TLSmode_value = map[string]int32{
-	"PASSTHROUGH":      0,
-	"SIMPLE":           1,
-	"MUTUAL":           2,
-	"AUTO_PASSTHROUGH": 3,
-	"ISTIO_MUTUAL":     4,
+	"PASSTHROUGH":		0,
+	"SIMPLE":		1,
+	"MUTUAL":		2,
+	"AUTO_PASSTHROUGH":	3,
+	"ISTIO_MUTUAL":		4,
 }
 
 func (x Server_TLSOptions_TLSmode) String() string {
@@ -413,31 +413,31 @@ type Server_TLSOptions_TLSProtocol int32
 
 const (
 	// Automatically choose the optimal TLS version.
-	Server_TLSOptions_TLS_AUTO Server_TLSOptions_TLSProtocol = 0
+	Server_TLSOptions_TLS_AUTO	Server_TLSOptions_TLSProtocol	= 0
 	// TLS version 1.0
-	Server_TLSOptions_TLSV1_0 Server_TLSOptions_TLSProtocol = 1
+	Server_TLSOptions_TLSV1_0	Server_TLSOptions_TLSProtocol	= 1
 	// TLS version 1.1
-	Server_TLSOptions_TLSV1_1 Server_TLSOptions_TLSProtocol = 2
+	Server_TLSOptions_TLSV1_1	Server_TLSOptions_TLSProtocol	= 2
 	// TLS version 1.2
-	Server_TLSOptions_TLSV1_2 Server_TLSOptions_TLSProtocol = 3
+	Server_TLSOptions_TLSV1_2	Server_TLSOptions_TLSProtocol	= 3
 	// TLS version 1.3
-	Server_TLSOptions_TLSV1_3 Server_TLSOptions_TLSProtocol = 4
+	Server_TLSOptions_TLSV1_3	Server_TLSOptions_TLSProtocol	= 4
 )
 
 var Server_TLSOptions_TLSProtocol_name = map[int32]string{
-	0: "TLS_AUTO",
-	1: "TLSV1_0",
-	2: "TLSV1_1",
-	3: "TLSV1_2",
-	4: "TLSV1_3",
+	0:	"TLS_AUTO",
+	1:	"TLSV1_0",
+	2:	"TLSV1_1",
+	3:	"TLSV1_2",
+	4:	"TLSV1_3",
 }
 
 var Server_TLSOptions_TLSProtocol_value = map[string]int32{
-	"TLS_AUTO": 0,
-	"TLSV1_0":  1,
-	"TLSV1_1":  2,
-	"TLSV1_2":  3,
-	"TLSV1_3":  4,
+	"TLS_AUTO":	0,
+	"TLSV1_0":	1,
+	"TLSV1_1":	2,
+	"TLSV1_2":	3,
+	"TLSV1_3":	4,
 }
 
 func (x Server_TLSOptions_TLSProtocol) String() string {
@@ -470,21 +470,21 @@ func (Server_TLSOptions_TLSProtocol) EnumDescriptor() ([]byte, []int) {
 // -->
 type Gateway struct {
 	// A list of server specifications.
-	Servers []*Server `protobuf:"bytes,1,rep,name=servers,proto3" json:"servers,omitempty"`
+	Servers	[]*Server	`protobuf:"bytes,1,rep,name=servers,proto3" json:"servers,omitempty"`
 	// One or more labels that indicate a specific set of pods/VMs
 	// on which this gateway configuration should be applied. The scope of
 	// label search is restricted to the configuration namespace in which the
 	// the resource is present. In other words, the Gateway resource must
 	// reside in the same namespace as the gateway workload instance.
-	Selector             map[string]string `protobuf:"bytes,2,rep,name=selector,proto3" json:"selector,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
-	XXX_unrecognized     []byte            `json:"-"`
-	XXX_sizecache        int32             `json:"-"`
+	Selector		map[string]string	`protobuf:"bytes,2,rep,name=selector,proto3" json:"selector,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	XXX_NoUnkeyedLiteral	struct{}		`json:"-"`
+	XXX_unrecognized	[]byte			`json:"-"`
+	XXX_sizecache		int32			`json:"-"`
 }
 
-func (m *Gateway) Reset()         { *m = Gateway{} }
-func (m *Gateway) String() string { return proto.CompactTextString(m) }
-func (*Gateway) ProtoMessage()    {}
+func (m *Gateway) Reset()		{ *m = Gateway{} }
+func (m *Gateway) String() string	{ return proto.CompactTextString(m) }
+func (*Gateway) ProtoMessage()		{}
 func (*Gateway) Descriptor() ([]byte, []int) {
 	return fileDescriptor_067d98d02f84cc0b, []int{0}
 }
@@ -667,13 +667,13 @@ func (m *Gateway) GetSelector() map[string]string {
 type Server struct {
 	// The Port on which the proxy should listen for incoming
 	// connections.
-	Port *Port `protobuf:"bytes,1,opt,name=port,proto3" json:"port,omitempty"`
+	Port	*Port	`protobuf:"bytes,1,opt,name=port,proto3" json:"port,omitempty"`
 	// $hide_from_docs
 	// The ip or the Unix domain socket to which the listener should be bound
 	// to. Format: `x.x.x.x` or `unix:///path/to/uds` or `unix://@foobar`
 	// (Linux abstract namespace). When using Unix domain sockets, the port
 	// number should be 0.
-	Bind string `protobuf:"bytes,4,opt,name=bind,proto3" json:"bind,omitempty"`
+	Bind	string	`protobuf:"bytes,4,opt,name=bind,proto3" json:"bind,omitempty"`
 	// One or more hosts exposed by this gateway.
 	// While typically applicable to
 	// HTTP services, it can also be used for TCP services using TLS with SNI.
@@ -703,23 +703,23 @@ type Server struct {
 	// Private configurations (e.g., `exportTo` set to `.`) will not be
 	// available. Refer to the `exportTo` setting in `VirtualService`,
 	// `DestinationRule`, and `ServiceEntry` configurations for details.
-	Hosts []string `protobuf:"bytes,2,rep,name=hosts,proto3" json:"hosts,omitempty"`
+	Hosts	[]string	`protobuf:"bytes,2,rep,name=hosts,proto3" json:"hosts,omitempty"`
 	// Set of TLS related options that govern the server's behavior. Use
 	// these options to control if all http requests should be redirected to
 	// https, and the TLS modes to use.
-	Tls *Server_TLSOptions `protobuf:"bytes,3,opt,name=tls,proto3" json:"tls,omitempty"`
+	Tls	*Server_TLSOptions	`protobuf:"bytes,3,opt,name=tls,proto3" json:"tls,omitempty"`
 	// The loopback IP endpoint or Unix domain socket to which traffic should
 	// be forwarded to by default. Format should be `127.0.0.1:PORT` or
 	// `unix:///path/to/socket` or `unix://@foobar` (Linux abstract namespace).
-	DefaultEndpoint      string   `protobuf:"bytes,5,opt,name=default_endpoint,json=defaultEndpoint,proto3" json:"default_endpoint,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	DefaultEndpoint		string		`protobuf:"bytes,5,opt,name=default_endpoint,json=defaultEndpoint,proto3" json:"default_endpoint,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *Server) Reset()         { *m = Server{} }
-func (m *Server) String() string { return proto.CompactTextString(m) }
-func (*Server) ProtoMessage()    {}
+func (m *Server) Reset()		{ *m = Server{} }
+func (m *Server) String() string	{ return proto.CompactTextString(m) }
+func (*Server) ProtoMessage()		{}
 func (*Server) Descriptor() ([]byte, []int) {
 	return fileDescriptor_067d98d02f84cc0b, []int{1}
 }
@@ -788,21 +788,21 @@ func (m *Server) GetDefaultEndpoint() string {
 type Server_TLSOptions struct {
 	// If set to true, the load balancer will send a 301 redirect for all
 	// http connections, asking the clients to use HTTPS.
-	HttpsRedirect bool `protobuf:"varint,1,opt,name=https_redirect,json=httpsRedirect,proto3" json:"https_redirect,omitempty"`
+	HttpsRedirect	bool	`protobuf:"varint,1,opt,name=https_redirect,json=httpsRedirect,proto3" json:"https_redirect,omitempty"`
 	// Optional: Indicates whether connections to this port should be
 	// secured using TLS. The value of this field determines how TLS is
 	// enforced.
-	Mode Server_TLSOptions_TLSmode `protobuf:"varint,2,opt,name=mode,proto3,enum=istio.networking.v1alpha3.Server_TLSOptions_TLSmode" json:"mode,omitempty"`
+	Mode	Server_TLSOptions_TLSmode	`protobuf:"varint,2,opt,name=mode,proto3,enum=istio.networking.v1alpha3.Server_TLSOptions_TLSmode" json:"mode,omitempty"`
 	// REQUIRED if mode is `SIMPLE` or `MUTUAL`. The path to the file
 	// holding the server-side TLS certificate to use.
-	ServerCertificate string `protobuf:"bytes,3,opt,name=server_certificate,json=serverCertificate,proto3" json:"server_certificate,omitempty"`
+	ServerCertificate	string	`protobuf:"bytes,3,opt,name=server_certificate,json=serverCertificate,proto3" json:"server_certificate,omitempty"`
 	// REQUIRED if mode is `SIMPLE` or `MUTUAL`. The path to the file
 	// holding the server's private key.
-	PrivateKey string `protobuf:"bytes,4,opt,name=private_key,json=privateKey,proto3" json:"private_key,omitempty"`
+	PrivateKey	string	`protobuf:"bytes,4,opt,name=private_key,json=privateKey,proto3" json:"private_key,omitempty"`
 	// REQUIRED if mode is `MUTUAL`. The path to a file containing
 	// certificate authority certificates to use in verifying a presented
 	// client side certificate.
-	CaCertificates string `protobuf:"bytes,5,opt,name=ca_certificates,json=caCertificates,proto3" json:"ca_certificates,omitempty"`
+	CaCertificates	string	`protobuf:"bytes,5,opt,name=ca_certificates,json=caCertificates,proto3" json:"ca_certificates,omitempty"`
 	// The credentialName stands for a unique identifier that can be used
 	// to identify the serverCertificate and the privateKey. The
 	// credentialName appended with suffix "-cacert" is used to identify
@@ -819,38 +819,38 @@ type Server_TLSOptions struct {
 	// key, and the CA certificate (if using mutual TLS). Set the
 	// `ISTIO_META_USER_SDS` metadata variable in the gateway's proxy to
 	// enable the dynamic credential fetching feature.
-	CredentialName string `protobuf:"bytes,10,opt,name=credential_name,json=credentialName,proto3" json:"credential_name,omitempty"`
+	CredentialName	string	`protobuf:"bytes,10,opt,name=credential_name,json=credentialName,proto3" json:"credential_name,omitempty"`
 	// A list of alternate names to verify the subject identity in the
 	// certificate presented by the client.
-	SubjectAltNames []string `protobuf:"bytes,6,rep,name=subject_alt_names,json=subjectAltNames,proto3" json:"subject_alt_names,omitempty"`
+	SubjectAltNames	[]string	`protobuf:"bytes,6,rep,name=subject_alt_names,json=subjectAltNames,proto3" json:"subject_alt_names,omitempty"`
 	// An optional list of base64-encoded SHA-256 hashes of the SKPIs of
 	// authorized client certificates.
 	// Note: When both verify_certificate_hash and verify_certificate_spki
 	// are specified, a hash matching either value will result in the
 	// certificate being accepted.
-	VerifyCertificateSpki []string `protobuf:"bytes,11,rep,name=verify_certificate_spki,json=verifyCertificateSpki,proto3" json:"verify_certificate_spki,omitempty"`
+	VerifyCertificateSpki	[]string	`protobuf:"bytes,11,rep,name=verify_certificate_spki,json=verifyCertificateSpki,proto3" json:"verify_certificate_spki,omitempty"`
 	// An optional list of hex-encoded SHA-256 hashes of the
 	// authorized client certificates. Both simple and colon separated
 	// formats are acceptable.
 	// Note: When both verify_certificate_hash and verify_certificate_spki
 	// are specified, a hash matching either value will result in the
 	// certificate being accepted.
-	VerifyCertificateHash []string `protobuf:"bytes,12,rep,name=verify_certificate_hash,json=verifyCertificateHash,proto3" json:"verify_certificate_hash,omitempty"`
+	VerifyCertificateHash	[]string	`protobuf:"bytes,12,rep,name=verify_certificate_hash,json=verifyCertificateHash,proto3" json:"verify_certificate_hash,omitempty"`
 	// Optional: Minimum TLS protocol version.
-	MinProtocolVersion Server_TLSOptions_TLSProtocol `protobuf:"varint,7,opt,name=min_protocol_version,json=minProtocolVersion,proto3,enum=istio.networking.v1alpha3.Server_TLSOptions_TLSProtocol" json:"min_protocol_version,omitempty"`
+	MinProtocolVersion	Server_TLSOptions_TLSProtocol	`protobuf:"varint,7,opt,name=min_protocol_version,json=minProtocolVersion,proto3,enum=istio.networking.v1alpha3.Server_TLSOptions_TLSProtocol" json:"min_protocol_version,omitempty"`
 	// Optional: Maximum TLS protocol version.
-	MaxProtocolVersion Server_TLSOptions_TLSProtocol `protobuf:"varint,8,opt,name=max_protocol_version,json=maxProtocolVersion,proto3,enum=istio.networking.v1alpha3.Server_TLSOptions_TLSProtocol" json:"max_protocol_version,omitempty"`
+	MaxProtocolVersion	Server_TLSOptions_TLSProtocol	`protobuf:"varint,8,opt,name=max_protocol_version,json=maxProtocolVersion,proto3,enum=istio.networking.v1alpha3.Server_TLSOptions_TLSProtocol" json:"max_protocol_version,omitempty"`
 	// Optional: If specified, only support the specified cipher list.
 	// Otherwise default to the default cipher list supported by Envoy.
-	CipherSuites         []string `protobuf:"bytes,9,rep,name=cipher_suites,json=cipherSuites,proto3" json:"cipher_suites,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	CipherSuites		[]string	`protobuf:"bytes,9,rep,name=cipher_suites,json=cipherSuites,proto3" json:"cipher_suites,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *Server_TLSOptions) Reset()         { *m = Server_TLSOptions{} }
-func (m *Server_TLSOptions) String() string { return proto.CompactTextString(m) }
-func (*Server_TLSOptions) ProtoMessage()    {}
+func (m *Server_TLSOptions) Reset()		{ *m = Server_TLSOptions{} }
+func (m *Server_TLSOptions) String() string	{ return proto.CompactTextString(m) }
+func (*Server_TLSOptions) ProtoMessage()	{}
 func (*Server_TLSOptions) Descriptor() ([]byte, []int) {
 	return fileDescriptor_067d98d02f84cc0b, []int{1, 0}
 }
@@ -968,22 +968,22 @@ func (m *Server_TLSOptions) GetCipherSuites() []string {
 // Port describes the properties of a specific port of a service.
 type Port struct {
 	// A valid non-negative integer port number.
-	Number uint32 `protobuf:"varint,1,opt,name=number,proto3" json:"number,omitempty"`
+	Number	uint32	`protobuf:"varint,1,opt,name=number,proto3" json:"number,omitempty"`
 	// The protocol exposed on the port.
 	// MUST BE one of HTTP|HTTPS|GRPC|HTTP2|MONGO|TCP|TLS.
 	// TLS implies the connection will be routed based on the SNI header to
 	// the destination without terminating the TLS connection.
-	Protocol string `protobuf:"bytes,2,opt,name=protocol,proto3" json:"protocol,omitempty"`
+	Protocol	string	`protobuf:"bytes,2,opt,name=protocol,proto3" json:"protocol,omitempty"`
 	// Label assigned to the port.
-	Name                 string   `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	Name			string		`protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *Port) Reset()         { *m = Port{} }
-func (m *Port) String() string { return proto.CompactTextString(m) }
-func (*Port) ProtoMessage()    {}
+func (m *Port) Reset()		{ *m = Port{} }
+func (m *Port) String() string	{ return proto.CompactTextString(m) }
+func (*Port) ProtoMessage()	{}
 func (*Port) Descriptor() ([]byte, []int) {
 	return fileDescriptor_067d98d02f84cc0b, []int{2}
 }
@@ -1045,7 +1045,7 @@ func init() {
 	proto.RegisterType((*Port)(nil), "istio.networking.v1alpha3.Port")
 }
 
-func init() { proto.RegisterFile("networking/v1alpha3/gateway.proto", fileDescriptor_067d98d02f84cc0b) }
+func init()	{ proto.RegisterFile("networking/v1alpha3/gateway.proto", fileDescriptor_067d98d02f84cc0b) }
 
 var fileDescriptor_067d98d02f84cc0b = []byte{
 	// 762 bytes of a gzipped FileDescriptorProto
@@ -2627,6 +2627,6 @@ func skipGateway(dAtA []byte) (n int, err error) {
 }
 
 var (
-	ErrInvalidLengthGateway = fmt.Errorf("proto: negative length found during unmarshaling")
-	ErrIntOverflowGateway   = fmt.Errorf("proto: integer overflow")
+	ErrInvalidLengthGateway	= fmt.Errorf("proto: negative length found during unmarshaling")
+	ErrIntOverflowGateway	= fmt.Errorf("proto: integer overflow")
 )

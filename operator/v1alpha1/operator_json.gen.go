@@ -53,6 +53,6 @@ func (this *InstallStatus_VersionStatus) UnmarshalJSON(b []byte) error {
 }
 
 var (
-	OperatorMarshaler   = &github_com_golang_protobuf_jsonpb.Marshaler{}
-	OperatorUnmarshaler = &github_com_golang_protobuf_jsonpb.Unmarshaler{}
+	OperatorMarshaler	= &github_com_golang_protobuf_jsonpb.Marshaler{}
+	OperatorUnmarshaler	= &github_com_golang_protobuf_jsonpb.Unmarshaler{}
 )

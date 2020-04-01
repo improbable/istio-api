@@ -28,6 +28,6 @@ func (this *DirectHttpResponse) UnmarshalJSON(b []byte) error {
 }
 
 var (
-	HttpResponseMarshaler   = &github_com_gogo_protobuf_jsonpb.Marshaler{}
-	HttpResponseUnmarshaler = &github_com_gogo_protobuf_jsonpb.Unmarshaler{}
+	HttpResponseMarshaler	= &github_com_gogo_protobuf_jsonpb.Marshaler{}
+	HttpResponseUnmarshaler	= &github_com_gogo_protobuf_jsonpb.Unmarshaler{}
 )

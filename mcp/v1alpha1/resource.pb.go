@@ -25,23 +25,23 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion3	// please upgrade the proto package
 
 // Resource as transferred via the Mesh Configuration Protocol. Each
 // resource is made up of common metadata, and a type-specific resource payload.
 type Resource struct {
 	// Common metadata describing the resource.
-	Metadata *Metadata `protobuf:"bytes,1,opt,name=metadata,proto3" json:"metadata,omitempty"`
+	Metadata	*Metadata	`protobuf:"bytes,1,opt,name=metadata,proto3" json:"metadata,omitempty"`
 	// The primary payload for the resource.
-	Body                 *types.Any `protobuf:"bytes,2,opt,name=body,proto3" json:"body,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
-	XXX_unrecognized     []byte     `json:"-"`
-	XXX_sizecache        int32      `json:"-"`
+	Body			*types.Any	`protobuf:"bytes,2,opt,name=body,proto3" json:"body,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *Resource) Reset()         { *m = Resource{} }
-func (m *Resource) String() string { return proto.CompactTextString(m) }
-func (*Resource) ProtoMessage()    {}
+func (m *Resource) Reset()		{ *m = Resource{} }
+func (m *Resource) String() string	{ return proto.CompactTextString(m) }
+func (*Resource) ProtoMessage()		{}
 func (*Resource) Descriptor() ([]byte, []int) {
 	return fileDescriptor_d75ce896e5708e1a, []int{0}
 }
@@ -90,7 +90,7 @@ func init() {
 	proto.RegisterType((*Resource)(nil), "istio.mcp.v1alpha1.Resource")
 }
 
-func init() { proto.RegisterFile("mcp/v1alpha1/resource.proto", fileDescriptor_d75ce896e5708e1a) }
+func init()	{ proto.RegisterFile("mcp/v1alpha1/resource.proto", fileDescriptor_d75ce896e5708e1a) }
 
 var fileDescriptor_d75ce896e5708e1a = []byte{
 	// 207 bytes of a gzipped FileDescriptorProto
@@ -460,6 +460,6 @@ func skipResource(dAtA []byte) (n int, err error) {
 }
 
 var (
-	ErrInvalidLengthResource = fmt.Errorf("proto: negative length found during unmarshaling")
-	ErrIntOverflowResource   = fmt.Errorf("proto: integer overflow")
+	ErrInvalidLengthResource	= fmt.Errorf("proto: negative length found during unmarshaling")
+	ErrIntOverflowResource		= fmt.Errorf("proto: integer overflow")
 )

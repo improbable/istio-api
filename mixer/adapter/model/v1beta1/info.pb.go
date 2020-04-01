@@ -22,7 +22,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion3	// please upgrade the proto package
 
 // Info describes an adapter or a backend that wants to provide telemetry and policy functionality to Mixer as an
 // out of process adapter.
@@ -33,13 +33,13 @@ type Info struct {
 	// example: denier
 	// Vendor adapters should use a vendor prefix.
 	// example: mycompany-denier
-	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Name	string	`protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// User-friendly description of the adapter.
-	Description string `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
+	Description	string	`protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
 	// Names of the templates the adapter supports.
-	Templates []string `protobuf:"bytes,3,rep,name=templates,proto3" json:"templates,omitempty"`
+	Templates	[]string	`protobuf:"bytes,3,rep,name=templates,proto3" json:"templates,omitempty"`
 	// Base64 encoded proto descriptor of the adapter configuration.
-	Config string `protobuf:"bytes,4,opt,name=config,proto3" json:"config,omitempty"`
+	Config	string	`protobuf:"bytes,4,opt,name=config,proto3" json:"config,omitempty"`
 	// True if backend has implemented the
 	// [InfrastructureBackend](https://github.com/istio/api/blob/release-1.5/mixer/adapter/model/v1beta1/infrastructure_backend.proto)
 	// service; false otherwise.
@@ -53,11 +53,11 @@ type Info struct {
 	// If `session_based` is false, Mixer does not expect backend to implement `InfrastructureBackend` service, and
 	// only communicates with the backends during request-time through the template-specific handle service. Without
 	// `InfrastructureBackend` service, Mixer passes the handler configuration on each call during request-time.
-	SessionBased bool `protobuf:"varint,5,opt,name=session_based,json=sessionBased,proto3" json:"session_based,omitempty"`
+	SessionBased	bool	`protobuf:"varint,5,opt,name=session_based,json=sessionBased,proto3" json:"session_based,omitempty"`
 }
 
-func (m *Info) Reset()      { *m = Info{} }
-func (*Info) ProtoMessage() {}
+func (m *Info) Reset()		{ *m = Info{} }
+func (*Info) ProtoMessage()	{}
 func (*Info) Descriptor() ([]byte, []int) {
 	return fileDescriptor_62b7a6e7e280c38a, []int{0}
 }
@@ -655,6 +655,6 @@ func skipInfo(dAtA []byte) (n int, err error) {
 }
 
 var (
-	ErrInvalidLengthInfo = fmt.Errorf("proto: negative length found during unmarshaling")
-	ErrIntOverflowInfo   = fmt.Errorf("proto: integer overflow")
+	ErrInvalidLengthInfo	= fmt.Errorf("proto: negative length found during unmarshaling")
+	ErrIntOverflowInfo	= fmt.Errorf("proto: integer overflow")
 )

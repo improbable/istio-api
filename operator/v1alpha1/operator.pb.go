@@ -21,38 +21,38 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3	// please upgrade the proto package
 
 // Status describes the current state of a component.
 type InstallStatus_Status int32
 
 const (
 	// Component is not present.
-	InstallStatus_NONE InstallStatus_Status = 0
+	InstallStatus_NONE	InstallStatus_Status	= 0
 	// Component is being updated to a different version.
-	InstallStatus_UPDATING InstallStatus_Status = 1
+	InstallStatus_UPDATING	InstallStatus_Status	= 1
 	// Controller has started but not yet completed reconciliation loop for the component.
-	InstallStatus_RECONCILING InstallStatus_Status = 2
+	InstallStatus_RECONCILING	InstallStatus_Status	= 2
 	// Component is healthy.
-	InstallStatus_HEALTHY InstallStatus_Status = 3
+	InstallStatus_HEALTHY	InstallStatus_Status	= 3
 	// Component is in an error state.
-	InstallStatus_ERROR InstallStatus_Status = 4
+	InstallStatus_ERROR	InstallStatus_Status	= 4
 )
 
 var InstallStatus_Status_name = map[int32]string{
-	0: "NONE",
-	1: "UPDATING",
-	2: "RECONCILING",
-	3: "HEALTHY",
-	4: "ERROR",
+	0:	"NONE",
+	1:	"UPDATING",
+	2:	"RECONCILING",
+	3:	"HEALTHY",
+	4:	"ERROR",
 }
 
 var InstallStatus_Status_value = map[string]int32{
-	"NONE":        0,
-	"UPDATING":    1,
-	"RECONCILING": 2,
-	"HEALTHY":     3,
-	"ERROR":       4,
+	"NONE":		0,
+	"UPDATING":	1,
+	"RECONCILING":	2,
+	"HEALTHY":	3,
+	"ERROR":	4,
 }
 
 func (x InstallStatus_Status) String() string {
@@ -72,46 +72,46 @@ type IstioOperatorSpec struct {
 	//     - minimal (looks in profiles dir for a file called minimal.yaml)
 	//     - /tmp/istio/install/values/custom/custom-install.yaml (local file path)
 	// default profile is used if this field is unset.
-	Profile string `protobuf:"bytes,10,opt,name=profile,proto3" json:"profile,omitempty"`
+	Profile	string	`protobuf:"bytes,10,opt,name=profile,proto3" json:"profile,omitempty"`
 	// Path for the install package. e.g.
 	//     - /tmp/istio-installer/nightly (local file path)
-	InstallPackagePath string `protobuf:"bytes,11,opt,name=install_package_path,json=installPackagePath,proto3" json:"installPackagePath,omitempty"`
+	InstallPackagePath	string	`protobuf:"bytes,11,opt,name=install_package_path,json=installPackagePath,proto3" json:"installPackagePath,omitempty"`
 	// Root for docker image paths e.g. docker.io/istio
-	Hub string `protobuf:"bytes,12,opt,name=hub,proto3" json:"hub,omitempty"`
+	Hub	string	`protobuf:"bytes,12,opt,name=hub,proto3" json:"hub,omitempty"`
 	// Version tag for docker images e.g. 1.0.6
-	Tag interface{} `protobuf:"bytes,13,opt,name=tag,proto3" json:"tag,omitempty"`
+	Tag	interface{}	`protobuf:"bytes,13,opt,name=tag,proto3" json:"tag,omitempty"`
 	// $hide_from_docs
 	// Resource suffix is appended to all resources installed by each component.
 	// Never implemented; replaced by revision.
-	ResourceSuffix string `protobuf:"bytes,14,opt,name=resource_suffix,json=resourceSuffix,proto3" json:"resourceSuffix,omitempty"` // Deprecated: Do not use.
+	ResourceSuffix	string	`protobuf:"bytes,14,opt,name=resource_suffix,json=resourceSuffix,proto3" json:"resourceSuffix,omitempty"`	// Deprecated: Do not use.
 	// Namespace to install control plane resources into. If unset, Istio will be installed into the same namespace
 	// as the IstioOperator CR.
-	Namespace string `protobuf:"bytes,15,opt,name=namespace,proto3" json:"namespace,omitempty"`
+	Namespace	string	`protobuf:"bytes,15,opt,name=namespace,proto3" json:"namespace,omitempty"`
 	// Identify the revision this installation is associated with.
 	// This option is currently experimental.
-	Revision string `protobuf:"bytes,16,opt,name=revision,proto3" json:"revision,omitempty"`
+	Revision	string	`protobuf:"bytes,16,opt,name=revision,proto3" json:"revision,omitempty"`
 	// Config used by control plane components internally.
-	MeshConfig *v1alpha1.MeshConfig `protobuf:"bytes,40,opt,name=mesh_config,json=meshConfig,proto3" json:"meshConfig,omitempty"`
+	MeshConfig	*v1alpha1.MeshConfig	`protobuf:"bytes,40,opt,name=mesh_config,json=meshConfig,proto3" json:"meshConfig,omitempty"`
 	// Kubernetes resource settings, enablement and component-specific settings that are not internal to the
 	// component.
-	Components *IstioComponentSetSpec `protobuf:"bytes,50,opt,name=components,proto3" json:"components,omitempty"`
+	Components	*IstioComponentSetSpec	`protobuf:"bytes,50,opt,name=components,proto3" json:"components,omitempty"`
 	// Extra addon components which are not explicitly specified above.
-	AddonComponents map[string]*ExternalComponentSpec `protobuf:"bytes,51,rep,name=addon_components,json=addonComponents,proto3" json:"addonComponents,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	AddonComponents	map[string]*ExternalComponentSpec	`protobuf:"bytes,51,rep,name=addon_components,json=addonComponents,proto3" json:"addonComponents,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Overrides for default values.yaml. This is a validated pass-through to Helm templates.
 	// See the Helm installation options for schema details: https://istio.io/docs/reference/config/installation-options/.
 	// Anything that is available in IstioOperatorSpec should be set above rather than using the passthrough. This
 	// includes Kubernetes resource settings for components in KubernetesResourcesSpec.
-	Values map[string]interface{} `protobuf:"bytes,100,opt,name=values,proto3" json:"values,omitempty"`
+	Values	map[string]interface{}	`protobuf:"bytes,100,opt,name=values,proto3" json:"values,omitempty"`
 	// Unvalidated overrides for default values.yaml. Used for custom templates where new parameters are added.
-	UnvalidatedValues    map[string]interface{} `protobuf:"bytes,101,opt,name=unvalidated_values,json=unvalidatedValues,proto3" json:"unvalidatedValues,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                 `json:"-"`
-	XXX_unrecognized     []byte                   `json:"-"`
-	XXX_sizecache        int32                    `json:"-"`
+	UnvalidatedValues	map[string]interface{}	`protobuf:"bytes,101,opt,name=unvalidated_values,json=unvalidatedValues,proto3" json:"unvalidatedValues,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}		`json:"-"`
+	XXX_unrecognized	[]byte			`json:"-"`
+	XXX_sizecache		int32			`json:"-"`
 }
 
-func (m *IstioOperatorSpec) Reset()         { *m = IstioOperatorSpec{} }
-func (m *IstioOperatorSpec) String() string { return proto.CompactTextString(m) }
-func (*IstioOperatorSpec) ProtoMessage()    {}
+func (m *IstioOperatorSpec) Reset()		{ *m = IstioOperatorSpec{} }
+func (m *IstioOperatorSpec) String() string	{ return proto.CompactTextString(m) }
+func (*IstioOperatorSpec) ProtoMessage()	{}
 func (*IstioOperatorSpec) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8023ebf2dcfea843, []int{0}
 }
@@ -154,7 +154,6 @@ func (m *IstioOperatorSpec) GetHub() string {
 	}
 	return ""
 }
-
 
 // Deprecated: Do not use.
 func (m *IstioOperatorSpec) GetResourceSuffix() string {
@@ -199,8 +198,6 @@ func (m *IstioOperatorSpec) GetAddonComponents() map[string]*ExternalComponentSp
 	return nil
 }
 
-
-
 // Observed state of IstioOperator
 type InstallStatus struct {
 	// Overall status of all components controlled by the operator.
@@ -210,17 +207,17 @@ type InstallStatus struct {
 	// - If one or more components are UPDATING and others are HEALTHY, overall status is UPDATING.
 	// - If components are a mix of RECONCILING, UPDATING and HEALTHY, overall status is UPDATING.
 	// - If any component is in ERROR state, overall status is ERROR.
-	Status InstallStatus_Status `protobuf:"varint,1,opt,name=status,proto3,enum=istio.operator.v1alpha1.InstallStatus_Status" json:"status,omitempty"`
+	Status	InstallStatus_Status	`protobuf:"varint,1,opt,name=status,proto3,enum=istio.operator.v1alpha1.InstallStatus_Status" json:"status,omitempty"`
 	// Individual status of each component controlled by the operator. The map key is the name of the component.
-	ComponentStatus      map[string]*InstallStatus_VersionStatus `protobuf:"bytes,2,rep,name=component_status,json=componentStatus,proto3" json:"componentStatus,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	XXX_NoUnkeyedLiteral struct{}                                `json:"-"`
-	XXX_unrecognized     []byte                                  `json:"-"`
-	XXX_sizecache        int32                                   `json:"-"`
+	ComponentStatus		map[string]*InstallStatus_VersionStatus	`protobuf:"bytes,2,rep,name=component_status,json=componentStatus,proto3" json:"componentStatus,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	XXX_NoUnkeyedLiteral	struct{}				`json:"-"`
+	XXX_unrecognized	[]byte					`json:"-"`
+	XXX_sizecache		int32					`json:"-"`
 }
 
-func (m *InstallStatus) Reset()         { *m = InstallStatus{} }
-func (m *InstallStatus) String() string { return proto.CompactTextString(m) }
-func (*InstallStatus) ProtoMessage()    {}
+func (m *InstallStatus) Reset()		{ *m = InstallStatus{} }
+func (m *InstallStatus) String() string	{ return proto.CompactTextString(m) }
+func (*InstallStatus) ProtoMessage()	{}
 func (*InstallStatus) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8023ebf2dcfea843, []int{1}
 }
@@ -259,18 +256,18 @@ func (m *InstallStatus) GetComponentStatus() map[string]*InstallStatus_VersionSt
 
 // VersionStatus is the status and version of a component.
 type InstallStatus_VersionStatus struct {
-	Version              string               `protobuf:"bytes,1,opt,name=version,proto3" json:"version,omitempty"`
-	Status               InstallStatus_Status `protobuf:"varint,2,opt,name=status,proto3,enum=istio.operator.v1alpha1.InstallStatus_Status" json:"status,omitempty"`
-	StatusString         string               `protobuf:"bytes,3,opt,name=status_string,json=statusString,proto3" json:"statusString,omitempty"`
-	Error                string               `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
+	Version			string			`protobuf:"bytes,1,opt,name=version,proto3" json:"version,omitempty"`
+	Status			InstallStatus_Status	`protobuf:"varint,2,opt,name=status,proto3,enum=istio.operator.v1alpha1.InstallStatus_Status" json:"status,omitempty"`
+	StatusString		string			`protobuf:"bytes,3,opt,name=status_string,json=statusString,proto3" json:"statusString,omitempty"`
+	Error			string			`protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}		`json:"-"`
+	XXX_unrecognized	[]byte			`json:"-"`
+	XXX_sizecache		int32			`json:"-"`
 }
 
-func (m *InstallStatus_VersionStatus) Reset()         { *m = InstallStatus_VersionStatus{} }
-func (m *InstallStatus_VersionStatus) String() string { return proto.CompactTextString(m) }
-func (*InstallStatus_VersionStatus) ProtoMessage()    {}
+func (m *InstallStatus_VersionStatus) Reset()		{ *m = InstallStatus_VersionStatus{} }
+func (m *InstallStatus_VersionStatus) String() string	{ return proto.CompactTextString(m) }
+func (*InstallStatus_VersionStatus) ProtoMessage()	{}
 func (*InstallStatus_VersionStatus) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8023ebf2dcfea843, []int{1, 0}
 }
@@ -323,7 +320,6 @@ func (m *InstallStatus_VersionStatus) GetError() string {
 
 // This is required because synthetic type definition has file rather than package scope.
 
-
 func init() {
 	proto.RegisterEnum("istio.operator.v1alpha1.InstallStatus_Status", InstallStatus_Status_name, InstallStatus_Status_value)
 	proto.RegisterType((*IstioOperatorSpec)(nil), "istio.operator.v1alpha1.IstioOperatorSpec")
@@ -333,7 +329,7 @@ func init() {
 	proto.RegisterType((*InstallStatus_VersionStatus)(nil), "istio.operator.v1alpha1.InstallStatus.VersionStatus")
 }
 
-func init() { proto.RegisterFile("operator/v1alpha1/operator.proto", fileDescriptor_8023ebf2dcfea843) }
+func init()	{ proto.RegisterFile("operator/v1alpha1/operator.proto", fileDescriptor_8023ebf2dcfea843) }
 
 var fileDescriptor_8023ebf2dcfea843 = []byte{
 	// 683 bytes of a gzipped FileDescriptorProto

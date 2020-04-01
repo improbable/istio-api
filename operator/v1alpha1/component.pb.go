@@ -20,30 +20,30 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3	// please upgrade the proto package
 
 // IstioComponentSpec defines the desired installed state of Istio components.
 type IstioComponentSetSpec struct {
-	Base                 *BaseComponentSpec `protobuf:"bytes,29,opt,name=base,proto3" json:"base,omitempty"`
-	Pilot                *ComponentSpec     `protobuf:"bytes,30,opt,name=pilot,proto3" json:"pilot,omitempty"`
-	Proxy                *ComponentSpec     `protobuf:"bytes,31,opt,name=proxy,proto3" json:"proxy,omitempty"`
-	SidecarInjector      *ComponentSpec     `protobuf:"bytes,32,opt,name=sidecar_injector,json=sidecarInjector,proto3" json:"sidecarInjector,omitempty"`
-	Policy               *ComponentSpec     `protobuf:"bytes,33,opt,name=policy,proto3" json:"policy,omitempty"`
-	Telemetry            *ComponentSpec     `protobuf:"bytes,34,opt,name=telemetry,proto3" json:"telemetry,omitempty"`
-	Citadel              *ComponentSpec     `protobuf:"bytes,35,opt,name=citadel,proto3" json:"citadel,omitempty"`
-	NodeAgent            *ComponentSpec     `protobuf:"bytes,36,opt,name=node_agent,json=nodeAgent,proto3" json:"nodeAgent,omitempty"`
-	Galley               *ComponentSpec     `protobuf:"bytes,37,opt,name=galley,proto3" json:"galley,omitempty"`
-	Cni                  *ComponentSpec     `protobuf:"bytes,38,opt,name=cni,proto3" json:"cni,omitempty"`
-	IngressGateways      []*GatewaySpec     `protobuf:"bytes,40,rep,name=ingress_gateways,json=ingressGateways,proto3" json:"ingressGateways,omitempty"`
-	EgressGateways       []*GatewaySpec     `protobuf:"bytes,41,rep,name=egress_gateways,json=egressGateways,proto3" json:"egressGateways,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
-	XXX_unrecognized     []byte             `json:"-"`
-	XXX_sizecache        int32              `json:"-"`
+	Base			*BaseComponentSpec	`protobuf:"bytes,29,opt,name=base,proto3" json:"base,omitempty"`
+	Pilot			*ComponentSpec		`protobuf:"bytes,30,opt,name=pilot,proto3" json:"pilot,omitempty"`
+	Proxy			*ComponentSpec		`protobuf:"bytes,31,opt,name=proxy,proto3" json:"proxy,omitempty"`
+	SidecarInjector		*ComponentSpec		`protobuf:"bytes,32,opt,name=sidecar_injector,json=sidecarInjector,proto3" json:"sidecarInjector,omitempty"`
+	Policy			*ComponentSpec		`protobuf:"bytes,33,opt,name=policy,proto3" json:"policy,omitempty"`
+	Telemetry		*ComponentSpec		`protobuf:"bytes,34,opt,name=telemetry,proto3" json:"telemetry,omitempty"`
+	Citadel			*ComponentSpec		`protobuf:"bytes,35,opt,name=citadel,proto3" json:"citadel,omitempty"`
+	NodeAgent		*ComponentSpec		`protobuf:"bytes,36,opt,name=node_agent,json=nodeAgent,proto3" json:"nodeAgent,omitempty"`
+	Galley			*ComponentSpec		`protobuf:"bytes,37,opt,name=galley,proto3" json:"galley,omitempty"`
+	Cni			*ComponentSpec		`protobuf:"bytes,38,opt,name=cni,proto3" json:"cni,omitempty"`
+	IngressGateways		[]*GatewaySpec		`protobuf:"bytes,40,rep,name=ingress_gateways,json=ingressGateways,proto3" json:"ingressGateways,omitempty"`
+	EgressGateways		[]*GatewaySpec		`protobuf:"bytes,41,rep,name=egress_gateways,json=egressGateways,proto3" json:"egressGateways,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}		`json:"-"`
+	XXX_unrecognized	[]byte			`json:"-"`
+	XXX_sizecache		int32			`json:"-"`
 }
 
-func (m *IstioComponentSetSpec) Reset()         { *m = IstioComponentSetSpec{} }
-func (m *IstioComponentSetSpec) String() string { return proto.CompactTextString(m) }
-func (*IstioComponentSetSpec) ProtoMessage()    {}
+func (m *IstioComponentSetSpec) Reset()		{ *m = IstioComponentSetSpec{} }
+func (m *IstioComponentSetSpec) String() string	{ return proto.CompactTextString(m) }
+func (*IstioComponentSetSpec) ProtoMessage()	{}
 func (*IstioComponentSetSpec) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6ed34a579e9b43a2, []int{0}
 }
@@ -153,15 +153,15 @@ func (m *IstioComponentSetSpec) GetEgressGateways() []*GatewaySpec {
 // Configuration for base component.
 type BaseComponentSpec struct {
 	// Selects whether this component is installed.
-	Enabled              *BoolValueForPB `protobuf:"bytes,1,opt,name=enabled,proto3" json:"enabled,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
+	Enabled			*BoolValueForPB	`protobuf:"bytes,1,opt,name=enabled,proto3" json:"enabled,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *BaseComponentSpec) Reset()         { *m = BaseComponentSpec{} }
-func (m *BaseComponentSpec) String() string { return proto.CompactTextString(m) }
-func (*BaseComponentSpec) ProtoMessage()    {}
+func (m *BaseComponentSpec) Reset()		{ *m = BaseComponentSpec{} }
+func (m *BaseComponentSpec) String() string	{ return proto.CompactTextString(m) }
+func (*BaseComponentSpec) ProtoMessage()	{}
 func (*BaseComponentSpec) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6ed34a579e9b43a2, []int{1}
 }
@@ -184,29 +184,28 @@ func (m *BaseComponentSpec) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_BaseComponentSpec proto.InternalMessageInfo
 
-
 // Configuration for internal components.
 type ComponentSpec struct {
 	// Selects whether this component is installed.
-	Enabled *BoolValueForPB `protobuf:"bytes,1,opt,name=enabled,proto3" json:"enabled,omitempty"`
+	Enabled	*BoolValueForPB	`protobuf:"bytes,1,opt,name=enabled,proto3" json:"enabled,omitempty"`
 	// Namespace for the component.
-	Namespace string `protobuf:"bytes,2,opt,name=namespace,proto3" json:"namespace,omitempty"`
+	Namespace	string	`protobuf:"bytes,2,opt,name=namespace,proto3" json:"namespace,omitempty"`
 	// Hub for the component (overrides top level hub setting).
-	Hub string `protobuf:"bytes,10,opt,name=hub,proto3" json:"hub,omitempty"`
+	Hub	string	`protobuf:"bytes,10,opt,name=hub,proto3" json:"hub,omitempty"`
 	// Tag for the component (overrides top level tag setting).
-	Tag interface{} `protobuf:"bytes,11,opt,name=tag,proto3" json:"tag,omitempty"`
+	Tag	interface{}	`protobuf:"bytes,11,opt,name=tag,proto3" json:"tag,omitempty"`
 	// Arbitrary install time configuration for the component.
-	Spec interface{} `protobuf:"bytes,30,opt,name=spec,proto3" json:"spec,omitempty"`
+	Spec	interface{}	`protobuf:"bytes,30,opt,name=spec,proto3" json:"spec,omitempty"`
 	// Kubernetes resource spec.
-	K8S                  *KubernetesResourcesSpec `protobuf:"bytes,50,opt,name=k8s,proto3" json:"k8s,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                 `json:"-"`
-	XXX_unrecognized     []byte                   `json:"-"`
-	XXX_sizecache        int32                    `json:"-"`
+	K8S			*KubernetesResourcesSpec	`protobuf:"bytes,50,opt,name=k8s,proto3" json:"k8s,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}			`json:"-"`
+	XXX_unrecognized	[]byte				`json:"-"`
+	XXX_sizecache		int32				`json:"-"`
 }
 
-func (m *ComponentSpec) Reset()         { *m = ComponentSpec{} }
-func (m *ComponentSpec) String() string { return proto.CompactTextString(m) }
-func (*ComponentSpec) ProtoMessage()    {}
+func (m *ComponentSpec) Reset()		{ *m = ComponentSpec{} }
+func (m *ComponentSpec) String() string	{ return proto.CompactTextString(m) }
+func (*ComponentSpec) ProtoMessage()	{}
 func (*ComponentSpec) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6ed34a579e9b43a2, []int{2}
 }
@@ -229,7 +228,6 @@ func (m *ComponentSpec) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ComponentSpec proto.InternalMessageInfo
 
-
 func (m *ComponentSpec) GetNamespace() string {
 	if m != nil {
 		return m.Namespace
@@ -244,8 +242,6 @@ func (m *ComponentSpec) GetHub() string {
 	return ""
 }
 
-
-
 func (m *ComponentSpec) GetK8S() *KubernetesResourcesSpec {
 	if m != nil {
 		return m.K8S
@@ -256,25 +252,25 @@ func (m *ComponentSpec) GetK8S() *KubernetesResourcesSpec {
 // Configuration for external components.
 type ExternalComponentSpec struct {
 	// Selects whether this component is installed.
-	Enabled *BoolValueForPB `protobuf:"bytes,1,opt,name=enabled,proto3" json:"enabled,omitempty"`
+	Enabled	*BoolValueForPB	`protobuf:"bytes,1,opt,name=enabled,proto3" json:"enabled,omitempty"`
 	// Namespace for the component.
-	Namespace string `protobuf:"bytes,2,opt,name=namespace,proto3" json:"namespace,omitempty"`
+	Namespace	string	`protobuf:"bytes,2,opt,name=namespace,proto3" json:"namespace,omitempty"`
 	// Arbitrary install time configuration for the component.
-	Spec interface{} `protobuf:"bytes,10,opt,name=spec,proto3" json:"spec,omitempty"`
+	Spec	interface{}	`protobuf:"bytes,10,opt,name=spec,proto3" json:"spec,omitempty"`
 	// Chart path for addon components.
-	ChartPath string `protobuf:"bytes,30,opt,name=chart_path,json=chartPath,proto3" json:"chartPath,omitempty"`
+	ChartPath	string	`protobuf:"bytes,30,opt,name=chart_path,json=chartPath,proto3" json:"chartPath,omitempty"`
 	// Optional schema to validate spec against.
-	Schema *any.Any `protobuf:"bytes,35,opt,name=schema,proto3" json:"schema,omitempty"`
+	Schema	*any.Any	`protobuf:"bytes,35,opt,name=schema,proto3" json:"schema,omitempty"`
 	// Kubernetes resource spec.
-	K8S                  *KubernetesResourcesSpec `protobuf:"bytes,50,opt,name=k8s,proto3" json:"k8s,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                 `json:"-"`
-	XXX_unrecognized     []byte                   `json:"-"`
-	XXX_sizecache        int32                    `json:"-"`
+	K8S			*KubernetesResourcesSpec	`protobuf:"bytes,50,opt,name=k8s,proto3" json:"k8s,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}			`json:"-"`
+	XXX_unrecognized	[]byte				`json:"-"`
+	XXX_sizecache		int32				`json:"-"`
 }
 
-func (m *ExternalComponentSpec) Reset()         { *m = ExternalComponentSpec{} }
-func (m *ExternalComponentSpec) String() string { return proto.CompactTextString(m) }
-func (*ExternalComponentSpec) ProtoMessage()    {}
+func (m *ExternalComponentSpec) Reset()		{ *m = ExternalComponentSpec{} }
+func (m *ExternalComponentSpec) String() string	{ return proto.CompactTextString(m) }
+func (*ExternalComponentSpec) ProtoMessage()	{}
 func (*ExternalComponentSpec) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6ed34a579e9b43a2, []int{3}
 }
@@ -297,14 +293,12 @@ func (m *ExternalComponentSpec) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ExternalComponentSpec proto.InternalMessageInfo
 
-
 func (m *ExternalComponentSpec) GetNamespace() string {
 	if m != nil {
 		return m.Namespace
 	}
 	return ""
 }
-
 
 func (m *ExternalComponentSpec) GetChartPath() string {
 	if m != nil {
@@ -330,27 +324,27 @@ func (m *ExternalComponentSpec) GetK8S() *KubernetesResourcesSpec {
 // Configuration for gateways.
 type GatewaySpec struct {
 	// Selects whether this gateway is installed.
-	Enabled *BoolValueForPB `protobuf:"bytes,1,opt,name=enabled,proto3" json:"enabled,omitempty"`
+	Enabled	*BoolValueForPB	`protobuf:"bytes,1,opt,name=enabled,proto3" json:"enabled,omitempty"`
 	// Namespace for the gateway.
-	Namespace string `protobuf:"bytes,2,opt,name=namespace,proto3" json:"namespace,omitempty"`
+	Namespace	string	`protobuf:"bytes,2,opt,name=namespace,proto3" json:"namespace,omitempty"`
 	// Name for the gateway.
-	Name string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
+	Name	string	`protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	// Labels for the gateway.
-	Label map[string]string `protobuf:"bytes,4,rep,name=label,proto3" json:"label,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Label	map[string]string	`protobuf:"bytes,4,rep,name=label,proto3" json:"label,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Hub for the component (overrides top level hub setting).
-	Hub string `protobuf:"bytes,10,opt,name=hub,proto3" json:"hub,omitempty"`
+	Hub	string	`protobuf:"bytes,10,opt,name=hub,proto3" json:"hub,omitempty"`
 	// Tag for the component (overrides top level tag setting).
-	Tag interface{} `protobuf:"bytes,11,opt,name=tag,proto3" json:"tag,omitempty"`
+	Tag	interface{}	`protobuf:"bytes,11,opt,name=tag,proto3" json:"tag,omitempty"`
 	// Kubernetes resource spec.
-	K8S                  *KubernetesResourcesSpec `protobuf:"bytes,50,opt,name=k8s,proto3" json:"k8s,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                 `json:"-"`
-	XXX_unrecognized     []byte                   `json:"-"`
-	XXX_sizecache        int32                    `json:"-"`
+	K8S			*KubernetesResourcesSpec	`protobuf:"bytes,50,opt,name=k8s,proto3" json:"k8s,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}			`json:"-"`
+	XXX_unrecognized	[]byte				`json:"-"`
+	XXX_sizecache		int32				`json:"-"`
 }
 
-func (m *GatewaySpec) Reset()         { *m = GatewaySpec{} }
-func (m *GatewaySpec) String() string { return proto.CompactTextString(m) }
-func (*GatewaySpec) ProtoMessage()    {}
+func (m *GatewaySpec) Reset()		{ *m = GatewaySpec{} }
+func (m *GatewaySpec) String() string	{ return proto.CompactTextString(m) }
+func (*GatewaySpec) ProtoMessage()	{}
 func (*GatewaySpec) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6ed34a579e9b43a2, []int{4}
 }
@@ -372,7 +366,6 @@ func (m *GatewaySpec) XXX_DiscardUnknown() {
 }
 
 var xxx_messageInfo_GatewaySpec proto.InternalMessageInfo
-
 
 func (m *GatewaySpec) GetNamespace() string {
 	if m != nil {
@@ -402,7 +395,6 @@ func (m *GatewaySpec) GetHub() string {
 	return ""
 }
 
-
 func (m *GatewaySpec) GetK8S() *KubernetesResourcesSpec {
 	if m != nil {
 		return m.K8S
@@ -414,60 +406,60 @@ func (m *GatewaySpec) GetK8S() *KubernetesResourcesSpec {
 type KubernetesResourcesSpec struct {
 	// k8s affinity.
 	// https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity
-	Affinity *Affinity `protobuf:"bytes,1,opt,name=affinity,proto3" json:"affinity,omitempty"`
+	Affinity	*Affinity	`protobuf:"bytes,1,opt,name=affinity,proto3" json:"affinity,omitempty"`
 	// Deployment environment variables.
 	// https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/
-	Env []*EnvVar `protobuf:"bytes,2,rep,name=env,proto3" json:"env,omitempty"`
+	Env	[]*EnvVar	`protobuf:"bytes,2,rep,name=env,proto3" json:"env,omitempty"`
 	// k8s HorizontalPodAutoscaler settings.
 	// https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/
-	HpaSpec *HorizontalPodAutoscalerSpec `protobuf:"bytes,3,opt,name=hpa_spec,json=hpaSpec,proto3" json:"hpaSpec,omitempty"`
+	HpaSpec	*HorizontalPodAutoscalerSpec	`protobuf:"bytes,3,opt,name=hpa_spec,json=hpaSpec,proto3" json:"hpaSpec,omitempty"`
 	// k8s imagePullPolicy.
 	// https://kubernetes.io/docs/concepts/containers/images/
-	ImagePullPolicy string `protobuf:"bytes,4,opt,name=image_pull_policy,json=imagePullPolicy,proto3" json:"imagePullPolicy,omitempty"`
+	ImagePullPolicy	string	`protobuf:"bytes,4,opt,name=image_pull_policy,json=imagePullPolicy,proto3" json:"imagePullPolicy,omitempty"`
 	// k8s nodeSelector.
 	// https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#nodeselector
-	NodeSelector map[string]string `protobuf:"bytes,5,rep,name=node_selector,json=nodeSelector,proto3" json:"nodeSelector,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	NodeSelector	map[string]string	`protobuf:"bytes,5,rep,name=node_selector,json=nodeSelector,proto3" json:"nodeSelector,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// k8s PodDisruptionBudget settings.
 	// https://kubernetes.io/docs/concepts/workloads/pods/disruptions/#how-disruption-budgets-work
-	PodDisruptionBudget *PodDisruptionBudgetSpec `protobuf:"bytes,6,opt,name=pod_disruption_budget,json=podDisruptionBudget,proto3" json:"podDisruptionBudget,omitempty"`
+	PodDisruptionBudget	*PodDisruptionBudgetSpec	`protobuf:"bytes,6,opt,name=pod_disruption_budget,json=podDisruptionBudget,proto3" json:"podDisruptionBudget,omitempty"`
 	// k8s pod annotations.
 	// https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
-	PodAnnotations map[string]string `protobuf:"bytes,7,rep,name=pod_annotations,json=podAnnotations,proto3" json:"podAnnotations,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	PodAnnotations	map[string]string	`protobuf:"bytes,7,rep,name=pod_annotations,json=podAnnotations,proto3" json:"podAnnotations,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// k8s priority_class_name. Default for all resources unless overridden.
 	// https://kubernetes.io/docs/concepts/configuration/pod-priority-preemption/#priorityclass
-	PriorityClassName string `protobuf:"bytes,8,opt,name=priority_class_name,json=priorityClassName,proto3" json:"priorityClassName,omitempty"`
+	PriorityClassName	string	`protobuf:"bytes,8,opt,name=priority_class_name,json=priorityClassName,proto3" json:"priorityClassName,omitempty"`
 	// k8s readinessProbe settings.
 	// https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/
 	// k8s.io.api.core.v1.Probe readiness_probe = 9;
-	ReadinessProbe *ReadinessProbe `protobuf:"bytes,9,opt,name=readiness_probe,json=readinessProbe,proto3" json:"readinessProbe,omitempty"`
+	ReadinessProbe	*ReadinessProbe	`protobuf:"bytes,9,opt,name=readiness_probe,json=readinessProbe,proto3" json:"readinessProbe,omitempty"`
 	// k8s Deployment replicas setting.
 	// https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
-	ReplicaCount uint32 `protobuf:"varint,10,opt,name=replica_count,json=replicaCount,proto3" json:"replicaCount,omitempty"`
+	ReplicaCount	uint32	`protobuf:"varint,10,opt,name=replica_count,json=replicaCount,proto3" json:"replicaCount,omitempty"`
 	// k8s resources settings.
 	// https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#resource-requests-and-limits-of-pod-and-container
-	Resources *Resources `protobuf:"bytes,11,opt,name=resources,proto3" json:"resources,omitempty"`
+	Resources	*Resources	`protobuf:"bytes,11,opt,name=resources,proto3" json:"resources,omitempty"`
 	// k8s Service settings.
 	// https://kubernetes.io/docs/concepts/services-networking/service/
-	Service *ServiceSpec `protobuf:"bytes,12,opt,name=service,proto3" json:"service,omitempty"`
+	Service	*ServiceSpec	`protobuf:"bytes,12,opt,name=service,proto3" json:"service,omitempty"`
 	// k8s deployment strategy.
 	// https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
-	Strategy *DeploymentStrategy `protobuf:"bytes,13,opt,name=strategy,proto3" json:"strategy,omitempty"`
+	Strategy	*DeploymentStrategy	`protobuf:"bytes,13,opt,name=strategy,proto3" json:"strategy,omitempty"`
 	// k8s toleration
 	// https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
-	Tolerations []*v1.Toleration `protobuf:"bytes,14,rep,name=tolerations,proto3" json:"tolerations,omitempty"`
+	Tolerations	[]*v1.Toleration	`protobuf:"bytes,14,rep,name=tolerations,proto3" json:"tolerations,omitempty"`
 	// k8s service annotations.
 	// https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
-	ServiceAnnotations map[string]string `protobuf:"bytes,15,rep,name=service_annotations,json=serviceAnnotations,proto3" json:"serviceAnnotations,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	ServiceAnnotations	map[string]string	`protobuf:"bytes,15,rep,name=service_annotations,json=serviceAnnotations,proto3" json:"serviceAnnotations,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Overlays for k8s resources in rendered manifests.
-	Overlays             []*K8SObjectOverlay `protobuf:"bytes,100,rep,name=overlays,proto3" json:"overlays,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
+	Overlays		[]*K8SObjectOverlay	`protobuf:"bytes,100,rep,name=overlays,proto3" json:"overlays,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}		`json:"-"`
+	XXX_unrecognized	[]byte			`json:"-"`
+	XXX_sizecache		int32			`json:"-"`
 }
 
-func (m *KubernetesResourcesSpec) Reset()         { *m = KubernetesResourcesSpec{} }
-func (m *KubernetesResourcesSpec) String() string { return proto.CompactTextString(m) }
-func (*KubernetesResourcesSpec) ProtoMessage()    {}
+func (m *KubernetesResourcesSpec) Reset()		{ *m = KubernetesResourcesSpec{} }
+func (m *KubernetesResourcesSpec) String() string	{ return proto.CompactTextString(m) }
+func (*KubernetesResourcesSpec) ProtoMessage()		{}
 func (*KubernetesResourcesSpec) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6ed34a579e9b43a2, []int{5}
 }
@@ -605,22 +597,22 @@ func (m *KubernetesResourcesSpec) GetOverlays() []*K8SObjectOverlay {
 // Patch for an existing k8s resource.
 type K8SObjectOverlay struct {
 	// Resource API version.
-	ApiVersion string `protobuf:"bytes,1,opt,name=api_version,json=apiVersion,proto3" json:"apiVersion,omitempty"`
+	ApiVersion	string	`protobuf:"bytes,1,opt,name=api_version,json=apiVersion,proto3" json:"apiVersion,omitempty"`
 	// Resource kind.
-	Kind string `protobuf:"bytes,2,opt,name=kind,proto3" json:"kind,omitempty"`
+	Kind	string	`protobuf:"bytes,2,opt,name=kind,proto3" json:"kind,omitempty"`
 	// Name of resource.
 	// Namespace is always the component namespace.
-	Name string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
+	Name	string	`protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	// List of patches to apply to resource.
-	Patches              []*K8SObjectOverlay_PathValue `protobuf:"bytes,4,rep,name=patches,proto3" json:"patches,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                      `json:"-"`
-	XXX_unrecognized     []byte                        `json:"-"`
-	XXX_sizecache        int32                         `json:"-"`
+	Patches			[]*K8SObjectOverlay_PathValue	`protobuf:"bytes,4,rep,name=patches,proto3" json:"patches,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}			`json:"-"`
+	XXX_unrecognized	[]byte				`json:"-"`
+	XXX_sizecache		int32				`json:"-"`
 }
 
-func (m *K8SObjectOverlay) Reset()         { *m = K8SObjectOverlay{} }
-func (m *K8SObjectOverlay) String() string { return proto.CompactTextString(m) }
-func (*K8SObjectOverlay) ProtoMessage()    {}
+func (m *K8SObjectOverlay) Reset()		{ *m = K8SObjectOverlay{} }
+func (m *K8SObjectOverlay) String() string	{ return proto.CompactTextString(m) }
+func (*K8SObjectOverlay) ProtoMessage()		{}
 func (*K8SObjectOverlay) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6ed34a579e9b43a2, []int{6}
 }
@@ -676,21 +668,21 @@ type K8SObjectOverlay_PathValue struct {
 	// Where [key1:value1] is a selector for a key-value pair to identify a list element and [:value] is a value
 	// selector to identify a list element in a leaf list.
 	// All path intermediate nodes must exist.
-	Path string `protobuf:"bytes,1,opt,name=path,proto3" json:"path,omitempty"`
+	Path	string	`protobuf:"bytes,1,opt,name=path,proto3" json:"path,omitempty"`
 	// Value to add, delete or replace.
 	// For add, the path should be a new leaf.
 	// For delete, value should be unset.
 	// For replace, path should reference an existing node.
 	// All values are strings but are converted into appropriate type based on schema.
-	Value                interface{} `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
-	XXX_unrecognized     []byte         `json:"-"`
-	XXX_sizecache        int32          `json:"-"`
+	Value			interface{}	`protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *K8SObjectOverlay_PathValue) Reset()         { *m = K8SObjectOverlay_PathValue{} }
-func (m *K8SObjectOverlay_PathValue) String() string { return proto.CompactTextString(m) }
-func (*K8SObjectOverlay_PathValue) ProtoMessage()    {}
+func (m *K8SObjectOverlay_PathValue) Reset()		{ *m = K8SObjectOverlay_PathValue{} }
+func (m *K8SObjectOverlay_PathValue) String() string	{ return proto.CompactTextString(m) }
+func (*K8SObjectOverlay_PathValue) ProtoMessage()	{}
 func (*K8SObjectOverlay_PathValue) Descriptor() ([]byte, []int) {
 	return fileDescriptor_6ed34a579e9b43a2, []int{6, 0}
 }
@@ -720,10 +712,6 @@ func (m *K8SObjectOverlay_PathValue) GetPath() string {
 	return ""
 }
 
-
-
-
-
 func init() {
 	proto.RegisterType((*IstioComponentSetSpec)(nil), "istio.operator.v1alpha1.IstioComponentSetSpec")
 	proto.RegisterType((*BaseComponentSpec)(nil), "istio.operator.v1alpha1.BaseComponentSpec")
@@ -739,7 +727,7 @@ func init() {
 	proto.RegisterType((*K8SObjectOverlay_PathValue)(nil), "istio.operator.v1alpha1.K8sObjectOverlay.PathValue")
 }
 
-func init() { proto.RegisterFile("operator/v1alpha1/component.proto", fileDescriptor_6ed34a579e9b43a2) }
+func init()	{ proto.RegisterFile("operator/v1alpha1/component.proto", fileDescriptor_6ed34a579e9b43a2) }
 
 var fileDescriptor_6ed34a579e9b43a2 = []byte{
 	// 1239 bytes of a gzipped FileDescriptorProto

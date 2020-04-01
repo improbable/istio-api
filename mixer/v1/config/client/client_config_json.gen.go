@@ -77,6 +77,6 @@ func (this *TcpClientConfig) UnmarshalJSON(b []byte) error {
 }
 
 var (
-	ClientConfigMarshaler   = &github_com_gogo_protobuf_jsonpb.Marshaler{}
-	ClientConfigUnmarshaler = &github_com_gogo_protobuf_jsonpb.Unmarshaler{}
+	ClientConfigMarshaler	= &github_com_gogo_protobuf_jsonpb.Marshaler{}
+	ClientConfigUnmarshaler	= &github_com_gogo_protobuf_jsonpb.Unmarshaler{}
 )

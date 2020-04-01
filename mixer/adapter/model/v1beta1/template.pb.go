@@ -22,7 +22,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion3	// please upgrade the proto package
 
 // Template provides the details of a Mixer template.
 type Template struct {
@@ -30,8 +30,8 @@ type Template struct {
 	Descriptor_ string `protobuf:"bytes,1,opt,name=descriptor,proto3" json:"descriptor,omitempty"`
 }
 
-func (m *Template) Reset()      { *m = Template{} }
-func (*Template) ProtoMessage() {}
+func (m *Template) Reset()	{ *m = Template{} }
+func (*Template) ProtoMessage()	{}
 func (*Template) Descriptor() ([]byte, []int) {
 	return fileDescriptor_bfb51c5f8ecd0171, []int{0}
 }
@@ -406,6 +406,6 @@ func skipTemplate(dAtA []byte) (n int, err error) {
 }
 
 var (
-	ErrInvalidLengthTemplate = fmt.Errorf("proto: negative length found during unmarshaling")
-	ErrIntOverflowTemplate   = fmt.Errorf("proto: integer overflow")
+	ErrInvalidLengthTemplate	= fmt.Errorf("proto: negative length found during unmarshaling")
+	ErrIntOverflowTemplate		= fmt.Errorf("proto: integer overflow")
 )

@@ -136,7 +136,7 @@ import (
 	proto "github.com/gogo/protobuf/proto"
 	io "io"
 	v1beta1 "istio.io/api/type/v1beta1"
-	_ "istio.io/gogo-genproto/googleapis/google/api"
+
 	math "math"
 	math_bits "math/bits"
 )
@@ -150,26 +150,26 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion3	// please upgrade the proto package
 
 // Action specifies the operation to take.
 type AuthorizationPolicy_Action int32
 
 const (
 	// Allow a request only if it matches the rules. This is the default type.
-	AuthorizationPolicy_ALLOW AuthorizationPolicy_Action = 0
+	AuthorizationPolicy_ALLOW	AuthorizationPolicy_Action	= 0
 	// Deny a request if it matches any of the rules.
-	AuthorizationPolicy_DENY AuthorizationPolicy_Action = 1
+	AuthorizationPolicy_DENY	AuthorizationPolicy_Action	= 1
 )
 
 var AuthorizationPolicy_Action_name = map[int32]string{
-	0: "ALLOW",
-	1: "DENY",
+	0:	"ALLOW",
+	1:	"DENY",
 }
 
 var AuthorizationPolicy_Action_value = map[string]int32{
-	"ALLOW": 0,
-	"DENY":  1,
+	"ALLOW":	0,
+	"DENY":		1,
 }
 
 func (x AuthorizationPolicy_Action) String() string {
@@ -230,23 +230,23 @@ type AuthorizationPolicy struct {
 	// Optional. Workload selector decides where to apply the authorization policy.
 	// If not set, the authorization policy will be applied to all workloads in the
 	// same namespace as the authorization policy.
-	Selector *v1beta1.WorkloadSelector `protobuf:"bytes,1,opt,name=selector,proto3" json:"selector,omitempty"`
+	Selector	*v1beta1.WorkloadSelector	`protobuf:"bytes,1,opt,name=selector,proto3" json:"selector,omitempty"`
 	// Optional. A list of rules to match the request. A match occurs when at least
 	// one rule matches the request.
 	//
 	// If not set, the match will never occur. This is equivalent to setting a
 	// default of deny for the target workloads.
-	Rules []*Rule `protobuf:"bytes,2,rep,name=rules,proto3" json:"rules,omitempty"`
+	Rules	[]*Rule	`protobuf:"bytes,2,rep,name=rules,proto3" json:"rules,omitempty"`
 	// Optional. The action to take if the request is matched with the rules.
-	Action               AuthorizationPolicy_Action `protobuf:"varint,3,opt,name=action,proto3,enum=istio.security.v1beta1.AuthorizationPolicy_Action" json:"action,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                   `json:"-"`
-	XXX_unrecognized     []byte                     `json:"-"`
-	XXX_sizecache        int32                      `json:"-"`
+	Action			AuthorizationPolicy_Action	`protobuf:"varint,3,opt,name=action,proto3,enum=istio.security.v1beta1.AuthorizationPolicy_Action" json:"action,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}			`json:"-"`
+	XXX_unrecognized	[]byte				`json:"-"`
+	XXX_sizecache		int32				`json:"-"`
 }
 
-func (m *AuthorizationPolicy) Reset()         { *m = AuthorizationPolicy{} }
-func (m *AuthorizationPolicy) String() string { return proto.CompactTextString(m) }
-func (*AuthorizationPolicy) ProtoMessage()    {}
+func (m *AuthorizationPolicy) Reset()		{ *m = AuthorizationPolicy{} }
+func (m *AuthorizationPolicy) String() string	{ return proto.CompactTextString(m) }
+func (*AuthorizationPolicy) ProtoMessage()	{}
 func (*AuthorizationPolicy) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b72f4bc212a83269, []int{0}
 }
@@ -312,23 +312,23 @@ type Rule struct {
 	// Optional. from specifies the source of a request.
 	//
 	// If not set, any source is allowed.
-	From []*Rule_From `protobuf:"bytes,1,rep,name=from,proto3" json:"from,omitempty"`
+	From	[]*Rule_From	`protobuf:"bytes,1,rep,name=from,proto3" json:"from,omitempty"`
 	// Optional. to specifies the operation of a request.
 	//
 	// If not set, any operation is allowed.
-	To []*Rule_To `protobuf:"bytes,2,rep,name=to,proto3" json:"to,omitempty"`
+	To	[]*Rule_To	`protobuf:"bytes,2,rep,name=to,proto3" json:"to,omitempty"`
 	// Optional. when specifies a list of additional conditions of a request.
 	//
 	// If not set, any condition is allowed.
-	When                 []*Condition `protobuf:"bytes,3,rep,name=when,proto3" json:"when,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}     `json:"-"`
-	XXX_unrecognized     []byte       `json:"-"`
-	XXX_sizecache        int32        `json:"-"`
+	When			[]*Condition	`protobuf:"bytes,3,rep,name=when,proto3" json:"when,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *Rule) Reset()         { *m = Rule{} }
-func (m *Rule) String() string { return proto.CompactTextString(m) }
-func (*Rule) ProtoMessage()    {}
+func (m *Rule) Reset()		{ *m = Rule{} }
+func (m *Rule) String() string	{ return proto.CompactTextString(m) }
+func (*Rule) ProtoMessage()	{}
 func (*Rule) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b72f4bc212a83269, []int{1}
 }
@@ -383,15 +383,15 @@ func (m *Rule) GetWhen() []*Condition {
 // From includes a list or sources.
 type Rule_From struct {
 	// Source specifies the source of a request.
-	Source               *Source  `protobuf:"bytes,1,opt,name=source,proto3" json:"source,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	Source			*Source		`protobuf:"bytes,1,opt,name=source,proto3" json:"source,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *Rule_From) Reset()         { *m = Rule_From{} }
-func (m *Rule_From) String() string { return proto.CompactTextString(m) }
-func (*Rule_From) ProtoMessage()    {}
+func (m *Rule_From) Reset()		{ *m = Rule_From{} }
+func (m *Rule_From) String() string	{ return proto.CompactTextString(m) }
+func (*Rule_From) ProtoMessage()	{}
 func (*Rule_From) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b72f4bc212a83269, []int{1, 0}
 }
@@ -432,15 +432,15 @@ func (m *Rule_From) GetSource() *Source {
 // To includes a list or operations.
 type Rule_To struct {
 	// Operation specifies the operation of a request.
-	Operation            *Operation `protobuf:"bytes,1,opt,name=operation,proto3" json:"operation,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
-	XXX_unrecognized     []byte     `json:"-"`
-	XXX_sizecache        int32      `json:"-"`
+	Operation		*Operation	`protobuf:"bytes,1,opt,name=operation,proto3" json:"operation,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *Rule_To) Reset()         { *m = Rule_To{} }
-func (m *Rule_To) String() string { return proto.CompactTextString(m) }
-func (*Rule_To) ProtoMessage()    {}
+func (m *Rule_To) Reset()		{ *m = Rule_To{} }
+func (m *Rule_To) String() string	{ return proto.CompactTextString(m) }
+func (*Rule_To) ProtoMessage()		{}
 func (*Rule_To) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b72f4bc212a83269, []int{1, 1}
 }
@@ -494,38 +494,38 @@ type Source struct {
 	// matches to the "source.principal" attribute. This field requires mTLS enabled.
 	//
 	// If not set, any principal is allowed.
-	Principals []string `protobuf:"bytes,1,rep,name=principals,proto3" json:"principals,omitempty"`
+	Principals	[]string	`protobuf:"bytes,1,rep,name=principals,proto3" json:"principals,omitempty"`
 	// Optional. A list of negative match of source peer identities.
-	NotPrincipals []string `protobuf:"bytes,5,rep,name=not_principals,json=notPrincipals,proto3" json:"not_principals,omitempty"`
+	NotPrincipals	[]string	`protobuf:"bytes,5,rep,name=not_principals,json=notPrincipals,proto3" json:"not_principals,omitempty"`
 	// Optional. A list of request identities (i.e. "iss/sub" claims), which
 	// matches to the "request.auth.principal" attribute.
 	//
 	// If not set, any request principal is allowed.
-	RequestPrincipals []string `protobuf:"bytes,2,rep,name=request_principals,json=requestPrincipals,proto3" json:"request_principals,omitempty"`
+	RequestPrincipals	[]string	`protobuf:"bytes,2,rep,name=request_principals,json=requestPrincipals,proto3" json:"request_principals,omitempty"`
 	// Optional. A list of negative match of request identities.
-	NotRequestPrincipals []string `protobuf:"bytes,6,rep,name=not_request_principals,json=notRequestPrincipals,proto3" json:"not_request_principals,omitempty"`
+	NotRequestPrincipals	[]string	`protobuf:"bytes,6,rep,name=not_request_principals,json=notRequestPrincipals,proto3" json:"not_request_principals,omitempty"`
 	// Optional. A list of namespaces, which matches to the "source.namespace"
 	// attribute. This field requires mTLS enabled.
 	//
 	// If not set, any namespace is allowed.
-	Namespaces []string `protobuf:"bytes,3,rep,name=namespaces,proto3" json:"namespaces,omitempty"`
+	Namespaces	[]string	`protobuf:"bytes,3,rep,name=namespaces,proto3" json:"namespaces,omitempty"`
 	// Optional. A list of negative match of namespaces.
-	NotNamespaces []string `protobuf:"bytes,7,rep,name=not_namespaces,json=notNamespaces,proto3" json:"not_namespaces,omitempty"`
+	NotNamespaces	[]string	`protobuf:"bytes,7,rep,name=not_namespaces,json=notNamespaces,proto3" json:"not_namespaces,omitempty"`
 	// Optional. A list of IP blocks, which matches to the "source.ip" attribute.
 	// Single IP (e.g. "1.2.3.4") and CIDR (e.g. "1.2.3.0/24") are supported.
 	//
 	// If not set, any IP is allowed.
-	IpBlocks []string `protobuf:"bytes,4,rep,name=ip_blocks,json=ipBlocks,proto3" json:"ip_blocks,omitempty"`
+	IpBlocks	[]string	`protobuf:"bytes,4,rep,name=ip_blocks,json=ipBlocks,proto3" json:"ip_blocks,omitempty"`
 	// Optional. A list of negative match of IP blocks.
-	NotIpBlocks          []string `protobuf:"bytes,8,rep,name=not_ip_blocks,json=notIpBlocks,proto3" json:"not_ip_blocks,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	NotIpBlocks		[]string	`protobuf:"bytes,8,rep,name=not_ip_blocks,json=notIpBlocks,proto3" json:"not_ip_blocks,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *Source) Reset()         { *m = Source{} }
-func (m *Source) String() string { return proto.CompactTextString(m) }
-func (*Source) ProtoMessage()    {}
+func (m *Source) Reset()		{ *m = Source{} }
+func (m *Source) String() string	{ return proto.CompactTextString(m) }
+func (*Source) ProtoMessage()		{}
 func (*Source) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b72f4bc212a83269, []int{2}
 }
@@ -627,38 +627,38 @@ type Operation struct {
 	// Optional. A list of hosts, which matches to the "request.host" attribute.
 	//
 	// If not set, any host is allowed. Must be used only with HTTP.
-	Hosts []string `protobuf:"bytes,1,rep,name=hosts,proto3" json:"hosts,omitempty"`
+	Hosts	[]string	`protobuf:"bytes,1,rep,name=hosts,proto3" json:"hosts,omitempty"`
 	// Optional. A list of negative match of hosts.
-	NotHosts []string `protobuf:"bytes,5,rep,name=not_hosts,json=notHosts,proto3" json:"not_hosts,omitempty"`
+	NotHosts	[]string	`protobuf:"bytes,5,rep,name=not_hosts,json=notHosts,proto3" json:"not_hosts,omitempty"`
 	// Optional. A list of ports, which matches to the "destination.port" attribute.
 	//
 	// If not set, any port is allowed.
-	Ports []string `protobuf:"bytes,2,rep,name=ports,proto3" json:"ports,omitempty"`
+	Ports	[]string	`protobuf:"bytes,2,rep,name=ports,proto3" json:"ports,omitempty"`
 	// Optional. A list of negative match of ports.
-	NotPorts []string `protobuf:"bytes,6,rep,name=not_ports,json=notPorts,proto3" json:"not_ports,omitempty"`
+	NotPorts	[]string	`protobuf:"bytes,6,rep,name=not_ports,json=notPorts,proto3" json:"not_ports,omitempty"`
 	// Optional. A list of methods, which matches to the "request.method" attribute.
 	// For gRPC service, this will always be "POST".
 	//
 	// If not set, any method is allowed. Must be used only with HTTP.
-	Methods []string `protobuf:"bytes,3,rep,name=methods,proto3" json:"methods,omitempty"`
+	Methods	[]string	`protobuf:"bytes,3,rep,name=methods,proto3" json:"methods,omitempty"`
 	// Optional. A list of negative match of methods.
-	NotMethods []string `protobuf:"bytes,7,rep,name=not_methods,json=notMethods,proto3" json:"not_methods,omitempty"`
+	NotMethods	[]string	`protobuf:"bytes,7,rep,name=not_methods,json=notMethods,proto3" json:"not_methods,omitempty"`
 	// Optional. A list of paths, which matches to the "request.url_path" attribute.
 	// For gRPC service, this will be the fully-qualified name in the form of
 	// "/package.service/method".
 	//
 	// If not set, any path is allowed. Must be used only with HTTP.
-	Paths []string `protobuf:"bytes,4,rep,name=paths,proto3" json:"paths,omitempty"`
+	Paths	[]string	`protobuf:"bytes,4,rep,name=paths,proto3" json:"paths,omitempty"`
 	// Optional. A list of negative match of paths.
-	NotPaths             []string `protobuf:"bytes,8,rep,name=not_paths,json=notPaths,proto3" json:"not_paths,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	NotPaths		[]string	`protobuf:"bytes,8,rep,name=not_paths,json=notPaths,proto3" json:"not_paths,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *Operation) Reset()         { *m = Operation{} }
-func (m *Operation) String() string { return proto.CompactTextString(m) }
-func (*Operation) ProtoMessage()    {}
+func (m *Operation) Reset()		{ *m = Operation{} }
+func (m *Operation) String() string	{ return proto.CompactTextString(m) }
+func (*Operation) ProtoMessage()	{}
 func (*Operation) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b72f4bc212a83269, []int{3}
 }
@@ -749,21 +749,21 @@ func (m *Operation) GetNotPaths() []string {
 type Condition struct {
 	// The name of an Istio attribute.
 	// See the [full list of supported attributes](https://istio.io/docs/reference/config/security/conditions/).
-	Key string `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
+	Key	string	`protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
 	// Optional. A list of allowed values for the attribute.
 	// Note: at least one of values or not_values must be set.
-	Values []string `protobuf:"bytes,2,rep,name=values,proto3" json:"values,omitempty"`
+	Values	[]string	`protobuf:"bytes,2,rep,name=values,proto3" json:"values,omitempty"`
 	// Optional. A list of negative match of values for the attribute.
 	// Note: at least one of values or not_values must be set.
-	NotValues            []string `protobuf:"bytes,3,rep,name=not_values,json=notValues,proto3" json:"not_values,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	NotValues		[]string	`protobuf:"bytes,3,rep,name=not_values,json=notValues,proto3" json:"not_values,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *Condition) Reset()         { *m = Condition{} }
-func (m *Condition) String() string { return proto.CompactTextString(m) }
-func (*Condition) ProtoMessage()    {}
+func (m *Condition) Reset()		{ *m = Condition{} }
+func (m *Condition) String() string	{ return proto.CompactTextString(m) }
+func (*Condition) ProtoMessage()	{}
 func (*Condition) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b72f4bc212a83269, []int{4}
 }
@@ -2938,6 +2938,6 @@ func skipAuthorization(dAtA []byte) (n int, err error) {
 }
 
 var (
-	ErrInvalidLengthAuthorization = fmt.Errorf("proto: negative length found during unmarshaling")
-	ErrIntOverflowAuthorization   = fmt.Errorf("proto: integer overflow")
+	ErrInvalidLengthAuthorization	= fmt.Errorf("proto: negative length found during unmarshaling")
+	ErrIntOverflowAuthorization	= fmt.Errorf("proto: integer overflow")
 )

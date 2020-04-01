@@ -320,7 +320,7 @@ import (
 	fmt "fmt"
 	proto "github.com/gogo/protobuf/proto"
 	io "io"
-	_ "istio.io/gogo-genproto/googleapis/google/api"
+
 	math "math"
 	math_bits "math/bits"
 )
@@ -334,7 +334,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion3	// please upgrade the proto package
 
 // Location specifies whether the service is part of Istio mesh or
 // outside the mesh.  Location determines the behavior of several
@@ -347,22 +347,22 @@ type ServiceEntry_Location int32
 const (
 	// Signifies that the service is external to the mesh. Typically used
 	// to indicate external services consumed through APIs.
-	ServiceEntry_MESH_EXTERNAL ServiceEntry_Location = 0
+	ServiceEntry_MESH_EXTERNAL	ServiceEntry_Location	= 0
 	// Signifies that the service is part of the mesh. Typically used to
 	// indicate services added explicitly as part of expanding the service
 	// mesh to include unmanaged infrastructure (e.g., VMs added to a
 	// Kubernetes based service mesh).
-	ServiceEntry_MESH_INTERNAL ServiceEntry_Location = 1
+	ServiceEntry_MESH_INTERNAL	ServiceEntry_Location	= 1
 )
 
 var ServiceEntry_Location_name = map[int32]string{
-	0: "MESH_EXTERNAL",
-	1: "MESH_INTERNAL",
+	0:	"MESH_EXTERNAL",
+	1:	"MESH_INTERNAL",
 }
 
 var ServiceEntry_Location_value = map[string]int32{
-	"MESH_EXTERNAL": 0,
-	"MESH_INTERNAL": 1,
+	"MESH_EXTERNAL":	0,
+	"MESH_INTERNAL":	1,
 }
 
 func (x ServiceEntry_Location) String() string {
@@ -391,10 +391,10 @@ const (
 	// eBPF. After performing any routing related transformations, the
 	// proxy will forward the connection to the IP address to which the
 	// connection was bound.
-	ServiceEntry_NONE ServiceEntry_Resolution = 0
+	ServiceEntry_NONE	ServiceEntry_Resolution	= 0
 	// Use the static IP addresses specified in endpoints (see below) as the
 	// backing instances associated with the service.
-	ServiceEntry_STATIC ServiceEntry_Resolution = 1
+	ServiceEntry_STATIC	ServiceEntry_Resolution	= 1
 	// Attempt to resolve the IP address by querying the ambient DNS,
 	// during request processing. If no endpoints are specified, the proxy
 	// will resolve the DNS address specified in the hosts field, if
@@ -402,19 +402,19 @@ const (
 	// addresses specified in the endpoints will be resolved to determine
 	// the destination IP address.  DNS resolution cannot be used with Unix
 	// domain socket endpoints.
-	ServiceEntry_DNS ServiceEntry_Resolution = 2
+	ServiceEntry_DNS	ServiceEntry_Resolution	= 2
 )
 
 var ServiceEntry_Resolution_name = map[int32]string{
-	0: "NONE",
-	1: "STATIC",
-	2: "DNS",
+	0:	"NONE",
+	1:	"STATIC",
+	2:	"DNS",
 }
 
 var ServiceEntry_Resolution_value = map[string]int32{
-	"NONE":   0,
-	"STATIC": 1,
-	"DNS":    2,
+	"NONE":		0,
+	"STATIC":	1,
+	"DNS":		2,
 }
 
 func (x ServiceEntry_Resolution) String() string {
@@ -465,7 +465,7 @@ type ServiceEntry struct {
 	// Note that when resolution is set to type DNS
 	// and no endpoints are specified, the host field will be used as the DNS name
 	// of the endpoint to route traffic to.
-	Hosts []string `protobuf:"bytes,1,rep,name=hosts,proto3" json:"hosts,omitempty"`
+	Hosts	[]string	`protobuf:"bytes,1,rep,name=hosts,proto3" json:"hosts,omitempty"`
 	// The virtual IP addresses associated with the service. Could be CIDR
 	// prefix. For HTTP traffic, generated route configurations will include http route
 	// domains for both the `addresses` and `hosts` field values and the destination will
@@ -480,21 +480,21 @@ type ServiceEntry struct {
 	// simple TCP proxy, forwarding incoming traffic on a specified port to
 	// the specified destination endpoint IP/host. Unix domain socket
 	// addresses are not supported in this field.
-	Addresses []string `protobuf:"bytes,2,rep,name=addresses,proto3" json:"addresses,omitempty"`
+	Addresses	[]string	`protobuf:"bytes,2,rep,name=addresses,proto3" json:"addresses,omitempty"`
 	// The ports associated with the external service. If the
 	// Endpoints are Unix domain socket addresses, there must be exactly one
 	// port.
-	Ports []*Port `protobuf:"bytes,3,rep,name=ports,proto3" json:"ports,omitempty"`
+	Ports	[]*Port	`protobuf:"bytes,3,rep,name=ports,proto3" json:"ports,omitempty"`
 	// Specify whether the service should be considered external to the mesh
 	// or part of the mesh.
-	Location ServiceEntry_Location `protobuf:"varint,4,opt,name=location,proto3,enum=istio.networking.v1beta1.ServiceEntry_Location" json:"location,omitempty"`
+	Location	ServiceEntry_Location	`protobuf:"varint,4,opt,name=location,proto3,enum=istio.networking.v1beta1.ServiceEntry_Location" json:"location,omitempty"`
 	// Service discovery mode for the hosts. Care must be taken
 	// when setting the resolution mode to NONE for a TCP port without
 	// accompanying IP addresses. In such cases, traffic to any IP on
 	// said port will be allowed (i.e. `0.0.0.0:<port>`).
-	Resolution ServiceEntry_Resolution `protobuf:"varint,5,opt,name=resolution,proto3,enum=istio.networking.v1beta1.ServiceEntry_Resolution" json:"resolution,omitempty"`
+	Resolution	ServiceEntry_Resolution	`protobuf:"varint,5,opt,name=resolution,proto3,enum=istio.networking.v1beta1.ServiceEntry_Resolution" json:"resolution,omitempty"`
 	// One or more endpoints associated with the service.
-	Endpoints []*ServiceEntry_Endpoint `protobuf:"bytes,6,rep,name=endpoints,proto3" json:"endpoints,omitempty"`
+	Endpoints	[]*ServiceEntry_Endpoint	`protobuf:"bytes,6,rep,name=endpoints,proto3" json:"endpoints,omitempty"`
 	// A list of namespaces to which this service is exported. Exporting a service
 	// allows it to be used by sidecars, gateways and virtual services defined in
 	// other namespaces. This feature provides a mechanism for service owners
@@ -514,21 +514,21 @@ type ServiceEntry struct {
 	//
 	// NOTE: in the current release, the `exportTo` value is restricted to
 	// "." or "*" (i.e., the current namespace or all namespaces).
-	ExportTo []string `protobuf:"bytes,7,rep,name=export_to,json=exportTo,proto3" json:"export_to,omitempty"`
+	ExportTo	[]string	`protobuf:"bytes,7,rep,name=export_to,json=exportTo,proto3" json:"export_to,omitempty"`
 	// The list of subject alternate names allowed for workload instances that
 	// implement this service. This information is used to enforce
 	// [secure-naming](https://istio.io/docs/concepts/security/#secure-naming).
 	// If specified, the proxy will verify that the server
 	// certificate's subject alternate name matches one of the specified values.
-	SubjectAltNames      []string `protobuf:"bytes,8,rep,name=subject_alt_names,json=subjectAltNames,proto3" json:"subject_alt_names,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	SubjectAltNames		[]string	`protobuf:"bytes,8,rep,name=subject_alt_names,json=subjectAltNames,proto3" json:"subject_alt_names,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *ServiceEntry) Reset()         { *m = ServiceEntry{} }
-func (m *ServiceEntry) String() string { return proto.CompactTextString(m) }
-func (*ServiceEntry) ProtoMessage()    {}
+func (m *ServiceEntry) Reset()		{ *m = ServiceEntry{} }
+func (m *ServiceEntry) String() string	{ return proto.CompactTextString(m) }
+func (*ServiceEntry) ProtoMessage()	{}
 func (*ServiceEntry) Descriptor() ([]byte, []int) {
 	return fileDescriptor_be685d9fa1e5ca12, []int{0}
 }
@@ -622,13 +622,13 @@ type ServiceEntry_Endpoint struct {
 	// port.  Domain names can be used if and only if the resolution is set
 	// to DNS, and must be fully-qualified without wildcards. Use the form
 	// unix:///absolute/path/to/socket for Unix domain socket endpoints.
-	Address string `protobuf:"bytes,1,opt,name=address,proto3" json:"address,omitempty"`
+	Address	string	`protobuf:"bytes,1,opt,name=address,proto3" json:"address,omitempty"`
 	// Set of ports associated with the endpoint. The ports must be
 	// associated with a port name that was declared as part of the
 	// service. Do not use for `unix://` addresses.
-	Ports map[string]uint32 `protobuf:"bytes,2,rep,name=ports,proto3" json:"ports,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"varint,2,opt,name=value,proto3"`
+	Ports	map[string]uint32	`protobuf:"bytes,2,rep,name=ports,proto3" json:"ports,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"varint,2,opt,name=value,proto3"`
 	// One or more labels associated with the endpoint.
-	Labels map[string]string `protobuf:"bytes,3,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Labels	map[string]string	`protobuf:"bytes,3,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Network enables Istio to group endpoints resident in the same L3
 	// domain/network. All endpoints in the same network are assumed to be
 	// directly reachable from one another. When endpoints in different
@@ -637,7 +637,7 @@ type ServiceEntry_Endpoint struct {
 	// `AUTO_PASSTHROUGH` mode in a Gateway Server). This is
 	// an advanced configuration used typically for spanning an Istio mesh
 	// over multiple clusters.
-	Network string `protobuf:"bytes,4,opt,name=network,proto3" json:"network,omitempty"`
+	Network	string	`protobuf:"bytes,4,opt,name=network,proto3" json:"network,omitempty"`
 	// The locality associated with the endpoint. A locality corresponds
 	// to a failure domain (e.g., country/region/zone). Arbitrary failure
 	// domain hierarchies can be represented by separating each
@@ -655,18 +655,18 @@ type ServiceEntry_Endpoint struct {
 	// locality. Endpoint e2 could be the IP associated with a gateway
 	// (that bridges networks n1 and n2), or the IP associated with a
 	// standard service endpoint.
-	Locality string `protobuf:"bytes,5,opt,name=locality,proto3" json:"locality,omitempty"`
+	Locality	string	`protobuf:"bytes,5,opt,name=locality,proto3" json:"locality,omitempty"`
 	// The load balancing weight associated with the endpoint. Endpoints
 	// with higher weights will receive proportionally higher traffic.
-	Weight               uint32   `protobuf:"varint,6,opt,name=weight,proto3" json:"weight,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	Weight			uint32		`protobuf:"varint,6,opt,name=weight,proto3" json:"weight,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *ServiceEntry_Endpoint) Reset()         { *m = ServiceEntry_Endpoint{} }
-func (m *ServiceEntry_Endpoint) String() string { return proto.CompactTextString(m) }
-func (*ServiceEntry_Endpoint) ProtoMessage()    {}
+func (m *ServiceEntry_Endpoint) Reset()		{ *m = ServiceEntry_Endpoint{} }
+func (m *ServiceEntry_Endpoint) String() string	{ return proto.CompactTextString(m) }
+func (*ServiceEntry_Endpoint) ProtoMessage()	{}
 func (*ServiceEntry_Endpoint) Descriptor() ([]byte, []int) {
 	return fileDescriptor_be685d9fa1e5ca12, []int{0, 0}
 }
@@ -1899,6 +1899,6 @@ func skipServiceEntry(dAtA []byte) (n int, err error) {
 }
 
 var (
-	ErrInvalidLengthServiceEntry = fmt.Errorf("proto: negative length found during unmarshaling")
-	ErrIntOverflowServiceEntry   = fmt.Errorf("proto: integer overflow")
+	ErrInvalidLengthServiceEntry	= fmt.Errorf("proto: negative length found during unmarshaling")
+	ErrIntOverflowServiceEntry	= fmt.Errorf("proto: integer overflow")
 )

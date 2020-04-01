@@ -18,7 +18,7 @@ import (
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	io "io"
-	rpc "istio.io/gogo-genproto/googleapis/google/rpc"
+
 	math "math"
 	math_bits "math/bits"
 	reflect "reflect"
@@ -37,30 +37,30 @@ var _ = time.Kitchen
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion3	// please upgrade the proto package
 
 // How an attribute's value was matched
 type ReferencedAttributes_Condition int32
 
 const (
-	CONDITION_UNSPECIFIED ReferencedAttributes_Condition = 0
-	ABSENCE               ReferencedAttributes_Condition = 1
-	EXACT                 ReferencedAttributes_Condition = 2
-	REGEX                 ReferencedAttributes_Condition = 3
+	CONDITION_UNSPECIFIED	ReferencedAttributes_Condition	= 0
+	ABSENCE			ReferencedAttributes_Condition	= 1
+	EXACT			ReferencedAttributes_Condition	= 2
+	REGEX			ReferencedAttributes_Condition	= 3
 )
 
 var ReferencedAttributes_Condition_name = map[int32]string{
-	0: "CONDITION_UNSPECIFIED",
-	1: "ABSENCE",
-	2: "EXACT",
-	3: "REGEX",
+	0:	"CONDITION_UNSPECIFIED",
+	1:	"ABSENCE",
+	2:	"EXACT",
+	3:	"REGEX",
 }
 
 var ReferencedAttributes_Condition_value = map[string]int32{
-	"CONDITION_UNSPECIFIED": 0,
-	"ABSENCE":               1,
-	"EXACT":                 2,
-	"REGEX":                 3,
+	"CONDITION_UNSPECIFIED":	0,
+	"ABSENCE":			1,
+	"EXACT":			2,
+	"REGEX":			3,
 }
 
 func (ReferencedAttributes_Condition) EnumDescriptor() ([]byte, []int) {
@@ -71,21 +71,21 @@ func (ReferencedAttributes_Condition) EnumDescriptor() ([]byte, []int) {
 type HeaderOperation_Operation int32
 
 const (
-	REPLACE HeaderOperation_Operation = 0
-	REMOVE  HeaderOperation_Operation = 1
-	APPEND  HeaderOperation_Operation = 2
+	REPLACE	HeaderOperation_Operation	= 0
+	REMOVE	HeaderOperation_Operation	= 1
+	APPEND	HeaderOperation_Operation	= 2
 )
 
 var HeaderOperation_Operation_name = map[int32]string{
-	0: "REPLACE",
-	1: "REMOVE",
-	2: "APPEND",
+	0:	"REPLACE",
+	1:	"REMOVE",
+	2:	"APPEND",
 }
 
 var HeaderOperation_Operation_value = map[string]int32{
-	"REPLACE": 0,
-	"REMOVE":  1,
-	"APPEND":  2,
+	"REPLACE":	0,
+	"REMOVE":	1,
+	"APPEND":	2,
 }
 
 func (HeaderOperation_Operation) EnumDescriptor() ([]byte, []int) {
@@ -100,21 +100,21 @@ const (
 	// request size. Each individual set of attributes is used to modify the previous set.
 	// NOTE: There is no way with this encoding to specify attribute value deletion. This
 	// option should be used with extreme caution.
-	DELTA_ENCODING ReportRequest_RepeatedAttributesSemantics = 0
+	DELTA_ENCODING	ReportRequest_RepeatedAttributesSemantics	= 0
 	// Treat each set of compressed attributes as complete - independent from other sets
 	// in this request. This will result in on-wire duplication of attributes and values, but
 	// will allow for proper accounting of absent values in overall encoding.
-	INDEPENDENT_ENCODING ReportRequest_RepeatedAttributesSemantics = 1
+	INDEPENDENT_ENCODING	ReportRequest_RepeatedAttributesSemantics	= 1
 )
 
 var ReportRequest_RepeatedAttributesSemantics_name = map[int32]string{
-	0: "DELTA_ENCODING",
-	1: "INDEPENDENT_ENCODING",
+	0:	"DELTA_ENCODING",
+	1:	"INDEPENDENT_ENCODING",
 }
 
 var ReportRequest_RepeatedAttributesSemantics_value = map[string]int32{
-	"DELTA_ENCODING":       0,
-	"INDEPENDENT_ENCODING": 1,
+	"DELTA_ENCODING":	0,
+	"INDEPENDENT_ENCODING":	1,
 }
 
 func (ReportRequest_RepeatedAttributesSemantics) EnumDescriptor() ([]byte, []int) {
@@ -127,20 +127,20 @@ type CheckRequest struct {
 	//
 	// Mixer's configuration determines how these attributes are used to
 	// establish the result returned in the response.
-	Attributes CompressedAttributes `protobuf:"bytes,1,opt,name=attributes,proto3" json:"attributes"`
+	Attributes	CompressedAttributes	`protobuf:"bytes,1,opt,name=attributes,proto3" json:"attributes"`
 	// The number of words in the global dictionary, used with to populate the attributes.
 	// This value is used as a quick way to determine whether the client is using a dictionary that
 	// the server understands.
-	GlobalWordCount uint32 `protobuf:"varint,2,opt,name=global_word_count,json=globalWordCount,proto3" json:"global_word_count,omitempty"`
+	GlobalWordCount	uint32	`protobuf:"varint,2,opt,name=global_word_count,json=globalWordCount,proto3" json:"global_word_count,omitempty"`
 	// Used for deduplicating `Check` calls in the case of failed RPCs and retries. This should be a UUID
 	// per call, where the same UUID is used for retries of the same call.
-	DeduplicationId string `protobuf:"bytes,3,opt,name=deduplication_id,json=deduplicationId,proto3" json:"deduplication_id,omitempty"`
+	DeduplicationId	string	`protobuf:"bytes,3,opt,name=deduplication_id,json=deduplicationId,proto3" json:"deduplication_id,omitempty"`
 	// The individual quotas to allocate
-	Quotas map[string]CheckRequest_QuotaParams `protobuf:"bytes,4,rep,name=quotas,proto3" json:"quotas" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Quotas	map[string]CheckRequest_QuotaParams	`protobuf:"bytes,4,rep,name=quotas,proto3" json:"quotas" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
-func (m *CheckRequest) Reset()      { *m = CheckRequest{} }
-func (*CheckRequest) ProtoMessage() {}
+func (m *CheckRequest) Reset()		{ *m = CheckRequest{} }
+func (*CheckRequest) ProtoMessage()	{}
 func (*CheckRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_f6f59c90bff4c1e2, []int{0}
 }
@@ -174,13 +174,13 @@ var xxx_messageInfo_CheckRequest proto.InternalMessageInfo
 // parameters for a quota allocation
 type CheckRequest_QuotaParams struct {
 	// Amount of quota to allocate
-	Amount int64 `protobuf:"varint,1,opt,name=amount,proto3" json:"amount,omitempty"`
+	Amount	int64	`protobuf:"varint,1,opt,name=amount,proto3" json:"amount,omitempty"`
 	// When true, supports returning less quota than what was requested.
-	BestEffort bool `protobuf:"varint,2,opt,name=best_effort,json=bestEffort,proto3" json:"best_effort,omitempty"`
+	BestEffort	bool	`protobuf:"varint,2,opt,name=best_effort,json=bestEffort,proto3" json:"best_effort,omitempty"`
 }
 
-func (m *CheckRequest_QuotaParams) Reset()      { *m = CheckRequest_QuotaParams{} }
-func (*CheckRequest_QuotaParams) ProtoMessage() {}
+func (m *CheckRequest_QuotaParams) Reset()	{ *m = CheckRequest_QuotaParams{} }
+func (*CheckRequest_QuotaParams) ProtoMessage()	{}
 func (*CheckRequest_QuotaParams) Descriptor() ([]byte, []int) {
 	return fileDescriptor_f6f59c90bff4c1e2, []int{0, 0}
 }
@@ -214,13 +214,13 @@ var xxx_messageInfo_CheckRequest_QuotaParams proto.InternalMessageInfo
 // The response generated by the Check method.
 type CheckResponse struct {
 	// The precondition check results.
-	Precondition CheckResponse_PreconditionResult `protobuf:"bytes,2,opt,name=precondition,proto3" json:"precondition"`
+	Precondition	CheckResponse_PreconditionResult	`protobuf:"bytes,2,opt,name=precondition,proto3" json:"precondition"`
 	// The resulting quota, one entry per requested quota.
-	Quotas map[string]CheckResponse_QuotaResult `protobuf:"bytes,3,rep,name=quotas,proto3" json:"quotas" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Quotas	map[string]CheckResponse_QuotaResult	`protobuf:"bytes,3,rep,name=quotas,proto3" json:"quotas" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
-func (m *CheckResponse) Reset()      { *m = CheckResponse{} }
-func (*CheckResponse) ProtoMessage() {}
+func (m *CheckResponse) Reset()		{ *m = CheckResponse{} }
+func (*CheckResponse) ProtoMessage()	{}
 func (*CheckResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_f6f59c90bff4c1e2, []int{1}
 }
@@ -255,21 +255,21 @@ var xxx_messageInfo_CheckResponse proto.InternalMessageInfo
 type CheckResponse_PreconditionResult struct {
 	// A status code of OK indicates all preconditions were satisfied. Any other code indicates not
 	// all preconditions were satisfied and details describe why.
-	Status rpc.Status `protobuf:"bytes,1,opt,name=status,proto3" json:"status"`
+	Status	rpc.Status	`protobuf:"bytes,1,opt,name=status,proto3" json:"status"`
 	// The amount of time for which this result can be considered valid.
-	ValidDuration time.Duration `protobuf:"bytes,2,opt,name=valid_duration,json=validDuration,proto3,stdduration" json:"valid_duration"`
+	ValidDuration	time.Duration	`protobuf:"bytes,2,opt,name=valid_duration,json=validDuration,proto3,stdduration" json:"valid_duration"`
 	// The number of uses for which this result can be considered valid.
-	ValidUseCount int32 `protobuf:"varint,3,opt,name=valid_use_count,json=validUseCount,proto3" json:"valid_use_count,omitempty"`
+	ValidUseCount	int32	`protobuf:"varint,3,opt,name=valid_use_count,json=validUseCount,proto3" json:"valid_use_count,omitempty"`
 	// The total set of attributes that were used in producing the result
 	// along with matching conditions.
-	ReferencedAttributes *ReferencedAttributes `protobuf:"bytes,5,opt,name=referenced_attributes,json=referencedAttributes,proto3" json:"referenced_attributes,omitempty"`
+	ReferencedAttributes	*ReferencedAttributes	`protobuf:"bytes,5,opt,name=referenced_attributes,json=referencedAttributes,proto3" json:"referenced_attributes,omitempty"`
 	// An optional routing directive, used to manipulate the traffic metadata
 	// whenever all preconditions are satisfied.
-	RouteDirective *RouteDirective `protobuf:"bytes,6,opt,name=route_directive,json=routeDirective,proto3" json:"route_directive,omitempty"`
+	RouteDirective	*RouteDirective	`protobuf:"bytes,6,opt,name=route_directive,json=routeDirective,proto3" json:"route_directive,omitempty"`
 }
 
-func (m *CheckResponse_PreconditionResult) Reset()      { *m = CheckResponse_PreconditionResult{} }
-func (*CheckResponse_PreconditionResult) ProtoMessage() {}
+func (m *CheckResponse_PreconditionResult) Reset()	{ *m = CheckResponse_PreconditionResult{} }
+func (*CheckResponse_PreconditionResult) ProtoMessage()	{}
 func (*CheckResponse_PreconditionResult) Descriptor() ([]byte, []int) {
 	return fileDescriptor_f6f59c90bff4c1e2, []int{1, 0}
 }
@@ -303,20 +303,20 @@ var xxx_messageInfo_CheckResponse_PreconditionResult proto.InternalMessageInfo
 // Expresses the result of a quota allocation.
 type CheckResponse_QuotaResult struct {
 	// The amount of time for which this result can be considered valid.
-	ValidDuration time.Duration `protobuf:"bytes,1,opt,name=valid_duration,json=validDuration,proto3,stdduration" json:"valid_duration"`
+	ValidDuration	time.Duration	`protobuf:"bytes,1,opt,name=valid_duration,json=validDuration,proto3,stdduration" json:"valid_duration"`
 	// The amount of granted quota. When `QuotaParams.best_effort` is true, this will be >= 0.
 	// If `QuotaParams.best_effort` is false, this will be either 0 or >= `QuotaParams.amount`.
-	GrantedAmount int64 `protobuf:"varint,2,opt,name=granted_amount,json=grantedAmount,proto3" json:"granted_amount,omitempty"`
+	GrantedAmount	int64	`protobuf:"varint,2,opt,name=granted_amount,json=grantedAmount,proto3" json:"granted_amount,omitempty"`
 	// A status code of OK indicates quota was fetched successfully.
 	// Any other code indicates error in fetching quota.
-	Status rpc.Status `protobuf:"bytes,6,opt,name=status,proto3" json:"status"`
+	Status	rpc.Status	`protobuf:"bytes,6,opt,name=status,proto3" json:"status"`
 	// The total set of attributes that were used in producing the result
 	// along with matching conditions.
-	ReferencedAttributes ReferencedAttributes `protobuf:"bytes,5,opt,name=referenced_attributes,json=referencedAttributes,proto3" json:"referenced_attributes"`
+	ReferencedAttributes	ReferencedAttributes	`protobuf:"bytes,5,opt,name=referenced_attributes,json=referencedAttributes,proto3" json:"referenced_attributes"`
 }
 
-func (m *CheckResponse_QuotaResult) Reset()      { *m = CheckResponse_QuotaResult{} }
-func (*CheckResponse_QuotaResult) ProtoMessage() {}
+func (m *CheckResponse_QuotaResult) Reset()		{ *m = CheckResponse_QuotaResult{} }
+func (*CheckResponse_QuotaResult) ProtoMessage()	{}
 func (*CheckResponse_QuotaResult) Descriptor() ([]byte, []int) {
 	return fileDescriptor_f6f59c90bff4c1e2, []int{1, 1}
 }
@@ -352,13 +352,13 @@ var xxx_messageInfo_CheckResponse_QuotaResult proto.InternalMessageInfo
 type ReferencedAttributes struct {
 	// The message-level dictionary. Refer to [CompressedAttributes][istio.mixer.v1.CompressedAttributes] for information
 	// on using dictionaries.
-	Words []string `protobuf:"bytes,1,rep,name=words,proto3" json:"words,omitempty"`
+	Words	[]string	`protobuf:"bytes,1,rep,name=words,proto3" json:"words,omitempty"`
 	// Describes a set of attributes.
-	AttributeMatches []ReferencedAttributes_AttributeMatch `protobuf:"bytes,2,rep,name=attribute_matches,json=attributeMatches,proto3" json:"attribute_matches"`
+	AttributeMatches	[]ReferencedAttributes_AttributeMatch	`protobuf:"bytes,2,rep,name=attribute_matches,json=attributeMatches,proto3" json:"attribute_matches"`
 }
 
-func (m *ReferencedAttributes) Reset()      { *m = ReferencedAttributes{} }
-func (*ReferencedAttributes) ProtoMessage() {}
+func (m *ReferencedAttributes) Reset()		{ *m = ReferencedAttributes{} }
+func (*ReferencedAttributes) ProtoMessage()	{}
 func (*ReferencedAttributes) Descriptor() ([]byte, []int) {
 	return fileDescriptor_f6f59c90bff4c1e2, []int{2}
 }
@@ -393,12 +393,12 @@ var xxx_messageInfo_ReferencedAttributes proto.InternalMessageInfo
 type ReferencedAttributes_AttributeMatch struct {
 	// The name of the attribute. This is a dictionary index encoded in a manner identical
 	// to all strings in the [CompressedAttributes][istio.mixer.v1.CompressedAttributes] message.
-	Name int32 `protobuf:"zigzag32,1,opt,name=name,proto3" json:"name,omitempty"`
+	Name	int32	`protobuf:"zigzag32,1,opt,name=name,proto3" json:"name,omitempty"`
 	// The kind of match against the attribute value.
-	Condition ReferencedAttributes_Condition `protobuf:"varint,2,opt,name=condition,proto3,enum=istio.mixer.v1.ReferencedAttributes_Condition" json:"condition,omitempty"`
+	Condition	ReferencedAttributes_Condition	`protobuf:"varint,2,opt,name=condition,proto3,enum=istio.mixer.v1.ReferencedAttributes_Condition" json:"condition,omitempty"`
 	// If a REGEX condition is provided for a STRING_MAP attribute,
 	// clients should use the regex value to match against map keys.
-	Regex string `protobuf:"bytes,3,opt,name=regex,proto3" json:"regex,omitempty"`
+	Regex	string	`protobuf:"bytes,3,opt,name=regex,proto3" json:"regex,omitempty"`
 	// A key in a STRING_MAP. When multiple keys from a STRING_MAP
 	// attribute were referenced, there will be multiple AttributeMatch
 	// messages with different map_key values. Values for map_key SHOULD
@@ -409,11 +409,11 @@ type ReferencedAttributes_AttributeMatch struct {
 	//
 	// If no map_key value is provided for a STRING_MAP attribute, the
 	// entire STRING_MAP will be used.
-	MapKey int32 `protobuf:"zigzag32,4,opt,name=map_key,json=mapKey,proto3" json:"map_key,omitempty"`
+	MapKey	int32	`protobuf:"zigzag32,4,opt,name=map_key,json=mapKey,proto3" json:"map_key,omitempty"`
 }
 
-func (m *ReferencedAttributes_AttributeMatch) Reset()      { *m = ReferencedAttributes_AttributeMatch{} }
-func (*ReferencedAttributes_AttributeMatch) ProtoMessage() {}
+func (m *ReferencedAttributes_AttributeMatch) Reset()		{ *m = ReferencedAttributes_AttributeMatch{} }
+func (*ReferencedAttributes_AttributeMatch) ProtoMessage()	{}
 func (*ReferencedAttributes_AttributeMatch) Descriptor() ([]byte, []int) {
 	return fileDescriptor_f6f59c90bff4c1e2, []int{2, 0}
 }
@@ -450,15 +450,15 @@ var xxx_messageInfo_ReferencedAttributes_AttributeMatch proto.InternalMessageInf
 // the request headers.
 type HeaderOperation struct {
 	// Header name.
-	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Name	string	`protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Header value.
-	Value string `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
+	Value	string	`protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
 	// Header operation.
-	Operation HeaderOperation_Operation `protobuf:"varint,3,opt,name=operation,proto3,enum=istio.mixer.v1.HeaderOperation_Operation" json:"operation,omitempty"`
+	Operation	HeaderOperation_Operation	`protobuf:"varint,3,opt,name=operation,proto3,enum=istio.mixer.v1.HeaderOperation_Operation" json:"operation,omitempty"`
 }
 
-func (m *HeaderOperation) Reset()      { *m = HeaderOperation{} }
-func (*HeaderOperation) ProtoMessage() {}
+func (m *HeaderOperation) Reset()	{ *m = HeaderOperation{} }
+func (*HeaderOperation) ProtoMessage()	{}
 func (*HeaderOperation) Descriptor() ([]byte, []int) {
 	return fileDescriptor_f6f59c90bff4c1e2, []int{3}
 }
@@ -493,19 +493,19 @@ var xxx_messageInfo_HeaderOperation proto.InternalMessageInfo
 // Mixer in response to a precondition check.
 type RouteDirective struct {
 	// Operations on the request headers.
-	RequestHeaderOperations []HeaderOperation `protobuf:"bytes,1,rep,name=request_header_operations,json=requestHeaderOperations,proto3" json:"request_header_operations"`
+	RequestHeaderOperations	[]HeaderOperation	`protobuf:"bytes,1,rep,name=request_header_operations,json=requestHeaderOperations,proto3" json:"request_header_operations"`
 	// Operations on the response headers.
-	ResponseHeaderOperations []HeaderOperation `protobuf:"bytes,2,rep,name=response_header_operations,json=responseHeaderOperations,proto3" json:"response_header_operations"`
+	ResponseHeaderOperations	[]HeaderOperation	`protobuf:"bytes,2,rep,name=response_header_operations,json=responseHeaderOperations,proto3" json:"response_header_operations"`
 	// If set, enables a direct response without proxying the request to the routing
 	// destination. Required to be a value in the 2xx or 3xx range.
-	DirectResponseCode uint32 `protobuf:"varint,3,opt,name=direct_response_code,json=directResponseCode,proto3" json:"direct_response_code,omitempty"`
+	DirectResponseCode	uint32	`protobuf:"varint,3,opt,name=direct_response_code,json=directResponseCode,proto3" json:"direct_response_code,omitempty"`
 	// Supplies the response body for the direct response.
 	// If this setting is omitted, no body is included in the generated response.
-	DirectResponseBody string `protobuf:"bytes,4,opt,name=direct_response_body,json=directResponseBody,proto3" json:"direct_response_body,omitempty"`
+	DirectResponseBody	string	`protobuf:"bytes,4,opt,name=direct_response_body,json=directResponseBody,proto3" json:"direct_response_body,omitempty"`
 }
 
-func (m *RouteDirective) Reset()      { *m = RouteDirective{} }
-func (*RouteDirective) ProtoMessage() {}
+func (m *RouteDirective) Reset()	{ *m = RouteDirective{} }
+func (*RouteDirective) ProtoMessage()	{}
 func (*RouteDirective) Descriptor() ([]byte, []int) {
 	return fileDescriptor_f6f59c90bff4c1e2, []int{4}
 }
@@ -543,23 +543,23 @@ type ReportRequest struct {
 	// Each `Attributes` element represents the state of a single action. Multiple actions
 	// can be provided in a single message in order to improve communication efficiency. The
 	// client can accumulate a set of actions and send them all in one single message.
-	Attributes []CompressedAttributes `protobuf:"bytes,1,rep,name=attributes,proto3" json:"attributes"`
+	Attributes	[]CompressedAttributes	`protobuf:"bytes,1,rep,name=attributes,proto3" json:"attributes"`
 	// Indicates how to decode the attributes sets in this request.
-	RepeatedAttributesSemantics ReportRequest_RepeatedAttributesSemantics `protobuf:"varint,4,opt,name=repeated_attributes_semantics,json=repeatedAttributesSemantics,proto3,enum=istio.mixer.v1.ReportRequest_RepeatedAttributesSemantics" json:"repeated_attributes_semantics,omitempty"`
+	RepeatedAttributesSemantics	ReportRequest_RepeatedAttributesSemantics	`protobuf:"varint,4,opt,name=repeated_attributes_semantics,json=repeatedAttributesSemantics,proto3,enum=istio.mixer.v1.ReportRequest_RepeatedAttributesSemantics" json:"repeated_attributes_semantics,omitempty"`
 	// The default message-level dictionary for all the attributes.
 	// Individual attribute messages can have their own dictionaries, but if they don't
 	// then this set of words, if it is provided, is used instead.
 	//
 	// This makes it possible to share the same dictionary for all attributes in this
 	// request, which can substantially reduce the overall request size.
-	DefaultWords []string `protobuf:"bytes,2,rep,name=default_words,json=defaultWords,proto3" json:"default_words,omitempty"`
+	DefaultWords	[]string	`protobuf:"bytes,2,rep,name=default_words,json=defaultWords,proto3" json:"default_words,omitempty"`
 	// The number of words in the global dictionary.
 	// To detect global dictionary out of sync between client and server.
-	GlobalWordCount uint32 `protobuf:"varint,3,opt,name=global_word_count,json=globalWordCount,proto3" json:"global_word_count,omitempty"`
+	GlobalWordCount	uint32	`protobuf:"varint,3,opt,name=global_word_count,json=globalWordCount,proto3" json:"global_word_count,omitempty"`
 }
 
-func (m *ReportRequest) Reset()      { *m = ReportRequest{} }
-func (*ReportRequest) ProtoMessage() {}
+func (m *ReportRequest) Reset()		{ *m = ReportRequest{} }
+func (*ReportRequest) ProtoMessage()	{}
 func (*ReportRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_f6f59c90bff4c1e2, []int{5}
 }
@@ -594,8 +594,8 @@ var xxx_messageInfo_ReportRequest proto.InternalMessageInfo
 type ReportResponse struct {
 }
 
-func (m *ReportResponse) Reset()      { *m = ReportResponse{} }
-func (*ReportResponse) ProtoMessage() {}
+func (m *ReportResponse) Reset()	{ *m = ReportResponse{} }
+func (*ReportResponse) ProtoMessage()	{}
 func (*ReportResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_f6f59c90bff4c1e2, []int{6}
 }
@@ -645,7 +645,7 @@ func init() {
 	proto.RegisterType((*ReportResponse)(nil), "istio.mixer.v1.ReportResponse")
 }
 
-func init() { proto.RegisterFile("mixer/v1/mixer.proto", fileDescriptor_f6f59c90bff4c1e2) }
+func init()	{ proto.RegisterFile("mixer/v1/mixer.proto", fileDescriptor_f6f59c90bff4c1e2) }
 
 var fileDescriptor_f6f59c90bff4c1e2 = []byte{
 	// 1227 bytes of a gzipped FileDescriptorProto
@@ -834,8 +834,8 @@ func _Mixer_Check_Handler(srv interface{}, ctx context.Context, dec func(interfa
 		return srv.(MixerServer).Check(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/istio.mixer.v1.Mixer/Check",
+		Server:		srv,
+		FullMethod:	"/istio.mixer.v1.Mixer/Check",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MixerServer).Check(ctx, req.(*CheckRequest))
@@ -852,8 +852,8 @@ func _Mixer_Report_Handler(srv interface{}, ctx context.Context, dec func(interf
 		return srv.(MixerServer).Report(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/istio.mixer.v1.Mixer/Report",
+		Server:		srv,
+		FullMethod:	"/istio.mixer.v1.Mixer/Report",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MixerServer).Report(ctx, req.(*ReportRequest))
@@ -862,20 +862,20 @@ func _Mixer_Report_Handler(srv interface{}, ctx context.Context, dec func(interf
 }
 
 var _Mixer_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "istio.mixer.v1.Mixer",
-	HandlerType: (*MixerServer)(nil),
+	ServiceName:	"istio.mixer.v1.Mixer",
+	HandlerType:	(*MixerServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "Check",
-			Handler:    _Mixer_Check_Handler,
+			MethodName:	"Check",
+			Handler:	_Mixer_Check_Handler,
 		},
 		{
-			MethodName: "Report",
-			Handler:    _Mixer_Report_Handler,
+			MethodName:	"Report",
+			Handler:	_Mixer_Report_Handler,
 		},
 	},
-	Streams:  []grpc.StreamDesc{},
-	Metadata: "mixer/v1/mixer.proto",
+	Streams:	[]grpc.StreamDesc{},
+	Metadata:	"mixer/v1/mixer.proto",
 }
 
 func (m *CheckRequest) Marshal() (dAtA []byte, err error) {
@@ -3716,6 +3716,6 @@ func skipMixer(dAtA []byte) (n int, err error) {
 }
 
 var (
-	ErrInvalidLengthMixer = fmt.Errorf("proto: negative length found during unmarshaling")
-	ErrIntOverflowMixer   = fmt.Errorf("proto: integer overflow")
+	ErrInvalidLengthMixer	= fmt.Errorf("proto: negative length found during unmarshaling")
+	ErrIntOverflowMixer	= fmt.Errorf("proto: integer overflow")
 )

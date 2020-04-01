@@ -11,7 +11,7 @@ import (
 	github_com_gogo_protobuf_types "github.com/gogo/protobuf/types"
 	types "github.com/gogo/protobuf/types"
 	io "io"
-	_ "istio.io/gogo-genproto/googleapis/google/api"
+
 	math "math"
 	math_bits "math/bits"
 	reflect "reflect"
@@ -30,30 +30,30 @@ var _ = time.Kitchen
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion3	// please upgrade the proto package
 
 // Header operation type.
 type Rule_HeaderOperationTemplate_Operation int32
 
 const (
 	// Replace a header by name.
-	REPLACE Rule_HeaderOperationTemplate_Operation = 0
+	REPLACE	Rule_HeaderOperationTemplate_Operation	= 0
 	// Remove a header by name. Values are ignored.
-	REMOVE Rule_HeaderOperationTemplate_Operation = 1
+	REMOVE	Rule_HeaderOperationTemplate_Operation	= 1
 	// Append values to the existing header values.
-	APPEND Rule_HeaderOperationTemplate_Operation = 2
+	APPEND	Rule_HeaderOperationTemplate_Operation	= 2
 )
 
 var Rule_HeaderOperationTemplate_Operation_name = map[int32]string{
-	0: "REPLACE",
-	1: "REMOVE",
-	2: "APPEND",
+	0:	"REPLACE",
+	1:	"REMOVE",
+	2:	"APPEND",
 }
 
 var Rule_HeaderOperationTemplate_Operation_value = map[string]int32{
-	"REPLACE": 0,
-	"REMOVE":  1,
-	"APPEND":  2,
+	"REPLACE":	0,
+	"REMOVE":	1,
+	"APPEND":	2,
 }
 
 func (Rule_HeaderOperationTemplate_Operation) EnumDescriptor() ([]byte, []int) {
@@ -67,21 +67,21 @@ const (
 	// 100.
 	//
 	// **Example**: 1/100 = 1%.
-	HUNDRED FractionalPercent_DenominatorType = 0
+	HUNDRED	FractionalPercent_DenominatorType	= 0
 	// 10,000.
 	//
 	// **Example**: 1/10000 = 0.01%.
-	TEN_THOUSAND FractionalPercent_DenominatorType = 1
+	TEN_THOUSAND	FractionalPercent_DenominatorType	= 1
 )
 
 var FractionalPercent_DenominatorType_name = map[int32]string{
-	0: "HUNDRED",
-	1: "TEN_THOUSAND",
+	0:	"HUNDRED",
+	1:	"TEN_THOUSAND",
 }
 
 var FractionalPercent_DenominatorType_value = map[string]int32{
-	"HUNDRED":      0,
-	"TEN_THOUSAND": 1,
+	"HUNDRED":	0,
+	"TEN_THOUSAND":	1,
 }
 
 func (FractionalPercent_DenominatorType) EnumDescriptor() ([]byte, []int) {
@@ -94,20 +94,20 @@ type Tls_AuthHeader int32
 const (
 	// Access token is passed in authorization header as what it is
 	// (authorization: some-token).
-	PLAIN Tls_AuthHeader = 0
+	PLAIN	Tls_AuthHeader	= 0
 	// Access token is passed to adapter as bearer token (i.e. authorization:
 	// bearer some-token).
-	BEARER Tls_AuthHeader = 1
+	BEARER	Tls_AuthHeader	= 1
 )
 
 var Tls_AuthHeader_name = map[int32]string{
-	0: "PLAIN",
-	1: "BEARER",
+	0:	"PLAIN",
+	1:	"BEARER",
 }
 
 var Tls_AuthHeader_value = map[string]int32{
-	"PLAIN":  0,
-	"BEARER": 1,
+	"PLAIN":	0,
+	"BEARER":	1,
 }
 
 func (Tls_AuthHeader) EnumDescriptor() ([]byte, []int) {
@@ -139,11 +139,11 @@ func (Tls_AuthHeader) EnumDescriptor() ([]byte, []int) {
 // -->
 type AttributeManifest struct {
 	// The revision of this document. Assigned by server.
-	Revision string `protobuf:"bytes,1,opt,name=revision,proto3" json:"revision,omitempty"`
+	Revision	string	`protobuf:"bytes,1,opt,name=revision,proto3" json:"revision,omitempty"`
 	// Name of the component producing these attributes. This can be
 	// the proxy (with the canonical name `istio-proxy`) or the name of an
 	// `attributes` kind adapter in Mixer.
-	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Name	string	`protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	// The set of attributes this Istio component will be responsible for producing at runtime.
 	// We map from attribute name to the attribute's specification. The name of an attribute,
 	// which is how attributes are referred to in aspect configuration, must conform to:
@@ -157,11 +157,11 @@ type AttributeManifest struct {
 	// attributes are described at [here](https://istio.io/docs/reference/config/policy-and-telemetry/attribute-vocabulary/).
 	// Attributes not in that list should be named with a component-specific suffix such as
 	// `request.count-my.component`.
-	Attributes map[string]*AttributeManifest_AttributeInfo `protobuf:"bytes,3,rep,name=attributes,proto3" json:"attributes,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Attributes	map[string]*AttributeManifest_AttributeInfo	`protobuf:"bytes,3,rep,name=attributes,proto3" json:"attributes,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
-func (m *AttributeManifest) Reset()      { *m = AttributeManifest{} }
-func (*AttributeManifest) ProtoMessage() {}
+func (m *AttributeManifest) Reset()		{ *m = AttributeManifest{} }
+func (*AttributeManifest) ProtoMessage()	{}
 func (*AttributeManifest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_dfb7777e81b6b919, []int{0}
 }
@@ -256,13 +256,13 @@ func (m *AttributeManifest) GetAttributes() map[string]*AttributeManifest_Attrib
 // encoding scheme will be decided later.
 type AttributeManifest_AttributeInfo struct {
 	// A human-readable description of the attribute's purpose.
-	Description string `protobuf:"bytes,1,opt,name=description,proto3" json:"description,omitempty"`
+	Description	string	`protobuf:"bytes,1,opt,name=description,proto3" json:"description,omitempty"`
 	// The type of data carried by this attribute.
-	ValueType ValueType `protobuf:"varint,2,opt,name=value_type,json=valueType,proto3,enum=istio.policy.v1beta1.ValueType" json:"value_type,omitempty"`
+	ValueType	ValueType	`protobuf:"varint,2,opt,name=value_type,json=valueType,proto3,enum=istio.policy.v1beta1.ValueType" json:"value_type,omitempty"`
 }
 
-func (m *AttributeManifest_AttributeInfo) Reset()      { *m = AttributeManifest_AttributeInfo{} }
-func (*AttributeManifest_AttributeInfo) ProtoMessage() {}
+func (m *AttributeManifest_AttributeInfo) Reset()	{ *m = AttributeManifest_AttributeInfo{} }
+func (*AttributeManifest_AttributeInfo) ProtoMessage()	{}
 func (*AttributeManifest_AttributeInfo) Descriptor() ([]byte, []int) {
 	return fileDescriptor_dfb7777e81b6b919, []int{0, 0}
 }
@@ -353,26 +353,26 @@ type Rule struct {
 	// * `match(destination.service.host, "ratings.*")` selects any request targeting a service whose
 	// name starts with "ratings"
 	// * `attr1 == "20" && attr2 == "30"` logical AND, OR, and NOT are also available
-	Match string `protobuf:"bytes,1,opt,name=match,proto3" json:"match,omitempty"`
+	Match	string	`protobuf:"bytes,1,opt,name=match,proto3" json:"match,omitempty"`
 	// The actions that will be executed when match evaluates to `true`.
-	Actions []*Action `protobuf:"bytes,2,rep,name=actions,proto3" json:"actions,omitempty"`
+	Actions	[]*Action	`protobuf:"bytes,2,rep,name=actions,proto3" json:"actions,omitempty"`
 	// Templatized operations on the request headers using values produced by the
 	// rule actions. Require the check action result to be OK.
-	RequestHeaderOperations []*Rule_HeaderOperationTemplate `protobuf:"bytes,3,rep,name=request_header_operations,json=requestHeaderOperations,proto3" json:"request_header_operations,omitempty"`
+	RequestHeaderOperations	[]*Rule_HeaderOperationTemplate	`protobuf:"bytes,3,rep,name=request_header_operations,json=requestHeaderOperations,proto3" json:"request_header_operations,omitempty"`
 	// Templatized operations on the response headers using values produced by the
 	// rule actions. Require the check action result to be OK.
-	ResponseHeaderOperations []*Rule_HeaderOperationTemplate `protobuf:"bytes,4,rep,name=response_header_operations,json=responseHeaderOperations,proto3" json:"response_header_operations,omitempty"`
+	ResponseHeaderOperations	[]*Rule_HeaderOperationTemplate	`protobuf:"bytes,4,rep,name=response_header_operations,json=responseHeaderOperations,proto3" json:"response_header_operations,omitempty"`
 	// $hide_from_docs
 	// Provides the ability to add a sampling configuration for Mixer rules. This sampling
 	// will limit the scenarios in which the `actions` of the rule are executed. The sampling will
 	// only take place after a `match` predicate has evaluated to true.
 	//
 	// Default behavior is no sampling (the `actions` are executed for all requests).
-	Sampling *Sampling `protobuf:"bytes,5,opt,name=sampling,proto3" json:"sampling,omitempty"`
+	Sampling	*Sampling	`protobuf:"bytes,5,opt,name=sampling,proto3" json:"sampling,omitempty"`
 }
 
-func (m *Rule) Reset()      { *m = Rule{} }
-func (*Rule) ProtoMessage() {}
+func (m *Rule) Reset()		{ *m = Rule{} }
+func (*Rule) ProtoMessage()	{}
 func (*Rule) Descriptor() ([]byte, []int) {
 	return fileDescriptor_dfb7777e81b6b919, []int{1}
 }
@@ -455,15 +455,15 @@ func (m *Rule) GetSampling() *Sampling {
 // adapter to optionally modify the headers.
 type Rule_HeaderOperationTemplate struct {
 	// Header name literal value.
-	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Name	string	`protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Header value expressions.
-	Values []string `protobuf:"bytes,2,rep,name=values,proto3" json:"values,omitempty"`
+	Values	[]string	`protobuf:"bytes,2,rep,name=values,proto3" json:"values,omitempty"`
 	// Header operation type. Default operation is to replace the value of the header by name.
-	Operation Rule_HeaderOperationTemplate_Operation `protobuf:"varint,3,opt,name=operation,proto3,enum=istio.policy.v1beta1.Rule_HeaderOperationTemplate_Operation" json:"operation,omitempty"`
+	Operation	Rule_HeaderOperationTemplate_Operation	`protobuf:"varint,3,opt,name=operation,proto3,enum=istio.policy.v1beta1.Rule_HeaderOperationTemplate_Operation" json:"operation,omitempty"`
 }
 
-func (m *Rule_HeaderOperationTemplate) Reset()      { *m = Rule_HeaderOperationTemplate{} }
-func (*Rule_HeaderOperationTemplate) ProtoMessage() {}
+func (m *Rule_HeaderOperationTemplate) Reset()		{ *m = Rule_HeaderOperationTemplate{} }
+func (*Rule_HeaderOperationTemplate) ProtoMessage()	{}
 func (*Rule_HeaderOperationTemplate) Descriptor() ([]byte, []int) {
 	return fileDescriptor_dfb7777e81b6b919, []int{1, 0}
 }
@@ -528,18 +528,18 @@ func (m *Rule_HeaderOperationTemplate) GetOperation() Rule_HeaderOperationTempla
 type Action struct {
 	// Fully qualified name of the handler to invoke.
 	// Must match the `name` of a [Handler][istio.policy.v1beta1.Handler.name].
-	Handler string `protobuf:"bytes,2,opt,name=handler,proto3" json:"handler,omitempty"`
+	Handler	string	`protobuf:"bytes,2,opt,name=handler,proto3" json:"handler,omitempty"`
 	// Each value must match the fully qualified name of the
 	// [Instance][istio.policy.v1beta1.Instance.name]s.
 	// Referenced instances are evaluated by resolving the attributes/literals for all the fields.
 	// The constructed objects are then passed to the `handler` referenced within this action.
-	Instances []string `protobuf:"bytes,3,rep,name=instances,proto3" json:"instances,omitempty"`
+	Instances	[]string	`protobuf:"bytes,3,rep,name=instances,proto3" json:"instances,omitempty"`
 	// A handle to refer to the results of the action.
-	Name string `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
+	Name	string	`protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
 }
 
-func (m *Action) Reset()      { *m = Action{} }
-func (*Action) ProtoMessage() {}
+func (m *Action) Reset()	{ *m = Action{} }
+func (*Action) ProtoMessage()	{}
 func (*Action) Descriptor() ([]byte, []int) {
 	return fileDescriptor_dfb7777e81b6b919, []int{2}
 }
@@ -637,20 +637,20 @@ type Instance struct {
 	//
 	// Must be unique amongst other Instances in scope. Used by [Action][istio.policy.v1beta1.Action] to refer
 	// to an instance produced by this instance.
-	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Name	string	`protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// The name of the compiled in template this instance creates instances for. For referencing non compiled-in
 	// templates, use the `template` field instead.
 	//
 	// The value must match the name of the available template Mixer is built with.
-	CompiledTemplate string `protobuf:"bytes,67794676,opt,name=compiled_template,json=compiledTemplate,proto3" json:"compiled_template,omitempty"`
+	CompiledTemplate	string	`protobuf:"bytes,67794676,opt,name=compiled_template,json=compiledTemplate,proto3" json:"compiled_template,omitempty"`
 	// The name of the template this instance creates instances for. For referencing compiled-in
 	// templates, use the `compiled_template` field instead.
 	//
 	// The value must match the name of the available template in scope.
-	Template string `protobuf:"bytes,2,opt,name=template,proto3" json:"template,omitempty"`
+	Template	string	`protobuf:"bytes,2,opt,name=template,proto3" json:"template,omitempty"`
 	// Depends on referenced template. Struct representation of a
 	// proto defined by the template; this varies depending on the value of field `template`.
-	Params *types.Struct `protobuf:"bytes,3,opt,name=params,proto3" json:"params,omitempty"`
+	Params	*types.Struct	`protobuf:"bytes,3,opt,name=params,proto3" json:"params,omitempty"`
 	// Defines attribute bindings to map the output of attribute-producing adapters back into
 	// the attribute space. The variable `output` refers to the output template instance produced
 	// by the adapter.
@@ -663,11 +663,11 @@ type Instance struct {
 	//   # Fill the new attributes from the adapter produced output
 	//   source.namespace: output.source_namespace
 	// ```
-	AttributeBindings map[string]string `protobuf:"bytes,4,rep,name=attribute_bindings,json=attributeBindings,proto3" json:"attribute_bindings,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	AttributeBindings	map[string]string	`protobuf:"bytes,4,rep,name=attribute_bindings,json=attributeBindings,proto3" json:"attribute_bindings,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
-func (m *Instance) Reset()      { *m = Instance{} }
-func (*Instance) ProtoMessage() {}
+func (m *Instance) Reset()	{ *m = Instance{} }
+func (*Instance) ProtoMessage()	{}
 func (*Instance) Descriptor() ([]byte, []int) {
 	return fileDescriptor_dfb7777e81b6b919, []int{3}
 }
@@ -812,28 +812,28 @@ func (m *Instance) GetAttributeBindings() map[string]string {
 type Handler struct {
 	// Must be unique in the entire Mixer configuration. Used by [Actions][istio.policy.v1beta1.Action.handler]
 	// to refer to this handler.
-	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Name	string	`protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// The name of the compiled in adapter this handler instantiates. For referencing non compiled-in
 	// adapters, use the `adapter` field instead.
 	//
 	// The value must match the name of the available adapter Mixer is built with. An adapter's name is typically a
 	// constant in its code.
-	CompiledAdapter string `protobuf:"bytes,67794676,opt,name=compiled_adapter,json=compiledAdapter,proto3" json:"compiled_adapter,omitempty"`
+	CompiledAdapter	string	`protobuf:"bytes,67794676,opt,name=compiled_adapter,json=compiledAdapter,proto3" json:"compiled_adapter,omitempty"`
 	// The name of a specific adapter implementation. For referencing compiled-in
 	// adapters, use the `compiled_adapter` field instead.
 	//
 	// An adapter's implementation name is typically a constant in its code.
-	Adapter string `protobuf:"bytes,2,opt,name=adapter,proto3" json:"adapter,omitempty"`
+	Adapter	string	`protobuf:"bytes,2,opt,name=adapter,proto3" json:"adapter,omitempty"`
 	// Depends on adapter implementation. Struct representation of a
 	// proto defined by the adapter implementation; this varies depending on the value of field `adapter`.
-	Params *types.Struct `protobuf:"bytes,3,opt,name=params,proto3" json:"params,omitempty"`
+	Params	*types.Struct	`protobuf:"bytes,3,opt,name=params,proto3" json:"params,omitempty"`
 	// Information on how to connect to the out-of-process adapter.
 	// This is used if the adapter is not compiled into Mixer binary and is running as a separate process.
-	Connection *Connection `protobuf:"bytes,4,opt,name=connection,proto3" json:"connection,omitempty"`
+	Connection	*Connection	`protobuf:"bytes,4,opt,name=connection,proto3" json:"connection,omitempty"`
 }
 
-func (m *Handler) Reset()      { *m = Handler{} }
-func (*Handler) ProtoMessage() {}
+func (m *Handler) Reset()	{ *m = Handler{} }
+func (*Handler) ProtoMessage()	{}
 func (*Handler) Descriptor() ([]byte, []int) {
 	return fileDescriptor_dfb7777e81b6b919, []int{4}
 }
@@ -903,16 +903,16 @@ func (m *Handler) GetConnection() *Connection {
 // Connection is part of the handler custom resource and is specified alongside adapter specific configuration.
 type Connection struct {
 	// The address of the backend.
-	Address string `protobuf:"bytes,2,opt,name=address,proto3" json:"address,omitempty"`
+	Address	string	`protobuf:"bytes,2,opt,name=address,proto3" json:"address,omitempty"`
 	// Timeout for remote calls to the backend.
-	Timeout *time.Duration `protobuf:"bytes,3,opt,name=timeout,proto3,stdduration" json:"timeout,omitempty"`
+	Timeout	*time.Duration	`protobuf:"bytes,3,opt,name=timeout,proto3,stdduration" json:"timeout,omitempty"`
 	// Auth config for the connection to the backend. If omitted, plain text will
 	// be used.
-	Authentication *Authentication `protobuf:"bytes,4,opt,name=authentication,proto3" json:"authentication,omitempty"`
+	Authentication	*Authentication	`protobuf:"bytes,4,opt,name=authentication,proto3" json:"authentication,omitempty"`
 }
 
-func (m *Connection) Reset()      { *m = Connection{} }
-func (*Connection) ProtoMessage() {}
+func (m *Connection) Reset()		{ *m = Connection{} }
+func (*Connection) ProtoMessage()	{}
 func (*Connection) Descriptor() ([]byte, []int) {
 	return fileDescriptor_dfb7777e81b6b919, []int{5}
 }
@@ -970,14 +970,14 @@ func (m *Connection) GetAuthentication() *Authentication {
 // a request must be selected by all configured sampling strategies.
 type Sampling struct {
 	// Provides filtering of actions based on random selection per request.
-	Random *RandomSampling `protobuf:"bytes,1,opt,name=random,proto3" json:"random,omitempty"`
+	Random	*RandomSampling	`protobuf:"bytes,1,opt,name=random,proto3" json:"random,omitempty"`
 	// Provides filtering of actions based on number of requests observed within
 	// a configured time window.
-	RateLimit *RateLimitSampling `protobuf:"bytes,2,opt,name=rate_limit,json=rateLimit,proto3" json:"rate_limit,omitempty"`
+	RateLimit	*RateLimitSampling	`protobuf:"bytes,2,opt,name=rate_limit,json=rateLimit,proto3" json:"rate_limit,omitempty"`
 }
 
-func (m *Sampling) Reset()      { *m = Sampling{} }
-func (*Sampling) ProtoMessage() {}
+func (m *Sampling) Reset()	{ *m = Sampling{} }
+func (*Sampling) ProtoMessage()	{}
 func (*Sampling) Descriptor() ([]byte, []int) {
 	return fileDescriptor_dfb7777e81b6b919, []int{6}
 }
@@ -1035,21 +1035,21 @@ type RandomSampling struct {
 	// Specifies an attribute expression to use to override the numerator in the `percent_sampled` field.
 	// If this value is set, but no value is found OR if that value is not a numeric value, then
 	// the derived sampling rate will be 0 (meaning no `Action`s are executed for a `Rule`).
-	AttributeExpression string `protobuf:"bytes,1,opt,name=attribute_expression,json=attributeExpression,proto3" json:"attribute_expression,omitempty"`
+	AttributeExpression	string	`protobuf:"bytes,1,opt,name=attribute_expression,json=attributeExpression,proto3" json:"attribute_expression,omitempty"`
 	// The default sampling rate, expressed as a percentage. Defaults to 0% with a denominator
 	// of 100.
-	PercentSampled *FractionalPercent `protobuf:"bytes,2,opt,name=percent_sampled,json=percentSampled,proto3" json:"percent_sampled,omitempty"`
+	PercentSampled	*FractionalPercent	`protobuf:"bytes,2,opt,name=percent_sampled,json=percentSampled,proto3" json:"percent_sampled,omitempty"`
 	// By default sampling will be based on the value of the request header `x-request-id`.
 	// This behavior will cause consistent sampling across `Rule`s and for the full trace of a
 	// request through a mesh (across hosts). If that value is not present and/or
 	// `use_independent_randomness` is set to true, the sampling will be done based on the value of
 	// attribute specified in `attribute_epxression`. If that attribute does not exist, the system
 	// will behave as if the sampling rate was 0 (meaning no `Action`s are executed for a `Rule`).
-	UseIndependentRandomness bool `protobuf:"varint,3,opt,name=use_independent_randomness,json=useIndependentRandomness,proto3" json:"use_independent_randomness,omitempty"`
+	UseIndependentRandomness	bool	`protobuf:"varint,3,opt,name=use_independent_randomness,json=useIndependentRandomness,proto3" json:"use_independent_randomness,omitempty"`
 }
 
-func (m *RandomSampling) Reset()      { *m = RandomSampling{} }
-func (*RandomSampling) ProtoMessage() {}
+func (m *RandomSampling) Reset()	{ *m = RandomSampling{} }
+func (*RandomSampling) ProtoMessage()	{}
 func (*RandomSampling) Descriptor() ([]byte, []int) {
 	return fileDescriptor_dfb7777e81b6b919, []int{7}
 }
@@ -1106,16 +1106,16 @@ func (m *RandomSampling) GetUseIndependentRandomness() bool {
 // occur over a period of time.
 type RateLimitSampling struct {
 	// Window in which to enforce the sampling rate.
-	SamplingDuration time.Duration `protobuf:"bytes,1,opt,name=sampling_duration,json=samplingDuration,proto3,stdduration" json:"sampling_duration"`
+	SamplingDuration	time.Duration	`protobuf:"bytes,1,opt,name=sampling_duration,json=samplingDuration,proto3,stdduration" json:"sampling_duration"`
 	// Number of entries to allow during the `sampling_duration` before sampling is enforced.
-	MaxUnsampledEntries int64 `protobuf:"varint,2,opt,name=max_unsampled_entries,json=maxUnsampledEntries,proto3" json:"max_unsampled_entries,omitempty"`
+	MaxUnsampledEntries	int64	`protobuf:"varint,2,opt,name=max_unsampled_entries,json=maxUnsampledEntries,proto3" json:"max_unsampled_entries,omitempty"`
 	// The rate at which to sample entries once the unsampled limit has been reached. Sampling will be enforced
 	// as 1 per every `sampling_rate` entries allowed.
-	SamplingRate int64 `protobuf:"varint,3,opt,name=sampling_rate,json=samplingRate,proto3" json:"sampling_rate,omitempty"`
+	SamplingRate	int64	`protobuf:"varint,3,opt,name=sampling_rate,json=samplingRate,proto3" json:"sampling_rate,omitempty"`
 }
 
-func (m *RateLimitSampling) Reset()      { *m = RateLimitSampling{} }
-func (*RateLimitSampling) ProtoMessage() {}
+func (m *RateLimitSampling) Reset()		{ *m = RateLimitSampling{} }
+func (*RateLimitSampling) ProtoMessage()	{}
 func (*RateLimitSampling) Descriptor() ([]byte, []int) {
 	return fileDescriptor_dfb7777e81b6b919, []int{8}
 }
@@ -1176,14 +1176,14 @@ func (m *RateLimitSampling) GetSamplingRate() int64 {
 // * **Example**: 3/10000 = 0.03%.
 type FractionalPercent struct {
 	// Specifies the numerator. Defaults to 0.
-	Numerator uint32 `protobuf:"varint,1,opt,name=numerator,proto3" json:"numerator,omitempty"`
+	Numerator	uint32	`protobuf:"varint,1,opt,name=numerator,proto3" json:"numerator,omitempty"`
 	// Specifies the denominator. If the denominator specified is less than the numerator, the final
 	// fractional percentage is capped at 1 (100%).
-	Denominator FractionalPercent_DenominatorType `protobuf:"varint,2,opt,name=denominator,proto3,enum=istio.policy.v1beta1.FractionalPercent_DenominatorType" json:"denominator,omitempty"`
+	Denominator	FractionalPercent_DenominatorType	`protobuf:"varint,2,opt,name=denominator,proto3,enum=istio.policy.v1beta1.FractionalPercent_DenominatorType" json:"denominator,omitempty"`
 }
 
-func (m *FractionalPercent) Reset()      { *m = FractionalPercent{} }
-func (*FractionalPercent) ProtoMessage() {}
+func (m *FractionalPercent) Reset()		{ *m = FractionalPercent{} }
+func (*FractionalPercent) ProtoMessage()	{}
 func (*FractionalPercent) Descriptor() ([]byte, []int) {
 	return fileDescriptor_dfb7777e81b6b919, []int{9}
 }
@@ -1237,8 +1237,8 @@ type Authentication struct {
 	AuthType isAuthentication_AuthType `protobuf_oneof:"auth_type"`
 }
 
-func (m *Authentication) Reset()      { *m = Authentication{} }
-func (*Authentication) ProtoMessage() {}
+func (m *Authentication) Reset()	{ *m = Authentication{} }
+func (*Authentication) ProtoMessage()	{}
 func (*Authentication) Descriptor() ([]byte, []int) {
 	return fileDescriptor_dfb7777e81b6b919, []int{10}
 }
@@ -1283,8 +1283,8 @@ type Authentication_Mutual struct {
 	Mutual *Mutual `protobuf:"bytes,2,opt,name=mutual,proto3,oneof"`
 }
 
-func (*Authentication_Tls) isAuthentication_AuthType()    {}
-func (*Authentication_Mutual) isAuthentication_AuthType() {}
+func (*Authentication_Tls) isAuthentication_AuthType()		{}
+func (*Authentication_Mutual) isAuthentication_AuthType()	{}
 
 func (m *Authentication) GetAuthType() isAuthentication_AuthType {
 	if m != nil {
@@ -1320,26 +1320,26 @@ func (*Authentication) XXX_OneofWrappers() []interface{} {
 type Tls struct {
 	// The path to the file holding additional CA certificates to well known
 	// public certs.
-	CaCertificates string `protobuf:"bytes,1,opt,name=ca_certificates,json=caCertificates,proto3" json:"ca_certificates,omitempty"`
+	CaCertificates	string	`protobuf:"bytes,1,opt,name=ca_certificates,json=caCertificates,proto3" json:"ca_certificates,omitempty"`
 	// Specifies how to get access token for client authn and authz.
 	//
 	// Types that are valid to be assigned to TokenSource:
 	//	*Tls_TokenPath
 	//	*Tls_Oauth
-	TokenSource isTls_TokenSource `protobuf_oneof:"token_source"`
+	TokenSource	isTls_TokenSource	`protobuf_oneof:"token_source"`
 	// Specifies how to pass access token to the adapter backend.
 	//
 	// Types that are valid to be assigned to TokenType:
 	//	*Tls_AuthHeader_
 	//	*Tls_CustomHeader
-	TokenType isTls_TokenType `protobuf_oneof:"token_type"`
+	TokenType	isTls_TokenType	`protobuf_oneof:"token_type"`
 	// Used to configure mixer TLS client to verify the hostname on the returned
 	// certificates. It is also included in the client's handshake to support SNI.
-	ServerName string `protobuf:"bytes,6,opt,name=server_name,json=serverName,proto3" json:"server_name,omitempty"`
+	ServerName	string	`protobuf:"bytes,6,opt,name=server_name,json=serverName,proto3" json:"server_name,omitempty"`
 }
 
-func (m *Tls) Reset()      { *m = Tls{} }
-func (*Tls) ProtoMessage() {}
+func (m *Tls) Reset()		{ *m = Tls{} }
+func (*Tls) ProtoMessage()	{}
 func (*Tls) Descriptor() ([]byte, []int) {
 	return fileDescriptor_dfb7777e81b6b919, []int{11}
 }
@@ -1396,10 +1396,10 @@ type Tls_CustomHeader struct {
 	CustomHeader string `protobuf:"bytes,5,opt,name=custom_header,json=customHeader,proto3,oneof"`
 }
 
-func (*Tls_TokenPath) isTls_TokenSource()  {}
-func (*Tls_Oauth) isTls_TokenSource()      {}
-func (*Tls_AuthHeader_) isTls_TokenType()  {}
-func (*Tls_CustomHeader) isTls_TokenType() {}
+func (*Tls_TokenPath) isTls_TokenSource()	{}
+func (*Tls_Oauth) isTls_TokenSource()		{}
+func (*Tls_AuthHeader_) isTls_TokenType()	{}
+func (*Tls_CustomHeader) isTls_TokenType()	{}
 
 func (m *Tls) GetTokenSource() isTls_TokenSource {
 	if m != nil {
@@ -1470,19 +1470,19 @@ func (*Tls) XXX_OneofWrappers() []interface{} {
 // TLS for connection to the backend.
 type OAuth struct {
 	// OAuth client id for mixer.
-	ClientId string `protobuf:"bytes,1,opt,name=client_id,json=clientId,proto3" json:"client_id,omitempty"`
+	ClientId	string	`protobuf:"bytes,1,opt,name=client_id,json=clientId,proto3" json:"client_id,omitempty"`
 	// The path to the file holding the client secret for oauth.
-	ClientSecret string `protobuf:"bytes,2,opt,name=client_secret,json=clientSecret,proto3" json:"client_secret,omitempty"`
+	ClientSecret	string	`protobuf:"bytes,2,opt,name=client_secret,json=clientSecret,proto3" json:"client_secret,omitempty"`
 	// The Resource server's token endpoint URL.
-	TokenUrl string `protobuf:"bytes,3,opt,name=token_url,json=tokenUrl,proto3" json:"token_url,omitempty"`
+	TokenUrl	string	`protobuf:"bytes,3,opt,name=token_url,json=tokenUrl,proto3" json:"token_url,omitempty"`
 	// List of requested permissions.
-	Scopes []string `protobuf:"bytes,4,rep,name=scopes,proto3" json:"scopes,omitempty"`
+	Scopes	[]string	`protobuf:"bytes,4,rep,name=scopes,proto3" json:"scopes,omitempty"`
 	// Additional parameters for requests to the token endpoint.
-	EndpointParams map[string]string `protobuf:"bytes,5,rep,name=endpoint_params,json=endpointParams,proto3" json:"endpoint_params,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	EndpointParams	map[string]string	`protobuf:"bytes,5,rep,name=endpoint_params,json=endpointParams,proto3" json:"endpoint_params,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
-func (m *OAuth) Reset()      { *m = OAuth{} }
-func (*OAuth) ProtoMessage() {}
+func (m *OAuth) Reset()		{ *m = OAuth{} }
+func (*OAuth) ProtoMessage()	{}
 func (*OAuth) Descriptor() ([]byte, []int) {
 	return fileDescriptor_dfb7777e81b6b919, []int{12}
 }
@@ -1553,22 +1553,22 @@ func (m *OAuth) GetEndpointParams() map[string]string {
 type Mutual struct {
 	// The path to the file holding the private key for mutual TLS. If omitted, the
 	// default Mixer private key will be used.
-	PrivateKey string `protobuf:"bytes,1,opt,name=private_key,json=privateKey,proto3" json:"private_key,omitempty"`
+	PrivateKey	string	`protobuf:"bytes,1,opt,name=private_key,json=privateKey,proto3" json:"private_key,omitempty"`
 	// The path to the file holding client certificate for mutual TLS. If omitted, the
 	// default Mixer certificates will be used.
-	ClientCertificate string `protobuf:"bytes,2,opt,name=client_certificate,json=clientCertificate,proto3" json:"client_certificate,omitempty"`
+	ClientCertificate	string	`protobuf:"bytes,2,opt,name=client_certificate,json=clientCertificate,proto3" json:"client_certificate,omitempty"`
 	// The path to the file holding additional CA certificates that are needed to
 	// verify the presented adapter certificates. By default Mixer should already
 	// include Istio CA certificates and system certificates in cert pool.
-	CaCertificates string `protobuf:"bytes,3,opt,name=ca_certificates,json=caCertificates,proto3" json:"ca_certificates,omitempty"`
+	CaCertificates	string	`protobuf:"bytes,3,opt,name=ca_certificates,json=caCertificates,proto3" json:"ca_certificates,omitempty"`
 	// Used to configure mixer mutual TLS client to supply server name for SNI.
 	// It is not used to verify the hostname of the peer certificate, since
 	// Istio verifies whitelisted SAN fields in mutual TLS.
-	ServerName string `protobuf:"bytes,4,opt,name=server_name,json=serverName,proto3" json:"server_name,omitempty"`
+	ServerName	string	`protobuf:"bytes,4,opt,name=server_name,json=serverName,proto3" json:"server_name,omitempty"`
 }
 
-func (m *Mutual) Reset()      { *m = Mutual{} }
-func (*Mutual) ProtoMessage() {}
+func (m *Mutual) Reset()	{ *m = Mutual{} }
+func (*Mutual) ProtoMessage()	{}
 func (*Mutual) Descriptor() ([]byte, []int) {
 	return fileDescriptor_dfb7777e81b6b919, []int{13}
 }
@@ -1652,7 +1652,7 @@ func init() {
 	proto.RegisterType((*Mutual)(nil), "istio.policy.v1beta1.Mutual")
 }
 
-func init() { proto.RegisterFile("policy/v1beta1/cfg.proto", fileDescriptor_dfb7777e81b6b919) }
+func init()	{ proto.RegisterFile("policy/v1beta1/cfg.proto", fileDescriptor_dfb7777e81b6b919) }
 
 var fileDescriptor_dfb7777e81b6b919 = []byte{
 	// 1557 bytes of a gzipped FileDescriptorProto
@@ -7514,6 +7514,6 @@ func skipCfg(dAtA []byte) (n int, err error) {
 }
 
 var (
-	ErrInvalidLengthCfg = fmt.Errorf("proto: negative length found during unmarshaling")
-	ErrIntOverflowCfg   = fmt.Errorf("proto: integer overflow")
+	ErrInvalidLengthCfg	= fmt.Errorf("proto: negative length found during unmarshaling")
+	ErrIntOverflowCfg	= fmt.Errorf("proto: integer overflow")
 )

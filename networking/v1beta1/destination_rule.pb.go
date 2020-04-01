@@ -81,7 +81,7 @@ import (
 	github_com_gogo_protobuf_types "github.com/gogo/protobuf/types"
 	types "github.com/gogo/protobuf/types"
 	io "io"
-	_ "istio.io/gogo-genproto/googleapis/google/api"
+
 	math "math"
 	math_bits "math/bits"
 	time "time"
@@ -97,42 +97,42 @@ var _ = time.Kitchen
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion3	// please upgrade the proto package
 
 // Standard load balancing algorithms that require no tuning.
 type LoadBalancerSettings_SimpleLB int32
 
 const (
 	// Round Robin policy. Default
-	LoadBalancerSettings_ROUND_ROBIN LoadBalancerSettings_SimpleLB = 0
+	LoadBalancerSettings_ROUND_ROBIN	LoadBalancerSettings_SimpleLB	= 0
 	// The least request load balancer uses an O(1) algorithm which selects
 	// two random healthy hosts and picks the host which has fewer active
 	// requests.
-	LoadBalancerSettings_LEAST_CONN LoadBalancerSettings_SimpleLB = 1
+	LoadBalancerSettings_LEAST_CONN	LoadBalancerSettings_SimpleLB	= 1
 	// The random load balancer selects a random healthy host. The random
 	// load balancer generally performs better than round robin if no health
 	// checking policy is configured.
-	LoadBalancerSettings_RANDOM LoadBalancerSettings_SimpleLB = 2
+	LoadBalancerSettings_RANDOM	LoadBalancerSettings_SimpleLB	= 2
 	// This option will forward the connection to the original IP address
 	// requested by the caller without doing any form of load
 	// balancing. This option must be used with care. It is meant for
 	// advanced use cases. Refer to Original Destination load balancer in
 	// Envoy for further details.
-	LoadBalancerSettings_PASSTHROUGH LoadBalancerSettings_SimpleLB = 3
+	LoadBalancerSettings_PASSTHROUGH	LoadBalancerSettings_SimpleLB	= 3
 )
 
 var LoadBalancerSettings_SimpleLB_name = map[int32]string{
-	0: "ROUND_ROBIN",
-	1: "LEAST_CONN",
-	2: "RANDOM",
-	3: "PASSTHROUGH",
+	0:	"ROUND_ROBIN",
+	1:	"LEAST_CONN",
+	2:	"RANDOM",
+	3:	"PASSTHROUGH",
 }
 
 var LoadBalancerSettings_SimpleLB_value = map[string]int32{
-	"ROUND_ROBIN": 0,
-	"LEAST_CONN":  1,
-	"RANDOM":      2,
-	"PASSTHROUGH": 3,
+	"ROUND_ROBIN":	0,
+	"LEAST_CONN":	1,
+	"RANDOM":	2,
+	"PASSTHROUGH":	3,
 }
 
 func (x LoadBalancerSettings_SimpleLB) String() string {
@@ -148,25 +148,25 @@ type ConnectionPoolSettings_HTTPSettings_H2UpgradePolicy int32
 
 const (
 	// Use the global default.
-	ConnectionPoolSettings_HTTPSettings_DEFAULT ConnectionPoolSettings_HTTPSettings_H2UpgradePolicy = 0
+	ConnectionPoolSettings_HTTPSettings_DEFAULT	ConnectionPoolSettings_HTTPSettings_H2UpgradePolicy	= 0
 	// Do not upgrade the connection to http2.
 	// This opt-out option overrides the default.
-	ConnectionPoolSettings_HTTPSettings_DO_NOT_UPGRADE ConnectionPoolSettings_HTTPSettings_H2UpgradePolicy = 1
+	ConnectionPoolSettings_HTTPSettings_DO_NOT_UPGRADE	ConnectionPoolSettings_HTTPSettings_H2UpgradePolicy	= 1
 	// Upgrade the connection to http2.
 	// This opt-in option overrides the default.
-	ConnectionPoolSettings_HTTPSettings_UPGRADE ConnectionPoolSettings_HTTPSettings_H2UpgradePolicy = 2
+	ConnectionPoolSettings_HTTPSettings_UPGRADE	ConnectionPoolSettings_HTTPSettings_H2UpgradePolicy	= 2
 )
 
 var ConnectionPoolSettings_HTTPSettings_H2UpgradePolicy_name = map[int32]string{
-	0: "DEFAULT",
-	1: "DO_NOT_UPGRADE",
-	2: "UPGRADE",
+	0:	"DEFAULT",
+	1:	"DO_NOT_UPGRADE",
+	2:	"UPGRADE",
 }
 
 var ConnectionPoolSettings_HTTPSettings_H2UpgradePolicy_value = map[string]int32{
-	"DEFAULT":        0,
-	"DO_NOT_UPGRADE": 1,
-	"UPGRADE":        2,
+	"DEFAULT":		0,
+	"DO_NOT_UPGRADE":	1,
+	"UPGRADE":		2,
 }
 
 func (x ConnectionPoolSettings_HTTPSettings_H2UpgradePolicy) String() string {
@@ -182,32 +182,32 @@ type TLSSettings_TLSmode int32
 
 const (
 	// Do not setup a TLS connection to the upstream endpoint.
-	TLSSettings_DISABLE TLSSettings_TLSmode = 0
+	TLSSettings_DISABLE	TLSSettings_TLSmode	= 0
 	// Originate a TLS connection to the upstream endpoint.
-	TLSSettings_SIMPLE TLSSettings_TLSmode = 1
+	TLSSettings_SIMPLE	TLSSettings_TLSmode	= 1
 	// Secure connections to the upstream using mutual TLS by presenting
 	// client certificates for authentication.
-	TLSSettings_MUTUAL TLSSettings_TLSmode = 2
+	TLSSettings_MUTUAL	TLSSettings_TLSmode	= 2
 	// Secure connections to the upstream using mutual TLS by presenting
 	// client certificates for authentication.
 	// Compared to Mutual mode, this mode uses certificates generated
 	// automatically by Istio for mTLS authentication. When this mode is
 	// used, all other fields in `TLSSettings` should be empty.
-	TLSSettings_ISTIO_MUTUAL TLSSettings_TLSmode = 3
+	TLSSettings_ISTIO_MUTUAL	TLSSettings_TLSmode	= 3
 )
 
 var TLSSettings_TLSmode_name = map[int32]string{
-	0: "DISABLE",
-	1: "SIMPLE",
-	2: "MUTUAL",
-	3: "ISTIO_MUTUAL",
+	0:	"DISABLE",
+	1:	"SIMPLE",
+	2:	"MUTUAL",
+	3:	"ISTIO_MUTUAL",
 }
 
 var TLSSettings_TLSmode_value = map[string]int32{
-	"DISABLE":      0,
-	"SIMPLE":       1,
-	"MUTUAL":       2,
-	"ISTIO_MUTUAL": 3,
+	"DISABLE":	0,
+	"SIMPLE":	1,
+	"MUTUAL":	2,
+	"ISTIO_MUTUAL":	3,
 }
 
 func (x TLSSettings_TLSmode) String() string {
@@ -259,13 +259,13 @@ type DestinationRule struct {
 	// qualified domain names over short names._
 	//
 	// Note that the host field applies to both HTTP and TCP services.
-	Host string `protobuf:"bytes,1,opt,name=host,proto3" json:"host,omitempty"`
+	Host	string	`protobuf:"bytes,1,opt,name=host,proto3" json:"host,omitempty"`
 	// Traffic policies to apply (load balancing policy, connection pool
 	// sizes, outlier detection).
-	TrafficPolicy *TrafficPolicy `protobuf:"bytes,2,opt,name=traffic_policy,json=trafficPolicy,proto3" json:"traffic_policy,omitempty"`
+	TrafficPolicy	*TrafficPolicy	`protobuf:"bytes,2,opt,name=traffic_policy,json=trafficPolicy,proto3" json:"traffic_policy,omitempty"`
 	// One or more named sets that represent individual versions of a
 	// service. Traffic policies can be overridden at subset level.
-	Subsets []*Subset `protobuf:"bytes,3,rep,name=subsets,proto3" json:"subsets,omitempty"`
+	Subsets	[]*Subset	`protobuf:"bytes,3,rep,name=subsets,proto3" json:"subsets,omitempty"`
 	// A list of namespaces to which this destination rule is exported.
 	// The resolution of a destination rule to apply to a service occurs in the
 	// context of a hierarchy of namespaces. Exporting a destination rule allows
@@ -283,15 +283,15 @@ type DestinationRule struct {
 	//
 	// NOTE: in the current release, the `exportTo` value is restricted to
 	// "." or "*" (i.e., the current namespace or all namespaces).
-	ExportTo             []string `protobuf:"bytes,4,rep,name=export_to,json=exportTo,proto3" json:"export_to,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	ExportTo		[]string	`protobuf:"bytes,4,rep,name=export_to,json=exportTo,proto3" json:"export_to,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *DestinationRule) Reset()         { *m = DestinationRule{} }
-func (m *DestinationRule) String() string { return proto.CompactTextString(m) }
-func (*DestinationRule) ProtoMessage()    {}
+func (m *DestinationRule) Reset()		{ *m = DestinationRule{} }
+func (m *DestinationRule) String() string	{ return proto.CompactTextString(m) }
+func (*DestinationRule) ProtoMessage()		{}
 func (*DestinationRule) Descriptor() ([]byte, []int) {
 	return fileDescriptor_31054629b619ca4b, []int{0}
 }
@@ -354,27 +354,27 @@ func (m *DestinationRule) GetExportTo() []string {
 // destination ports. See DestinationRule for examples.
 type TrafficPolicy struct {
 	// Settings controlling the load balancer algorithms.
-	LoadBalancer *LoadBalancerSettings `protobuf:"bytes,1,opt,name=load_balancer,json=loadBalancer,proto3" json:"load_balancer,omitempty"`
+	LoadBalancer	*LoadBalancerSettings	`protobuf:"bytes,1,opt,name=load_balancer,json=loadBalancer,proto3" json:"load_balancer,omitempty"`
 	// Settings controlling the volume of connections to an upstream service
-	ConnectionPool *ConnectionPoolSettings `protobuf:"bytes,2,opt,name=connection_pool,json=connectionPool,proto3" json:"connection_pool,omitempty"`
+	ConnectionPool	*ConnectionPoolSettings	`protobuf:"bytes,2,opt,name=connection_pool,json=connectionPool,proto3" json:"connection_pool,omitempty"`
 	// Settings controlling eviction of unhealthy hosts from the load balancing pool
-	OutlierDetection *OutlierDetection `protobuf:"bytes,3,opt,name=outlier_detection,json=outlierDetection,proto3" json:"outlier_detection,omitempty"`
+	OutlierDetection	*OutlierDetection	`protobuf:"bytes,3,opt,name=outlier_detection,json=outlierDetection,proto3" json:"outlier_detection,omitempty"`
 	// TLS related settings for connections to the upstream service.
-	Tls *TLSSettings `protobuf:"bytes,4,opt,name=tls,proto3" json:"tls,omitempty"`
+	Tls	*TLSSettings	`protobuf:"bytes,4,opt,name=tls,proto3" json:"tls,omitempty"`
 	// Traffic policies specific to individual ports. Note that port level
 	// settings will override the destination-level settings. Traffic
 	// settings specified at the destination-level will not be inherited when
 	// overridden by port-level settings, i.e. default values will be applied
 	// to fields omitted in port-level traffic policies.
-	PortLevelSettings    []*TrafficPolicy_PortTrafficPolicy `protobuf:"bytes,5,rep,name=port_level_settings,json=portLevelSettings,proto3" json:"port_level_settings,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                           `json:"-"`
-	XXX_unrecognized     []byte                             `json:"-"`
-	XXX_sizecache        int32                              `json:"-"`
+	PortLevelSettings	[]*TrafficPolicy_PortTrafficPolicy	`protobuf:"bytes,5,rep,name=port_level_settings,json=portLevelSettings,proto3" json:"port_level_settings,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}				`json:"-"`
+	XXX_unrecognized	[]byte					`json:"-"`
+	XXX_sizecache		int32					`json:"-"`
 }
 
-func (m *TrafficPolicy) Reset()         { *m = TrafficPolicy{} }
-func (m *TrafficPolicy) String() string { return proto.CompactTextString(m) }
-func (*TrafficPolicy) ProtoMessage()    {}
+func (m *TrafficPolicy) Reset()		{ *m = TrafficPolicy{} }
+func (m *TrafficPolicy) String() string	{ return proto.CompactTextString(m) }
+func (*TrafficPolicy) ProtoMessage()	{}
 func (*TrafficPolicy) Descriptor() ([]byte, []int) {
 	return fileDescriptor_31054629b619ca4b, []int{1}
 }
@@ -444,23 +444,23 @@ func (m *TrafficPolicy) GetPortLevelSettings() []*TrafficPolicy_PortTrafficPolic
 type TrafficPolicy_PortTrafficPolicy struct {
 	// Specifies the number of a port on the destination service
 	// on which this policy is being applied.
-	Port *PortSelector `protobuf:"bytes,1,opt,name=port,proto3" json:"port,omitempty"`
+	Port	*PortSelector	`protobuf:"bytes,1,opt,name=port,proto3" json:"port,omitempty"`
 	// Settings controlling the load balancer algorithms.
-	LoadBalancer *LoadBalancerSettings `protobuf:"bytes,2,opt,name=load_balancer,json=loadBalancer,proto3" json:"load_balancer,omitempty"`
+	LoadBalancer	*LoadBalancerSettings	`protobuf:"bytes,2,opt,name=load_balancer,json=loadBalancer,proto3" json:"load_balancer,omitempty"`
 	// Settings controlling the volume of connections to an upstream service
-	ConnectionPool *ConnectionPoolSettings `protobuf:"bytes,3,opt,name=connection_pool,json=connectionPool,proto3" json:"connection_pool,omitempty"`
+	ConnectionPool	*ConnectionPoolSettings	`protobuf:"bytes,3,opt,name=connection_pool,json=connectionPool,proto3" json:"connection_pool,omitempty"`
 	// Settings controlling eviction of unhealthy hosts from the load balancing pool
-	OutlierDetection *OutlierDetection `protobuf:"bytes,4,opt,name=outlier_detection,json=outlierDetection,proto3" json:"outlier_detection,omitempty"`
+	OutlierDetection	*OutlierDetection	`protobuf:"bytes,4,opt,name=outlier_detection,json=outlierDetection,proto3" json:"outlier_detection,omitempty"`
 	// TLS related settings for connections to the upstream service.
-	Tls                  *TLSSettings `protobuf:"bytes,5,opt,name=tls,proto3" json:"tls,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}     `json:"-"`
-	XXX_unrecognized     []byte       `json:"-"`
-	XXX_sizecache        int32        `json:"-"`
+	Tls			*TLSSettings	`protobuf:"bytes,5,opt,name=tls,proto3" json:"tls,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *TrafficPolicy_PortTrafficPolicy) Reset()         { *m = TrafficPolicy_PortTrafficPolicy{} }
-func (m *TrafficPolicy_PortTrafficPolicy) String() string { return proto.CompactTextString(m) }
-func (*TrafficPolicy_PortTrafficPolicy) ProtoMessage()    {}
+func (m *TrafficPolicy_PortTrafficPolicy) Reset()		{ *m = TrafficPolicy_PortTrafficPolicy{} }
+func (m *TrafficPolicy_PortTrafficPolicy) String() string	{ return proto.CompactTextString(m) }
+func (*TrafficPolicy_PortTrafficPolicy) ProtoMessage()		{}
 func (*TrafficPolicy_PortTrafficPolicy) Descriptor() ([]byte, []int) {
 	return fileDescriptor_31054629b619ca4b, []int{1, 0}
 }
@@ -565,23 +565,23 @@ func (m *TrafficPolicy_PortTrafficPolicy) GetTls() *TLSSettings {
 type Subset struct {
 	// Name of the subset. The service name and the subset name can
 	// be used for traffic splitting in a route rule.
-	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Name	string	`protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Labels apply a filter over the endpoints of a service in the
 	// service registry. See route rules for examples of usage.
-	Labels map[string]string `protobuf:"bytes,2,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Labels	map[string]string	`protobuf:"bytes,2,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Traffic policies that apply to this subset. Subsets inherit the
 	// traffic policies specified at the DestinationRule level. Settings
 	// specified at the subset level will override the corresponding settings
 	// specified at the DestinationRule level.
-	TrafficPolicy        *TrafficPolicy `protobuf:"bytes,3,opt,name=traffic_policy,json=trafficPolicy,proto3" json:"traffic_policy,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
-	XXX_unrecognized     []byte         `json:"-"`
-	XXX_sizecache        int32          `json:"-"`
+	TrafficPolicy		*TrafficPolicy	`protobuf:"bytes,3,opt,name=traffic_policy,json=trafficPolicy,proto3" json:"traffic_policy,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *Subset) Reset()         { *m = Subset{} }
-func (m *Subset) String() string { return proto.CompactTextString(m) }
-func (*Subset) ProtoMessage()    {}
+func (m *Subset) Reset()		{ *m = Subset{} }
+func (m *Subset) String() string	{ return proto.CompactTextString(m) }
+func (*Subset) ProtoMessage()		{}
 func (*Subset) Descriptor() ([]byte, []int) {
 	return fileDescriptor_31054629b619ca4b, []int{2}
 }
@@ -678,18 +678,18 @@ type LoadBalancerSettings struct {
 	// Types that are valid to be assigned to LbPolicy:
 	//	*LoadBalancerSettings_Simple
 	//	*LoadBalancerSettings_ConsistentHash
-	LbPolicy isLoadBalancerSettings_LbPolicy `protobuf_oneof:"lb_policy"`
+	LbPolicy	isLoadBalancerSettings_LbPolicy	`protobuf_oneof:"lb_policy"`
 	// Locality load balancer settings, this will override mesh wide settings in entirety, meaning no merging would be performed
 	// between this object and the object one in MeshConfig
-	LocalityLbSetting    *LocalityLoadBalancerSetting `protobuf:"bytes,3,opt,name=locality_lb_setting,json=localityLbSetting,proto3" json:"locality_lb_setting,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                     `json:"-"`
-	XXX_unrecognized     []byte                       `json:"-"`
-	XXX_sizecache        int32                        `json:"-"`
+	LocalityLbSetting	*LocalityLoadBalancerSetting	`protobuf:"bytes,3,opt,name=locality_lb_setting,json=localityLbSetting,proto3" json:"locality_lb_setting,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}			`json:"-"`
+	XXX_unrecognized	[]byte				`json:"-"`
+	XXX_sizecache		int32				`json:"-"`
 }
 
-func (m *LoadBalancerSettings) Reset()         { *m = LoadBalancerSettings{} }
-func (m *LoadBalancerSettings) String() string { return proto.CompactTextString(m) }
-func (*LoadBalancerSettings) ProtoMessage()    {}
+func (m *LoadBalancerSettings) Reset()		{ *m = LoadBalancerSettings{} }
+func (m *LoadBalancerSettings) String() string	{ return proto.CompactTextString(m) }
+func (*LoadBalancerSettings) ProtoMessage()	{}
 func (*LoadBalancerSettings) Descriptor() ([]byte, []int) {
 	return fileDescriptor_31054629b619ca4b, []int{3}
 }
@@ -733,8 +733,8 @@ type LoadBalancerSettings_ConsistentHash struct {
 	ConsistentHash *LoadBalancerSettings_ConsistentHashLB `protobuf:"bytes,2,opt,name=consistent_hash,json=consistentHash,proto3,oneof"`
 }
 
-func (*LoadBalancerSettings_Simple) isLoadBalancerSettings_LbPolicy()         {}
-func (*LoadBalancerSettings_ConsistentHash) isLoadBalancerSettings_LbPolicy() {}
+func (*LoadBalancerSettings_Simple) isLoadBalancerSettings_LbPolicy()		{}
+func (*LoadBalancerSettings_ConsistentHash) isLoadBalancerSettings_LbPolicy()	{}
 
 func (m *LoadBalancerSettings) GetLbPolicy() isLoadBalancerSettings_LbPolicy {
 	if m != nil {
@@ -785,21 +785,21 @@ type LoadBalancerSettings_ConsistentHashLB struct {
 	//	*LoadBalancerSettings_ConsistentHashLB_HttpHeaderName
 	//	*LoadBalancerSettings_ConsistentHashLB_HttpCookie
 	//	*LoadBalancerSettings_ConsistentHashLB_UseSourceIp
-	HashKey isLoadBalancerSettings_ConsistentHashLB_HashKey `protobuf_oneof:"hash_key"`
+	HashKey	isLoadBalancerSettings_ConsistentHashLB_HashKey	`protobuf_oneof:"hash_key"`
 	// The minimum number of virtual nodes to use for the hash
 	// ring. Defaults to 1024. Larger ring sizes result in more granular
 	// load distributions. If the number of hosts in the load balancing
 	// pool is larger than the ring size, each host will be assigned a
 	// single virtual node.
-	MinimumRingSize      uint64   `protobuf:"varint,4,opt,name=minimum_ring_size,json=minimumRingSize,proto3" json:"minimum_ring_size,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	MinimumRingSize		uint64		`protobuf:"varint,4,opt,name=minimum_ring_size,json=minimumRingSize,proto3" json:"minimum_ring_size,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *LoadBalancerSettings_ConsistentHashLB) Reset()         { *m = LoadBalancerSettings_ConsistentHashLB{} }
-func (m *LoadBalancerSettings_ConsistentHashLB) String() string { return proto.CompactTextString(m) }
-func (*LoadBalancerSettings_ConsistentHashLB) ProtoMessage()    {}
+func (m *LoadBalancerSettings_ConsistentHashLB) Reset()		{ *m = LoadBalancerSettings_ConsistentHashLB{} }
+func (m *LoadBalancerSettings_ConsistentHashLB) String() string	{ return proto.CompactTextString(m) }
+func (*LoadBalancerSettings_ConsistentHashLB) ProtoMessage()	{}
 func (*LoadBalancerSettings_ConsistentHashLB) Descriptor() ([]byte, []int) {
 	return fileDescriptor_31054629b619ca4b, []int{3, 0}
 }
@@ -902,14 +902,14 @@ func (*LoadBalancerSettings_ConsistentHashLB) XXX_OneofWrappers() []interface{} 
 // be generated.
 type LoadBalancerSettings_ConsistentHashLB_HTTPCookie struct {
 	// Name of the cookie.
-	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Name	string	`protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Path to set for the cookie.
-	Path string `protobuf:"bytes,2,opt,name=path,proto3" json:"path,omitempty"`
+	Path	string	`protobuf:"bytes,2,opt,name=path,proto3" json:"path,omitempty"`
 	// Lifetime of the cookie.
-	Ttl                  *time.Duration `protobuf:"bytes,3,opt,name=ttl,proto3,stdduration" json:"ttl,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
-	XXX_unrecognized     []byte         `json:"-"`
-	XXX_sizecache        int32          `json:"-"`
+	Ttl			*time.Duration	`protobuf:"bytes,3,opt,name=ttl,proto3,stdduration" json:"ttl,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
 func (m *LoadBalancerSettings_ConsistentHashLB_HTTPCookie) Reset() {
@@ -918,7 +918,7 @@ func (m *LoadBalancerSettings_ConsistentHashLB_HTTPCookie) Reset() {
 func (m *LoadBalancerSettings_ConsistentHashLB_HTTPCookie) String() string {
 	return proto.CompactTextString(m)
 }
-func (*LoadBalancerSettings_ConsistentHashLB_HTTPCookie) ProtoMessage() {}
+func (*LoadBalancerSettings_ConsistentHashLB_HTTPCookie) ProtoMessage()	{}
 func (*LoadBalancerSettings_ConsistentHashLB_HTTPCookie) Descriptor() ([]byte, []int) {
 	return fileDescriptor_31054629b619ca4b, []int{3, 0, 0}
 }
@@ -997,17 +997,17 @@ func (m *LoadBalancerSettings_ConsistentHashLB_HTTPCookie) GetTtl() *time.Durati
 // ```
 type ConnectionPoolSettings struct {
 	// Settings common to both HTTP and TCP upstream connections.
-	Tcp *ConnectionPoolSettings_TCPSettings `protobuf:"bytes,1,opt,name=tcp,proto3" json:"tcp,omitempty"`
+	Tcp	*ConnectionPoolSettings_TCPSettings	`protobuf:"bytes,1,opt,name=tcp,proto3" json:"tcp,omitempty"`
 	// HTTP connection pool settings.
-	Http                 *ConnectionPoolSettings_HTTPSettings `protobuf:"bytes,2,opt,name=http,proto3" json:"http,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                             `json:"-"`
-	XXX_unrecognized     []byte                               `json:"-"`
-	XXX_sizecache        int32                                `json:"-"`
+	Http			*ConnectionPoolSettings_HTTPSettings	`protobuf:"bytes,2,opt,name=http,proto3" json:"http,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}				`json:"-"`
+	XXX_unrecognized	[]byte					`json:"-"`
+	XXX_sizecache		int32					`json:"-"`
 }
 
-func (m *ConnectionPoolSettings) Reset()         { *m = ConnectionPoolSettings{} }
-func (m *ConnectionPoolSettings) String() string { return proto.CompactTextString(m) }
-func (*ConnectionPoolSettings) ProtoMessage()    {}
+func (m *ConnectionPoolSettings) Reset()		{ *m = ConnectionPoolSettings{} }
+func (m *ConnectionPoolSettings) String() string	{ return proto.CompactTextString(m) }
+func (*ConnectionPoolSettings) ProtoMessage()		{}
 func (*ConnectionPoolSettings) Descriptor() ([]byte, []int) {
 	return fileDescriptor_31054629b619ca4b, []int{4}
 }
@@ -1055,19 +1055,19 @@ func (m *ConnectionPoolSettings) GetHttp() *ConnectionPoolSettings_HTTPSettings 
 // Settings common to both HTTP and TCP upstream connections.
 type ConnectionPoolSettings_TCPSettings struct {
 	// Maximum number of HTTP1 /TCP connections to a destination host. Default 2^32-1.
-	MaxConnections int32 `protobuf:"varint,1,opt,name=max_connections,json=maxConnections,proto3" json:"max_connections,omitempty"`
+	MaxConnections	int32	`protobuf:"varint,1,opt,name=max_connections,json=maxConnections,proto3" json:"max_connections,omitempty"`
 	// TCP connection timeout.
-	ConnectTimeout *types.Duration `protobuf:"bytes,2,opt,name=connect_timeout,json=connectTimeout,proto3" json:"connect_timeout,omitempty"`
+	ConnectTimeout	*types.Duration	`protobuf:"bytes,2,opt,name=connect_timeout,json=connectTimeout,proto3" json:"connect_timeout,omitempty"`
 	// If set then set SO_KEEPALIVE on the socket to enable TCP Keepalives.
-	TcpKeepalive         *ConnectionPoolSettings_TCPSettings_TcpKeepalive `protobuf:"bytes,3,opt,name=tcp_keepalive,json=tcpKeepalive,proto3" json:"tcp_keepalive,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                                         `json:"-"`
-	XXX_unrecognized     []byte                                           `json:"-"`
-	XXX_sizecache        int32                                            `json:"-"`
+	TcpKeepalive		*ConnectionPoolSettings_TCPSettings_TcpKeepalive	`protobuf:"bytes,3,opt,name=tcp_keepalive,json=tcpKeepalive,proto3" json:"tcp_keepalive,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}						`json:"-"`
+	XXX_unrecognized	[]byte							`json:"-"`
+	XXX_sizecache		int32							`json:"-"`
 }
 
-func (m *ConnectionPoolSettings_TCPSettings) Reset()         { *m = ConnectionPoolSettings_TCPSettings{} }
-func (m *ConnectionPoolSettings_TCPSettings) String() string { return proto.CompactTextString(m) }
-func (*ConnectionPoolSettings_TCPSettings) ProtoMessage()    {}
+func (m *ConnectionPoolSettings_TCPSettings) Reset()		{ *m = ConnectionPoolSettings_TCPSettings{} }
+func (m *ConnectionPoolSettings_TCPSettings) String() string	{ return proto.CompactTextString(m) }
+func (*ConnectionPoolSettings_TCPSettings) ProtoMessage()	{}
 func (*ConnectionPoolSettings_TCPSettings) Descriptor() ([]byte, []int) {
 	return fileDescriptor_31054629b619ca4b, []int{4, 0}
 }
@@ -1124,18 +1124,18 @@ type ConnectionPoolSettings_TCPSettings_TcpKeepalive struct {
 	// Maximum number of keepalive probes to send without response before
 	// deciding the connection is dead. Default is to use the OS level configuration
 	// (unless overridden, Linux defaults to 9.)
-	Probes uint32 `protobuf:"varint,1,opt,name=probes,proto3" json:"probes,omitempty"`
+	Probes	uint32	`protobuf:"varint,1,opt,name=probes,proto3" json:"probes,omitempty"`
 	// The time duration a connection needs to be idle before keep-alive
 	// probes start being sent. Default is to use the OS level configuration
 	// (unless overridden, Linux defaults to 7200s (ie 2 hours.)
-	Time *types.Duration `protobuf:"bytes,2,opt,name=time,proto3" json:"time,omitempty"`
+	Time	*types.Duration	`protobuf:"bytes,2,opt,name=time,proto3" json:"time,omitempty"`
 	// The time duration between keep-alive probes.
 	// Default is to use the OS level configuration
 	// (unless overridden, Linux defaults to 75s.)
-	Interval             *types.Duration `protobuf:"bytes,3,opt,name=interval,proto3" json:"interval,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
-	XXX_unrecognized     []byte          `json:"-"`
-	XXX_sizecache        int32           `json:"-"`
+	Interval		*types.Duration	`protobuf:"bytes,3,opt,name=interval,proto3" json:"interval,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
 func (m *ConnectionPoolSettings_TCPSettings_TcpKeepalive) Reset() {
@@ -1144,7 +1144,7 @@ func (m *ConnectionPoolSettings_TCPSettings_TcpKeepalive) Reset() {
 func (m *ConnectionPoolSettings_TCPSettings_TcpKeepalive) String() string {
 	return proto.CompactTextString(m)
 }
-func (*ConnectionPoolSettings_TCPSettings_TcpKeepalive) ProtoMessage() {}
+func (*ConnectionPoolSettings_TCPSettings_TcpKeepalive) ProtoMessage()	{}
 func (*ConnectionPoolSettings_TCPSettings_TcpKeepalive) Descriptor() ([]byte, []int) {
 	return fileDescriptor_31054629b619ca4b, []int{4, 0, 0}
 }
@@ -1199,30 +1199,30 @@ func (m *ConnectionPoolSettings_TCPSettings_TcpKeepalive) GetInterval() *types.D
 // Settings applicable to HTTP1.1/HTTP2/GRPC connections.
 type ConnectionPoolSettings_HTTPSettings struct {
 	// Maximum number of pending HTTP requests to a destination. Default 2^32-1.
-	Http1MaxPendingRequests int32 `protobuf:"varint,1,opt,name=http1_max_pending_requests,json=http1MaxPendingRequests,proto3" json:"http1_max_pending_requests,omitempty"`
+	Http1MaxPendingRequests	int32	`protobuf:"varint,1,opt,name=http1_max_pending_requests,json=http1MaxPendingRequests,proto3" json:"http1_max_pending_requests,omitempty"`
 	// Maximum number of requests to a backend. Default 2^32-1.
-	Http2MaxRequests int32 `protobuf:"varint,2,opt,name=http2_max_requests,json=http2MaxRequests,proto3" json:"http2_max_requests,omitempty"`
+	Http2MaxRequests	int32	`protobuf:"varint,2,opt,name=http2_max_requests,json=http2MaxRequests,proto3" json:"http2_max_requests,omitempty"`
 	// Maximum number of requests per connection to a backend. Setting this
 	// parameter to 1 disables keep alive. Default 0, meaning "unlimited",
 	// up to 2^29.
-	MaxRequestsPerConnection int32 `protobuf:"varint,3,opt,name=max_requests_per_connection,json=maxRequestsPerConnection,proto3" json:"max_requests_per_connection,omitempty"`
+	MaxRequestsPerConnection	int32	`protobuf:"varint,3,opt,name=max_requests_per_connection,json=maxRequestsPerConnection,proto3" json:"max_requests_per_connection,omitempty"`
 	// Maximum number of retries that can be outstanding to all hosts in a
 	// cluster at a given time. Defaults to 2^32-1.
-	MaxRetries int32 `protobuf:"varint,4,opt,name=max_retries,json=maxRetries,proto3" json:"max_retries,omitempty"`
+	MaxRetries	int32	`protobuf:"varint,4,opt,name=max_retries,json=maxRetries,proto3" json:"max_retries,omitempty"`
 	// The idle timeout for upstream connection pool connections. The idle timeout is defined as the period in which there are no active requests.
 	// If not set, the default is 1 hour. When the idle timeout is reached the connection will be closed.
 	// Note that request based timeouts mean that HTTP/2 PINGs will not keep the connection alive. Applies to both HTTP1.1 and HTTP2 connections.
-	IdleTimeout *types.Duration `protobuf:"bytes,5,opt,name=idle_timeout,json=idleTimeout,proto3" json:"idle_timeout,omitempty"`
+	IdleTimeout	*types.Duration	`protobuf:"bytes,5,opt,name=idle_timeout,json=idleTimeout,proto3" json:"idle_timeout,omitempty"`
 	// Specify if http1.1 connection should be upgraded to http2 for the associated destination.
-	H2UpgradePolicy      ConnectionPoolSettings_HTTPSettings_H2UpgradePolicy `protobuf:"varint,6,opt,name=h2_upgrade_policy,json=h2UpgradePolicy,proto3,enum=istio.networking.v1beta1.ConnectionPoolSettings_HTTPSettings_H2UpgradePolicy" json:"h2_upgrade_policy,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                                            `json:"-"`
-	XXX_unrecognized     []byte                                              `json:"-"`
-	XXX_sizecache        int32                                               `json:"-"`
+	H2UpgradePolicy		ConnectionPoolSettings_HTTPSettings_H2UpgradePolicy	`protobuf:"varint,6,opt,name=h2_upgrade_policy,json=h2UpgradePolicy,proto3,enum=istio.networking.v1beta1.ConnectionPoolSettings_HTTPSettings_H2UpgradePolicy" json:"h2_upgrade_policy,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}						`json:"-"`
+	XXX_unrecognized	[]byte							`json:"-"`
+	XXX_sizecache		int32							`json:"-"`
 }
 
-func (m *ConnectionPoolSettings_HTTPSettings) Reset()         { *m = ConnectionPoolSettings_HTTPSettings{} }
-func (m *ConnectionPoolSettings_HTTPSettings) String() string { return proto.CompactTextString(m) }
-func (*ConnectionPoolSettings_HTTPSettings) ProtoMessage()    {}
+func (m *ConnectionPoolSettings_HTTPSettings) Reset()		{ *m = ConnectionPoolSettings_HTTPSettings{} }
+func (m *ConnectionPoolSettings_HTTPSettings) String() string	{ return proto.CompactTextString(m) }
+func (*ConnectionPoolSettings_HTTPSettings) ProtoMessage()	{}
 func (*ConnectionPoolSettings_HTTPSettings) Descriptor() ([]byte, []int) {
 	return fileDescriptor_31054629b619ca4b, []int{4, 1}
 }
@@ -1337,7 +1337,7 @@ type OutlierDetection struct {
 	// is accessed over an opaque TCP connection, connect timeouts and
 	// connection error/failure events qualify as an error.
 	// $hide_from_docs
-	ConsecutiveErrors int32 `protobuf:"varint,1,opt,name=consecutive_errors,json=consecutiveErrors,proto3" json:"consecutive_errors,omitempty"` // Deprecated: Do not use.
+	ConsecutiveErrors	int32	`protobuf:"varint,1,opt,name=consecutive_errors,json=consecutiveErrors,proto3" json:"consecutive_errors,omitempty"`	// Deprecated: Do not use.
 	// Number of gateway errors before a host is ejected from the connection pool.
 	// When the upstream host is accessed over HTTP, a 502, 503, or 504 return
 	// code qualifies as a gateway error. When the upstream host is accessed over
@@ -1351,7 +1351,7 @@ type OutlierDetection struct {
 	// if the value of consecutive_gateway_errors is greater than or equal to
 	// the value of consecutive_5xx_errors, consecutive_gateway_errors will have
 	// no effect.
-	ConsecutiveGatewayErrors *types.UInt32Value `protobuf:"bytes,6,opt,name=consecutive_gateway_errors,json=consecutiveGatewayErrors,proto3" json:"consecutive_gateway_errors,omitempty"`
+	ConsecutiveGatewayErrors	*types.UInt32Value	`protobuf:"bytes,6,opt,name=consecutive_gateway_errors,json=consecutiveGatewayErrors,proto3" json:"consecutive_gateway_errors,omitempty"`
 	// Number of 5xx errors before a host is ejected from the connection pool.
 	// When the upstream host is accessed over an opaque TCP connection, connect
 	// timeouts, connection error/failure and request failure events qualify as a
@@ -1364,19 +1364,19 @@ type OutlierDetection struct {
 	// if the value of consecutive_gateway_errors is greater than or equal to
 	// the value of consecutive_5xx_errors, consecutive_gateway_errors will have
 	// no effect.
-	Consecutive_5XxErrors *types.UInt32Value `protobuf:"bytes,7,opt,name=consecutive_5xx_errors,json=consecutive5xxErrors,proto3" json:"consecutive_5xx_errors,omitempty"`
+	Consecutive_5XxErrors	*types.UInt32Value	`protobuf:"bytes,7,opt,name=consecutive_5xx_errors,json=consecutive5xxErrors,proto3" json:"consecutive_5xx_errors,omitempty"`
 	// Time interval between ejection sweep analysis. format:
 	// 1h/1m/1s/1ms. MUST BE >=1ms. Default is 10s.
-	Interval *types.Duration `protobuf:"bytes,2,opt,name=interval,proto3" json:"interval,omitempty"`
+	Interval	*types.Duration	`protobuf:"bytes,2,opt,name=interval,proto3" json:"interval,omitempty"`
 	// Minimum ejection duration. A host will remain ejected for a period
 	// equal to the product of minimum ejection duration and the number of
 	// times the host has been ejected. This technique allows the system to
 	// automatically increase the ejection period for unhealthy upstream
 	// servers. format: 1h/1m/1s/1ms. MUST BE >=1ms. Default is 30s.
-	BaseEjectionTime *types.Duration `protobuf:"bytes,3,opt,name=base_ejection_time,json=baseEjectionTime,proto3" json:"base_ejection_time,omitempty"`
+	BaseEjectionTime	*types.Duration	`protobuf:"bytes,3,opt,name=base_ejection_time,json=baseEjectionTime,proto3" json:"base_ejection_time,omitempty"`
 	// Maximum % of hosts in the load balancing pool for the upstream
 	// service that can be ejected. Defaults to 10%.
-	MaxEjectionPercent int32 `protobuf:"varint,4,opt,name=max_ejection_percent,json=maxEjectionPercent,proto3" json:"max_ejection_percent,omitempty"`
+	MaxEjectionPercent	int32	`protobuf:"varint,4,opt,name=max_ejection_percent,json=maxEjectionPercent,proto3" json:"max_ejection_percent,omitempty"`
 	// Outlier detection will be enabled as long as the associated load balancing
 	// pool has at least min_health_percent hosts in healthy mode. When the
 	// percentage of healthy hosts in the load balancing pool drops below this
@@ -1384,15 +1384,15 @@ type OutlierDetection struct {
 	// across all hosts in the pool (healthy and unhealthy). The threshold can be
 	// disabled by setting it to 0%. The default is 0% as it's not typically
 	// applicable in k8s environments with few pods per service.
-	MinHealthPercent     int32    `protobuf:"varint,5,opt,name=min_health_percent,json=minHealthPercent,proto3" json:"min_health_percent,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	MinHealthPercent	int32		`protobuf:"varint,5,opt,name=min_health_percent,json=minHealthPercent,proto3" json:"min_health_percent,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *OutlierDetection) Reset()         { *m = OutlierDetection{} }
-func (m *OutlierDetection) String() string { return proto.CompactTextString(m) }
-func (*OutlierDetection) ProtoMessage()    {}
+func (m *OutlierDetection) Reset()		{ *m = OutlierDetection{} }
+func (m *OutlierDetection) String() string	{ return proto.CompactTextString(m) }
+func (*OutlierDetection) ProtoMessage()		{}
 func (*OutlierDetection) Descriptor() ([]byte, []int) {
 	return fileDescriptor_31054629b619ca4b, []int{5}
 }
@@ -1527,36 +1527,36 @@ func (m *OutlierDetection) GetMinHealthPercent() int32 {
 type TLSSettings struct {
 	// Indicates whether connections to this port should be secured
 	// using TLS. The value of this field determines how TLS is enforced.
-	Mode TLSSettings_TLSmode `protobuf:"varint,1,opt,name=mode,proto3,enum=istio.networking.v1beta1.TLSSettings_TLSmode" json:"mode,omitempty"`
+	Mode	TLSSettings_TLSmode	`protobuf:"varint,1,opt,name=mode,proto3,enum=istio.networking.v1beta1.TLSSettings_TLSmode" json:"mode,omitempty"`
 	// REQUIRED if mode is `MUTUAL`. The path to the file holding the
 	// client-side TLS certificate to use.
 	// Should be empty if mode is `ISTIO_MUTUAL`.
-	ClientCertificate string `protobuf:"bytes,2,opt,name=client_certificate,json=clientCertificate,proto3" json:"client_certificate,omitempty"`
+	ClientCertificate	string	`protobuf:"bytes,2,opt,name=client_certificate,json=clientCertificate,proto3" json:"client_certificate,omitempty"`
 	// REQUIRED if mode is `MUTUAL`. The path to the file holding the
 	// client's private key.
 	// Should be empty if mode is `ISTIO_MUTUAL`.
-	PrivateKey string `protobuf:"bytes,3,opt,name=private_key,json=privateKey,proto3" json:"private_key,omitempty"`
+	PrivateKey	string	`protobuf:"bytes,3,opt,name=private_key,json=privateKey,proto3" json:"private_key,omitempty"`
 	// OPTIONAL: The path to the file containing certificate authority
 	// certificates to use in verifying a presented server certificate. If
 	// omitted, the proxy will not verify the server's certificate.
 	// Should be empty if mode is `ISTIO_MUTUAL`.
-	CaCertificates string `protobuf:"bytes,4,opt,name=ca_certificates,json=caCertificates,proto3" json:"ca_certificates,omitempty"`
+	CaCertificates	string	`protobuf:"bytes,4,opt,name=ca_certificates,json=caCertificates,proto3" json:"ca_certificates,omitempty"`
 	// A list of alternate names to verify the subject identity in the
 	// certificate. If specified, the proxy will verify that the server
 	// certificate's subject alt name matches one of the specified values.
 	// If specified, this list overrides the value of subject_alt_names
 	// from the ServiceEntry.
-	SubjectAltNames []string `protobuf:"bytes,5,rep,name=subject_alt_names,json=subjectAltNames,proto3" json:"subject_alt_names,omitempty"`
+	SubjectAltNames	[]string	`protobuf:"bytes,5,rep,name=subject_alt_names,json=subjectAltNames,proto3" json:"subject_alt_names,omitempty"`
 	// SNI string to present to the server during TLS handshake.
-	Sni                  string   `protobuf:"bytes,6,opt,name=sni,proto3" json:"sni,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	Sni			string		`protobuf:"bytes,6,opt,name=sni,proto3" json:"sni,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *TLSSettings) Reset()         { *m = TLSSettings{} }
-func (m *TLSSettings) String() string { return proto.CompactTextString(m) }
-func (*TLSSettings) ProtoMessage()    {}
+func (m *TLSSettings) Reset()		{ *m = TLSSettings{} }
+func (m *TLSSettings) String() string	{ return proto.CompactTextString(m) }
+func (*TLSSettings) ProtoMessage()	{}
 func (*TLSSettings) Descriptor() ([]byte, []int) {
 	return fileDescriptor_31054629b619ca4b, []int{6}
 }
@@ -1681,23 +1681,23 @@ type LocalityLoadBalancerSetting struct {
 	// Explicitly specify loadbalancing weight across different zones and geographical locations.
 	// Refer to [Locality weighted load balancing](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/load_balancing/locality_weight)
 	// If empty, the locality weight is set according to the endpoints number within it.
-	Distribute []*LocalityLoadBalancerSetting_Distribute `protobuf:"bytes,1,rep,name=distribute,proto3" json:"distribute,omitempty"`
+	Distribute	[]*LocalityLoadBalancerSetting_Distribute	`protobuf:"bytes,1,rep,name=distribute,proto3" json:"distribute,omitempty"`
 	// Optional: only failover or distribute can be set.
 	// Explicitly specify the region traffic will land on when endpoints in local region becomes unhealthy.
 	// Should be used together with OutlierDetection to detect unhealthy endpoints.
 	// Note: if no OutlierDetection specified, this will not take effect.
-	Failover []*LocalityLoadBalancerSetting_Failover `protobuf:"bytes,2,rep,name=failover,proto3" json:"failover,omitempty"`
+	Failover	[]*LocalityLoadBalancerSetting_Failover	`protobuf:"bytes,2,rep,name=failover,proto3" json:"failover,omitempty"`
 	// enable locality load balancing, this is DestinationRule-level and will override mesh wide settings in entirety.
 	// e.g. true means that turn on locality load balancing for this DestinationRule no matter what mesh wide settings is.
-	Enabled              *types.BoolValue `protobuf:"bytes,3,opt,name=enabled,proto3" json:"enabled,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}         `json:"-"`
-	XXX_unrecognized     []byte           `json:"-"`
-	XXX_sizecache        int32            `json:"-"`
+	Enabled			*types.BoolValue	`protobuf:"bytes,3,opt,name=enabled,proto3" json:"enabled,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}		`json:"-"`
+	XXX_unrecognized	[]byte			`json:"-"`
+	XXX_sizecache		int32			`json:"-"`
 }
 
-func (m *LocalityLoadBalancerSetting) Reset()         { *m = LocalityLoadBalancerSetting{} }
-func (m *LocalityLoadBalancerSetting) String() string { return proto.CompactTextString(m) }
-func (*LocalityLoadBalancerSetting) ProtoMessage()    {}
+func (m *LocalityLoadBalancerSetting) Reset()		{ *m = LocalityLoadBalancerSetting{} }
+func (m *LocalityLoadBalancerSetting) String() string	{ return proto.CompactTextString(m) }
+func (*LocalityLoadBalancerSetting) ProtoMessage()	{}
 func (*LocalityLoadBalancerSetting) Descriptor() ([]byte, []int) {
 	return fileDescriptor_31054629b619ca4b, []int{7}
 }
@@ -1758,21 +1758,21 @@ func (m *LocalityLoadBalancerSetting) GetEnabled() *types.BoolValue {
 // us-west/zone-1/* - all sub-zones within us-west/zone-1
 type LocalityLoadBalancerSetting_Distribute struct {
 	// Originating locality, '/' separated, e.g. 'region/zone/sub_zone'.
-	From string `protobuf:"bytes,1,opt,name=from,proto3" json:"from,omitempty"`
+	From	string	`protobuf:"bytes,1,opt,name=from,proto3" json:"from,omitempty"`
 	// Map of upstream localities to traffic distribution weights. The sum of
 	// all weights should be == 100. Any locality not assigned a weight will
 	// receive no traffic.
-	To                   map[string]uint32 `protobuf:"bytes,2,rep,name=to,proto3" json:"to,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"varint,2,opt,name=value,proto3"`
-	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
-	XXX_unrecognized     []byte            `json:"-"`
-	XXX_sizecache        int32             `json:"-"`
+	To			map[string]uint32	`protobuf:"bytes,2,rep,name=to,proto3" json:"to,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"varint,2,opt,name=value,proto3"`
+	XXX_NoUnkeyedLiteral	struct{}		`json:"-"`
+	XXX_unrecognized	[]byte			`json:"-"`
+	XXX_sizecache		int32			`json:"-"`
 }
 
 func (m *LocalityLoadBalancerSetting_Distribute) Reset() {
 	*m = LocalityLoadBalancerSetting_Distribute{}
 }
-func (m *LocalityLoadBalancerSetting_Distribute) String() string { return proto.CompactTextString(m) }
-func (*LocalityLoadBalancerSetting_Distribute) ProtoMessage()    {}
+func (m *LocalityLoadBalancerSetting_Distribute) String() string	{ return proto.CompactTextString(m) }
+func (*LocalityLoadBalancerSetting_Distribute) ProtoMessage()		{}
 func (*LocalityLoadBalancerSetting_Distribute) Descriptor() ([]byte, []int) {
 	return fileDescriptor_31054629b619ca4b, []int{7, 0}
 }
@@ -1826,18 +1826,18 @@ func (m *LocalityLoadBalancerSetting_Distribute) GetTo() map[string]uint32 {
 // like regulatory controls.
 type LocalityLoadBalancerSetting_Failover struct {
 	// Originating region.
-	From string `protobuf:"bytes,1,opt,name=from,proto3" json:"from,omitempty"`
+	From	string	`protobuf:"bytes,1,opt,name=from,proto3" json:"from,omitempty"`
 	// Destination region the traffic will fail over to when endpoints in
 	// the 'from' region becomes unhealthy.
-	To                   string   `protobuf:"bytes,2,opt,name=to,proto3" json:"to,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	To			string		`protobuf:"bytes,2,opt,name=to,proto3" json:"to,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *LocalityLoadBalancerSetting_Failover) Reset()         { *m = LocalityLoadBalancerSetting_Failover{} }
-func (m *LocalityLoadBalancerSetting_Failover) String() string { return proto.CompactTextString(m) }
-func (*LocalityLoadBalancerSetting_Failover) ProtoMessage()    {}
+func (m *LocalityLoadBalancerSetting_Failover) Reset()		{ *m = LocalityLoadBalancerSetting_Failover{} }
+func (m *LocalityLoadBalancerSetting_Failover) String() string	{ return proto.CompactTextString(m) }
+func (*LocalityLoadBalancerSetting_Failover) ProtoMessage()	{}
 func (*LocalityLoadBalancerSetting_Failover) Descriptor() ([]byte, []int) {
 	return fileDescriptor_31054629b619ca4b, []int{7, 1}
 }
@@ -6632,6 +6632,6 @@ func skipDestinationRule(dAtA []byte) (n int, err error) {
 }
 
 var (
-	ErrInvalidLengthDestinationRule = fmt.Errorf("proto: negative length found during unmarshaling")
-	ErrIntOverflowDestinationRule   = fmt.Errorf("proto: integer overflow")
+	ErrInvalidLengthDestinationRule	= fmt.Errorf("proto: negative length found during unmarshaling")
+	ErrIntOverflowDestinationRule	= fmt.Errorf("proto: integer overflow")
 )

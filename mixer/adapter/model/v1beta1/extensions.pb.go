@@ -20,7 +20,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion3	// please upgrade the proto package
 
 // The available varieties of templates, controlling the semantics of what an adapter does with each instance.
 type TemplateVariety int32
@@ -28,35 +28,35 @@ type TemplateVariety int32
 const (
 	// Makes the template applicable for Mixer's check calls. Instances of such template are created during
 	// check calls in Mixer and passed to the handlers based on the rule configurations.
-	TEMPLATE_VARIETY_CHECK TemplateVariety = 0
+	TEMPLATE_VARIETY_CHECK	TemplateVariety	= 0
 	// Makes the template applicable for Mixer's report calls. Instances of such template are created during
 	// report calls in Mixer and passed to the handlers based on the rule configurations.
-	TEMPLATE_VARIETY_REPORT TemplateVariety = 1
+	TEMPLATE_VARIETY_REPORT	TemplateVariety	= 1
 	// Makes the template applicable for Mixer's quota calls. Instances of such template are created during
 	// quota check calls in Mixer and passed to the handlers based on the rule configurations.
-	TEMPLATE_VARIETY_QUOTA TemplateVariety = 2
+	TEMPLATE_VARIETY_QUOTA	TemplateVariety	= 2
 	// Makes the template applicable for Mixer's attribute generation phase. Instances of such template are created during
 	// pre-processing attribute generation phase and passed to the handlers based on the rule configurations.
-	TEMPLATE_VARIETY_ATTRIBUTE_GENERATOR TemplateVariety = 3
+	TEMPLATE_VARIETY_ATTRIBUTE_GENERATOR	TemplateVariety	= 3
 	// Makes the template applicable for Mixer's check calls. Instances of such template are created during
 	// check calls in Mixer and passed to the handlers that produce values.
-	TEMPLATE_VARIETY_CHECK_WITH_OUTPUT TemplateVariety = 4
+	TEMPLATE_VARIETY_CHECK_WITH_OUTPUT	TemplateVariety	= 4
 )
 
 var TemplateVariety_name = map[int32]string{
-	0: "TEMPLATE_VARIETY_CHECK",
-	1: "TEMPLATE_VARIETY_REPORT",
-	2: "TEMPLATE_VARIETY_QUOTA",
-	3: "TEMPLATE_VARIETY_ATTRIBUTE_GENERATOR",
-	4: "TEMPLATE_VARIETY_CHECK_WITH_OUTPUT",
+	0:	"TEMPLATE_VARIETY_CHECK",
+	1:	"TEMPLATE_VARIETY_REPORT",
+	2:	"TEMPLATE_VARIETY_QUOTA",
+	3:	"TEMPLATE_VARIETY_ATTRIBUTE_GENERATOR",
+	4:	"TEMPLATE_VARIETY_CHECK_WITH_OUTPUT",
 }
 
 var TemplateVariety_value = map[string]int32{
-	"TEMPLATE_VARIETY_CHECK":               0,
-	"TEMPLATE_VARIETY_REPORT":              1,
-	"TEMPLATE_VARIETY_QUOTA":               2,
-	"TEMPLATE_VARIETY_ATTRIBUTE_GENERATOR": 3,
-	"TEMPLATE_VARIETY_CHECK_WITH_OUTPUT":   4,
+	"TEMPLATE_VARIETY_CHECK":		0,
+	"TEMPLATE_VARIETY_REPORT":		1,
+	"TEMPLATE_VARIETY_QUOTA":		2,
+	"TEMPLATE_VARIETY_ATTRIBUTE_GENERATOR":	3,
+	"TEMPLATE_VARIETY_CHECK_WITH_OUTPUT":	4,
 }
 
 func (TemplateVariety) EnumDescriptor() ([]byte, []int) {
@@ -64,21 +64,21 @@ func (TemplateVariety) EnumDescriptor() ([]byte, []int) {
 }
 
 var E_TemplateVariety = &proto.ExtensionDesc{
-	ExtendedType:  (*descriptor.FileOptions)(nil),
-	ExtensionType: (*TemplateVariety)(nil),
-	Field:         72295727,
-	Name:          "istio.mixer.adapter.model.v1beta1.template_variety",
-	Tag:           "varint,72295727,opt,name=template_variety,enum=istio.mixer.adapter.model.v1beta1.TemplateVariety",
-	Filename:      "mixer/adapter/model/v1beta1/extensions.proto",
+	ExtendedType:	(*descriptor.FileOptions)(nil),
+	ExtensionType:	(*TemplateVariety)(nil),
+	Field:		72295727,
+	Name:		"istio.mixer.adapter.model.v1beta1.template_variety",
+	Tag:		"varint,72295727,opt,name=template_variety,enum=istio.mixer.adapter.model.v1beta1.TemplateVariety",
+	Filename:	"mixer/adapter/model/v1beta1/extensions.proto",
 }
 
 var E_TemplateName = &proto.ExtensionDesc{
-	ExtendedType:  (*descriptor.FileOptions)(nil),
-	ExtensionType: (*string)(nil),
-	Field:         72295888,
-	Name:          "istio.mixer.adapter.model.v1beta1.template_name",
-	Tag:           "bytes,72295888,opt,name=template_name",
-	Filename:      "mixer/adapter/model/v1beta1/extensions.proto",
+	ExtendedType:	(*descriptor.FileOptions)(nil),
+	ExtensionType:	(*string)(nil),
+	Field:		72295888,
+	Name:		"istio.mixer.adapter.model.v1beta1.template_name",
+	Tag:		"bytes,72295888,opt,name=template_name",
+	Filename:	"mixer/adapter/model/v1beta1/extensions.proto",
 }
 
 func init() {

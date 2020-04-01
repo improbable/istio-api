@@ -20,27 +20,27 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion3	// please upgrade the proto package
 
 // Upstream protocols
 type FilterConfig_Protocol int32
 
 const (
-	FilterConfig_HTTP10 FilterConfig_Protocol = 0
-	FilterConfig_HTTP11 FilterConfig_Protocol = 1
-	FilterConfig_HTTP2  FilterConfig_Protocol = 2
+	FilterConfig_HTTP10	FilterConfig_Protocol	= 0
+	FilterConfig_HTTP11	FilterConfig_Protocol	= 1
+	FilterConfig_HTTP2	FilterConfig_Protocol	= 2
 )
 
 var FilterConfig_Protocol_name = map[int32]string{
-	0: "HTTP10",
-	1: "HTTP11",
-	2: "HTTP2",
+	0:	"HTTP10",
+	1:	"HTTP11",
+	2:	"HTTP2",
 }
 
 var FilterConfig_Protocol_value = map[string]int32{
-	"HTTP10": 0,
-	"HTTP11": 1,
-	"HTTP2":  2,
+	"HTTP10":	0,
+	"HTTP11":	1,
+	"HTTP2":	2,
 }
 
 func (x FilterConfig_Protocol) String() string {
@@ -54,15 +54,15 @@ func (FilterConfig_Protocol) EnumDescriptor() ([]byte, []int) {
 // FilterConfig is the config for Istio-specific filter.
 type FilterConfig struct {
 	// Map from upstream protocol to list of ALPN
-	AlpnOverride         []*FilterConfig_AlpnOverride `protobuf:"bytes,1,rep,name=alpn_override,json=alpnOverride,proto3" json:"alpn_override,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                     `json:"-"`
-	XXX_unrecognized     []byte                       `json:"-"`
-	XXX_sizecache        int32                        `json:"-"`
+	AlpnOverride		[]*FilterConfig_AlpnOverride	`protobuf:"bytes,1,rep,name=alpn_override,json=alpnOverride,proto3" json:"alpn_override,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}			`json:"-"`
+	XXX_unrecognized	[]byte				`json:"-"`
+	XXX_sizecache		int32				`json:"-"`
 }
 
-func (m *FilterConfig) Reset()         { *m = FilterConfig{} }
-func (m *FilterConfig) String() string { return proto.CompactTextString(m) }
-func (*FilterConfig) ProtoMessage()    {}
+func (m *FilterConfig) Reset()		{ *m = FilterConfig{} }
+func (m *FilterConfig) String() string	{ return proto.CompactTextString(m) }
+func (*FilterConfig) ProtoMessage()	{}
 func (*FilterConfig) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9dd199870dce382a, []int{0}
 }
@@ -102,17 +102,17 @@ func (m *FilterConfig) GetAlpnOverride() []*FilterConfig_AlpnOverride {
 
 type FilterConfig_AlpnOverride struct {
 	// Upstream protocol
-	UpstreamProtocol FilterConfig_Protocol `protobuf:"varint,1,opt,name=upstream_protocol,json=upstreamProtocol,proto3,enum=istio.envoy.config.filter.http.alpn.v2alpha1.FilterConfig_Protocol" json:"upstream_protocol,omitempty"`
+	UpstreamProtocol	FilterConfig_Protocol	`protobuf:"varint,1,opt,name=upstream_protocol,json=upstreamProtocol,proto3,enum=istio.envoy.config.filter.http.alpn.v2alpha1.FilterConfig_Protocol" json:"upstream_protocol,omitempty"`
 	// A list of ALPN that will override the ALPN for upstream TLS connections.
-	AlpnOverride         []string `protobuf:"bytes,2,rep,name=alpn_override,json=alpnOverride,proto3" json:"alpn_override,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	AlpnOverride		[]string	`protobuf:"bytes,2,rep,name=alpn_override,json=alpnOverride,proto3" json:"alpn_override,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *FilterConfig_AlpnOverride) Reset()         { *m = FilterConfig_AlpnOverride{} }
-func (m *FilterConfig_AlpnOverride) String() string { return proto.CompactTextString(m) }
-func (*FilterConfig_AlpnOverride) ProtoMessage()    {}
+func (m *FilterConfig_AlpnOverride) Reset()		{ *m = FilterConfig_AlpnOverride{} }
+func (m *FilterConfig_AlpnOverride) String() string	{ return proto.CompactTextString(m) }
+func (*FilterConfig_AlpnOverride) ProtoMessage()	{}
 func (*FilterConfig_AlpnOverride) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9dd199870dce382a, []int{0, 0}
 }
@@ -626,6 +626,6 @@ func skipConfig(dAtA []byte) (n int, err error) {
 }
 
 var (
-	ErrInvalidLengthConfig = fmt.Errorf("proto: negative length found during unmarshaling")
-	ErrIntOverflowConfig   = fmt.Errorf("proto: integer overflow")
+	ErrInvalidLengthConfig	= fmt.Errorf("proto: negative length found during unmarshaling")
+	ErrIntOverflowConfig	= fmt.Errorf("proto: integer overflow")
 )

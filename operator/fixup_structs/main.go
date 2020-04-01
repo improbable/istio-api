@@ -52,27 +52,27 @@ are generated for this type.
 */
 
 const (
-	goTypeToken          = "// GOTYPE:"
-	goFieldToken         = "// GOFIELD:"
-	goFieldJSONTagPrefix = "json:"
+	goTypeToken		= "// GOTYPE:"
+	goFieldToken		= "// GOFIELD:"
+	goFieldJSONTagPrefix	= "json:"
 )
 
 var (
 	// valuesNameMapping defines special mapping of fields names between proto and value.yaml.
 	// some fields naming is not a valid field name in proto but used in values.yaml, eg. istio-ingressgateway.
-	valuesNameMapping = map[string]string{
-		"istioEgressgateway":  "istio-egressgateway",
-		"istioIngressgateway": "istio-ingressgateway",
-		"proxyInit":           "proxy_init",
+	valuesNameMapping	= map[string]string{
+		"istioEgressgateway":	"istio-egressgateway",
+		"istioIngressgateway":	"istio-ingressgateway",
+		"proxyInit":		"proxy_init",
 	}
 	// replaceMapping substitutes the value for the key in all files.
-	replaceMapping = map[string]string{
-		"github.com/gogo/protobuf/protobuf/google/protobuf": "github.com/gogo/protobuf/types",
-		goFieldToken: "",
+	replaceMapping	= map[string]string{
+		"github.com/gogo/protobuf/protobuf/google/protobuf":	"github.com/gogo/protobuf/types",
+		goFieldToken:	"",
 	}
 
-	regexJSONTag        = regexp.MustCompile(`json\:"[a-z|0-9|_]+,`)
-	regexJSONTagIllegal = regexp.MustCompile(`json\:"_`)
+	regexJSONTag		= regexp.MustCompile(`json\:"[a-z|0-9|_]+,`)
+	regexJSONTagIllegal	= regexp.MustCompile(`json\:"_`)
 )
 
 func main() {
@@ -126,7 +126,7 @@ func main() {
 		case strings.Contains(l, goFieldJSONTagPrefix) && strings.Contains(l, "_"):
 			if regexJSONTagIllegal.MatchString(l) {
 				fmt.Printf("Illegal leading _ in json field tag: %s\n", l)
-				os.Exit(1) //nolint: gomnd
+				os.Exit(1)	//nolint: gomnd
 			}
 			l = regexJSONTag.ReplaceAllStringFunc(l, func(m string) string {
 				lvs := strings.Split(m, "_")

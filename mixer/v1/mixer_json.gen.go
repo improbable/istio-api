@@ -13,7 +13,7 @@ import (
 	github_com_gogo_protobuf_jsonpb "github.com/gogo/protobuf/jsonpb"
 	proto "github.com/gogo/protobuf/proto"
 	_ "github.com/gogo/protobuf/types"
-	_ "istio.io/gogo-genproto/googleapis/google/rpc"
+
 	math "math"
 )
 
@@ -144,6 +144,6 @@ func (this *ReportResponse) UnmarshalJSON(b []byte) error {
 }
 
 var (
-	MixerMarshaler   = &github_com_gogo_protobuf_jsonpb.Marshaler{}
-	MixerUnmarshaler = &github_com_gogo_protobuf_jsonpb.Unmarshaler{}
+	MixerMarshaler		= &github_com_gogo_protobuf_jsonpb.Marshaler{}
+	MixerUnmarshaler	= &github_com_gogo_protobuf_jsonpb.Unmarshaler{}
 )

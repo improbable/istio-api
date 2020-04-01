@@ -370,7 +370,7 @@ import (
 	fmt "fmt"
 	proto "github.com/gogo/protobuf/proto"
 	io "io"
-	_ "istio.io/gogo-genproto/googleapis/google/api"
+
 	math "math"
 	math_bits "math/bits"
 )
@@ -384,7 +384,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion3	// please upgrade the proto package
 
 // `CaptureMode` describes how traffic to a listener is expected to be
 // captured. Applicable only when the listener is bound to an IP.
@@ -392,27 +392,27 @@ type CaptureMode int32
 
 const (
 	// The default capture mode defined by the environment.
-	CaptureMode_DEFAULT CaptureMode = 0
+	CaptureMode_DEFAULT	CaptureMode	= 0
 	// Capture traffic using IPtables redirection.
-	CaptureMode_IPTABLES CaptureMode = 1
+	CaptureMode_IPTABLES	CaptureMode	= 1
 	// No traffic capture. When used in an egress listener, the application is
 	// expected to explicitly communicate with the listener port or Unix
 	// domain socket. When used in an ingress listener, care needs to be taken
 	// to ensure that the listener port is not in use by other processes on
 	// the host.
-	CaptureMode_NONE CaptureMode = 2
+	CaptureMode_NONE	CaptureMode	= 2
 )
 
 var CaptureMode_name = map[int32]string{
-	0: "DEFAULT",
-	1: "IPTABLES",
-	2: "NONE",
+	0:	"DEFAULT",
+	1:	"IPTABLES",
+	2:	"NONE",
 }
 
 var CaptureMode_value = map[string]int32{
-	"DEFAULT":  0,
-	"IPTABLES": 1,
-	"NONE":     2,
+	"DEFAULT":	0,
+	"IPTABLES":	1,
+	"NONE":		2,
 }
 
 func (x CaptureMode) String() string {
@@ -428,20 +428,20 @@ type OutboundTrafficPolicy_Mode int32
 const (
 	// Outbound traffic will be restricted to services defined in the
 	// service registry as well as those defined through `ServiceEntry` configurations.
-	OutboundTrafficPolicy_REGISTRY_ONLY OutboundTrafficPolicy_Mode = 0
+	OutboundTrafficPolicy_REGISTRY_ONLY	OutboundTrafficPolicy_Mode	= 0
 	// Outbound traffic to unknown destinations will be allowed, in case
 	// there are no services or `ServiceEntry` configurations for the destination port.
-	OutboundTrafficPolicy_ALLOW_ANY OutboundTrafficPolicy_Mode = 1
+	OutboundTrafficPolicy_ALLOW_ANY	OutboundTrafficPolicy_Mode	= 1
 )
 
 var OutboundTrafficPolicy_Mode_name = map[int32]string{
-	0: "REGISTRY_ONLY",
-	1: "ALLOW_ANY",
+	0:	"REGISTRY_ONLY",
+	1:	"ALLOW_ANY",
 }
 
 var OutboundTrafficPolicy_Mode_value = map[string]int32{
-	"REGISTRY_ONLY": 0,
-	"ALLOW_ANY":     1,
+	"REGISTRY_ONLY":	0,
+	"ALLOW_ANY":		1,
 }
 
 func (x OutboundTrafficPolicy_Mode) String() string {
@@ -477,32 +477,32 @@ type Sidecar struct {
 	// Criteria used to select the specific set of pods/VMs on which this
 	// `Sidecar` configuration should be applied. If omitted, the `Sidecar`
 	// configuration will be applied to all workload instances in the same namespace.
-	WorkloadSelector *WorkloadSelector `protobuf:"bytes,1,opt,name=workload_selector,json=workloadSelector,proto3" json:"workload_selector,omitempty"`
+	WorkloadSelector	*WorkloadSelector	`protobuf:"bytes,1,opt,name=workload_selector,json=workloadSelector,proto3" json:"workload_selector,omitempty"`
 	// Ingress specifies the configuration of the sidecar for processing
 	// inbound traffic to the attached workload instance. If omitted, Istio will
 	// automatically configure the sidecar based on the information about the workload
 	// obtained from the orchestration platform (e.g., exposed ports, services,
 	// etc.). If specified, inbound ports are configured if and only if the
 	// workload instance is associated with a service.
-	Ingress []*IstioIngressListener `protobuf:"bytes,2,rep,name=ingress,proto3" json:"ingress,omitempty"`
+	Ingress	[]*IstioIngressListener	`protobuf:"bytes,2,rep,name=ingress,proto3" json:"ingress,omitempty"`
 	// Egress specifies the configuration of the sidecar for processing
 	// outbound traffic from the attached workload instance to other services in the
 	// mesh.
-	Egress []*IstioEgressListener `protobuf:"bytes,3,rep,name=egress,proto3" json:"egress,omitempty"`
+	Egress	[]*IstioEgressListener	`protobuf:"bytes,3,rep,name=egress,proto3" json:"egress,omitempty"`
 	// This allows to configure the outbound traffic policy.
 	// If your application uses one or more external
 	// services that are not known apriori, setting the policy to `ALLOW_ANY`
 	// will cause the sidecars to route any unknown traffic originating from
 	// the application to its requested destination.
-	OutboundTrafficPolicy *OutboundTrafficPolicy `protobuf:"bytes,4,opt,name=outbound_traffic_policy,json=outboundTrafficPolicy,proto3" json:"outbound_traffic_policy,omitempty"`
-	XXX_NoUnkeyedLiteral  struct{}               `json:"-"`
-	XXX_unrecognized      []byte                 `json:"-"`
-	XXX_sizecache         int32                  `json:"-"`
+	OutboundTrafficPolicy	*OutboundTrafficPolicy	`protobuf:"bytes,4,opt,name=outbound_traffic_policy,json=outboundTrafficPolicy,proto3" json:"outbound_traffic_policy,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}		`json:"-"`
+	XXX_unrecognized	[]byte			`json:"-"`
+	XXX_sizecache		int32			`json:"-"`
 }
 
-func (m *Sidecar) Reset()         { *m = Sidecar{} }
-func (m *Sidecar) String() string { return proto.CompactTextString(m) }
-func (*Sidecar) ProtoMessage()    {}
+func (m *Sidecar) Reset()		{ *m = Sidecar{} }
+func (m *Sidecar) String() string	{ return proto.CompactTextString(m) }
+func (*Sidecar) ProtoMessage()		{}
 func (*Sidecar) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b5c11342f04ad3d1, []int{0}
 }
@@ -565,31 +565,31 @@ func (m *Sidecar) GetOutboundTrafficPolicy() *OutboundTrafficPolicy {
 // traffic listener on the sidecar proxy attached to a workload instance.
 type IstioIngressListener struct {
 	// The port associated with the listener.
-	Port *Port `protobuf:"bytes,1,opt,name=port,proto3" json:"port,omitempty"`
+	Port	*Port	`protobuf:"bytes,1,opt,name=port,proto3" json:"port,omitempty"`
 	// The IP to which the listener should be bound. Must be in the
 	// format `x.x.x.x`. Unix domain socket addresses are not allowed in
 	// the bind field for ingress listeners. If omitted, Istio will
 	// automatically configure the defaults based on imported services
 	// and the workload instances to which this configuration is applied
 	// to.
-	Bind string `protobuf:"bytes,2,opt,name=bind,proto3" json:"bind,omitempty"`
+	Bind	string	`protobuf:"bytes,2,opt,name=bind,proto3" json:"bind,omitempty"`
 	// The captureMode option dictates how traffic to the listener is
 	// expected to be captured (or not).
-	CaptureMode CaptureMode `protobuf:"varint,3,opt,name=capture_mode,json=captureMode,proto3,enum=istio.networking.v1alpha3.CaptureMode" json:"capture_mode,omitempty"`
+	CaptureMode	CaptureMode	`protobuf:"varint,3,opt,name=capture_mode,json=captureMode,proto3,enum=istio.networking.v1alpha3.CaptureMode" json:"capture_mode,omitempty"`
 	// The loopback IP endpoint or Unix domain socket to which
 	// traffic should be forwarded to. This configuration can be used to
 	// redirect traffic arriving at the bind `IP:Port` on the sidecar to a `localhost:port`
 	// or Unix domain socket where the application workload instance is listening for
 	// connections. Format should be `127.0.0.1:PORT` or `unix:///path/to/socket`
-	DefaultEndpoint      string   `protobuf:"bytes,4,opt,name=default_endpoint,json=defaultEndpoint,proto3" json:"default_endpoint,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	DefaultEndpoint		string		`protobuf:"bytes,4,opt,name=default_endpoint,json=defaultEndpoint,proto3" json:"default_endpoint,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *IstioIngressListener) Reset()         { *m = IstioIngressListener{} }
-func (m *IstioIngressListener) String() string { return proto.CompactTextString(m) }
-func (*IstioIngressListener) ProtoMessage()    {}
+func (m *IstioIngressListener) Reset()		{ *m = IstioIngressListener{} }
+func (m *IstioIngressListener) String() string	{ return proto.CompactTextString(m) }
+func (*IstioIngressListener) ProtoMessage()	{}
 func (*IstioIngressListener) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b5c11342f04ad3d1, []int{1}
 }
@@ -660,7 +660,7 @@ type IstioEgressListener struct {
 	// specific ports while others have no port, the hosts exposed on a
 	// listener port will be based on the listener with the most specific
 	// port.
-	Port *Port `protobuf:"bytes,1,opt,name=port,proto3" json:"port,omitempty"`
+	Port	*Port	`protobuf:"bytes,1,opt,name=port,proto3" json:"port,omitempty"`
 	// The IP or the Unix domain socket to which the listener should be bound
 	// to. Port MUST be specified if bind is not empty. Format: `x.x.x.x` or
 	// `unix:///path/to/uds` or `unix://@foobar` (Linux abstract namespace). If
@@ -668,11 +668,11 @@ type IstioEgressListener struct {
 	// services, the workload instances to which this configuration is applied to and
 	// the captureMode. If captureMode is `NONE`, bind will default to
 	// 127.0.0.1.
-	Bind string `protobuf:"bytes,2,opt,name=bind,proto3" json:"bind,omitempty"`
+	Bind	string	`protobuf:"bytes,2,opt,name=bind,proto3" json:"bind,omitempty"`
 	// When the bind address is an IP, the captureMode option dictates
 	// how traffic to the listener is expected to be captured (or not).
 	// captureMode must be DEFAULT or `NONE` for Unix domain socket binds.
-	CaptureMode CaptureMode `protobuf:"varint,3,opt,name=capture_mode,json=captureMode,proto3,enum=istio.networking.v1alpha3.CaptureMode" json:"capture_mode,omitempty"`
+	CaptureMode	CaptureMode	`protobuf:"varint,3,opt,name=capture_mode,json=captureMode,proto3,enum=istio.networking.v1alpha3.CaptureMode" json:"capture_mode,omitempty"`
 	// One or more service hosts exposed by the listener
 	// in `namespace/dnsName` format. Services in the specified namespace
 	// matching `dnsName` will be exposed.
@@ -709,15 +709,15 @@ type IstioEgressListener struct {
 	// policy is enabled, or add `istio-system/*` to allow all services in the
 	// `istio-system` namespace. This requirement is temporary and will be removed
 	// in a future Istio release.
-	Hosts                []string `protobuf:"bytes,4,rep,name=hosts,proto3" json:"hosts,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	Hosts			[]string	`protobuf:"bytes,4,rep,name=hosts,proto3" json:"hosts,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *IstioEgressListener) Reset()         { *m = IstioEgressListener{} }
-func (m *IstioEgressListener) String() string { return proto.CompactTextString(m) }
-func (*IstioEgressListener) ProtoMessage()    {}
+func (m *IstioEgressListener) Reset()		{ *m = IstioEgressListener{} }
+func (m *IstioEgressListener) String() string	{ return proto.CompactTextString(m) }
+func (*IstioEgressListener) ProtoMessage()	{}
 func (*IstioEgressListener) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b5c11342f04ad3d1, []int{2}
 }
@@ -788,15 +788,15 @@ type WorkloadSelector struct {
 	// on which this `Sidecar` configuration should be applied. The scope of
 	// label search is restricted to the configuration namespace in which the
 	// the resource is present.
-	Labels               map[string]string `protobuf:"bytes,1,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
-	XXX_unrecognized     []byte            `json:"-"`
-	XXX_sizecache        int32             `json:"-"`
+	Labels			map[string]string	`protobuf:"bytes,1,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	XXX_NoUnkeyedLiteral	struct{}		`json:"-"`
+	XXX_unrecognized	[]byte			`json:"-"`
+	XXX_sizecache		int32			`json:"-"`
 }
 
-func (m *WorkloadSelector) Reset()         { *m = WorkloadSelector{} }
-func (m *WorkloadSelector) String() string { return proto.CompactTextString(m) }
-func (*WorkloadSelector) ProtoMessage()    {}
+func (m *WorkloadSelector) Reset()		{ *m = WorkloadSelector{} }
+func (m *WorkloadSelector) String() string	{ return proto.CompactTextString(m) }
+func (*WorkloadSelector) ProtoMessage()		{}
 func (*WorkloadSelector) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b5c11342f04ad3d1, []int{3}
 }
@@ -844,15 +844,15 @@ func (m *WorkloadSelector) GetLabels() map[string]string {
 // dependencies, instead of using `ALLOW_ANY`, so that traffic to these
 // services can be monitored.
 type OutboundTrafficPolicy struct {
-	Mode                 OutboundTrafficPolicy_Mode `protobuf:"varint,1,opt,name=mode,proto3,enum=istio.networking.v1alpha3.OutboundTrafficPolicy_Mode" json:"mode,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                   `json:"-"`
-	XXX_unrecognized     []byte                     `json:"-"`
-	XXX_sizecache        int32                      `json:"-"`
+	Mode			OutboundTrafficPolicy_Mode	`protobuf:"varint,1,opt,name=mode,proto3,enum=istio.networking.v1alpha3.OutboundTrafficPolicy_Mode" json:"mode,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}			`json:"-"`
+	XXX_unrecognized	[]byte				`json:"-"`
+	XXX_sizecache		int32				`json:"-"`
 }
 
-func (m *OutboundTrafficPolicy) Reset()         { *m = OutboundTrafficPolicy{} }
-func (m *OutboundTrafficPolicy) String() string { return proto.CompactTextString(m) }
-func (*OutboundTrafficPolicy) ProtoMessage()    {}
+func (m *OutboundTrafficPolicy) Reset()		{ *m = OutboundTrafficPolicy{} }
+func (m *OutboundTrafficPolicy) String() string	{ return proto.CompactTextString(m) }
+func (*OutboundTrafficPolicy) ProtoMessage()	{}
 func (*OutboundTrafficPolicy) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b5c11342f04ad3d1, []int{4}
 }
@@ -901,7 +901,7 @@ func init() {
 	proto.RegisterType((*OutboundTrafficPolicy)(nil), "istio.networking.v1alpha3.OutboundTrafficPolicy")
 }
 
-func init() { proto.RegisterFile("networking/v1alpha3/sidecar.proto", fileDescriptor_b5c11342f04ad3d1) }
+func init()	{ proto.RegisterFile("networking/v1alpha3/sidecar.proto", fileDescriptor_b5c11342f04ad3d1) }
 
 var fileDescriptor_b5c11342f04ad3d1 = []byte{
 	// 599 bytes of a gzipped FileDescriptorProto
@@ -2261,6 +2261,6 @@ func skipSidecar(dAtA []byte) (n int, err error) {
 }
 
 var (
-	ErrInvalidLengthSidecar = fmt.Errorf("proto: negative length found during unmarshaling")
-	ErrIntOverflowSidecar   = fmt.Errorf("proto: integer overflow")
+	ErrInvalidLengthSidecar	= fmt.Errorf("proto: negative length found during unmarshaling")
+	ErrIntOverflowSidecar	= fmt.Errorf("proto: integer overflow")
 )

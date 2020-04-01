@@ -101,7 +101,7 @@ import (
 	proto "github.com/gogo/protobuf/proto"
 	types "github.com/gogo/protobuf/types"
 	io "io"
-	_ "istio.io/gogo-genproto/googleapis/google/api"
+
 	math "math"
 	math_bits "math/bits"
 )
@@ -115,7 +115,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion3	// please upgrade the proto package
 
 // Configuration affecting traffic routing.
 //
@@ -170,7 +170,7 @@ type VirtualService struct {
 	// the mesh, i.e., those found in the service registry, must always be
 	// referred to using their alphanumeric names. IP addresses are allowed
 	// only for services defined via the Gateway.
-	Hosts []string `protobuf:"bytes,1,rep,name=hosts,proto3" json:"hosts,omitempty"`
+	Hosts	[]string	`protobuf:"bytes,1,rep,name=hosts,proto3" json:"hosts,omitempty"`
 	// The names of gateways and sidecars that should apply these routes.
 	// Gateways in other namespaces may be referred to by
 	// `<gateway namespace>/<gateway name>`; specifying a gateway with no
@@ -184,13 +184,13 @@ type VirtualService struct {
 	// sidecars in the mesh. If a list of gateway names is provided, the
 	// rules will apply only to the gateways. To apply the rules to both
 	// gateways and sidecars, specify `mesh` as one of the gateway names.
-	Gateways []string `protobuf:"bytes,2,rep,name=gateways,proto3" json:"gateways,omitempty"`
+	Gateways	[]string	`protobuf:"bytes,2,rep,name=gateways,proto3" json:"gateways,omitempty"`
 	// An ordered list of route rules for HTTP traffic. HTTP routes will be
 	// applied to platform service ports named 'http-*'/'http2-*'/'grpc-*', gateway
 	// ports with protocol HTTP/HTTP2/GRPC/ TLS-terminated-HTTPS and service
 	// entry ports using HTTP/HTTP2/GRPC protocols.  The first rule matching
 	// an incoming request is used.
-	Http []*HTTPRoute `protobuf:"bytes,3,rep,name=http,proto3" json:"http,omitempty"`
+	Http	[]*HTTPRoute	`protobuf:"bytes,3,rep,name=http,proto3" json:"http,omitempty"`
 	// An ordered list of route rule for non-terminated TLS & HTTPS
 	// traffic. Routing is typically performed using the SNI value presented
 	// by the ClientHello message. TLS routes will be applied to platform
@@ -200,11 +200,11 @@ type VirtualService struct {
 	// incoming request is used.  NOTE: Traffic 'https-*' or 'tls-*' ports
 	// without associated virtual service will be treated as opaque TCP
 	// traffic.
-	Tls []*TLSRoute `protobuf:"bytes,5,rep,name=tls,proto3" json:"tls,omitempty"`
+	Tls	[]*TLSRoute	`protobuf:"bytes,5,rep,name=tls,proto3" json:"tls,omitempty"`
 	// An ordered list of route rules for opaque TCP traffic. TCP routes will
 	// be applied to any port that is not a HTTP or TLS port. The first rule
 	// matching an incoming request is used.
-	Tcp []*TCPRoute `protobuf:"bytes,4,rep,name=tcp,proto3" json:"tcp,omitempty"`
+	Tcp	[]*TCPRoute	`protobuf:"bytes,4,rep,name=tcp,proto3" json:"tcp,omitempty"`
 	// A list of namespaces to which this virtual service is exported. Exporting a
 	// virtual service allows it to be used by sidecars and gateways defined in
 	// other namespaces. This feature provides a mechanism for service owners
@@ -220,15 +220,15 @@ type VirtualService struct {
 	//
 	// NOTE: in the current release, the `exportTo` value is restricted to
 	// "." or "*" (i.e., the current namespace or all namespaces).
-	ExportTo             []string `protobuf:"bytes,6,rep,name=export_to,json=exportTo,proto3" json:"export_to,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	ExportTo		[]string	`protobuf:"bytes,6,rep,name=export_to,json=exportTo,proto3" json:"export_to,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *VirtualService) Reset()         { *m = VirtualService{} }
-func (m *VirtualService) String() string { return proto.CompactTextString(m) }
-func (*VirtualService) ProtoMessage()    {}
+func (m *VirtualService) Reset()		{ *m = VirtualService{} }
+func (m *VirtualService) String() string	{ return proto.CompactTextString(m) }
+func (*VirtualService) ProtoMessage()		{}
 func (*VirtualService) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8c56a442a0838fd7, []int{0}
 }
@@ -443,23 +443,23 @@ type Destination struct {
 	// the actual namespace associated with the reviews service. To avoid
 	// potential misconfiguration, it is recommended to always use fully
 	// qualified domain names over short names.
-	Host string `protobuf:"bytes,1,opt,name=host,proto3" json:"host,omitempty"`
+	Host	string	`protobuf:"bytes,1,opt,name=host,proto3" json:"host,omitempty"`
 	// The name of a subset within the service. Applicable only to services
 	// within the mesh. The subset must be defined in a corresponding
 	// DestinationRule.
-	Subset string `protobuf:"bytes,2,opt,name=subset,proto3" json:"subset,omitempty"`
+	Subset	string	`protobuf:"bytes,2,opt,name=subset,proto3" json:"subset,omitempty"`
 	// Specifies the port on the host that is being addressed. If a service
 	// exposes only a single port it is not required to explicitly select the
 	// port.
-	Port                 *PortSelector `protobuf:"bytes,3,opt,name=port,proto3" json:"port,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
-	XXX_unrecognized     []byte        `json:"-"`
-	XXX_sizecache        int32         `json:"-"`
+	Port			*PortSelector	`protobuf:"bytes,3,opt,name=port,proto3" json:"port,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *Destination) Reset()         { *m = Destination{} }
-func (m *Destination) String() string { return proto.CompactTextString(m) }
-func (*Destination) ProtoMessage()    {}
+func (m *Destination) Reset()		{ *m = Destination{} }
+func (m *Destination) String() string	{ return proto.CompactTextString(m) }
+func (*Destination) ProtoMessage()	{}
 func (*Destination) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8c56a442a0838fd7, []int{1}
 }
@@ -518,62 +518,62 @@ type HTTPRoute struct {
 	// route's name will be concatenated with the match's name and will
 	// be logged in the access logs for requests matching this
 	// route/match.
-	Name string `protobuf:"bytes,17,opt,name=name,proto3" json:"name,omitempty"`
+	Name	string	`protobuf:"bytes,17,opt,name=name,proto3" json:"name,omitempty"`
 	// Match conditions to be satisfied for the rule to be
 	// activated. All conditions inside a single match block have AND
 	// semantics, while the list of match blocks have OR semantics. The rule
 	// is matched if any one of the match blocks succeed.
-	Match []*HTTPMatchRequest `protobuf:"bytes,1,rep,name=match,proto3" json:"match,omitempty"`
+	Match	[]*HTTPMatchRequest	`protobuf:"bytes,1,rep,name=match,proto3" json:"match,omitempty"`
 	// A HTTP rule can either redirect or forward (default) traffic. The
 	// forwarding target can be one of several versions of a service (see
 	// glossary in beginning of document). Weights associated with the
 	// service version determine the proportion of traffic it receives.
-	Route []*HTTPRouteDestination `protobuf:"bytes,2,rep,name=route,proto3" json:"route,omitempty"`
+	Route	[]*HTTPRouteDestination	`protobuf:"bytes,2,rep,name=route,proto3" json:"route,omitempty"`
 	// A HTTP rule can either redirect or forward (default) traffic. If
 	// traffic passthrough option is specified in the rule,
 	// route/redirect will be ignored. The redirect primitive can be used to
 	// send a HTTP 301 redirect to a different URI or Authority.
-	Redirect *HTTPRedirect `protobuf:"bytes,3,opt,name=redirect,proto3" json:"redirect,omitempty"`
+	Redirect	*HTTPRedirect	`protobuf:"bytes,3,opt,name=redirect,proto3" json:"redirect,omitempty"`
 	// Rewrite HTTP URIs and Authority headers. Rewrite cannot be used with
 	// Redirect primitive. Rewrite will be performed before forwarding.
-	Rewrite *HTTPRewrite `protobuf:"bytes,4,opt,name=rewrite,proto3" json:"rewrite,omitempty"`
+	Rewrite	*HTTPRewrite	`protobuf:"bytes,4,opt,name=rewrite,proto3" json:"rewrite,omitempty"`
 	// Timeout for HTTP requests.
-	Timeout *types.Duration `protobuf:"bytes,6,opt,name=timeout,proto3" json:"timeout,omitempty"`
+	Timeout	*types.Duration	`protobuf:"bytes,6,opt,name=timeout,proto3" json:"timeout,omitempty"`
 	// Retry policy for HTTP requests.
-	Retries *HTTPRetry `protobuf:"bytes,7,opt,name=retries,proto3" json:"retries,omitempty"`
+	Retries	*HTTPRetry	`protobuf:"bytes,7,opt,name=retries,proto3" json:"retries,omitempty"`
 	// Fault injection policy to apply on HTTP traffic at the client side.
 	// Note that timeouts or retries will not be enabled when faults are
 	// enabled on the client side.
-	Fault *HTTPFaultInjection `protobuf:"bytes,8,opt,name=fault,proto3" json:"fault,omitempty"`
+	Fault	*HTTPFaultInjection	`protobuf:"bytes,8,opt,name=fault,proto3" json:"fault,omitempty"`
 	// Mirror HTTP traffic to a another destination in addition to forwarding
 	// the requests to the intended destination. Mirrored traffic is on a
 	// best effort basis where the sidecar/gateway will not wait for the
 	// mirrored cluster to respond before returning the response from the
 	// original destination.  Statistics will be generated for the mirrored
 	// destination.
-	Mirror *Destination `protobuf:"bytes,9,opt,name=mirror,proto3" json:"mirror,omitempty"`
+	Mirror	*Destination	`protobuf:"bytes,9,opt,name=mirror,proto3" json:"mirror,omitempty"`
 	// Percentage of the traffic to be mirrored by the `mirror` field.
 	// Use of integer `mirror_percent` value is deprecated. Use the
 	// double `mirror_percentage` field instead
-	MirrorPercent *types.UInt32Value `protobuf:"bytes,18,opt,name=mirror_percent,json=mirrorPercent,proto3" json:"mirror_percent,omitempty"` // Deprecated: Do not use.
+	MirrorPercent	*types.UInt32Value	`protobuf:"bytes,18,opt,name=mirror_percent,json=mirrorPercent,proto3" json:"mirror_percent,omitempty"`	// Deprecated: Do not use.
 	// Percentage of the traffic to be mirrored by the `mirror` field.
 	// If this field is absent, all the traffic (100%) will be mirrored.
 	// Max value is 100.
-	MirrorPercentage *Percent `protobuf:"bytes,19,opt,name=mirror_percentage,json=mirrorPercentage,proto3" json:"mirror_percentage,omitempty"`
+	MirrorPercentage	*Percent	`protobuf:"bytes,19,opt,name=mirror_percentage,json=mirrorPercentage,proto3" json:"mirror_percentage,omitempty"`
 	// Cross-Origin Resource Sharing policy (CORS). Refer to
 	// [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
 	// for further details about cross origin resource sharing.
-	CorsPolicy *CorsPolicy `protobuf:"bytes,10,opt,name=cors_policy,json=corsPolicy,proto3" json:"cors_policy,omitempty"`
+	CorsPolicy	*CorsPolicy	`protobuf:"bytes,10,opt,name=cors_policy,json=corsPolicy,proto3" json:"cors_policy,omitempty"`
 	// Header manipulation rules
-	Headers              *Headers `protobuf:"bytes,16,opt,name=headers,proto3" json:"headers,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	Headers			*Headers	`protobuf:"bytes,16,opt,name=headers,proto3" json:"headers,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *HTTPRoute) Reset()         { *m = HTTPRoute{} }
-func (m *HTTPRoute) String() string { return proto.CompactTextString(m) }
-func (*HTTPRoute) ProtoMessage()    {}
+func (m *HTTPRoute) Reset()		{ *m = HTTPRoute{} }
+func (m *HTTPRoute) String() string	{ return proto.CompactTextString(m) }
+func (*HTTPRoute) ProtoMessage()	{}
 func (*HTTPRoute) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8c56a442a0838fd7, []int{2}
 }
@@ -734,18 +734,18 @@ func (m *HTTPRoute) GetHeaders() *Headers {
 type Headers struct {
 	// Header manipulation rules to apply before forwarding a request
 	// to the destination service
-	Request *Headers_HeaderOperations `protobuf:"bytes,1,opt,name=request,proto3" json:"request,omitempty"`
+	Request	*Headers_HeaderOperations	`protobuf:"bytes,1,opt,name=request,proto3" json:"request,omitempty"`
 	// Header manipulation rules to apply before returning a response
 	// to the caller
-	Response             *Headers_HeaderOperations `protobuf:"bytes,2,opt,name=response,proto3" json:"response,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                  `json:"-"`
-	XXX_unrecognized     []byte                    `json:"-"`
-	XXX_sizecache        int32                     `json:"-"`
+	Response		*Headers_HeaderOperations	`protobuf:"bytes,2,opt,name=response,proto3" json:"response,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}			`json:"-"`
+	XXX_unrecognized	[]byte				`json:"-"`
+	XXX_sizecache		int32				`json:"-"`
 }
 
-func (m *Headers) Reset()         { *m = Headers{} }
-func (m *Headers) String() string { return proto.CompactTextString(m) }
-func (*Headers) ProtoMessage()    {}
+func (m *Headers) Reset()		{ *m = Headers{} }
+func (m *Headers) String() string	{ return proto.CompactTextString(m) }
+func (*Headers) ProtoMessage()		{}
 func (*Headers) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8c56a442a0838fd7, []int{3}
 }
@@ -793,20 +793,20 @@ func (m *Headers) GetResponse() *Headers_HeaderOperations {
 // HeaderOperations Describes the header manipulations to apply
 type Headers_HeaderOperations struct {
 	// Overwrite the headers specified by key with the given values
-	Set map[string]string `protobuf:"bytes,1,rep,name=set,proto3" json:"set,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Set	map[string]string	`protobuf:"bytes,1,rep,name=set,proto3" json:"set,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Append the given values to the headers specified by keys
 	// (will create a comma-separated list of values)
-	Add map[string]string `protobuf:"bytes,2,rep,name=add,proto3" json:"add,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Add	map[string]string	`protobuf:"bytes,2,rep,name=add,proto3" json:"add,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Remove a the specified headers
-	Remove               []string `protobuf:"bytes,3,rep,name=remove,proto3" json:"remove,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	Remove			[]string	`protobuf:"bytes,3,rep,name=remove,proto3" json:"remove,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *Headers_HeaderOperations) Reset()         { *m = Headers_HeaderOperations{} }
-func (m *Headers_HeaderOperations) String() string { return proto.CompactTextString(m) }
-func (*Headers_HeaderOperations) ProtoMessage()    {}
+func (m *Headers_HeaderOperations) Reset()		{ *m = Headers_HeaderOperations{} }
+func (m *Headers_HeaderOperations) String() string	{ return proto.CompactTextString(m) }
+func (*Headers_HeaderOperations) ProtoMessage()		{}
 func (*Headers_HeaderOperations) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8c56a442a0838fd7, []int{3, 0}
 }
@@ -894,17 +894,17 @@ type TLSRoute struct {
 	// activated. All conditions inside a single match block have AND
 	// semantics, while the list of match blocks have OR semantics. The rule
 	// is matched if any one of the match blocks succeed.
-	Match []*TLSMatchAttributes `protobuf:"bytes,1,rep,name=match,proto3" json:"match,omitempty"`
+	Match	[]*TLSMatchAttributes	`protobuf:"bytes,1,rep,name=match,proto3" json:"match,omitempty"`
 	// The destination to which the connection should be forwarded to.
-	Route                []*RouteDestination `protobuf:"bytes,2,rep,name=route,proto3" json:"route,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
+	Route			[]*RouteDestination	`protobuf:"bytes,2,rep,name=route,proto3" json:"route,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}		`json:"-"`
+	XXX_unrecognized	[]byte			`json:"-"`
+	XXX_sizecache		int32			`json:"-"`
 }
 
-func (m *TLSRoute) Reset()         { *m = TLSRoute{} }
-func (m *TLSRoute) String() string { return proto.CompactTextString(m) }
-func (*TLSRoute) ProtoMessage()    {}
+func (m *TLSRoute) Reset()		{ *m = TLSRoute{} }
+func (m *TLSRoute) String() string	{ return proto.CompactTextString(m) }
+func (*TLSRoute) ProtoMessage()		{}
 func (*TLSRoute) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8c56a442a0838fd7, []int{4}
 }
@@ -975,17 +975,17 @@ type TCPRoute struct {
 	// activated. All conditions inside a single match block have AND
 	// semantics, while the list of match blocks have OR semantics. The rule
 	// is matched if any one of the match blocks succeed.
-	Match []*L4MatchAttributes `protobuf:"bytes,1,rep,name=match,proto3" json:"match,omitempty"`
+	Match	[]*L4MatchAttributes	`protobuf:"bytes,1,rep,name=match,proto3" json:"match,omitempty"`
 	// The destination to which the connection should be forwarded to.
-	Route                []*RouteDestination `protobuf:"bytes,2,rep,name=route,proto3" json:"route,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
+	Route			[]*RouteDestination	`protobuf:"bytes,2,rep,name=route,proto3" json:"route,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}		`json:"-"`
+	XXX_unrecognized	[]byte			`json:"-"`
+	XXX_sizecache		int32			`json:"-"`
 }
 
-func (m *TCPRoute) Reset()         { *m = TCPRoute{} }
-func (m *TCPRoute) String() string { return proto.CompactTextString(m) }
-func (*TCPRoute) ProtoMessage()    {}
+func (m *TCPRoute) Reset()		{ *m = TCPRoute{} }
+func (m *TCPRoute) String() string	{ return proto.CompactTextString(m) }
+func (*TCPRoute) ProtoMessage()		{}
 func (*TCPRoute) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8c56a442a0838fd7, []int{5}
 }
@@ -1062,7 +1062,7 @@ type HTTPMatchRequest struct {
 	// The name assigned to a match. The match's name will be
 	// concatenated with the parent route's name and will be logged in
 	// the access logs for requests matching this route.
-	Name string `protobuf:"bytes,11,opt,name=name,proto3" json:"name,omitempty"`
+	Name	string	`protobuf:"bytes,11,opt,name=name,proto3" json:"name,omitempty"`
 	// URI to match
 	// values are case-sensitive and formatted as follows:
 	//
@@ -1074,7 +1074,7 @@ type HTTPMatchRequest struct {
 	//
 	// **Note:** Case-insensitive matching could be enabled via the
 	// `ignore_uri_case` flag.
-	Uri *StringMatch `protobuf:"bytes,1,opt,name=uri,proto3" json:"uri,omitempty"`
+	Uri	*StringMatch	`protobuf:"bytes,1,opt,name=uri,proto3" json:"uri,omitempty"`
 	// URI Scheme
 	// values are case-sensitive and formatted as follows:
 	//
@@ -1084,7 +1084,7 @@ type HTTPMatchRequest struct {
 	//
 	// - `regex: "value"` for ECMAscript style regex-based match
 	//
-	Scheme *StringMatch `protobuf:"bytes,2,opt,name=scheme,proto3" json:"scheme,omitempty"`
+	Scheme	*StringMatch	`protobuf:"bytes,2,opt,name=scheme,proto3" json:"scheme,omitempty"`
 	// HTTP Method
 	// values are case-sensitive and formatted as follows:
 	//
@@ -1094,7 +1094,7 @@ type HTTPMatchRequest struct {
 	//
 	// - `regex: "value"` for ECMAscript style regex-based match
 	//
-	Method *StringMatch `protobuf:"bytes,3,opt,name=method,proto3" json:"method,omitempty"`
+	Method	*StringMatch	`protobuf:"bytes,3,opt,name=method,proto3" json:"method,omitempty"`
 	// HTTP Authority
 	// values are case-sensitive and formatted as follows:
 	//
@@ -1104,7 +1104,7 @@ type HTTPMatchRequest struct {
 	//
 	// - `regex: "value"` for ECMAscript style regex-based match
 	//
-	Authority *StringMatch `protobuf:"bytes,4,opt,name=authority,proto3" json:"authority,omitempty"`
+	Authority	*StringMatch	`protobuf:"bytes,4,opt,name=authority,proto3" json:"authority,omitempty"`
 	// The header keys must be lowercase and use hyphen as the separator,
 	// e.g. _x-request-id_.
 	//
@@ -1117,20 +1117,20 @@ type HTTPMatchRequest struct {
 	// - `regex: "value"` for ECMAscript style regex-based match
 	//
 	// **Note:** The keys `uri`, `scheme`, `method`, and `authority` will be ignored.
-	Headers map[string]*StringMatch `protobuf:"bytes,5,rep,name=headers,proto3" json:"headers,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Headers	map[string]*StringMatch	`protobuf:"bytes,5,rep,name=headers,proto3" json:"headers,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Specifies the ports on the host that is being addressed. Many services
 	// only expose a single port or label ports with the protocols they support,
 	// in these cases it is not required to explicitly select the port.
-	Port uint32 `protobuf:"varint,6,opt,name=port,proto3" json:"port,omitempty"`
+	Port	uint32	`protobuf:"varint,6,opt,name=port,proto3" json:"port,omitempty"`
 	// One or more labels that constrain the applicability of a rule to
 	// workloads with the given labels. If the VirtualService has a list of
 	// gateways specified in the top-level `gateways` field, it must include the reserved gateway
 	// `mesh` for this field to be applicable.
-	SourceLabels map[string]string `protobuf:"bytes,7,rep,name=source_labels,json=sourceLabels,proto3" json:"source_labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	SourceLabels	map[string]string	`protobuf:"bytes,7,rep,name=source_labels,json=sourceLabels,proto3" json:"source_labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Names of gateways where the rule should be applied. Gateway names
 	// in the top-level `gateways` field of the VirtualService (if any) are overridden. The gateway
 	// match is independent of sourceLabels.
-	Gateways []string `protobuf:"bytes,8,rep,name=gateways,proto3" json:"gateways,omitempty"`
+	Gateways	[]string	`protobuf:"bytes,8,rep,name=gateways,proto3" json:"gateways,omitempty"`
 	// Query parameters for matching.
 	//
 	// Ex:
@@ -1143,20 +1143,20 @@ type HTTPMatchRequest struct {
 	//   configuration will only match values like "123" but not "a123" or "123a".
 	//
 	// **Note:** `prefix` matching is currently not supported.
-	QueryParams map[string]*StringMatch `protobuf:"bytes,9,rep,name=query_params,json=queryParams,proto3" json:"query_params,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	QueryParams	map[string]*StringMatch	`protobuf:"bytes,9,rep,name=query_params,json=queryParams,proto3" json:"query_params,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Flag to specify whether the URI matching should be case-insensitive.
 	//
 	// **Note:** The case will be ignored only in the case of `exact` and `prefix`
 	// URI matches.
-	IgnoreUriCase        bool     `protobuf:"varint,10,opt,name=ignore_uri_case,json=ignoreUriCase,proto3" json:"ignore_uri_case,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	IgnoreUriCase		bool		`protobuf:"varint,10,opt,name=ignore_uri_case,json=ignoreUriCase,proto3" json:"ignore_uri_case,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *HTTPMatchRequest) Reset()         { *m = HTTPMatchRequest{} }
-func (m *HTTPMatchRequest) String() string { return proto.CompactTextString(m) }
-func (*HTTPMatchRequest) ProtoMessage()    {}
+func (m *HTTPMatchRequest) Reset()		{ *m = HTTPMatchRequest{} }
+func (m *HTTPMatchRequest) String() string	{ return proto.CompactTextString(m) }
+func (*HTTPMatchRequest) ProtoMessage()		{}
 func (*HTTPMatchRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8c56a442a0838fd7, []int{6}
 }
@@ -1333,22 +1333,22 @@ func (m *HTTPMatchRequest) GetIgnoreUriCase() bool {
 type HTTPRouteDestination struct {
 	// Destination uniquely identifies the instances of a service
 	// to which the request/connection should be forwarded to.
-	Destination *Destination `protobuf:"bytes,1,opt,name=destination,proto3" json:"destination,omitempty"`
+	Destination	*Destination	`protobuf:"bytes,1,opt,name=destination,proto3" json:"destination,omitempty"`
 	// The proportion of traffic to be forwarded to the service
 	// version. (0-100). Sum of weights across destinations SHOULD BE == 100.
 	// If there is only one destination in a rule, the weight value is assumed to
 	// be 100.
-	Weight int32 `protobuf:"varint,2,opt,name=weight,proto3" json:"weight,omitempty"`
+	Weight	int32	`protobuf:"varint,2,opt,name=weight,proto3" json:"weight,omitempty"`
 	// Header manipulation rules
-	Headers              *Headers `protobuf:"bytes,7,opt,name=headers,proto3" json:"headers,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	Headers			*Headers	`protobuf:"bytes,7,opt,name=headers,proto3" json:"headers,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *HTTPRouteDestination) Reset()         { *m = HTTPRouteDestination{} }
-func (m *HTTPRouteDestination) String() string { return proto.CompactTextString(m) }
-func (*HTTPRouteDestination) ProtoMessage()    {}
+func (m *HTTPRouteDestination) Reset()		{ *m = HTTPRouteDestination{} }
+func (m *HTTPRouteDestination) String() string	{ return proto.CompactTextString(m) }
+func (*HTTPRouteDestination) ProtoMessage()	{}
 func (*HTTPRouteDestination) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8c56a442a0838fd7, []int{7}
 }
@@ -1404,19 +1404,19 @@ func (m *HTTPRouteDestination) GetHeaders() *Headers {
 type RouteDestination struct {
 	// Destination uniquely identifies the instances of a service
 	// to which the request/connection should be forwarded to.
-	Destination *Destination `protobuf:"bytes,1,opt,name=destination,proto3" json:"destination,omitempty"`
+	Destination	*Destination	`protobuf:"bytes,1,opt,name=destination,proto3" json:"destination,omitempty"`
 	// The proportion of traffic to be forwarded to the service
 	// version. If there is only one destination in a rule, all traffic will be
 	// routed to it irrespective of the weight.
-	Weight               int32    `protobuf:"varint,2,opt,name=weight,proto3" json:"weight,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	Weight			int32		`protobuf:"varint,2,opt,name=weight,proto3" json:"weight,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *RouteDestination) Reset()         { *m = RouteDestination{} }
-func (m *RouteDestination) String() string { return proto.CompactTextString(m) }
-func (*RouteDestination) ProtoMessage()    {}
+func (m *RouteDestination) Reset()		{ *m = RouteDestination{} }
+func (m *RouteDestination) String() string	{ return proto.CompactTextString(m) }
+func (*RouteDestination) ProtoMessage()		{}
 func (*RouteDestination) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8c56a442a0838fd7, []int{8}
 }
@@ -1466,32 +1466,32 @@ func (m *RouteDestination) GetWeight() int32 {
 type L4MatchAttributes struct {
 	// IPv4 or IPv6 ip addresses of destination with optional subnet.  E.g.,
 	// a.b.c.d/xx form or just a.b.c.d.
-	DestinationSubnets []string `protobuf:"bytes,1,rep,name=destination_subnets,json=destinationSubnets,proto3" json:"destination_subnets,omitempty"`
+	DestinationSubnets	[]string	`protobuf:"bytes,1,rep,name=destination_subnets,json=destinationSubnets,proto3" json:"destination_subnets,omitempty"`
 	// Specifies the port on the host that is being addressed. Many services
 	// only expose a single port or label ports with the protocols they support,
 	// in these cases it is not required to explicitly select the port.
-	Port uint32 `protobuf:"varint,2,opt,name=port,proto3" json:"port,omitempty"`
+	Port	uint32	`protobuf:"varint,2,opt,name=port,proto3" json:"port,omitempty"`
 	// IPv4 or IPv6 ip address of source with optional subnet. E.g., a.b.c.d/xx
 	// form or just a.b.c.d
 	// $hide_from_docs
-	SourceSubnet string `protobuf:"bytes,3,opt,name=source_subnet,json=sourceSubnet,proto3" json:"source_subnet,omitempty"`
+	SourceSubnet	string	`protobuf:"bytes,3,opt,name=source_subnet,json=sourceSubnet,proto3" json:"source_subnet,omitempty"`
 	// One or more labels that constrain the applicability of a rule to
 	// workloads with the given labels. If the VirtualService has a list of
 	// gateways specified in the top-level `gateways` field, it should include the reserved gateway
 	// `mesh` in order for this field to be applicable.
-	SourceLabels map[string]string `protobuf:"bytes,4,rep,name=source_labels,json=sourceLabels,proto3" json:"source_labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	SourceLabels	map[string]string	`protobuf:"bytes,4,rep,name=source_labels,json=sourceLabels,proto3" json:"source_labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Names of gateways where the rule should be applied. Gateway names
 	// in the top-level `gateways` field of the VirtualService (if any) are overridden. The gateway
 	// match is independent of sourceLabels.
-	Gateways             []string `protobuf:"bytes,5,rep,name=gateways,proto3" json:"gateways,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	Gateways		[]string	`protobuf:"bytes,5,rep,name=gateways,proto3" json:"gateways,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *L4MatchAttributes) Reset()         { *m = L4MatchAttributes{} }
-func (m *L4MatchAttributes) String() string { return proto.CompactTextString(m) }
-func (*L4MatchAttributes) ProtoMessage()    {}
+func (m *L4MatchAttributes) Reset()		{ *m = L4MatchAttributes{} }
+func (m *L4MatchAttributes) String() string	{ return proto.CompactTextString(m) }
+func (*L4MatchAttributes) ProtoMessage()	{}
 func (*L4MatchAttributes) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8c56a442a0838fd7, []int{9}
 }
@@ -1563,32 +1563,32 @@ type TLSMatchAttributes struct {
 	// can be used in the SNI value, e.g., *.com will match foo.example.com
 	// as well as example.com. An SNI value must be a subset (i.e., fall
 	// within the domain) of the corresponding virtual serivce's hosts.
-	SniHosts []string `protobuf:"bytes,1,rep,name=sni_hosts,json=sniHosts,proto3" json:"sni_hosts,omitempty"`
+	SniHosts	[]string	`protobuf:"bytes,1,rep,name=sni_hosts,json=sniHosts,proto3" json:"sni_hosts,omitempty"`
 	// IPv4 or IPv6 ip addresses of destination with optional subnet.  E.g.,
 	// a.b.c.d/xx form or just a.b.c.d.
-	DestinationSubnets []string `protobuf:"bytes,2,rep,name=destination_subnets,json=destinationSubnets,proto3" json:"destination_subnets,omitempty"`
+	DestinationSubnets	[]string	`protobuf:"bytes,2,rep,name=destination_subnets,json=destinationSubnets,proto3" json:"destination_subnets,omitempty"`
 	// Specifies the port on the host that is being addressed. Many services
 	// only expose a single port or label ports with the protocols they
 	// support, in these cases it is not required to explicitly select the
 	// port.
-	Port uint32 `protobuf:"varint,3,opt,name=port,proto3" json:"port,omitempty"`
+	Port	uint32	`protobuf:"varint,3,opt,name=port,proto3" json:"port,omitempty"`
 	// One or more labels that constrain the applicability of a rule to
 	// workloads with the given labels. If the VirtualService has a list of
 	// gateways specified in the top-level `gateways` field, it should include the reserved gateway
 	// `mesh` in order for this field to be applicable.
-	SourceLabels map[string]string `protobuf:"bytes,5,rep,name=source_labels,json=sourceLabels,proto3" json:"source_labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	SourceLabels	map[string]string	`protobuf:"bytes,5,rep,name=source_labels,json=sourceLabels,proto3" json:"source_labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Names of gateways where the rule should be applied. Gateway names
 	// in the top-level `gateways` field of the VirtualService (if any) are overridden. The gateway
 	// match is independent of sourceLabels.
-	Gateways             []string `protobuf:"bytes,6,rep,name=gateways,proto3" json:"gateways,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	Gateways		[]string	`protobuf:"bytes,6,rep,name=gateways,proto3" json:"gateways,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *TLSMatchAttributes) Reset()         { *m = TLSMatchAttributes{} }
-func (m *TLSMatchAttributes) String() string { return proto.CompactTextString(m) }
-func (*TLSMatchAttributes) ProtoMessage()    {}
+func (m *TLSMatchAttributes) Reset()		{ *m = TLSMatchAttributes{} }
+func (m *TLSMatchAttributes) String() string	{ return proto.CompactTextString(m) }
+func (*TLSMatchAttributes) ProtoMessage()	{}
 func (*TLSMatchAttributes) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8c56a442a0838fd7, []int{10}
 }
@@ -1681,21 +1681,21 @@ type HTTPRedirect struct {
 	// On a redirect, overwrite the Path portion of the URL with this
 	// value. Note that the entire path will be replaced, irrespective of the
 	// request URI being matched as an exact path or prefix.
-	Uri string `protobuf:"bytes,1,opt,name=uri,proto3" json:"uri,omitempty"`
+	Uri	string	`protobuf:"bytes,1,opt,name=uri,proto3" json:"uri,omitempty"`
 	// On a redirect, overwrite the Authority/Host portion of the URL with
 	// this value.
-	Authority string `protobuf:"bytes,2,opt,name=authority,proto3" json:"authority,omitempty"`
+	Authority	string	`protobuf:"bytes,2,opt,name=authority,proto3" json:"authority,omitempty"`
 	// On a redirect, Specifies the HTTP status code to use in the redirect
 	// response. The default response code is MOVED_PERMANENTLY (301).
-	RedirectCode         uint32   `protobuf:"varint,3,opt,name=redirect_code,json=redirectCode,proto3" json:"redirect_code,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	RedirectCode		uint32		`protobuf:"varint,3,opt,name=redirect_code,json=redirectCode,proto3" json:"redirect_code,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *HTTPRedirect) Reset()         { *m = HTTPRedirect{} }
-func (m *HTTPRedirect) String() string { return proto.CompactTextString(m) }
-func (*HTTPRedirect) ProtoMessage()    {}
+func (m *HTTPRedirect) Reset()		{ *m = HTTPRedirect{} }
+func (m *HTTPRedirect) String() string	{ return proto.CompactTextString(m) }
+func (*HTTPRedirect) ProtoMessage()	{}
 func (*HTTPRedirect) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8c56a442a0838fd7, []int{11}
 }
@@ -1777,17 +1777,17 @@ type HTTPRewrite struct {
 	// rewrite the path (or the prefix) portion of the URI with this
 	// value. If the original URI was matched based on prefix, the value
 	// provided in this field will replace the corresponding matched prefix.
-	Uri string `protobuf:"bytes,1,opt,name=uri,proto3" json:"uri,omitempty"`
+	Uri	string	`protobuf:"bytes,1,opt,name=uri,proto3" json:"uri,omitempty"`
 	// rewrite the Authority/Host header with this value.
-	Authority            string   `protobuf:"bytes,2,opt,name=authority,proto3" json:"authority,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	Authority		string		`protobuf:"bytes,2,opt,name=authority,proto3" json:"authority,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *HTTPRewrite) Reset()         { *m = HTTPRewrite{} }
-func (m *HTTPRewrite) String() string { return proto.CompactTextString(m) }
-func (*HTTPRewrite) ProtoMessage()    {}
+func (m *HTTPRewrite) Reset()		{ *m = HTTPRewrite{} }
+func (m *HTTPRewrite) String() string	{ return proto.CompactTextString(m) }
+func (*HTTPRewrite) ProtoMessage()	{}
 func (*HTTPRewrite) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8c56a442a0838fd7, []int{12}
 }
@@ -1839,15 +1839,15 @@ type StringMatch struct {
 	//	*StringMatch_Exact
 	//	*StringMatch_Prefix
 	//	*StringMatch_Regex
-	MatchType            isStringMatch_MatchType `protobuf_oneof:"match_type"`
-	XXX_NoUnkeyedLiteral struct{}                `json:"-"`
-	XXX_unrecognized     []byte                  `json:"-"`
-	XXX_sizecache        int32                   `json:"-"`
+	MatchType		isStringMatch_MatchType	`protobuf_oneof:"match_type"`
+	XXX_NoUnkeyedLiteral	struct{}		`json:"-"`
+	XXX_unrecognized	[]byte			`json:"-"`
+	XXX_sizecache		int32			`json:"-"`
 }
 
-func (m *StringMatch) Reset()         { *m = StringMatch{} }
-func (m *StringMatch) String() string { return proto.CompactTextString(m) }
-func (*StringMatch) ProtoMessage()    {}
+func (m *StringMatch) Reset()		{ *m = StringMatch{} }
+func (m *StringMatch) String() string	{ return proto.CompactTextString(m) }
+func (*StringMatch) ProtoMessage()	{}
 func (*StringMatch) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8c56a442a0838fd7, []int{13}
 }
@@ -1894,9 +1894,9 @@ type StringMatch_Regex struct {
 	Regex string `protobuf:"bytes,3,opt,name=regex,proto3,oneof"`
 }
 
-func (*StringMatch_Exact) isStringMatch_MatchType()  {}
-func (*StringMatch_Prefix) isStringMatch_MatchType() {}
-func (*StringMatch_Regex) isStringMatch_MatchType()  {}
+func (*StringMatch_Exact) isStringMatch_MatchType()	{}
+func (*StringMatch_Prefix) isStringMatch_MatchType()	{}
+func (*StringMatch_Regex) isStringMatch_MatchType()	{}
 
 func (m *StringMatch) GetMatchType() isStringMatch_MatchType {
 	if m != nil {
@@ -1963,22 +1963,22 @@ type HTTPRetry struct {
 	// between retries will be determined automatically (25ms+). Actual
 	// number of retries attempted depends on the request `timeout` of the
 	// [HTTP route](https://istio.io/docs/reference/config/networking/virtual-service/#HTTPRoute).
-	Attempts int32 `protobuf:"varint,1,opt,name=attempts,proto3" json:"attempts,omitempty"`
+	Attempts	int32	`protobuf:"varint,1,opt,name=attempts,proto3" json:"attempts,omitempty"`
 	// Timeout per retry attempt for a given request. format: 1h/1m/1s/1ms. MUST BE >=1ms.
-	PerTryTimeout *types.Duration `protobuf:"bytes,2,opt,name=per_try_timeout,json=perTryTimeout,proto3" json:"per_try_timeout,omitempty"`
+	PerTryTimeout	*types.Duration	`protobuf:"bytes,2,opt,name=per_try_timeout,json=perTryTimeout,proto3" json:"per_try_timeout,omitempty"`
 	// Specifies the conditions under which retry takes place.
 	// One or more policies can be specified using a ‘,’ delimited list.
 	// See the [retry policies](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-on)
 	// and [gRPC retry policies](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-grpc-on) for more details.
-	RetryOn              string   `protobuf:"bytes,3,opt,name=retry_on,json=retryOn,proto3" json:"retry_on,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	RetryOn			string		`protobuf:"bytes,3,opt,name=retry_on,json=retryOn,proto3" json:"retry_on,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *HTTPRetry) Reset()         { *m = HTTPRetry{} }
-func (m *HTTPRetry) String() string { return proto.CompactTextString(m) }
-func (*HTTPRetry) ProtoMessage()    {}
+func (m *HTTPRetry) Reset()		{ *m = HTTPRetry{} }
+func (m *HTTPRetry) String() string	{ return proto.CompactTextString(m) }
+func (*HTTPRetry) ProtoMessage()	{}
 func (*HTTPRetry) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8c56a442a0838fd7, []int{14}
 }
@@ -2068,35 +2068,35 @@ type CorsPolicy struct {
 	// content will be serialized into the Access-Control-Allow-Origin
 	// header. Wildcard * will allow all origins.
 	// $hide_from_docs
-	AllowOrigin []string `protobuf:"bytes,1,rep,name=allow_origin,json=allowOrigin,proto3" json:"allow_origin,omitempty"` // Deprecated: Do not use.
+	AllowOrigin	[]string	`protobuf:"bytes,1,rep,name=allow_origin,json=allowOrigin,proto3" json:"allow_origin,omitempty"`	// Deprecated: Do not use.
 	// String patterns that match allowed origins.
 	// An origin is allowed if any of the string matchers match.
 	// If a match is found, then the outgoing Access-Control-Allow-Origin would be set to the origin as provided by the client.
-	AllowOrigins []*StringMatch `protobuf:"bytes,7,rep,name=allow_origins,json=allowOrigins,proto3" json:"allow_origins,omitempty"`
+	AllowOrigins	[]*StringMatch	`protobuf:"bytes,7,rep,name=allow_origins,json=allowOrigins,proto3" json:"allow_origins,omitempty"`
 	// List of HTTP methods allowed to access the resource. The content will
 	// be serialized into the Access-Control-Allow-Methods header.
-	AllowMethods []string `protobuf:"bytes,2,rep,name=allow_methods,json=allowMethods,proto3" json:"allow_methods,omitempty"`
+	AllowMethods	[]string	`protobuf:"bytes,2,rep,name=allow_methods,json=allowMethods,proto3" json:"allow_methods,omitempty"`
 	// List of HTTP headers that can be used when requesting the
 	// resource. Serialized to Access-Control-Allow-Headers header.
-	AllowHeaders []string `protobuf:"bytes,3,rep,name=allow_headers,json=allowHeaders,proto3" json:"allow_headers,omitempty"`
+	AllowHeaders	[]string	`protobuf:"bytes,3,rep,name=allow_headers,json=allowHeaders,proto3" json:"allow_headers,omitempty"`
 	// A white list of HTTP headers that the browsers are allowed to
 	// access. Serialized into Access-Control-Expose-Headers header.
-	ExposeHeaders []string `protobuf:"bytes,4,rep,name=expose_headers,json=exposeHeaders,proto3" json:"expose_headers,omitempty"`
+	ExposeHeaders	[]string	`protobuf:"bytes,4,rep,name=expose_headers,json=exposeHeaders,proto3" json:"expose_headers,omitempty"`
 	// Specifies how long the results of a preflight request can be
 	// cached. Translates to the `Access-Control-Max-Age` header.
-	MaxAge *types.Duration `protobuf:"bytes,5,opt,name=max_age,json=maxAge,proto3" json:"max_age,omitempty"`
+	MaxAge	*types.Duration	`protobuf:"bytes,5,opt,name=max_age,json=maxAge,proto3" json:"max_age,omitempty"`
 	// Indicates whether the caller is allowed to send the actual request
 	// (not the preflight) using credentials. Translates to
 	// `Access-Control-Allow-Credentials` header.
-	AllowCredentials     *types.BoolValue `protobuf:"bytes,6,opt,name=allow_credentials,json=allowCredentials,proto3" json:"allow_credentials,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}         `json:"-"`
-	XXX_unrecognized     []byte           `json:"-"`
-	XXX_sizecache        int32            `json:"-"`
+	AllowCredentials	*types.BoolValue	`protobuf:"bytes,6,opt,name=allow_credentials,json=allowCredentials,proto3" json:"allow_credentials,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}		`json:"-"`
+	XXX_unrecognized	[]byte			`json:"-"`
+	XXX_sizecache		int32			`json:"-"`
 }
 
-func (m *CorsPolicy) Reset()         { *m = CorsPolicy{} }
-func (m *CorsPolicy) String() string { return proto.CompactTextString(m) }
-func (*CorsPolicy) ProtoMessage()    {}
+func (m *CorsPolicy) Reset()		{ *m = CorsPolicy{} }
+func (m *CorsPolicy) String() string	{ return proto.CompactTextString(m) }
+func (*CorsPolicy) ProtoMessage()	{}
 func (*CorsPolicy) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8c56a442a0838fd7, []int{15}
 }
@@ -2188,18 +2188,18 @@ func (m *CorsPolicy) GetAllowCredentials() *types.BoolValue {
 type HTTPFaultInjection struct {
 	// Delay requests before forwarding, emulating various failures such as
 	// network issues, overloaded upstream service, etc.
-	Delay *HTTPFaultInjection_Delay `protobuf:"bytes,1,opt,name=delay,proto3" json:"delay,omitempty"`
+	Delay	*HTTPFaultInjection_Delay	`protobuf:"bytes,1,opt,name=delay,proto3" json:"delay,omitempty"`
 	// Abort Http request attempts and return error codes back to downstream
 	// service, giving the impression that the upstream service is faulty.
-	Abort                *HTTPFaultInjection_Abort `protobuf:"bytes,2,opt,name=abort,proto3" json:"abort,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                  `json:"-"`
-	XXX_unrecognized     []byte                    `json:"-"`
-	XXX_sizecache        int32                     `json:"-"`
+	Abort			*HTTPFaultInjection_Abort	`protobuf:"bytes,2,opt,name=abort,proto3" json:"abort,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}			`json:"-"`
+	XXX_unrecognized	[]byte				`json:"-"`
+	XXX_sizecache		int32				`json:"-"`
 }
 
-func (m *HTTPFaultInjection) Reset()         { *m = HTTPFaultInjection{} }
-func (m *HTTPFaultInjection) String() string { return proto.CompactTextString(m) }
-func (*HTTPFaultInjection) ProtoMessage()    {}
+func (m *HTTPFaultInjection) Reset()		{ *m = HTTPFaultInjection{} }
+func (m *HTTPFaultInjection) String() string	{ return proto.CompactTextString(m) }
+func (*HTTPFaultInjection) ProtoMessage()	{}
 func (*HTTPFaultInjection) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8c56a442a0838fd7, []int{16}
 }
@@ -2279,21 +2279,21 @@ type HTTPFaultInjection_Delay struct {
 	// Percentage of requests on which the delay will be injected (0-100).
 	// Use of integer `percent` value is deprecated. Use the double `percentage`
 	// field instead.
-	Percent int32 `protobuf:"varint,1,opt,name=percent,proto3" json:"percent,omitempty"` // Deprecated: Do not use.
+	Percent	int32	`protobuf:"varint,1,opt,name=percent,proto3" json:"percent,omitempty"`	// Deprecated: Do not use.
 	// Types that are valid to be assigned to HttpDelayType:
 	//	*HTTPFaultInjection_Delay_FixedDelay
 	//	*HTTPFaultInjection_Delay_ExponentialDelay
-	HttpDelayType isHTTPFaultInjection_Delay_HttpDelayType `protobuf_oneof:"http_delay_type"`
+	HttpDelayType	isHTTPFaultInjection_Delay_HttpDelayType	`protobuf_oneof:"http_delay_type"`
 	// Percentage of requests on which the delay will be injected.
-	Percentage           *Percent `protobuf:"bytes,5,opt,name=percentage,proto3" json:"percentage,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	Percentage		*Percent	`protobuf:"bytes,5,opt,name=percentage,proto3" json:"percentage,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *HTTPFaultInjection_Delay) Reset()         { *m = HTTPFaultInjection_Delay{} }
-func (m *HTTPFaultInjection_Delay) String() string { return proto.CompactTextString(m) }
-func (*HTTPFaultInjection_Delay) ProtoMessage()    {}
+func (m *HTTPFaultInjection_Delay) Reset()		{ *m = HTTPFaultInjection_Delay{} }
+func (m *HTTPFaultInjection_Delay) String() string	{ return proto.CompactTextString(m) }
+func (*HTTPFaultInjection_Delay) ProtoMessage()		{}
 func (*HTTPFaultInjection_Delay) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8c56a442a0838fd7, []int{16, 0}
 }
@@ -2337,8 +2337,8 @@ type HTTPFaultInjection_Delay_ExponentialDelay struct {
 	ExponentialDelay *types.Duration `protobuf:"bytes,3,opt,name=exponential_delay,json=exponentialDelay,proto3,oneof"`
 }
 
-func (*HTTPFaultInjection_Delay_FixedDelay) isHTTPFaultInjection_Delay_HttpDelayType()       {}
-func (*HTTPFaultInjection_Delay_ExponentialDelay) isHTTPFaultInjection_Delay_HttpDelayType() {}
+func (*HTTPFaultInjection_Delay_FixedDelay) isHTTPFaultInjection_Delay_HttpDelayType()		{}
+func (*HTTPFaultInjection_Delay_ExponentialDelay) isHTTPFaultInjection_Delay_HttpDelayType()	{}
 
 func (m *HTTPFaultInjection_Delay) GetHttpDelayType() isHTTPFaultInjection_Delay_HttpDelayType {
 	if m != nil {
@@ -2417,17 +2417,17 @@ type HTTPFaultInjection_Abort struct {
 	//	*HTTPFaultInjection_Abort_HttpStatus
 	//	*HTTPFaultInjection_Abort_GrpcStatus
 	//	*HTTPFaultInjection_Abort_Http2Error
-	ErrorType isHTTPFaultInjection_Abort_ErrorType `protobuf_oneof:"error_type"`
+	ErrorType	isHTTPFaultInjection_Abort_ErrorType	`protobuf_oneof:"error_type"`
 	// Percentage of requests to be aborted with the error code provided.
-	Percentage           *Percent `protobuf:"bytes,5,opt,name=percentage,proto3" json:"percentage,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	Percentage		*Percent	`protobuf:"bytes,5,opt,name=percentage,proto3" json:"percentage,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *HTTPFaultInjection_Abort) Reset()         { *m = HTTPFaultInjection_Abort{} }
-func (m *HTTPFaultInjection_Abort) String() string { return proto.CompactTextString(m) }
-func (*HTTPFaultInjection_Abort) ProtoMessage()    {}
+func (m *HTTPFaultInjection_Abort) Reset()		{ *m = HTTPFaultInjection_Abort{} }
+func (m *HTTPFaultInjection_Abort) String() string	{ return proto.CompactTextString(m) }
+func (*HTTPFaultInjection_Abort) ProtoMessage()		{}
 func (*HTTPFaultInjection_Abort) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8c56a442a0838fd7, []int{16, 1}
 }
@@ -2474,9 +2474,9 @@ type HTTPFaultInjection_Abort_Http2Error struct {
 	Http2Error string `protobuf:"bytes,4,opt,name=http2_error,json=http2Error,proto3,oneof"`
 }
 
-func (*HTTPFaultInjection_Abort_HttpStatus) isHTTPFaultInjection_Abort_ErrorType() {}
-func (*HTTPFaultInjection_Abort_GrpcStatus) isHTTPFaultInjection_Abort_ErrorType() {}
-func (*HTTPFaultInjection_Abort_Http2Error) isHTTPFaultInjection_Abort_ErrorType() {}
+func (*HTTPFaultInjection_Abort_HttpStatus) isHTTPFaultInjection_Abort_ErrorType()	{}
+func (*HTTPFaultInjection_Abort_GrpcStatus) isHTTPFaultInjection_Abort_ErrorType()	{}
+func (*HTTPFaultInjection_Abort_Http2Error) isHTTPFaultInjection_Abort_ErrorType()	{}
 
 func (m *HTTPFaultInjection_Abort) GetErrorType() isHTTPFaultInjection_Abort_ErrorType {
 	if m != nil {
@@ -2526,15 +2526,15 @@ func (*HTTPFaultInjection_Abort) XXX_OneofWrappers() []interface{} {
 // matching or selection for final routing.
 type PortSelector struct {
 	// Valid port number
-	Number               uint32   `protobuf:"varint,1,opt,name=number,proto3" json:"number,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	Number			uint32		`protobuf:"varint,1,opt,name=number,proto3" json:"number,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *PortSelector) Reset()         { *m = PortSelector{} }
-func (m *PortSelector) String() string { return proto.CompactTextString(m) }
-func (*PortSelector) ProtoMessage()    {}
+func (m *PortSelector) Reset()		{ *m = PortSelector{} }
+func (m *PortSelector) String() string	{ return proto.CompactTextString(m) }
+func (*PortSelector) ProtoMessage()	{}
 func (*PortSelector) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8c56a442a0838fd7, []int{17}
 }
@@ -2574,15 +2574,15 @@ func (m *PortSelector) GetNumber() uint32 {
 
 // Percent specifies a percentage in the range of [0.0, 100.0].
 type Percent struct {
-	Value                float64  `protobuf:"fixed64,1,opt,name=value,proto3" json:"value,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	Value			float64		`protobuf:"fixed64,1,opt,name=value,proto3" json:"value,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *Percent) Reset()         { *m = Percent{} }
-func (m *Percent) String() string { return proto.CompactTextString(m) }
-func (*Percent) ProtoMessage()    {}
+func (m *Percent) Reset()		{ *m = Percent{} }
+func (m *Percent) String() string	{ return proto.CompactTextString(m) }
+func (*Percent) ProtoMessage()		{}
 func (*Percent) Descriptor() ([]byte, []int) {
 	return fileDescriptor_8c56a442a0838fd7, []int{18}
 }
@@ -9873,6 +9873,6 @@ func skipVirtualService(dAtA []byte) (n int, err error) {
 }
 
 var (
-	ErrInvalidLengthVirtualService = fmt.Errorf("proto: negative length found during unmarshaling")
-	ErrIntOverflowVirtualService   = fmt.Errorf("proto: integer overflow")
+	ErrInvalidLengthVirtualService	= fmt.Errorf("proto: negative length found during unmarshaling")
+	ErrIntOverflowVirtualService	= fmt.Errorf("proto: integer overflow")
 )
