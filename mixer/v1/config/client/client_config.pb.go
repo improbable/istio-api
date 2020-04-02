@@ -12,7 +12,7 @@ import (
 	github_com_gogo_protobuf_sortkeys "github.com/gogo/protobuf/sortkeys"
 	types "github.com/gogo/protobuf/types"
 	io "io"
-	v1 "istio.io/api/mixer/v1"
+	v1 "github.com/improbable/istio-api/mixer/v1"
 	math "math"
 	math_bits "math/bits"
 	reflect "reflect"

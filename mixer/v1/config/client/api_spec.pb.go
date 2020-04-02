@@ -8,7 +8,7 @@ import (
 	_ "github.com/gogo/protobuf/gogoproto"
 	proto "github.com/gogo/protobuf/proto"
 	io "io"
-	v1 "istio.io/api/mixer/v1"
+	v1 "github.com/improbable/istio-api/mixer/v1"
 
 	math "math"
 	math_bits "math/bits"

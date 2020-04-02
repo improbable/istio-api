@@ -10,7 +10,7 @@ import (
 	proto "github.com/gogo/protobuf/proto"
 	types "github.com/gogo/protobuf/types"
 	io "io"
-	v1alpha3 "istio.io/api/networking/v1alpha3"
+	v1alpha3 "github.com/improbable/istio-api/networking/v1alpha3"
 	math "math"
 	math_bits "math/bits"
 )

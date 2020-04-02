@@ -7,7 +7,7 @@ import (
 	fmt "fmt"
 	_ "github.com/gogo/protobuf/gogoproto"
 	proto "github.com/gogo/protobuf/proto"
-	_ "istio.io/api/mixer/v1"
+	_ "github.com/improbable/istio-api/mixer/v1"
 
 	math "math"
 )

@@ -1,4 +1,4 @@
-module istio.io/api
+module github.com/improbable/istio-api
 
 go 1.12
 

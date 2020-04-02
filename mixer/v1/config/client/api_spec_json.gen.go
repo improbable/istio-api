@@ -9,7 +9,7 @@ import (
 	_ "github.com/gogo/protobuf/gogoproto"
 	github_com_gogo_protobuf_jsonpb "github.com/gogo/protobuf/jsonpb"
 	proto "github.com/gogo/protobuf/proto"
-	_ "istio.io/api/mixer/v1"
+	_ "github.com/improbable/istio-api/mixer/v1"
 
 	math "math"
 )

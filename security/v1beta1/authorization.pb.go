@@ -135,7 +135,7 @@ import (
 	fmt "fmt"
 	proto "github.com/gogo/protobuf/proto"
 	io "io"
-	v1beta1 "istio.io/api/type/v1beta1"
+	v1beta1 "github.com/improbable/istio-api/type/v1beta1"
 
 	math "math"
 	math_bits "math/bits"

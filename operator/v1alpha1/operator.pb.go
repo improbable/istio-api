@@ -8,7 +8,7 @@ package v1alpha1
 import (
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
-	v1alpha1 "istio.io/api/mesh/v1alpha1"
+	v1alpha1 "github.com/improbable/istio-api/mesh/v1alpha1"
 	math "math"
 )
 
