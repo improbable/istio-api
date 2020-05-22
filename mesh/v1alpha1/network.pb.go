@@ -7,7 +7,7 @@ import (
 	fmt "fmt"
 	proto "github.com/gogo/protobuf/proto"
 	io "io"
-	_ "istio.io/gogo-genproto/googleapis/google/api"
+
 	math "math"
 	math_bits "math/bits"
 )
@@ -21,7 +21,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion3	// please upgrade the proto package
 
 // Network provides information about the endpoints in a routable L3
 // network. A single routable L3 network can have one or more service
@@ -32,17 +32,17 @@ type Network struct {
 	// The list of endpoints in the network (obtained through the
 	// constituent service registries or from CIDR ranges). All endpoints in
 	// the network are directly accessible to one another.
-	Endpoints []*Network_NetworkEndpoints `protobuf:"bytes,2,rep,name=endpoints,proto3" json:"endpoints,omitempty"`
+	Endpoints	[]*Network_NetworkEndpoints	`protobuf:"bytes,2,rep,name=endpoints,proto3" json:"endpoints,omitempty"`
 	// Set of gateways associated with the network.
-	Gateways             []*Network_IstioNetworkGateway `protobuf:"bytes,3,rep,name=gateways,proto3" json:"gateways,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                       `json:"-"`
-	XXX_unrecognized     []byte                         `json:"-"`
-	XXX_sizecache        int32                          `json:"-"`
+	Gateways		[]*Network_IstioNetworkGateway	`protobuf:"bytes,3,rep,name=gateways,proto3" json:"gateways,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}			`json:"-"`
+	XXX_unrecognized	[]byte				`json:"-"`
+	XXX_sizecache		int32				`json:"-"`
 }
 
-func (m *Network) Reset()         { *m = Network{} }
-func (m *Network) String() string { return proto.CompactTextString(m) }
-func (*Network) ProtoMessage()    {}
+func (m *Network) Reset()		{ *m = Network{} }
+func (m *Network) String() string	{ return proto.CompactTextString(m) }
+func (*Network) ProtoMessage()		{}
 func (*Network) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a15df2a96e10cd86, []int{0}
 }
@@ -111,15 +111,15 @@ type Network_NetworkEndpoints struct {
 	// Types that are valid to be assigned to Ne:
 	//	*Network_NetworkEndpoints_FromCidr
 	//	*Network_NetworkEndpoints_FromRegistry
-	Ne                   isNetwork_NetworkEndpoints_Ne `protobuf_oneof:"ne"`
-	XXX_NoUnkeyedLiteral struct{}                      `json:"-"`
-	XXX_unrecognized     []byte                        `json:"-"`
-	XXX_sizecache        int32                         `json:"-"`
+	Ne			isNetwork_NetworkEndpoints_Ne	`protobuf_oneof:"ne"`
+	XXX_NoUnkeyedLiteral	struct{}			`json:"-"`
+	XXX_unrecognized	[]byte				`json:"-"`
+	XXX_sizecache		int32				`json:"-"`
 }
 
-func (m *Network_NetworkEndpoints) Reset()         { *m = Network_NetworkEndpoints{} }
-func (m *Network_NetworkEndpoints) String() string { return proto.CompactTextString(m) }
-func (*Network_NetworkEndpoints) ProtoMessage()    {}
+func (m *Network_NetworkEndpoints) Reset()		{ *m = Network_NetworkEndpoints{} }
+func (m *Network_NetworkEndpoints) String() string	{ return proto.CompactTextString(m) }
+func (*Network_NetworkEndpoints) ProtoMessage()		{}
 func (*Network_NetworkEndpoints) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a15df2a96e10cd86, []int{0, 0}
 }
@@ -163,8 +163,8 @@ type Network_NetworkEndpoints_FromRegistry struct {
 	FromRegistry string `protobuf:"bytes,2,opt,name=from_registry,json=fromRegistry,proto3,oneof"`
 }
 
-func (*Network_NetworkEndpoints_FromCidr) isNetwork_NetworkEndpoints_Ne()     {}
-func (*Network_NetworkEndpoints_FromRegistry) isNetwork_NetworkEndpoints_Ne() {}
+func (*Network_NetworkEndpoints_FromCidr) isNetwork_NetworkEndpoints_Ne()	{}
+func (*Network_NetworkEndpoints_FromRegistry) isNetwork_NetworkEndpoints_Ne()	{}
 
 func (m *Network_NetworkEndpoints) GetNe() isNetwork_NetworkEndpoints_Ne {
 	if m != nil {
@@ -202,19 +202,19 @@ type Network_IstioNetworkGateway struct {
 	// Types that are valid to be assigned to Gw:
 	//	*Network_IstioNetworkGateway_RegistryServiceName
 	//	*Network_IstioNetworkGateway_Address
-	Gw isNetwork_IstioNetworkGateway_Gw `protobuf_oneof:"gw"`
+	Gw	isNetwork_IstioNetworkGateway_Gw	`protobuf_oneof:"gw"`
 	// The port associated with the gateway.
-	Port uint32 `protobuf:"varint,3,opt,name=port,proto3" json:"port,omitempty"`
+	Port	uint32	`protobuf:"varint,3,opt,name=port,proto3" json:"port,omitempty"`
 	// The locality associated with an explicitly specified gateway (i.e. ip)
-	Locality             string   `protobuf:"bytes,4,opt,name=locality,proto3" json:"locality,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	Locality		string		`protobuf:"bytes,4,opt,name=locality,proto3" json:"locality,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *Network_IstioNetworkGateway) Reset()         { *m = Network_IstioNetworkGateway{} }
-func (m *Network_IstioNetworkGateway) String() string { return proto.CompactTextString(m) }
-func (*Network_IstioNetworkGateway) ProtoMessage()    {}
+func (m *Network_IstioNetworkGateway) Reset()		{ *m = Network_IstioNetworkGateway{} }
+func (m *Network_IstioNetworkGateway) String() string	{ return proto.CompactTextString(m) }
+func (*Network_IstioNetworkGateway) ProtoMessage()	{}
 func (*Network_IstioNetworkGateway) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a15df2a96e10cd86, []int{0, 1}
 }
@@ -258,8 +258,8 @@ type Network_IstioNetworkGateway_Address struct {
 	Address string `protobuf:"bytes,2,opt,name=address,proto3,oneof"`
 }
 
-func (*Network_IstioNetworkGateway_RegistryServiceName) isNetwork_IstioNetworkGateway_Gw() {}
-func (*Network_IstioNetworkGateway_Address) isNetwork_IstioNetworkGateway_Gw()             {}
+func (*Network_IstioNetworkGateway_RegistryServiceName) isNetwork_IstioNetworkGateway_Gw()	{}
+func (*Network_IstioNetworkGateway_Address) isNetwork_IstioNetworkGateway_Gw()			{}
 
 func (m *Network_IstioNetworkGateway) GetGw() isNetwork_IstioNetworkGateway_Gw {
 	if m != nil {
@@ -328,15 +328,15 @@ type MeshNetworks struct {
 	// The set of networks inside this mesh. Each network should
 	// have a unique name and information about how to infer the endpoints in
 	// the network as well as the gateways associated with the network.
-	Networks             map[string]*Network `protobuf:"bytes,1,rep,name=networks,proto3" json:"networks,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
+	Networks		map[string]*Network	`protobuf:"bytes,1,rep,name=networks,proto3" json:"networks,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	XXX_NoUnkeyedLiteral	struct{}		`json:"-"`
+	XXX_unrecognized	[]byte			`json:"-"`
+	XXX_sizecache		int32			`json:"-"`
 }
 
-func (m *MeshNetworks) Reset()         { *m = MeshNetworks{} }
-func (m *MeshNetworks) String() string { return proto.CompactTextString(m) }
-func (*MeshNetworks) ProtoMessage()    {}
+func (m *MeshNetworks) Reset()		{ *m = MeshNetworks{} }
+func (m *MeshNetworks) String() string	{ return proto.CompactTextString(m) }
+func (*MeshNetworks) ProtoMessage()	{}
 func (*MeshNetworks) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a15df2a96e10cd86, []int{1}
 }
@@ -382,7 +382,7 @@ func init() {
 	proto.RegisterMapType((map[string]*Network)(nil), "istio.mesh.v1alpha1.MeshNetworks.NetworksEntry")
 }
 
-func init() { proto.RegisterFile("mesh/v1alpha1/network.proto", fileDescriptor_a15df2a96e10cd86) }
+func init()	{ proto.RegisterFile("mesh/v1alpha1/network.proto", fileDescriptor_a15df2a96e10cd86) }
 
 var fileDescriptor_a15df2a96e10cd86 = []byte{
 	// 432 bytes of a gzipped FileDescriptorProto
@@ -1501,6 +1501,6 @@ func skipNetwork(dAtA []byte) (n int, err error) {
 }
 
 var (
-	ErrInvalidLengthNetwork = fmt.Errorf("proto: negative length found during unmarshaling")
-	ErrIntOverflowNetwork   = fmt.Errorf("proto: integer overflow")
+	ErrInvalidLengthNetwork	= fmt.Errorf("proto: negative length found during unmarshaling")
+	ErrIntOverflowNetwork	= fmt.Errorf("proto: integer overflow")
 )

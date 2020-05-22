@@ -16,7 +16,7 @@ import (
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	io "io"
-	rpc "istio.io/gogo-genproto/googleapis/google/rpc"
+
 	math "math"
 	math_bits "math/bits"
 	reflect "reflect"
@@ -32,18 +32,18 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion3	// please upgrade the proto package
 
 // Request message for `CreateSession` method.
 type CreateSessionRequest struct {
 	// Adapter specific configuration.
-	AdapterConfig *types.Any `protobuf:"bytes,1,opt,name=adapter_config,json=adapterConfig,proto3" json:"adapter_config,omitempty"`
+	AdapterConfig	*types.Any	`protobuf:"bytes,1,opt,name=adapter_config,json=adapterConfig,proto3" json:"adapter_config,omitempty"`
 	// Map of instance names to their template-specific inferred type.
-	InferredTypes map[string]*types.Any `protobuf:"bytes,2,rep,name=inferred_types,json=inferredTypes,proto3" json:"inferred_types,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	InferredTypes	map[string]*types.Any	`protobuf:"bytes,2,rep,name=inferred_types,json=inferredTypes,proto3" json:"inferred_types,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
-func (m *CreateSessionRequest) Reset()      { *m = CreateSessionRequest{} }
-func (*CreateSessionRequest) ProtoMessage() {}
+func (m *CreateSessionRequest) Reset()		{ *m = CreateSessionRequest{} }
+func (*CreateSessionRequest) ProtoMessage()	{}
 func (*CreateSessionRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b62a0b3a6ebb4b55, []int{0}
 }
@@ -91,13 +91,13 @@ func (m *CreateSessionRequest) GetInferredTypes() map[string]*types.Any {
 // Response message for `CreateSession` method.
 type CreateSessionResponse struct {
 	// Id of the created session.
-	SessionId string `protobuf:"bytes,1,opt,name=session_id,json=sessionId,proto3" json:"session_id,omitempty"`
+	SessionId	string	`protobuf:"bytes,1,opt,name=session_id,json=sessionId,proto3" json:"session_id,omitempty"`
 	// The success/failure status of create session call.
-	Status *rpc.Status `protobuf:"bytes,2,opt,name=status,proto3" json:"status,omitempty"`
+	Status	*rpc.Status	`protobuf:"bytes,2,opt,name=status,proto3" json:"status,omitempty"`
 }
 
-func (m *CreateSessionResponse) Reset()      { *m = CreateSessionResponse{} }
-func (*CreateSessionResponse) ProtoMessage() {}
+func (m *CreateSessionResponse) Reset()		{ *m = CreateSessionResponse{} }
+func (*CreateSessionResponse) ProtoMessage()	{}
 func (*CreateSessionResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b62a0b3a6ebb4b55, []int{1}
 }
@@ -145,13 +145,13 @@ func (m *CreateSessionResponse) GetStatus() *rpc.Status {
 // Request message for `Validate` method.
 type ValidateRequest struct {
 	// Adapter specific configuration.
-	AdapterConfig *types.Any `protobuf:"bytes,1,opt,name=adapter_config,json=adapterConfig,proto3" json:"adapter_config,omitempty"`
+	AdapterConfig	*types.Any	`protobuf:"bytes,1,opt,name=adapter_config,json=adapterConfig,proto3" json:"adapter_config,omitempty"`
 	// Map of instance names to their template-specific inferred type.
-	InferredTypes map[string]*types.Any `protobuf:"bytes,2,rep,name=inferred_types,json=inferredTypes,proto3" json:"inferred_types,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	InferredTypes	map[string]*types.Any	`protobuf:"bytes,2,rep,name=inferred_types,json=inferredTypes,proto3" json:"inferred_types,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
-func (m *ValidateRequest) Reset()      { *m = ValidateRequest{} }
-func (*ValidateRequest) ProtoMessage() {}
+func (m *ValidateRequest) Reset()	{ *m = ValidateRequest{} }
+func (*ValidateRequest) ProtoMessage()	{}
 func (*ValidateRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b62a0b3a6ebb4b55, []int{2}
 }
@@ -202,8 +202,8 @@ type ValidateResponse struct {
 	Status *rpc.Status `protobuf:"bytes,1,opt,name=status,proto3" json:"status,omitempty"`
 }
 
-func (m *ValidateResponse) Reset()      { *m = ValidateResponse{} }
-func (*ValidateResponse) ProtoMessage() {}
+func (m *ValidateResponse) Reset()	{ *m = ValidateResponse{} }
+func (*ValidateResponse) ProtoMessage()	{}
 func (*ValidateResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b62a0b3a6ebb4b55, []int{3}
 }
@@ -247,8 +247,8 @@ type CloseSessionRequest struct {
 	SessionId string `protobuf:"bytes,1,opt,name=session_id,json=sessionId,proto3" json:"session_id,omitempty"`
 }
 
-func (m *CloseSessionRequest) Reset()      { *m = CloseSessionRequest{} }
-func (*CloseSessionRequest) ProtoMessage() {}
+func (m *CloseSessionRequest) Reset()		{ *m = CloseSessionRequest{} }
+func (*CloseSessionRequest) ProtoMessage()	{}
 func (*CloseSessionRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b62a0b3a6ebb4b55, []int{4}
 }
@@ -292,8 +292,8 @@ type CloseSessionResponse struct {
 	Status *rpc.Status `protobuf:"bytes,1,opt,name=status,proto3" json:"status,omitempty"`
 }
 
-func (m *CloseSessionResponse) Reset()      { *m = CloseSessionResponse{} }
-func (*CloseSessionResponse) ProtoMessage() {}
+func (m *CloseSessionResponse) Reset()		{ *m = CloseSessionResponse{} }
+func (*CloseSessionResponse) ProtoMessage()	{}
 func (*CloseSessionResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b62a0b3a6ebb4b55, []int{5}
 }
@@ -789,8 +789,8 @@ func _InfrastructureBackend_Validate_Handler(srv interface{}, ctx context.Contex
 		return srv.(InfrastructureBackendServer).Validate(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/istio.mixer.adapter.model.v1beta1.InfrastructureBackend/Validate",
+		Server:		srv,
+		FullMethod:	"/istio.mixer.adapter.model.v1beta1.InfrastructureBackend/Validate",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(InfrastructureBackendServer).Validate(ctx, req.(*ValidateRequest))
@@ -807,8 +807,8 @@ func _InfrastructureBackend_CreateSession_Handler(srv interface{}, ctx context.C
 		return srv.(InfrastructureBackendServer).CreateSession(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/istio.mixer.adapter.model.v1beta1.InfrastructureBackend/CreateSession",
+		Server:		srv,
+		FullMethod:	"/istio.mixer.adapter.model.v1beta1.InfrastructureBackend/CreateSession",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(InfrastructureBackendServer).CreateSession(ctx, req.(*CreateSessionRequest))
@@ -825,8 +825,8 @@ func _InfrastructureBackend_CloseSession_Handler(srv interface{}, ctx context.Co
 		return srv.(InfrastructureBackendServer).CloseSession(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/istio.mixer.adapter.model.v1beta1.InfrastructureBackend/CloseSession",
+		Server:		srv,
+		FullMethod:	"/istio.mixer.adapter.model.v1beta1.InfrastructureBackend/CloseSession",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(InfrastructureBackendServer).CloseSession(ctx, req.(*CloseSessionRequest))
@@ -835,24 +835,24 @@ func _InfrastructureBackend_CloseSession_Handler(srv interface{}, ctx context.Co
 }
 
 var _InfrastructureBackend_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "istio.mixer.adapter.model.v1beta1.InfrastructureBackend",
-	HandlerType: (*InfrastructureBackendServer)(nil),
+	ServiceName:	"istio.mixer.adapter.model.v1beta1.InfrastructureBackend",
+	HandlerType:	(*InfrastructureBackendServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "Validate",
-			Handler:    _InfrastructureBackend_Validate_Handler,
+			MethodName:	"Validate",
+			Handler:	_InfrastructureBackend_Validate_Handler,
 		},
 		{
-			MethodName: "CreateSession",
-			Handler:    _InfrastructureBackend_CreateSession_Handler,
+			MethodName:	"CreateSession",
+			Handler:	_InfrastructureBackend_CreateSession_Handler,
 		},
 		{
-			MethodName: "CloseSession",
-			Handler:    _InfrastructureBackend_CloseSession_Handler,
+			MethodName:	"CloseSession",
+			Handler:	_InfrastructureBackend_CloseSession_Handler,
 		},
 	},
-	Streams:  []grpc.StreamDesc{},
-	Metadata: "mixer/adapter/model/v1beta1/infrastructure_backend.proto",
+	Streams:	[]grpc.StreamDesc{},
+	Metadata:	"mixer/adapter/model/v1beta1/infrastructure_backend.proto",
 }
 
 func (m *CreateSessionRequest) Marshal() (dAtA []byte, err error) {
@@ -2262,6 +2262,6 @@ func skipInfrastructureBackend(dAtA []byte) (n int, err error) {
 }
 
 var (
-	ErrInvalidLengthInfrastructureBackend = fmt.Errorf("proto: negative length found during unmarshaling")
-	ErrIntOverflowInfrastructureBackend   = fmt.Errorf("proto: integer overflow")
+	ErrInvalidLengthInfrastructureBackend	= fmt.Errorf("proto: negative length found during unmarshaling")
+	ErrIntOverflowInfrastructureBackend	= fmt.Errorf("proto: integer overflow")
 )

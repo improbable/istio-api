@@ -9,7 +9,7 @@ import (
 	fmt "fmt"
 	proto "github.com/gogo/protobuf/proto"
 	io "io"
-	_ "istio.io/gogo-genproto/googleapis/google/api"
+
 	math "math"
 	math_bits "math/bits"
 )
@@ -23,7 +23,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion3	// please upgrade the proto package
 
 // $hide_from_docs
 // Deprecated. When using security/v1beta1/RequestAuthentication, the request principal always
@@ -33,19 +33,19 @@ type PrincipalBinding int32
 
 const (
 	// Principal will be set to the identity from peer authentication.
-	PrincipalBinding_USE_PEER PrincipalBinding = 0
+	PrincipalBinding_USE_PEER	PrincipalBinding	= 0
 	// Principal will be set to the identity from origin authentication.
-	PrincipalBinding_USE_ORIGIN PrincipalBinding = 1
+	PrincipalBinding_USE_ORIGIN	PrincipalBinding	= 1
 )
 
 var PrincipalBinding_name = map[int32]string{
-	0: "USE_PEER",
-	1: "USE_ORIGIN",
+	0:	"USE_PEER",
+	1:	"USE_ORIGIN",
 }
 
 var PrincipalBinding_value = map[string]int32{
-	"USE_PEER":   0,
-	"USE_ORIGIN": 1,
+	"USE_PEER":	0,
+	"USE_ORIGIN":	1,
 }
 
 func (x PrincipalBinding) String() string {
@@ -62,19 +62,19 @@ type MutualTls_Mode int32
 
 const (
 	// Client cert must be presented, connection is in TLS.
-	MutualTls_STRICT MutualTls_Mode = 0
+	MutualTls_STRICT	MutualTls_Mode	= 0
 	// Connection can be either plaintext or TLS with Client cert.
-	MutualTls_PERMISSIVE MutualTls_Mode = 1
+	MutualTls_PERMISSIVE	MutualTls_Mode	= 1
 )
 
 var MutualTls_Mode_name = map[int32]string{
-	0: "STRICT",
-	1: "PERMISSIVE",
+	0:	"STRICT",
+	1:	"PERMISSIVE",
 }
 
 var MutualTls_Mode_value = map[string]int32{
-	"STRICT":     0,
-	"PERMISSIVE": 1,
+	"STRICT":	0,
+	"PERMISSIVE":	1,
 }
 
 func (x MutualTls_Mode) String() string {
@@ -93,15 +93,15 @@ type StringMatch struct {
 	//	*StringMatch_Prefix
 	//	*StringMatch_Suffix
 	//	*StringMatch_Regex
-	MatchType            isStringMatch_MatchType `protobuf_oneof:"match_type"`
-	XXX_NoUnkeyedLiteral struct{}                `json:"-"`
-	XXX_unrecognized     []byte                  `json:"-"`
-	XXX_sizecache        int32                   `json:"-"`
+	MatchType		isStringMatch_MatchType	`protobuf_oneof:"match_type"`
+	XXX_NoUnkeyedLiteral	struct{}		`json:"-"`
+	XXX_unrecognized	[]byte			`json:"-"`
+	XXX_sizecache		int32			`json:"-"`
 }
 
-func (m *StringMatch) Reset()         { *m = StringMatch{} }
-func (m *StringMatch) String() string { return proto.CompactTextString(m) }
-func (*StringMatch) ProtoMessage()    {}
+func (m *StringMatch) Reset()		{ *m = StringMatch{} }
+func (m *StringMatch) String() string	{ return proto.CompactTextString(m) }
+func (*StringMatch) ProtoMessage()	{}
 func (*StringMatch) Descriptor() ([]byte, []int) {
 	return fileDescriptor_30ec3f7cef93301a, []int{0}
 }
@@ -151,10 +151,10 @@ type StringMatch_Regex struct {
 	Regex string `protobuf:"bytes,4,opt,name=regex,proto3,oneof"`
 }
 
-func (*StringMatch_Exact) isStringMatch_MatchType()  {}
-func (*StringMatch_Prefix) isStringMatch_MatchType() {}
-func (*StringMatch_Suffix) isStringMatch_MatchType() {}
-func (*StringMatch_Regex) isStringMatch_MatchType()  {}
+func (*StringMatch_Exact) isStringMatch_MatchType()	{}
+func (*StringMatch_Prefix) isStringMatch_MatchType()	{}
+func (*StringMatch_Suffix) isStringMatch_MatchType()	{}
+func (*StringMatch_Regex) isStringMatch_MatchType()	{}
 
 func (m *StringMatch) GetMatchType() isStringMatch_MatchType {
 	if m != nil {
@@ -212,17 +212,17 @@ type MutualTls struct {
 	// extracted and used (set to peer identity). Otherwise, peer identity will
 	// be left unset.
 	// When the flag is false (default), request must have client certificate.
-	AllowTls bool `protobuf:"varint,1,opt,name=allow_tls,json=allowTls,proto3" json:"allow_tls,omitempty"` // Deprecated: Do not use.
+	AllowTls	bool	`protobuf:"varint,1,opt,name=allow_tls,json=allowTls,proto3" json:"allow_tls,omitempty"`	// Deprecated: Do not use.
 	// Defines the mode of mTLS authentication.
-	Mode                 MutualTls_Mode `protobuf:"varint,2,opt,name=mode,proto3,enum=istio.authentication.v1alpha1.MutualTls_Mode" json:"mode,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
-	XXX_unrecognized     []byte         `json:"-"`
-	XXX_sizecache        int32          `json:"-"`
+	Mode			MutualTls_Mode	`protobuf:"varint,2,opt,name=mode,proto3,enum=istio.authentication.v1alpha1.MutualTls_Mode" json:"mode,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *MutualTls) Reset()         { *m = MutualTls{} }
-func (m *MutualTls) String() string { return proto.CompactTextString(m) }
-func (*MutualTls) ProtoMessage()    {}
+func (m *MutualTls) Reset()		{ *m = MutualTls{} }
+func (m *MutualTls) String() string	{ return proto.CompactTextString(m) }
+func (*MutualTls) ProtoMessage()	{}
 func (*MutualTls) Descriptor() ([]byte, []int) {
 	return fileDescriptor_30ec3f7cef93301a, []int{1}
 }
@@ -331,7 +331,7 @@ type Jwt struct {
 	//
 	// Example: https://securetoken.google.com
 	// Example: 1234567-compute@developer.gserviceaccount.com
-	Issuer string `protobuf:"bytes,1,opt,name=issuer,proto3" json:"issuer,omitempty"`
+	Issuer	string	`protobuf:"bytes,1,opt,name=issuer,proto3" json:"issuer,omitempty"`
 	// The list of JWT
 	// [audiences](https://tools.ietf.org/html/rfc7519#section-4.1.3).
 	// that are allowed to access. A JWT containing any of these
@@ -346,7 +346,7 @@ type Jwt struct {
 	// - bookstore_android.apps.googleusercontent.com
 	//   bookstore_web.apps.googleusercontent.com
 	// ```
-	Audiences []string `protobuf:"bytes,2,rep,name=audiences,proto3" json:"audiences,omitempty"`
+	Audiences	[]string	`protobuf:"bytes,2,rep,name=audiences,proto3" json:"audiences,omitempty"`
 	// URL of the provider's public key set to validate signature of the
 	// JWT. See [OpenID Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).
 	//
@@ -359,37 +359,37 @@ type Jwt struct {
 	// Example: `https://www.googleapis.com/oauth2/v1/certs`
 	//
 	// Note: Only one of jwks_uri and jwks should be used.
-	JwksUri string `protobuf:"bytes,3,opt,name=jwks_uri,json=jwksUri,proto3" json:"jwks_uri,omitempty"`
+	JwksUri	string	`protobuf:"bytes,3,opt,name=jwks_uri,json=jwksUri,proto3" json:"jwks_uri,omitempty"`
 	// JSON Web Key Set of public keys to validate signature of the JWT.
 	// See https://auth0.com/docs/jwks.
 	//
 	// Note: Only one of jwks_uri and jwks should be used.
-	Jwks string `protobuf:"bytes,10,opt,name=jwks,proto3" json:"jwks,omitempty"`
+	Jwks	string	`protobuf:"bytes,10,opt,name=jwks,proto3" json:"jwks,omitempty"`
 	// JWT is sent in a request header. `header` represents the
 	// header name.
 	//
 	// For example, if `header=x-goog-iap-jwt-assertion`, the header
 	// format will be `x-goog-iap-jwt-assertion: <JWT>`.
-	JwtHeaders []string `protobuf:"bytes,6,rep,name=jwt_headers,json=jwtHeaders,proto3" json:"jwt_headers,omitempty"`
+	JwtHeaders	[]string	`protobuf:"bytes,6,rep,name=jwt_headers,json=jwtHeaders,proto3" json:"jwt_headers,omitempty"`
 	// JWT is sent in a query parameter. `query` represents the
 	// query parameter name.
 	//
 	// For example, `query=jwt_token`.
-	JwtParams []string `protobuf:"bytes,7,rep,name=jwt_params,json=jwtParams,proto3" json:"jwt_params,omitempty"`
+	JwtParams	[]string	`protobuf:"bytes,7,rep,name=jwt_params,json=jwtParams,proto3" json:"jwt_params,omitempty"`
 	// List of trigger rules to decide if this JWT should be used to validate the
 	// request. The JWT validation happens if any one of the rules matched.
 	// If the list is not empty and none of the rules matched, authentication will
 	// skip the JWT validation.
 	// Leave this empty to always trigger the JWT validation.
-	TriggerRules         []*Jwt_TriggerRule `protobuf:"bytes,9,rep,name=trigger_rules,json=triggerRules,proto3" json:"trigger_rules,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
-	XXX_unrecognized     []byte             `json:"-"`
-	XXX_sizecache        int32              `json:"-"`
+	TriggerRules		[]*Jwt_TriggerRule	`protobuf:"bytes,9,rep,name=trigger_rules,json=triggerRules,proto3" json:"trigger_rules,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}		`json:"-"`
+	XXX_unrecognized	[]byte			`json:"-"`
+	XXX_sizecache		int32			`json:"-"`
 }
 
-func (m *Jwt) Reset()         { *m = Jwt{} }
-func (m *Jwt) String() string { return proto.CompactTextString(m) }
-func (*Jwt) ProtoMessage()    {}
+func (m *Jwt) Reset()		{ *m = Jwt{} }
+func (m *Jwt) String() string	{ return proto.CompactTextString(m) }
+func (*Jwt) ProtoMessage()	{}
 func (*Jwt) Descriptor() ([]byte, []int) {
 	return fileDescriptor_30ec3f7cef93301a, []int{2}
 }
@@ -475,19 +475,19 @@ func (m *Jwt) GetTriggerRules() []*Jwt_TriggerRule {
 type Jwt_TriggerRule struct {
 	// List of paths to be excluded from the request. The rule is satisfied if
 	// request path does not match to any of the path in this list.
-	ExcludedPaths []*StringMatch `protobuf:"bytes,1,rep,name=excluded_paths,json=excludedPaths,proto3" json:"excluded_paths,omitempty"`
+	ExcludedPaths	[]*StringMatch	`protobuf:"bytes,1,rep,name=excluded_paths,json=excludedPaths,proto3" json:"excluded_paths,omitempty"`
 	// List of paths that the request must include. If the list is not empty, the
 	// rule is satisfied if request path matches at least one of the path in the list.
 	// If the list is empty, the rule is ignored, in other words the rule is always satisfied.
-	IncludedPaths        []*StringMatch `protobuf:"bytes,2,rep,name=included_paths,json=includedPaths,proto3" json:"included_paths,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
-	XXX_unrecognized     []byte         `json:"-"`
-	XXX_sizecache        int32          `json:"-"`
+	IncludedPaths		[]*StringMatch	`protobuf:"bytes,2,rep,name=included_paths,json=includedPaths,proto3" json:"included_paths,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *Jwt_TriggerRule) Reset()         { *m = Jwt_TriggerRule{} }
-func (m *Jwt_TriggerRule) String() string { return proto.CompactTextString(m) }
-func (*Jwt_TriggerRule) ProtoMessage()    {}
+func (m *Jwt_TriggerRule) Reset()		{ *m = Jwt_TriggerRule{} }
+func (m *Jwt_TriggerRule) String() string	{ return proto.CompactTextString(m) }
+func (*Jwt_TriggerRule) ProtoMessage()		{}
 func (*Jwt_TriggerRule) Descriptor() ([]byte, []int) {
 	return fileDescriptor_30ec3f7cef93301a, []int{2, 0}
 }
@@ -544,15 +544,15 @@ type PeerAuthenticationMethod struct {
 	// Types that are valid to be assigned to Params:
 	//	*PeerAuthenticationMethod_Mtls
 	//	*PeerAuthenticationMethod_Jwt
-	Params               isPeerAuthenticationMethod_Params `protobuf_oneof:"params"`
-	XXX_NoUnkeyedLiteral struct{}                          `json:"-"`
-	XXX_unrecognized     []byte                            `json:"-"`
-	XXX_sizecache        int32                             `json:"-"`
+	Params			isPeerAuthenticationMethod_Params	`protobuf_oneof:"params"`
+	XXX_NoUnkeyedLiteral	struct{}				`json:"-"`
+	XXX_unrecognized	[]byte					`json:"-"`
+	XXX_sizecache		int32					`json:"-"`
 }
 
-func (m *PeerAuthenticationMethod) Reset()         { *m = PeerAuthenticationMethod{} }
-func (m *PeerAuthenticationMethod) String() string { return proto.CompactTextString(m) }
-func (*PeerAuthenticationMethod) ProtoMessage()    {}
+func (m *PeerAuthenticationMethod) Reset()		{ *m = PeerAuthenticationMethod{} }
+func (m *PeerAuthenticationMethod) String() string	{ return proto.CompactTextString(m) }
+func (*PeerAuthenticationMethod) ProtoMessage()		{}
 func (*PeerAuthenticationMethod) Descriptor() ([]byte, []int) {
 	return fileDescriptor_30ec3f7cef93301a, []int{3}
 }
@@ -596,8 +596,8 @@ type PeerAuthenticationMethod_Jwt struct {
 	Jwt *Jwt `protobuf:"bytes,2,opt,name=jwt,proto3,oneof"`
 }
 
-func (*PeerAuthenticationMethod_Mtls) isPeerAuthenticationMethod_Params() {}
-func (*PeerAuthenticationMethod_Jwt) isPeerAuthenticationMethod_Params()  {}
+func (*PeerAuthenticationMethod_Mtls) isPeerAuthenticationMethod_Params()	{}
+func (*PeerAuthenticationMethod_Jwt) isPeerAuthenticationMethod_Params()	{}
 
 func (m *PeerAuthenticationMethod) GetParams() isPeerAuthenticationMethod_Params {
 	if m != nil {
@@ -636,15 +636,15 @@ func (*PeerAuthenticationMethod) XXX_OneofWrappers() []interface{} {
 // Currently, only JWT is supported for origin authentication.
 type OriginAuthenticationMethod struct {
 	// Jwt params for the method.
-	Jwt                  *Jwt     `protobuf:"bytes,1,opt,name=jwt,proto3" json:"jwt,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	Jwt			*Jwt		`protobuf:"bytes,1,opt,name=jwt,proto3" json:"jwt,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *OriginAuthenticationMethod) Reset()         { *m = OriginAuthenticationMethod{} }
-func (m *OriginAuthenticationMethod) String() string { return proto.CompactTextString(m) }
-func (*OriginAuthenticationMethod) ProtoMessage()    {}
+func (m *OriginAuthenticationMethod) Reset()		{ *m = OriginAuthenticationMethod{} }
+func (m *OriginAuthenticationMethod) String() string	{ return proto.CompactTextString(m) }
+func (*OriginAuthenticationMethod) ProtoMessage()	{}
 func (*OriginAuthenticationMethod) Descriptor() ([]byte, []int) {
 	return fileDescriptor_30ec3f7cef93301a, []int{4}
 }
@@ -758,7 +758,7 @@ type Policy struct {
 	// Deprecated. Only mesh-level and namespace-level policies are supported.
 	// List rules to select workloads that the policy should be applied on.
 	// If empty, policy will be used on all workloads in the same namespace.
-	Targets []*TargetSelector `protobuf:"bytes,1,rep,name=targets,proto3" json:"targets,omitempty"` // Deprecated: Do not use.
+	Targets	[]*TargetSelector	`protobuf:"bytes,1,rep,name=targets,proto3" json:"targets,omitempty"`	// Deprecated: Do not use.
 	// $hide_from_docs
 	// Deprecated. Please use security/v1beta1/PeerAuthentication instead.
 	// List of authentication methods that can be used for peer authentication.
@@ -766,14 +766,14 @@ type Policy struct {
 	// set peer identity (source.user) and other peer attributes. If none of
 	// these methods pass, request will be rejected with authentication failed error (401).
 	// Leave the list empty if peer authentication is not required
-	Peers []*PeerAuthenticationMethod `protobuf:"bytes,2,rep,name=peers,proto3" json:"peers,omitempty"`
+	Peers	[]*PeerAuthenticationMethod	`protobuf:"bytes,2,rep,name=peers,proto3" json:"peers,omitempty"`
 	// Deprecated. Should set mTLS to PERMISSIVE instead.
 	// Set this flag to true to accept request (for peer authentication perspective),
 	// even when none of the peer authentication methods defined above satisfied.
 	// Typically, this is used to delay the rejection decision to next layer (e.g
 	// authorization).
 	// This flag is ignored if no authentication defined for peer (peers field is empty).
-	PeerIsOptional bool `protobuf:"varint,3,opt,name=peer_is_optional,json=peerIsOptional,proto3" json:"peer_is_optional,omitempty"` // Deprecated: Do not use.
+	PeerIsOptional	bool	`protobuf:"varint,3,opt,name=peer_is_optional,json=peerIsOptional,proto3" json:"peer_is_optional,omitempty"`	// Deprecated: Do not use.
 	// Deprecated. Please use security/v1beta1/RequestAuthentication instead.
 	// List of authentication methods that can be used for origin authentication.
 	// Similar to peers, these will be evaluated in order; the first validate one
@@ -783,14 +783,14 @@ type Policy struct {
 	// A method may be skipped, depends on its trigger rule. If all of these methods
 	// are skipped, origin authentication will be ignored, as if it is not defined.
 	// Leave the list empty if origin authentication is not required.
-	Origins []*OriginAuthenticationMethod `protobuf:"bytes,4,rep,name=origins,proto3" json:"origins,omitempty"` // Deprecated: Do not use.
+	Origins	[]*OriginAuthenticationMethod	`protobuf:"bytes,4,rep,name=origins,proto3" json:"origins,omitempty"`	// Deprecated: Do not use.
 	// Deprecated. Please use security/v1beta1/RequestAuthentication instead.
 	// Set this flag to true to accept request (for origin authentication perspective),
 	// even when none of the origin authentication methods defined above satisfied.
 	// Typically, this is used to delay the rejection decision to next layer (e.g
 	// authorization).
 	// This flag is ignored if no authentication defined for origin (origins field is empty).
-	OriginIsOptional bool `protobuf:"varint,5,opt,name=origin_is_optional,json=originIsOptional,proto3" json:"origin_is_optional,omitempty"` // Deprecated: Do not use.
+	OriginIsOptional	bool	`protobuf:"varint,5,opt,name=origin_is_optional,json=originIsOptional,proto3" json:"origin_is_optional,omitempty"`	// Deprecated: Do not use.
 	// Deprecated. Source principal is always from peer, and request principal is always from
 	// RequestAuthentication.
 	// Define whether peer or origin identity should be use for principal. Default
@@ -799,15 +799,15 @@ type Policy struct {
 	// authentication is not defined, or failed, principal will be left unset.
 	// In other words, binding rule does not affect the decision to accept or
 	// reject request.
-	PrincipalBinding     PrincipalBinding `protobuf:"varint,6,opt,name=principal_binding,json=principalBinding,proto3,enum=istio.authentication.v1alpha1.PrincipalBinding" json:"principal_binding,omitempty"` // Deprecated: Do not use.
-	XXX_NoUnkeyedLiteral struct{}         `json:"-"`
-	XXX_unrecognized     []byte           `json:"-"`
-	XXX_sizecache        int32            `json:"-"`
+	PrincipalBinding	PrincipalBinding	`protobuf:"varint,6,opt,name=principal_binding,json=principalBinding,proto3,enum=istio.authentication.v1alpha1.PrincipalBinding" json:"principal_binding,omitempty"`	// Deprecated: Do not use.
+	XXX_NoUnkeyedLiteral	struct{}		`json:"-"`
+	XXX_unrecognized	[]byte			`json:"-"`
+	XXX_sizecache		int32			`json:"-"`
 }
 
-func (m *Policy) Reset()         { *m = Policy{} }
-func (m *Policy) String() string { return proto.CompactTextString(m) }
-func (*Policy) ProtoMessage()    {}
+func (m *Policy) Reset()		{ *m = Policy{} }
+func (m *Policy) String() string	{ return proto.CompactTextString(m) }
+func (*Policy) ProtoMessage()		{}
 func (*Policy) Descriptor() ([]byte, []int) {
 	return fileDescriptor_30ec3f7cef93301a, []int{5}
 }
@@ -892,7 +892,7 @@ func (m *Policy) GetPrincipalBinding() PrincipalBinding {
 type TargetSelector struct {
 	// The name must be a short name from the service registry. The
 	// fully qualified domain name will be resolved in a platform specific manner.
-	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Name	string	`protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Specifies the ports. Note that this is the port(s) exposed by the service, not workload instance ports.
 	// For example, if a service is defined as below, then `8000` should be used, not `9000`.
 	// ```yaml
@@ -908,15 +908,15 @@ type TargetSelector struct {
 	//     app: backend
 	// ```
 	//Leave empty to match all ports that are exposed.
-	Ports                []*PortSelector `protobuf:"bytes,2,rep,name=ports,proto3" json:"ports,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
-	XXX_unrecognized     []byte          `json:"-"`
-	XXX_sizecache        int32           `json:"-"`
+	Ports			[]*PortSelector	`protobuf:"bytes,2,rep,name=ports,proto3" json:"ports,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *TargetSelector) Reset()         { *m = TargetSelector{} }
-func (m *TargetSelector) String() string { return proto.CompactTextString(m) }
-func (*TargetSelector) ProtoMessage()    {}
+func (m *TargetSelector) Reset()		{ *m = TargetSelector{} }
+func (m *TargetSelector) String() string	{ return proto.CompactTextString(m) }
+func (*TargetSelector) ProtoMessage()		{}
 func (*TargetSelector) Descriptor() ([]byte, []int) {
 	return fileDescriptor_30ec3f7cef93301a, []int{6}
 }
@@ -970,15 +970,15 @@ type PortSelector struct {
 	// Types that are valid to be assigned to Port:
 	//	*PortSelector_Number
 	//	*PortSelector_Name
-	Port                 isPortSelector_Port `protobuf_oneof:"port"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
+	Port			isPortSelector_Port	`protobuf_oneof:"port"`
+	XXX_NoUnkeyedLiteral	struct{}		`json:"-"`
+	XXX_unrecognized	[]byte			`json:"-"`
+	XXX_sizecache		int32			`json:"-"`
 }
 
-func (m *PortSelector) Reset()         { *m = PortSelector{} }
-func (m *PortSelector) String() string { return proto.CompactTextString(m) }
-func (*PortSelector) ProtoMessage()    {}
+func (m *PortSelector) Reset()		{ *m = PortSelector{} }
+func (m *PortSelector) String() string	{ return proto.CompactTextString(m) }
+func (*PortSelector) ProtoMessage()	{}
 func (*PortSelector) Descriptor() ([]byte, []int) {
 	return fileDescriptor_30ec3f7cef93301a, []int{7}
 }
@@ -1022,8 +1022,8 @@ type PortSelector_Name struct {
 	Name string `protobuf:"bytes,2,opt,name=name,proto3,oneof"`
 }
 
-func (*PortSelector_Number) isPortSelector_Port() {}
-func (*PortSelector_Name) isPortSelector_Port()   {}
+func (*PortSelector_Number) isPortSelector_Port()	{}
+func (*PortSelector_Name) isPortSelector_Port()		{}
 
 func (m *PortSelector) GetPort() isPortSelector_Port {
 	if m != nil {
@@ -3472,6 +3472,6 @@ func skipPolicy(dAtA []byte) (n int, err error) {
 }
 
 var (
-	ErrInvalidLengthPolicy = fmt.Errorf("proto: negative length found during unmarshaling")
-	ErrIntOverflowPolicy   = fmt.Errorf("proto: integer overflow")
+	ErrInvalidLengthPolicy	= fmt.Errorf("proto: negative length found during unmarshaling")
+	ErrIntOverflowPolicy	= fmt.Errorf("proto: integer overflow")
 )

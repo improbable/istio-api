@@ -75,7 +75,7 @@ import (
 	fmt "fmt"
 	proto "github.com/gogo/protobuf/proto"
 	io "io"
-	_ "istio.io/gogo-genproto/googleapis/google/api"
+
 	math "math"
 	math_bits "math/bits"
 )
@@ -89,7 +89,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion3	// please upgrade the proto package
 
 // $hide_from_docs
 // RBAC ServiceRoleBinding enforcement mode, used to verify new ServiceRoleBinding
@@ -101,20 +101,20 @@ type EnforcementMode int32
 const (
 	// Policy in ENFORCED mode has impact on user experience.
 	// Policy is in ENFORCED mode by default.
-	EnforcementMode_ENFORCED EnforcementMode = 0
+	EnforcementMode_ENFORCED	EnforcementMode	= 0
 	// Policy in PERMISSIVE mode isn't enforced and has no impact on users.
 	// RBAC engine run policies in PERMISSIVE mode and logs stats.
-	EnforcementMode_PERMISSIVE EnforcementMode = 1
+	EnforcementMode_PERMISSIVE	EnforcementMode	= 1
 )
 
 var EnforcementMode_name = map[int32]string{
-	0: "ENFORCED",
-	1: "PERMISSIVE",
+	0:	"ENFORCED",
+	1:	"PERMISSIVE",
 }
 
 var EnforcementMode_value = map[string]int32{
-	"ENFORCED":   0,
-	"PERMISSIVE": 1,
+	"ENFORCED":	0,
+	"PERMISSIVE":	1,
 }
 
 func (x EnforcementMode) String() string {
@@ -130,30 +130,30 @@ type RbacConfig_Mode int32
 
 const (
 	// Disable Istio RBAC completely, Istio RBAC policies will not be enforced.
-	RbacConfig_OFF RbacConfig_Mode = 0
+	RbacConfig_OFF	RbacConfig_Mode	= 0
 	// Enable Istio RBAC for all services and namespaces. Note Istio RBAC is deny-by-default
 	// which means all requests will be denied if it's not allowed by RBAC rules.
-	RbacConfig_ON RbacConfig_Mode = 1
+	RbacConfig_ON	RbacConfig_Mode	= 1
 	// Enable Istio RBAC only for services and namespaces specified in the inclusion field. Any other
 	// services and namespaces not in the inclusion field will not be enforced by Istio RBAC policies.
-	RbacConfig_ON_WITH_INCLUSION RbacConfig_Mode = 2
+	RbacConfig_ON_WITH_INCLUSION	RbacConfig_Mode	= 2
 	// Enable Istio RBAC for all services and namespaces except those specified in the exclusion field. Any other
 	// services and namespaces not in the exclusion field will be enforced by Istio RBAC policies.
-	RbacConfig_ON_WITH_EXCLUSION RbacConfig_Mode = 3
+	RbacConfig_ON_WITH_EXCLUSION	RbacConfig_Mode	= 3
 )
 
 var RbacConfig_Mode_name = map[int32]string{
-	0: "OFF",
-	1: "ON",
-	2: "ON_WITH_INCLUSION",
-	3: "ON_WITH_EXCLUSION",
+	0:	"OFF",
+	1:	"ON",
+	2:	"ON_WITH_INCLUSION",
+	3:	"ON_WITH_EXCLUSION",
 }
 
 var RbacConfig_Mode_value = map[string]int32{
-	"OFF":               0,
-	"ON":                1,
-	"ON_WITH_INCLUSION": 2,
-	"ON_WITH_EXCLUSION": 3,
+	"OFF":			0,
+	"ON":			1,
+	"ON_WITH_INCLUSION":	2,
+	"ON_WITH_EXCLUSION":	3,
 }
 
 func (x RbacConfig_Mode) String() string {
@@ -187,15 +187,15 @@ func (RbacConfig_Mode) EnumDescriptor() ([]byte, []int) {
 // -->
 type ServiceRole struct {
 	// The set of access rules (permissions) that the role has.
-	Rules                []*AccessRule `protobuf:"bytes,1,rep,name=rules,proto3" json:"rules,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
-	XXX_unrecognized     []byte        `json:"-"`
-	XXX_sizecache        int32         `json:"-"`
+	Rules			[]*AccessRule	`protobuf:"bytes,1,rep,name=rules,proto3" json:"rules,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *ServiceRole) Reset()         { *m = ServiceRole{} }
-func (m *ServiceRole) String() string { return proto.CompactTextString(m) }
-func (*ServiceRole) ProtoMessage()    {}
+func (m *ServiceRole) Reset()		{ *m = ServiceRole{} }
+func (m *ServiceRole) String() string	{ return proto.CompactTextString(m) }
+func (*ServiceRole) ProtoMessage()	{}
 func (*ServiceRole) Descriptor() ([]byte, []int) {
 	return fileDescriptor_3462954d26c055c0, []int{0}
 }
@@ -242,7 +242,7 @@ type AccessRule struct {
 	// "bookstore.mtv.cluster.local" (exact match), or "bookstore\*" (prefix match),
 	// or "\*.mtv.cluster.local" (suffix match).
 	// If set to ["\*"], it refers to all services in the namespace.
-	Services []string `protobuf:"bytes,1,rep,name=services,proto3" json:"services,omitempty"`
+	Services	[]string	`protobuf:"bytes,1,rep,name=services,proto3" json:"services,omitempty"`
 	// $hide_from_docs
 	// Optional. A list of HTTP hosts. This is matched against the HOST header in
 	// a HTTP request. Exact match, prefix match and suffix match are supported.
@@ -250,10 +250,10 @@ type AccessRule struct {
 	// or "\*.abc.com" (prefix match), or "test.abc.\*" (suffix match).
 	// If not specified, it matches to any host.
 	// This field should not be set for TCP services. The policy will be ignored.
-	Hosts []string `protobuf:"bytes,5,rep,name=hosts,proto3" json:"hosts,omitempty"`
+	Hosts	[]string	`protobuf:"bytes,5,rep,name=hosts,proto3" json:"hosts,omitempty"`
 	// $hide_from_docs
 	// Optional. A list of HTTP hosts that must not be matched.
-	NotHosts []string `protobuf:"bytes,6,rep,name=not_hosts,json=notHosts,proto3" json:"not_hosts,omitempty"`
+	NotHosts	[]string	`protobuf:"bytes,6,rep,name=not_hosts,json=notHosts,proto3" json:"not_hosts,omitempty"`
 	// Optional. A list of HTTP paths or gRPC methods.
 	// gRPC methods must be presented as fully-qualified name in the form of
 	// "/packageName.serviceName/methodName" and are case sensitive.
@@ -262,38 +262,38 @@ type AccessRule struct {
 	// or "/books/\*" (prefix match), or "\*/review" (suffix match).
 	// If not specified, it matches to any path.
 	// This field should not be set for TCP services. The policy will be ignored.
-	Paths []string `protobuf:"bytes,2,rep,name=paths,proto3" json:"paths,omitempty"`
+	Paths	[]string	`protobuf:"bytes,2,rep,name=paths,proto3" json:"paths,omitempty"`
 	// $hide_from_docs
 	// Optional. A list of HTTP paths or gRPC methods that must not be matched.
-	NotPaths []string `protobuf:"bytes,7,rep,name=not_paths,json=notPaths,proto3" json:"not_paths,omitempty"`
+	NotPaths	[]string	`protobuf:"bytes,7,rep,name=not_paths,json=notPaths,proto3" json:"not_paths,omitempty"`
 	// Optional. A list of HTTP methods (e.g., "GET", "POST").
 	// If not specified or specified as "\*", it matches to any methods.
 	// This field should not be set for TCP services. The policy will be ignored.
 	// For gRPC services, only `POST` is allowed; other methods will result in denying services.
-	Methods []string `protobuf:"bytes,3,rep,name=methods,proto3" json:"methods,omitempty"`
+	Methods	[]string	`protobuf:"bytes,3,rep,name=methods,proto3" json:"methods,omitempty"`
 	// $hide_from_docs
 	// Optional. A list of HTTP methods that must not be matched.
 	// Note: It's an error to set methods and not_methods at the same time.
-	NotMethods []string `protobuf:"bytes,8,rep,name=not_methods,json=notMethods,proto3" json:"not_methods,omitempty"`
+	NotMethods	[]string	`protobuf:"bytes,8,rep,name=not_methods,json=notMethods,proto3" json:"not_methods,omitempty"`
 	// $hide_from_docs
 	// Optional. A list of port numbers of the request. If not specified, it matches
 	// to any port number.
 	// Note: It's an error to set ports and not_ports at the same time.
-	Ports []int32 `protobuf:"varint,9,rep,packed,name=ports,proto3" json:"ports,omitempty"`
+	Ports	[]int32	`protobuf:"varint,9,rep,packed,name=ports,proto3" json:"ports,omitempty"`
 	// $hide_from_docs
 	// Optional.  A list of port numbers that must not be matched.
 	// Note: It's an error to set ports and not_ports at the same time.
-	NotPorts []int32 `protobuf:"varint,10,rep,packed,name=not_ports,json=notPorts,proto3" json:"not_ports,omitempty"`
+	NotPorts	[]int32	`protobuf:"varint,10,rep,packed,name=not_ports,json=notPorts,proto3" json:"not_ports,omitempty"`
 	// Optional. Extra constraints in the ServiceRole specification.
-	Constraints          []*AccessRule_Constraint `protobuf:"bytes,4,rep,name=constraints,proto3" json:"constraints,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                 `json:"-"`
-	XXX_unrecognized     []byte                   `json:"-"`
-	XXX_sizecache        int32                    `json:"-"`
+	Constraints		[]*AccessRule_Constraint	`protobuf:"bytes,4,rep,name=constraints,proto3" json:"constraints,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}			`json:"-"`
+	XXX_unrecognized	[]byte				`json:"-"`
+	XXX_sizecache		int32				`json:"-"`
 }
 
-func (m *AccessRule) Reset()         { *m = AccessRule{} }
-func (m *AccessRule) String() string { return proto.CompactTextString(m) }
-func (*AccessRule) ProtoMessage()    {}
+func (m *AccessRule) Reset()		{ *m = AccessRule{} }
+func (m *AccessRule) String() string	{ return proto.CompactTextString(m) }
+func (*AccessRule) ProtoMessage()	{}
 func (*AccessRule) Descriptor() ([]byte, []int) {
 	return fileDescriptor_3462954d26c055c0, []int{1}
 }
@@ -398,20 +398,20 @@ func (m *AccessRule) GetConstraints() []*AccessRule_Constraint {
 // Definition of a custom constraint. The supported keys are listed in the "constraint and properties" page.
 type AccessRule_Constraint struct {
 	// Key of the constraint.
-	Key string `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
+	Key	string	`protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
 	// List of valid values for the constraint.
 	// Exact match, prefix match, and suffix match are supported.
 	// For example, the value "v1alpha2" matches "v1alpha2" (exact match),
 	// or "v1\*" (prefix match), or "\*alpha2" (suffix match).
-	Values               []string `protobuf:"bytes,2,rep,name=values,proto3" json:"values,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	Values			[]string	`protobuf:"bytes,2,rep,name=values,proto3" json:"values,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *AccessRule_Constraint) Reset()         { *m = AccessRule_Constraint{} }
-func (m *AccessRule_Constraint) String() string { return proto.CompactTextString(m) }
-func (*AccessRule_Constraint) ProtoMessage()    {}
+func (m *AccessRule_Constraint) Reset()		{ *m = AccessRule_Constraint{} }
+func (m *AccessRule_Constraint) String() string	{ return proto.CompactTextString(m) }
+func (*AccessRule_Constraint) ProtoMessage()	{}
 func (*AccessRule_Constraint) Descriptor() ([]byte, []int) {
 	return fileDescriptor_3462954d26c055c0, []int{1, 0}
 }
@@ -484,12 +484,12 @@ func (m *AccessRule_Constraint) GetValues() []string {
 // -->
 type ServiceRoleBinding struct {
 	// List of subjects that are assigned the ServiceRole object.
-	Subjects []*Subject `protobuf:"bytes,1,rep,name=subjects,proto3" json:"subjects,omitempty"`
+	Subjects	[]*Subject	`protobuf:"bytes,1,rep,name=subjects,proto3" json:"subjects,omitempty"`
 	// Reference to the ServiceRole object.
-	RoleRef *RoleRef `protobuf:"bytes,2,opt,name=roleRef,proto3" json:"roleRef,omitempty"`
+	RoleRef	*RoleRef	`protobuf:"bytes,2,opt,name=roleRef,proto3" json:"roleRef,omitempty"`
 	// $hide_from_docs
 	// Indicates enforcement mode of the ServiceRoleBinding.
-	Mode EnforcementMode `protobuf:"varint,3,opt,name=mode,proto3,enum=istio.rbac.v1alpha1.EnforcementMode" json:"mode,omitempty"`
+	Mode	EnforcementMode	`protobuf:"varint,3,opt,name=mode,proto3,enum=istio.rbac.v1alpha1.EnforcementMode" json:"mode,omitempty"`
 	// $hide_from_docs
 	// Inline role definition. An inline role is a role that is defined inside an
 	// authorization policy, instead of explicitly defined in a ServiceRole object.
@@ -516,7 +516,7 @@ type ServiceRoleBinding struct {
 	//    - paths: ["/info"]
 	//      methods: ["GET"]
 	// The set of access rules (permissions) that the role has.
-	Actions []*AccessRule `protobuf:"bytes,4,rep,name=actions,proto3" json:"actions,omitempty"`
+	Actions	[]*AccessRule	`protobuf:"bytes,4,rep,name=actions,proto3" json:"actions,omitempty"`
 	// $hide_from_docs
 	// A `role` inside a ServiceRoleBinding refers to the ServiceRole that this
 	// ServiceRoleBinding binds to. A ServiceRoleBinding can bind to a ServiceRole
@@ -527,15 +527,15 @@ type ServiceRoleBinding struct {
 	// refers to the ServiceRole in the configurable Istio root namespace.
 	// When a `role` starts without "/", this ServiceRoleBinding refers to the ServiceRole in the
 	// same namespace as the AuthorizationPolicy's, which contains said ServiceRoleBinding.
-	Role                 string   `protobuf:"bytes,5,opt,name=role,proto3" json:"role,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	Role			string		`protobuf:"bytes,5,opt,name=role,proto3" json:"role,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *ServiceRoleBinding) Reset()         { *m = ServiceRoleBinding{} }
-func (m *ServiceRoleBinding) String() string { return proto.CompactTextString(m) }
-func (*ServiceRoleBinding) ProtoMessage()    {}
+func (m *ServiceRoleBinding) Reset()		{ *m = ServiceRoleBinding{} }
+func (m *ServiceRoleBinding) String() string	{ return proto.CompactTextString(m) }
+func (*ServiceRoleBinding) ProtoMessage()	{}
 func (*ServiceRoleBinding) Descriptor() ([]byte, []int) {
 	return fileDescriptor_3462954d26c055c0, []int{2}
 }
@@ -606,50 +606,50 @@ func (m *ServiceRoleBinding) GetRole() string {
 // The supported keys in `properties` are listed in "constraint and properties" page.
 type Subject struct {
 	// Optional. The user name/ID that the subject represents.
-	User string `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
+	User	string	`protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
 	// $hide_from_docs
 	// Optional. A list of subject names. This is matched to the
 	// `source.principal` attribute. If one of subject names is "\*", it matches to a subject with any name.
 	// Prefix and suffix matches are supported.
-	Names []string `protobuf:"bytes,4,rep,name=names,proto3" json:"names,omitempty"`
+	Names	[]string	`protobuf:"bytes,4,rep,name=names,proto3" json:"names,omitempty"`
 	// $hide_from_docs
 	// Optional. A list of subject names that must not be matched.
-	NotNames []string `protobuf:"bytes,5,rep,name=not_names,json=notNames,proto3" json:"not_names,omitempty"`
+	NotNames	[]string	`protobuf:"bytes,5,rep,name=not_names,json=notNames,proto3" json:"not_names,omitempty"`
 	// $hide_from_docs
 	// Optional. The group that the subject belongs to.
 	// Deprecated. Use groups and not_groups instead.
-	Group string `protobuf:"bytes,2,opt,name=group,proto3" json:"group,omitempty"` // Deprecated: Do not use.
+	Group	string	`protobuf:"bytes,2,opt,name=group,proto3" json:"group,omitempty"`	// Deprecated: Do not use.
 	// $hide_from_docs
 	// Optional. A list of groups that the subject represents. This is matched to the
 	// `request.auth.claims[groups]` attribute. If not specified, it applies to any groups.
-	Groups []string `protobuf:"bytes,6,rep,name=groups,proto3" json:"groups,omitempty"`
+	Groups	[]string	`protobuf:"bytes,6,rep,name=groups,proto3" json:"groups,omitempty"`
 	// $hide_from_docs
 	// Optional. A list of groups that must not be matched.
-	NotGroups []string `protobuf:"bytes,7,rep,name=not_groups,json=notGroups,proto3" json:"not_groups,omitempty"`
+	NotGroups	[]string	`protobuf:"bytes,7,rep,name=not_groups,json=notGroups,proto3" json:"not_groups,omitempty"`
 	// $hide_from_docs
 	// Optional. A list of namespaces that the subject represents. This is matched to
 	// the `source.namespace` attribute. If not specified, it applies to any namespaces.
-	Namespaces []string `protobuf:"bytes,8,rep,name=namespaces,proto3" json:"namespaces,omitempty"`
+	Namespaces	[]string	`protobuf:"bytes,8,rep,name=namespaces,proto3" json:"namespaces,omitempty"`
 	// $hide_from_docs
 	// Optional. A list of namespaces that must not be matched.
-	NotNamespaces []string `protobuf:"bytes,9,rep,name=not_namespaces,json=notNamespaces,proto3" json:"not_namespaces,omitempty"`
+	NotNamespaces	[]string	`protobuf:"bytes,9,rep,name=not_namespaces,json=notNamespaces,proto3" json:"not_namespaces,omitempty"`
 	// $hide_from_docs
 	// Optional. A list of IP address or CIDR ranges that the subject represents.
 	// E.g. 192.168.100.2 or 10.1.0.0/16. If not specified, it applies to any IP addresses.
-	Ips []string `protobuf:"bytes,10,rep,name=ips,proto3" json:"ips,omitempty"`
+	Ips	[]string	`protobuf:"bytes,10,rep,name=ips,proto3" json:"ips,omitempty"`
 	// $hide_from_docs
 	// Optional. A list of IP addresses or CIDR ranges that must not be matched.
-	NotIps []string `protobuf:"bytes,11,rep,name=not_ips,json=notIps,proto3" json:"not_ips,omitempty"`
+	NotIps	[]string	`protobuf:"bytes,11,rep,name=not_ips,json=notIps,proto3" json:"not_ips,omitempty"`
 	// Optional. The set of properties that identify the subject.
-	Properties           map[string]string `protobuf:"bytes,3,rep,name=properties,proto3" json:"properties,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
-	XXX_unrecognized     []byte            `json:"-"`
-	XXX_sizecache        int32             `json:"-"`
+	Properties		map[string]string	`protobuf:"bytes,3,rep,name=properties,proto3" json:"properties,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	XXX_NoUnkeyedLiteral	struct{}		`json:"-"`
+	XXX_unrecognized	[]byte			`json:"-"`
+	XXX_sizecache		int32			`json:"-"`
 }
 
-func (m *Subject) Reset()         { *m = Subject{} }
-func (m *Subject) String() string { return proto.CompactTextString(m) }
-func (*Subject) ProtoMessage()    {}
+func (m *Subject) Reset()		{ *m = Subject{} }
+func (m *Subject) String() string	{ return proto.CompactTextString(m) }
+func (*Subject) ProtoMessage()		{}
 func (*Subject) Descriptor() ([]byte, []int) {
 	return fileDescriptor_3462954d26c055c0, []int{3}
 }
@@ -763,18 +763,18 @@ func (m *Subject) GetProperties() map[string]string {
 type RoleRef struct {
 	// The type of the role being referenced.
 	// Currently, "ServiceRole" is the only supported value for "kind".
-	Kind string `protobuf:"bytes,1,opt,name=kind,proto3" json:"kind,omitempty"`
+	Kind	string	`protobuf:"bytes,1,opt,name=kind,proto3" json:"kind,omitempty"`
 	// The name of the ServiceRole object being referenced.
 	// The ServiceRole object must be in the same namespace as the ServiceRoleBinding object.
-	Name                 string   `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	Name			string		`protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *RoleRef) Reset()         { *m = RoleRef{} }
-func (m *RoleRef) String() string { return proto.CompactTextString(m) }
-func (*RoleRef) ProtoMessage()    {}
+func (m *RoleRef) Reset()		{ *m = RoleRef{} }
+func (m *RoleRef) String() string	{ return proto.CompactTextString(m) }
+func (*RoleRef) ProtoMessage()		{}
 func (*RoleRef) Descriptor() ([]byte, []int) {
 	return fileDescriptor_3462954d26c055c0, []int{4}
 }
@@ -874,28 +874,28 @@ func (m *RoleRef) GetName() string {
 // -->
 type RbacConfig struct {
 	// Istio RBAC mode.
-	Mode RbacConfig_Mode `protobuf:"varint,1,opt,name=mode,proto3,enum=istio.rbac.v1alpha1.RbacConfig_Mode" json:"mode,omitempty"`
+	Mode	RbacConfig_Mode	`protobuf:"varint,1,opt,name=mode,proto3,enum=istio.rbac.v1alpha1.RbacConfig_Mode" json:"mode,omitempty"`
 	// A list of services or namespaces that should be enforced by Istio RBAC policies. Note: This field have
 	// effect only when mode is ON_WITH_INCLUSION and will be ignored for any other modes.
-	Inclusion *RbacConfig_Target `protobuf:"bytes,2,opt,name=inclusion,proto3" json:"inclusion,omitempty"`
+	Inclusion	*RbacConfig_Target	`protobuf:"bytes,2,opt,name=inclusion,proto3" json:"inclusion,omitempty"`
 	// A list of services or namespaces that should not be enforced by Istio RBAC policies. Note: This field have
 	// effect only when mode is ON_WITH_EXCLUSION and will be ignored for any other modes.
-	Exclusion *RbacConfig_Target `protobuf:"bytes,3,opt,name=exclusion,proto3" json:"exclusion,omitempty"`
+	Exclusion	*RbacConfig_Target	`protobuf:"bytes,3,opt,name=exclusion,proto3" json:"exclusion,omitempty"`
 	// $hide_from_docs
 	// Indicates enforcement mode of the RbacConfig, in ENFORCED mode by default.
 	// It's used to verify new RbacConfig work as expected before rolling to production.
 	// When setting as PERMISSIVE, RBAC isn't enforced and has no impact on users.
 	// RBAC engine run RbacConfig in PERMISSIVE mode and logs stats.
 	// Invalid to set RbacConfig in PERMISSIVE and ServiceRoleBinding in ENFORCED mode.
-	EnforcementMode      EnforcementMode `protobuf:"varint,4,opt,name=enforcement_mode,json=enforcementMode,proto3,enum=istio.rbac.v1alpha1.EnforcementMode" json:"enforcement_mode,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
-	XXX_unrecognized     []byte          `json:"-"`
-	XXX_sizecache        int32           `json:"-"`
+	EnforcementMode		EnforcementMode	`protobuf:"varint,4,opt,name=enforcement_mode,json=enforcementMode,proto3,enum=istio.rbac.v1alpha1.EnforcementMode" json:"enforcement_mode,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *RbacConfig) Reset()         { *m = RbacConfig{} }
-func (m *RbacConfig) String() string { return proto.CompactTextString(m) }
-func (*RbacConfig) ProtoMessage()    {}
+func (m *RbacConfig) Reset()		{ *m = RbacConfig{} }
+func (m *RbacConfig) String() string	{ return proto.CompactTextString(m) }
+func (*RbacConfig) ProtoMessage()	{}
 func (*RbacConfig) Descriptor() ([]byte, []int) {
 	return fileDescriptor_3462954d26c055c0, []int{5}
 }
@@ -958,17 +958,17 @@ func (m *RbacConfig) GetEnforcementMode() EnforcementMode {
 // Target defines a list of services or namespaces.
 type RbacConfig_Target struct {
 	// A list of services.
-	Services []string `protobuf:"bytes,1,rep,name=services,proto3" json:"services,omitempty"`
+	Services	[]string	`protobuf:"bytes,1,rep,name=services,proto3" json:"services,omitempty"`
 	// A list of namespaces.
-	Namespaces           []string `protobuf:"bytes,2,rep,name=namespaces,proto3" json:"namespaces,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	Namespaces		[]string	`protobuf:"bytes,2,rep,name=namespaces,proto3" json:"namespaces,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *RbacConfig_Target) Reset()         { *m = RbacConfig_Target{} }
-func (m *RbacConfig_Target) String() string { return proto.CompactTextString(m) }
-func (*RbacConfig_Target) ProtoMessage()    {}
+func (m *RbacConfig_Target) Reset()		{ *m = RbacConfig_Target{} }
+func (m *RbacConfig_Target) String() string	{ return proto.CompactTextString(m) }
+func (*RbacConfig_Target) ProtoMessage()	{}
 func (*RbacConfig_Target) Descriptor() ([]byte, []int) {
 	return fileDescriptor_3462954d26c055c0, []int{5, 0}
 }
@@ -1027,7 +1027,7 @@ func init() {
 	proto.RegisterType((*RbacConfig_Target)(nil), "istio.rbac.v1alpha1.RbacConfig.Target")
 }
 
-func init() { proto.RegisterFile("rbac/v1alpha1/rbac.proto", fileDescriptor_3462954d26c055c0) }
+func init()	{ proto.RegisterFile("rbac/v1alpha1/rbac.proto", fileDescriptor_3462954d26c055c0) }
 
 var fileDescriptor_3462954d26c055c0 = []byte{
 	// 838 bytes of a gzipped FileDescriptorProto
@@ -3869,6 +3869,6 @@ func skipRbac(dAtA []byte) (n int, err error) {
 }
 
 var (
-	ErrInvalidLengthRbac = fmt.Errorf("proto: negative length found during unmarshaling")
-	ErrIntOverflowRbac   = fmt.Errorf("proto: integer overflow")
+	ErrInvalidLengthRbac	= fmt.Errorf("proto: negative length found during unmarshaling")
+	ErrIntOverflowRbac	= fmt.Errorf("proto: integer overflow")
 )

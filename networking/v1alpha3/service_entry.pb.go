@@ -754,7 +754,7 @@ import (
 	fmt "fmt"
 	proto "github.com/gogo/protobuf/proto"
 	io "io"
-	_ "istio.io/gogo-genproto/googleapis/google/api"
+
 	math "math"
 	math_bits "math/bits"
 )
@@ -768,7 +768,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion3	// please upgrade the proto package
 
 // Location specifies whether the service is part of Istio mesh or
 // outside the mesh.  Location determines the behavior of several
@@ -781,22 +781,22 @@ type ServiceEntry_Location int32
 const (
 	// Signifies that the service is external to the mesh. Typically used
 	// to indicate external services consumed through APIs.
-	ServiceEntry_MESH_EXTERNAL ServiceEntry_Location = 0
+	ServiceEntry_MESH_EXTERNAL	ServiceEntry_Location	= 0
 	// Signifies that the service is part of the mesh. Typically used to
 	// indicate services added explicitly as part of expanding the service
 	// mesh to include unmanaged infrastructure (e.g., VMs added to a
 	// Kubernetes based service mesh).
-	ServiceEntry_MESH_INTERNAL ServiceEntry_Location = 1
+	ServiceEntry_MESH_INTERNAL	ServiceEntry_Location	= 1
 )
 
 var ServiceEntry_Location_name = map[int32]string{
-	0: "MESH_EXTERNAL",
-	1: "MESH_INTERNAL",
+	0:	"MESH_EXTERNAL",
+	1:	"MESH_INTERNAL",
 }
 
 var ServiceEntry_Location_value = map[string]int32{
-	"MESH_EXTERNAL": 0,
-	"MESH_INTERNAL": 1,
+	"MESH_EXTERNAL":	0,
+	"MESH_INTERNAL":	1,
 }
 
 func (x ServiceEntry_Location) String() string {
@@ -825,10 +825,10 @@ const (
 	// eBPF. After performing any routing related transformations, the
 	// proxy will forward the connection to the IP address to which the
 	// connection was bound.
-	ServiceEntry_NONE ServiceEntry_Resolution = 0
+	ServiceEntry_NONE	ServiceEntry_Resolution	= 0
 	// Use the static IP addresses specified in endpoints (see below) as the
 	// backing instances associated with the service.
-	ServiceEntry_STATIC ServiceEntry_Resolution = 1
+	ServiceEntry_STATIC	ServiceEntry_Resolution	= 1
 	// Attempt to resolve the IP address by querying the ambient DNS,
 	// during request processing. If no endpoints are specified, the proxy
 	// will resolve the DNS address specified in the hosts field, if
@@ -836,19 +836,19 @@ const (
 	// addresses specified in the endpoints will be resolved to determine
 	// the destination IP address.  DNS resolution cannot be used with Unix
 	// domain socket endpoints.
-	ServiceEntry_DNS ServiceEntry_Resolution = 2
+	ServiceEntry_DNS	ServiceEntry_Resolution	= 2
 )
 
 var ServiceEntry_Resolution_name = map[int32]string{
-	0: "NONE",
-	1: "STATIC",
-	2: "DNS",
+	0:	"NONE",
+	1:	"STATIC",
+	2:	"DNS",
 }
 
 var ServiceEntry_Resolution_value = map[string]int32{
-	"NONE":   0,
-	"STATIC": 1,
-	"DNS":    2,
+	"NONE":		0,
+	"STATIC":	1,
+	"DNS":		2,
 }
 
 func (x ServiceEntry_Resolution) String() string {
@@ -914,7 +914,7 @@ type ServiceEntry struct {
 	//    service accounts associated with the pods of the service, the
 	//    SANs specified here will also be verified.
 	//
-	Hosts []string `protobuf:"bytes,1,rep,name=hosts,proto3" json:"hosts,omitempty"`
+	Hosts	[]string	`protobuf:"bytes,1,rep,name=hosts,proto3" json:"hosts,omitempty"`
 	// The virtual IP addresses associated with the service. Could be CIDR
 	// prefix. For HTTP traffic, generated route configurations will include http route
 	// domains for both the `addresses` and `hosts` field values and the destination will
@@ -929,29 +929,29 @@ type ServiceEntry struct {
 	// simple TCP proxy, forwarding incoming traffic on a specified port to
 	// the specified destination endpoint IP/host. Unix domain socket
 	// addresses are not supported in this field.
-	Addresses []string `protobuf:"bytes,2,rep,name=addresses,proto3" json:"addresses,omitempty"`
+	Addresses	[]string	`protobuf:"bytes,2,rep,name=addresses,proto3" json:"addresses,omitempty"`
 	// The ports associated with the external service. If the
 	// Endpoints are Unix domain socket addresses, there must be exactly one
 	// port.
-	Ports []*Port `protobuf:"bytes,3,rep,name=ports,proto3" json:"ports,omitempty"`
+	Ports	[]*Port	`protobuf:"bytes,3,rep,name=ports,proto3" json:"ports,omitempty"`
 	// Specify whether the service should be considered external to the mesh
 	// or part of the mesh.
-	Location ServiceEntry_Location `protobuf:"varint,4,opt,name=location,proto3,enum=istio.networking.v1alpha3.ServiceEntry_Location" json:"location,omitempty"`
+	Location	ServiceEntry_Location	`protobuf:"varint,4,opt,name=location,proto3,enum=istio.networking.v1alpha3.ServiceEntry_Location" json:"location,omitempty"`
 	// Service discovery mode for the hosts. Care must be taken
 	// when setting the resolution mode to NONE for a TCP port without
 	// accompanying IP addresses. In such cases, traffic to any IP on
 	// said port will be allowed (i.e. `0.0.0.0:<port>`).
-	Resolution ServiceEntry_Resolution `protobuf:"varint,5,opt,name=resolution,proto3,enum=istio.networking.v1alpha3.ServiceEntry_Resolution" json:"resolution,omitempty"`
+	Resolution	ServiceEntry_Resolution	`protobuf:"varint,5,opt,name=resolution,proto3,enum=istio.networking.v1alpha3.ServiceEntry_Resolution" json:"resolution,omitempty"`
 	// One or more endpoints associated with the service. Only one of
 	// `endpoints` or `workloadSelector` can be specified.
-	Endpoints []*WorkloadEntry `protobuf:"bytes,6,rep,name=endpoints,proto3" json:"endpoints,omitempty"`
+	Endpoints	[]*WorkloadEntry	`protobuf:"bytes,6,rep,name=endpoints,proto3" json:"endpoints,omitempty"`
 	// Applicable only for MESH_INTERNAL services. Only one of
 	// `endpoints` or `workloadSelector` can be specified. Selects one
 	// or more Kubernetes pods or VM workloads (specified using
 	// `WorkloadEntry`) based on their labels. The `WorkloadEntry` object
 	// representing the VMs should be defined in the same namespace as
 	// the ServiceEntry.
-	WorkloadSelector *WorkloadSelector `protobuf:"bytes,9,opt,name=workload_selector,json=workloadSelector,proto3" json:"workload_selector,omitempty"`
+	WorkloadSelector	*WorkloadSelector	`protobuf:"bytes,9,opt,name=workload_selector,json=workloadSelector,proto3" json:"workload_selector,omitempty"`
 	// A list of namespaces to which this service is exported. Exporting a service
 	// allows it to be used by sidecars, gateways and virtual services defined in
 	// other namespaces. This feature provides a mechanism for service owners
@@ -971,7 +971,7 @@ type ServiceEntry struct {
 	//
 	// NOTE: in the current release, the `exportTo` value is restricted to
 	// "." or "*" (i.e., the current namespace or all namespaces).
-	ExportTo []string `protobuf:"bytes,7,rep,name=export_to,json=exportTo,proto3" json:"export_to,omitempty"`
+	ExportTo	[]string	`protobuf:"bytes,7,rep,name=export_to,json=exportTo,proto3" json:"export_to,omitempty"`
 	// If specified, the proxy will verify that the server certificate's
 	// subject alternate name matches one of the specified values.
 	//
@@ -979,15 +979,15 @@ type ServiceEntry struct {
 	// service account specified in the workloadEntry will also be used
 	// to derive the additional subject alternate names that should be
 	// verified.
-	SubjectAltNames      []string `protobuf:"bytes,8,rep,name=subject_alt_names,json=subjectAltNames,proto3" json:"subject_alt_names,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	SubjectAltNames		[]string	`protobuf:"bytes,8,rep,name=subject_alt_names,json=subjectAltNames,proto3" json:"subject_alt_names,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *ServiceEntry) Reset()         { *m = ServiceEntry{} }
-func (m *ServiceEntry) String() string { return proto.CompactTextString(m) }
-func (*ServiceEntry) ProtoMessage()    {}
+func (m *ServiceEntry) Reset()		{ *m = ServiceEntry{} }
+func (m *ServiceEntry) String() string	{ return proto.CompactTextString(m) }
+func (*ServiceEntry) ProtoMessage()	{}
 func (*ServiceEntry) Descriptor() ([]byte, []int) {
 	return fileDescriptor_9220e0fa673c4bf8, []int{0}
 }
@@ -1744,6 +1744,6 @@ func skipServiceEntry(dAtA []byte) (n int, err error) {
 }
 
 var (
-	ErrInvalidLengthServiceEntry = fmt.Errorf("proto: negative length found during unmarshaling")
-	ErrIntOverflowServiceEntry   = fmt.Errorf("proto: integer overflow")
+	ErrInvalidLengthServiceEntry	= fmt.Errorf("proto: negative length found during unmarshaling")
+	ErrIntOverflowServiceEntry	= fmt.Errorf("proto: integer overflow")
 )

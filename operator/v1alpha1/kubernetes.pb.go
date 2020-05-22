@@ -21,20 +21,20 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.ProtoPackageIsVersion3	// please upgrade the proto package
 
 // Mirrors k8s.io.api.core.v1.ResourceRequirements for unmarshaling.
 type Resources struct {
-	Limits               map[string]string `protobuf:"bytes,1,rep,name=limits,proto3" json:"limits,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	Requests             map[string]string `protobuf:"bytes,2,rep,name=requests,proto3" json:"requests,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
-	XXX_unrecognized     []byte            `json:"-"`
-	XXX_sizecache        int32             `json:"-"`
+	Limits			map[string]string	`protobuf:"bytes,1,rep,name=limits,proto3" json:"limits,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Requests		map[string]string	`protobuf:"bytes,2,rep,name=requests,proto3" json:"requests,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	XXX_NoUnkeyedLiteral	struct{}		`json:"-"`
+	XXX_unrecognized	[]byte			`json:"-"`
+	XXX_sizecache		int32			`json:"-"`
 }
 
-func (m *Resources) Reset()         { *m = Resources{} }
-func (m *Resources) String() string { return proto.CompactTextString(m) }
-func (*Resources) ProtoMessage()    {}
+func (m *Resources) Reset()		{ *m = Resources{} }
+func (m *Resources) String() string	{ return proto.CompactTextString(m) }
+func (*Resources) ProtoMessage()	{}
 func (*Resources) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b13c6c8501de3a11, []int{0}
 }
@@ -73,17 +73,17 @@ func (m *Resources) GetRequests() map[string]string {
 
 // Mirrors k8s.io.api.core.v1.
 type Affinity struct {
-	NodeAffinity         *NodeAffinity    `protobuf:"bytes,1,opt,name=nodeAffinity,proto3" json:"nodeAffinity,omitempty"`
-	PodAffinity          *PodAffinity     `protobuf:"bytes,2,opt,name=podAffinity,proto3" json:"podAffinity,omitempty"`
-	PodAntiAffinity      *PodAntiAffinity `protobuf:"bytes,3,opt,name=podAntiAffinity,proto3" json:"podAntiAffinity,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}         `json:"-"`
-	XXX_unrecognized     []byte           `json:"-"`
-	XXX_sizecache        int32            `json:"-"`
+	NodeAffinity		*NodeAffinity		`protobuf:"bytes,1,opt,name=nodeAffinity,proto3" json:"nodeAffinity,omitempty"`
+	PodAffinity		*PodAffinity		`protobuf:"bytes,2,opt,name=podAffinity,proto3" json:"podAffinity,omitempty"`
+	PodAntiAffinity		*PodAntiAffinity	`protobuf:"bytes,3,opt,name=podAntiAffinity,proto3" json:"podAntiAffinity,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}		`json:"-"`
+	XXX_unrecognized	[]byte			`json:"-"`
+	XXX_sizecache		int32			`json:"-"`
 }
 
-func (m *Affinity) Reset()         { *m = Affinity{} }
-func (m *Affinity) String() string { return proto.CompactTextString(m) }
-func (*Affinity) ProtoMessage()    {}
+func (m *Affinity) Reset()		{ *m = Affinity{} }
+func (m *Affinity) String() string	{ return proto.CompactTextString(m) }
+func (*Affinity) ProtoMessage()		{}
 func (*Affinity) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b13c6c8501de3a11, []int{1}
 }
@@ -128,16 +128,16 @@ func (m *Affinity) GetPodAntiAffinity() *PodAntiAffinity {
 }
 
 type NodeAffinity struct {
-	RequiredDuringSchedulingIgnoredDuringExecution  *NodeSelector              `protobuf:"bytes,1,opt,name=requiredDuringSchedulingIgnoredDuringExecution,proto3" json:"requiredDuringSchedulingIgnoredDuringExecution,omitempty"`
-	PreferredDuringSchedulingIgnoredDuringExecution []*PreferredSchedulingTerm `protobuf:"bytes,2,rep,name=preferredDuringSchedulingIgnoredDuringExecution,proto3" json:"preferredDuringSchedulingIgnoredDuringExecution,omitempty"`
-	XXX_NoUnkeyedLiteral                            struct{}                   `json:"-"`
-	XXX_unrecognized                                []byte                     `json:"-"`
-	XXX_sizecache                                   int32                      `json:"-"`
+	RequiredDuringSchedulingIgnoredDuringExecution	*NodeSelector			`protobuf:"bytes,1,opt,name=requiredDuringSchedulingIgnoredDuringExecution,proto3" json:"requiredDuringSchedulingIgnoredDuringExecution,omitempty"`
+	PreferredDuringSchedulingIgnoredDuringExecution	[]*PreferredSchedulingTerm	`protobuf:"bytes,2,rep,name=preferredDuringSchedulingIgnoredDuringExecution,proto3" json:"preferredDuringSchedulingIgnoredDuringExecution,omitempty"`
+	XXX_NoUnkeyedLiteral				struct{}			`json:"-"`
+	XXX_unrecognized				[]byte				`json:"-"`
+	XXX_sizecache					int32				`json:"-"`
 }
 
-func (m *NodeAffinity) Reset()         { *m = NodeAffinity{} }
-func (m *NodeAffinity) String() string { return proto.CompactTextString(m) }
-func (*NodeAffinity) ProtoMessage()    {}
+func (m *NodeAffinity) Reset()		{ *m = NodeAffinity{} }
+func (m *NodeAffinity) String() string	{ return proto.CompactTextString(m) }
+func (*NodeAffinity) ProtoMessage()	{}
 func (*NodeAffinity) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b13c6c8501de3a11, []int{2}
 }
@@ -175,15 +175,15 @@ func (m *NodeAffinity) GetPreferredDuringSchedulingIgnoredDuringExecution() []*P
 }
 
 type NodeSelector struct {
-	NodeSelectorTerms    []*NodeSelectorTerm `protobuf:"bytes,1,rep,name=nodeSelectorTerms,proto3" json:"nodeSelectorTerms,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
+	NodeSelectorTerms	[]*NodeSelectorTerm	`protobuf:"bytes,1,rep,name=nodeSelectorTerms,proto3" json:"nodeSelectorTerms,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}		`json:"-"`
+	XXX_unrecognized	[]byte			`json:"-"`
+	XXX_sizecache		int32			`json:"-"`
 }
 
-func (m *NodeSelector) Reset()         { *m = NodeSelector{} }
-func (m *NodeSelector) String() string { return proto.CompactTextString(m) }
-func (*NodeSelector) ProtoMessage()    {}
+func (m *NodeSelector) Reset()		{ *m = NodeSelector{} }
+func (m *NodeSelector) String() string	{ return proto.CompactTextString(m) }
+func (*NodeSelector) ProtoMessage()	{}
 func (*NodeSelector) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b13c6c8501de3a11, []int{3}
 }
@@ -214,16 +214,16 @@ func (m *NodeSelector) GetNodeSelectorTerms() []*NodeSelectorTerm {
 }
 
 type NodeSelectorTerm struct {
-	MatchExpressions     []*NodeSelectorRequirement `protobuf:"bytes,1,rep,name=matchExpressions,proto3" json:"matchExpressions,omitempty"`
-	MatchFields          []*NodeSelectorRequirement `protobuf:"bytes,2,rep,name=matchFields,proto3" json:"matchFields,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                   `json:"-"`
-	XXX_unrecognized     []byte                     `json:"-"`
-	XXX_sizecache        int32                      `json:"-"`
+	MatchExpressions	[]*NodeSelectorRequirement	`protobuf:"bytes,1,rep,name=matchExpressions,proto3" json:"matchExpressions,omitempty"`
+	MatchFields		[]*NodeSelectorRequirement	`protobuf:"bytes,2,rep,name=matchFields,proto3" json:"matchFields,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}			`json:"-"`
+	XXX_unrecognized	[]byte				`json:"-"`
+	XXX_sizecache		int32				`json:"-"`
 }
 
-func (m *NodeSelectorTerm) Reset()         { *m = NodeSelectorTerm{} }
-func (m *NodeSelectorTerm) String() string { return proto.CompactTextString(m) }
-func (*NodeSelectorTerm) ProtoMessage()    {}
+func (m *NodeSelectorTerm) Reset()		{ *m = NodeSelectorTerm{} }
+func (m *NodeSelectorTerm) String() string	{ return proto.CompactTextString(m) }
+func (*NodeSelectorTerm) ProtoMessage()		{}
 func (*NodeSelectorTerm) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b13c6c8501de3a11, []int{4}
 }
@@ -261,17 +261,17 @@ func (m *NodeSelectorTerm) GetMatchFields() []*NodeSelectorRequirement {
 }
 
 type NodeSelectorRequirement struct {
-	Key                  string   `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
-	Operator             string   `protobuf:"bytes,2,opt,name=operator,proto3" json:"operator,omitempty"`
-	Values               []string `protobuf:"bytes,3,rep,name=values,proto3" json:"values,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	Key			string		`protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
+	Operator		string		`protobuf:"bytes,2,opt,name=operator,proto3" json:"operator,omitempty"`
+	Values			[]string	`protobuf:"bytes,3,rep,name=values,proto3" json:"values,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *NodeSelectorRequirement) Reset()         { *m = NodeSelectorRequirement{} }
-func (m *NodeSelectorRequirement) String() string { return proto.CompactTextString(m) }
-func (*NodeSelectorRequirement) ProtoMessage()    {}
+func (m *NodeSelectorRequirement) Reset()		{ *m = NodeSelectorRequirement{} }
+func (m *NodeSelectorRequirement) String() string	{ return proto.CompactTextString(m) }
+func (*NodeSelectorRequirement) ProtoMessage()		{}
 func (*NodeSelectorRequirement) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b13c6c8501de3a11, []int{5}
 }
@@ -316,16 +316,16 @@ func (m *NodeSelectorRequirement) GetValues() []string {
 }
 
 type PodAffinity struct {
-	RequiredDuringSchedulingIgnoredDuringExecution  []*PodAffinityTerm         `protobuf:"bytes,1,rep,name=requiredDuringSchedulingIgnoredDuringExecution,proto3" json:"requiredDuringSchedulingIgnoredDuringExecution,omitempty"`
-	PreferredDuringSchedulingIgnoredDuringExecution []*WeightedPodAffinityTerm `protobuf:"bytes,2,rep,name=preferredDuringSchedulingIgnoredDuringExecution,proto3" json:"preferredDuringSchedulingIgnoredDuringExecution,omitempty"`
-	XXX_NoUnkeyedLiteral                            struct{}                   `json:"-"`
-	XXX_unrecognized                                []byte                     `json:"-"`
-	XXX_sizecache                                   int32                      `json:"-"`
+	RequiredDuringSchedulingIgnoredDuringExecution	[]*PodAffinityTerm		`protobuf:"bytes,1,rep,name=requiredDuringSchedulingIgnoredDuringExecution,proto3" json:"requiredDuringSchedulingIgnoredDuringExecution,omitempty"`
+	PreferredDuringSchedulingIgnoredDuringExecution	[]*WeightedPodAffinityTerm	`protobuf:"bytes,2,rep,name=preferredDuringSchedulingIgnoredDuringExecution,proto3" json:"preferredDuringSchedulingIgnoredDuringExecution,omitempty"`
+	XXX_NoUnkeyedLiteral				struct{}			`json:"-"`
+	XXX_unrecognized				[]byte				`json:"-"`
+	XXX_sizecache					int32				`json:"-"`
 }
 
-func (m *PodAffinity) Reset()         { *m = PodAffinity{} }
-func (m *PodAffinity) String() string { return proto.CompactTextString(m) }
-func (*PodAffinity) ProtoMessage()    {}
+func (m *PodAffinity) Reset()		{ *m = PodAffinity{} }
+func (m *PodAffinity) String() string	{ return proto.CompactTextString(m) }
+func (*PodAffinity) ProtoMessage()	{}
 func (*PodAffinity) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b13c6c8501de3a11, []int{6}
 }
@@ -363,16 +363,16 @@ func (m *PodAffinity) GetPreferredDuringSchedulingIgnoredDuringExecution() []*We
 }
 
 type PodAntiAffinity struct {
-	RequiredDuringSchedulingIgnoredDuringExecution  []*PodAffinityTerm         `protobuf:"bytes,1,rep,name=requiredDuringSchedulingIgnoredDuringExecution,proto3" json:"requiredDuringSchedulingIgnoredDuringExecution,omitempty"`
-	PreferredDuringSchedulingIgnoredDuringExecution []*WeightedPodAffinityTerm `protobuf:"bytes,2,rep,name=preferredDuringSchedulingIgnoredDuringExecution,proto3" json:"preferredDuringSchedulingIgnoredDuringExecution,omitempty"`
-	XXX_NoUnkeyedLiteral                            struct{}                   `json:"-"`
-	XXX_unrecognized                                []byte                     `json:"-"`
-	XXX_sizecache                                   int32                      `json:"-"`
+	RequiredDuringSchedulingIgnoredDuringExecution	[]*PodAffinityTerm		`protobuf:"bytes,1,rep,name=requiredDuringSchedulingIgnoredDuringExecution,proto3" json:"requiredDuringSchedulingIgnoredDuringExecution,omitempty"`
+	PreferredDuringSchedulingIgnoredDuringExecution	[]*WeightedPodAffinityTerm	`protobuf:"bytes,2,rep,name=preferredDuringSchedulingIgnoredDuringExecution,proto3" json:"preferredDuringSchedulingIgnoredDuringExecution,omitempty"`
+	XXX_NoUnkeyedLiteral				struct{}			`json:"-"`
+	XXX_unrecognized				[]byte				`json:"-"`
+	XXX_sizecache					int32				`json:"-"`
 }
 
-func (m *PodAntiAffinity) Reset()         { *m = PodAntiAffinity{} }
-func (m *PodAntiAffinity) String() string { return proto.CompactTextString(m) }
-func (*PodAntiAffinity) ProtoMessage()    {}
+func (m *PodAntiAffinity) Reset()		{ *m = PodAntiAffinity{} }
+func (m *PodAntiAffinity) String() string	{ return proto.CompactTextString(m) }
+func (*PodAntiAffinity) ProtoMessage()		{}
 func (*PodAntiAffinity) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b13c6c8501de3a11, []int{7}
 }
@@ -410,17 +410,17 @@ func (m *PodAntiAffinity) GetPreferredDuringSchedulingIgnoredDuringExecution() [
 }
 
 type PodAffinityTerm struct {
-	LabelSelector        *v1.LabelSelector `protobuf:"bytes,1,opt,name=labelSelector,proto3" json:"labelSelector,omitempty"`
-	Namespaces           []string          `protobuf:"bytes,2,rep,name=namespaces,proto3" json:"namespaces,omitempty"`
-	TopologyKey          string            `protobuf:"bytes,3,opt,name=topologyKey,proto3" json:"topologyKey,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
-	XXX_unrecognized     []byte            `json:"-"`
-	XXX_sizecache        int32             `json:"-"`
+	LabelSelector		*v1.LabelSelector	`protobuf:"bytes,1,opt,name=labelSelector,proto3" json:"labelSelector,omitempty"`
+	Namespaces		[]string		`protobuf:"bytes,2,rep,name=namespaces,proto3" json:"namespaces,omitempty"`
+	TopologyKey		string			`protobuf:"bytes,3,opt,name=topologyKey,proto3" json:"topologyKey,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}		`json:"-"`
+	XXX_unrecognized	[]byte			`json:"-"`
+	XXX_sizecache		int32			`json:"-"`
 }
 
-func (m *PodAffinityTerm) Reset()         { *m = PodAffinityTerm{} }
-func (m *PodAffinityTerm) String() string { return proto.CompactTextString(m) }
-func (*PodAffinityTerm) ProtoMessage()    {}
+func (m *PodAffinityTerm) Reset()		{ *m = PodAffinityTerm{} }
+func (m *PodAffinityTerm) String() string	{ return proto.CompactTextString(m) }
+func (*PodAffinityTerm) ProtoMessage()		{}
 func (*PodAffinityTerm) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b13c6c8501de3a11, []int{8}
 }
@@ -465,16 +465,16 @@ func (m *PodAffinityTerm) GetTopologyKey() string {
 }
 
 type WeightedPodAffinityTerm struct {
-	Weight               int32            `protobuf:"varint,1,opt,name=weight,proto3" json:"weight,omitempty"`
-	PodAffinityTerm      *PodAffinityTerm `protobuf:"bytes,2,opt,name=podAffinityTerm,proto3" json:"podAffinityTerm,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}         `json:"-"`
-	XXX_unrecognized     []byte           `json:"-"`
-	XXX_sizecache        int32            `json:"-"`
+	Weight			int32			`protobuf:"varint,1,opt,name=weight,proto3" json:"weight,omitempty"`
+	PodAffinityTerm		*PodAffinityTerm	`protobuf:"bytes,2,opt,name=podAffinityTerm,proto3" json:"podAffinityTerm,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}		`json:"-"`
+	XXX_unrecognized	[]byte			`json:"-"`
+	XXX_sizecache		int32			`json:"-"`
 }
 
-func (m *WeightedPodAffinityTerm) Reset()         { *m = WeightedPodAffinityTerm{} }
-func (m *WeightedPodAffinityTerm) String() string { return proto.CompactTextString(m) }
-func (*WeightedPodAffinityTerm) ProtoMessage()    {}
+func (m *WeightedPodAffinityTerm) Reset()		{ *m = WeightedPodAffinityTerm{} }
+func (m *WeightedPodAffinityTerm) String() string	{ return proto.CompactTextString(m) }
+func (*WeightedPodAffinityTerm) ProtoMessage()		{}
 func (*WeightedPodAffinityTerm) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b13c6c8501de3a11, []int{9}
 }
@@ -512,16 +512,16 @@ func (m *WeightedPodAffinityTerm) GetPodAffinityTerm() *PodAffinityTerm {
 }
 
 type PreferredSchedulingTerm struct {
-	Weight               int32             `protobuf:"varint,1,opt,name=weight,proto3" json:"weight,omitempty"`
-	Preference           *NodeSelectorTerm `protobuf:"bytes,2,opt,name=preference,proto3" json:"preference,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
-	XXX_unrecognized     []byte            `json:"-"`
-	XXX_sizecache        int32             `json:"-"`
+	Weight			int32			`protobuf:"varint,1,opt,name=weight,proto3" json:"weight,omitempty"`
+	Preference		*NodeSelectorTerm	`protobuf:"bytes,2,opt,name=preference,proto3" json:"preference,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}		`json:"-"`
+	XXX_unrecognized	[]byte			`json:"-"`
+	XXX_sizecache		int32			`json:"-"`
 }
 
-func (m *PreferredSchedulingTerm) Reset()         { *m = PreferredSchedulingTerm{} }
-func (m *PreferredSchedulingTerm) String() string { return proto.CompactTextString(m) }
-func (*PreferredSchedulingTerm) ProtoMessage()    {}
+func (m *PreferredSchedulingTerm) Reset()		{ *m = PreferredSchedulingTerm{} }
+func (m *PreferredSchedulingTerm) String() string	{ return proto.CompactTextString(m) }
+func (*PreferredSchedulingTerm) ProtoMessage()		{}
 func (*PreferredSchedulingTerm) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b13c6c8501de3a11, []int{10}
 }
@@ -560,22 +560,22 @@ func (m *PreferredSchedulingTerm) GetPreference() *NodeSelectorTerm {
 
 // Mirrors k8s.io.api.core.v1.Probe for unmarshaling.
 type ReadinessProbe struct {
-	Exec                 *ExecAction      `protobuf:"bytes,1,opt,name=exec,proto3" json:"exec,omitempty"`
-	HttpGet              *HTTPGetAction   `protobuf:"bytes,2,opt,name=httpGet,proto3" json:"httpGet,omitempty"`
-	TcpSocket            *TCPSocketAction `protobuf:"bytes,3,opt,name=tcpSocket,proto3" json:"tcpSocket,omitempty"`
-	InitialDelaySeconds  int32            `protobuf:"varint,4,opt,name=initialDelaySeconds,proto3" json:"initialDelaySeconds,omitempty"`
-	TimeoutSeconds       int32            `protobuf:"varint,5,opt,name=timeoutSeconds,proto3" json:"timeoutSeconds,omitempty"`
-	PeriodSeconds        int32            `protobuf:"varint,6,opt,name=periodSeconds,proto3" json:"periodSeconds,omitempty"`
-	SuccessThreshold     int32            `protobuf:"varint,7,opt,name=successThreshold,proto3" json:"successThreshold,omitempty"`
-	FailureThreshold     int32            `protobuf:"varint,8,opt,name=failureThreshold,proto3" json:"failureThreshold,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}         `json:"-"`
-	XXX_unrecognized     []byte           `json:"-"`
-	XXX_sizecache        int32            `json:"-"`
+	Exec			*ExecAction		`protobuf:"bytes,1,opt,name=exec,proto3" json:"exec,omitempty"`
+	HttpGet			*HTTPGetAction		`protobuf:"bytes,2,opt,name=httpGet,proto3" json:"httpGet,omitempty"`
+	TcpSocket		*TCPSocketAction	`protobuf:"bytes,3,opt,name=tcpSocket,proto3" json:"tcpSocket,omitempty"`
+	InitialDelaySeconds	int32			`protobuf:"varint,4,opt,name=initialDelaySeconds,proto3" json:"initialDelaySeconds,omitempty"`
+	TimeoutSeconds		int32			`protobuf:"varint,5,opt,name=timeoutSeconds,proto3" json:"timeoutSeconds,omitempty"`
+	PeriodSeconds		int32			`protobuf:"varint,6,opt,name=periodSeconds,proto3" json:"periodSeconds,omitempty"`
+	SuccessThreshold	int32			`protobuf:"varint,7,opt,name=successThreshold,proto3" json:"successThreshold,omitempty"`
+	FailureThreshold	int32			`protobuf:"varint,8,opt,name=failureThreshold,proto3" json:"failureThreshold,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}		`json:"-"`
+	XXX_unrecognized	[]byte			`json:"-"`
+	XXX_sizecache		int32			`json:"-"`
 }
 
-func (m *ReadinessProbe) Reset()         { *m = ReadinessProbe{} }
-func (m *ReadinessProbe) String() string { return proto.CompactTextString(m) }
-func (*ReadinessProbe) ProtoMessage()    {}
+func (m *ReadinessProbe) Reset()		{ *m = ReadinessProbe{} }
+func (m *ReadinessProbe) String() string	{ return proto.CompactTextString(m) }
+func (*ReadinessProbe) ProtoMessage()		{}
 func (*ReadinessProbe) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b13c6c8501de3a11, []int{11}
 }
@@ -656,15 +656,15 @@ func (m *ReadinessProbe) GetFailureThreshold() int32 {
 
 // Mirrors k8s.io.api.core.v1.ExecAction for unmarshaling.
 type ExecAction struct {
-	Command              []string `protobuf:"bytes,1,rep,name=command,proto3" json:"command,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	Command			[]string	`protobuf:"bytes,1,rep,name=command,proto3" json:"command,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *ExecAction) Reset()         { *m = ExecAction{} }
-func (m *ExecAction) String() string { return proto.CompactTextString(m) }
-func (*ExecAction) ProtoMessage()    {}
+func (m *ExecAction) Reset()		{ *m = ExecAction{} }
+func (m *ExecAction) String() string	{ return proto.CompactTextString(m) }
+func (*ExecAction) ProtoMessage()	{}
 func (*ExecAction) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b13c6c8501de3a11, []int{12}
 }
@@ -696,19 +696,19 @@ func (m *ExecAction) GetCommand() []string {
 
 // Mirrors k8s.io.api.core.v1.HTTPGetAction for unmarshaling.
 type HTTPGetAction struct {
-	Path                 string                   `protobuf:"bytes,1,opt,name=path,proto3" json:"path,omitempty"`
-	Port                 interface{} `protobuf:"bytes,2,opt,name=port,proto3" json:"port,omitempty"`
-	Host                 string                   `protobuf:"bytes,3,opt,name=host,proto3" json:"host,omitempty"`
-	Scheme               string                   `protobuf:"bytes,4,opt,name=scheme,proto3" json:"scheme,omitempty"`
-	HttpHeaders          []*HTTPHeader            `protobuf:"bytes,5,rep,name=httpHeaders,proto3" json:"httpHeaders,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                 `json:"-"`
-	XXX_unrecognized     []byte                   `json:"-"`
-	XXX_sizecache        int32                    `json:"-"`
+	Path			string		`protobuf:"bytes,1,opt,name=path,proto3" json:"path,omitempty"`
+	Port			interface{}	`protobuf:"bytes,2,opt,name=port,proto3" json:"port,omitempty"`
+	Host			string		`protobuf:"bytes,3,opt,name=host,proto3" json:"host,omitempty"`
+	Scheme			string		`protobuf:"bytes,4,opt,name=scheme,proto3" json:"scheme,omitempty"`
+	HttpHeaders		[]*HTTPHeader	`protobuf:"bytes,5,rep,name=httpHeaders,proto3" json:"httpHeaders,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *HTTPGetAction) Reset()         { *m = HTTPGetAction{} }
-func (m *HTTPGetAction) String() string { return proto.CompactTextString(m) }
-func (*HTTPGetAction) ProtoMessage()    {}
+func (m *HTTPGetAction) Reset()		{ *m = HTTPGetAction{} }
+func (m *HTTPGetAction) String() string	{ return proto.CompactTextString(m) }
+func (*HTTPGetAction) ProtoMessage()	{}
 func (*HTTPGetAction) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b13c6c8501de3a11, []int{13}
 }
@@ -738,7 +738,6 @@ func (m *HTTPGetAction) GetPath() string {
 	return ""
 }
 
-
 func (m *HTTPGetAction) GetHost() string {
 	if m != nil {
 		return m.Host
@@ -762,16 +761,16 @@ func (m *HTTPGetAction) GetHttpHeaders() []*HTTPHeader {
 
 // Mirrors k8s.io.api.core.v1.HTTPHeader for unmarshaling.
 type HTTPHeader struct {
-	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	Value                string   `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	Name			string		`protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Value			string		`protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *HTTPHeader) Reset()         { *m = HTTPHeader{} }
-func (m *HTTPHeader) String() string { return proto.CompactTextString(m) }
-func (*HTTPHeader) ProtoMessage()    {}
+func (m *HTTPHeader) Reset()		{ *m = HTTPHeader{} }
+func (m *HTTPHeader) String() string	{ return proto.CompactTextString(m) }
+func (*HTTPHeader) ProtoMessage()	{}
 func (*HTTPHeader) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b13c6c8501de3a11, []int{14}
 }
@@ -810,16 +809,16 @@ func (m *HTTPHeader) GetValue() string {
 
 // Mirrors k8s.io.api.core.v1.TCPSocketAction for unmarshaling.
 type TCPSocketAction struct {
-	Port                 interface{} `protobuf:"bytes,1,opt,name=port,proto3" json:"port,omitempty"`
-	Host                 string                   `protobuf:"bytes,2,opt,name=host,proto3" json:"host,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                 `json:"-"`
-	XXX_unrecognized     []byte                   `json:"-"`
-	XXX_sizecache        int32                    `json:"-"`
+	Port			interface{}	`protobuf:"bytes,1,opt,name=port,proto3" json:"port,omitempty"`
+	Host			string		`protobuf:"bytes,2,opt,name=host,proto3" json:"host,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *TCPSocketAction) Reset()         { *m = TCPSocketAction{} }
-func (m *TCPSocketAction) String() string { return proto.CompactTextString(m) }
-func (*TCPSocketAction) ProtoMessage()    {}
+func (m *TCPSocketAction) Reset()		{ *m = TCPSocketAction{} }
+func (m *TCPSocketAction) String() string	{ return proto.CompactTextString(m) }
+func (*TCPSocketAction) ProtoMessage()		{}
 func (*TCPSocketAction) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b13c6c8501de3a11, []int{15}
 }
@@ -842,7 +841,6 @@ func (m *TCPSocketAction) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_TCPSocketAction proto.InternalMessageInfo
 
-
 func (m *TCPSocketAction) GetHost() string {
 	if m != nil {
 		return m.Host
@@ -852,17 +850,17 @@ func (m *TCPSocketAction) GetHost() string {
 
 // Mirrors k8s.io.api.policy.v1beta1.PodDisruptionBudget for unmarshaling.
 type PodDisruptionBudgetSpec struct {
-	MinAvailable         uint32            `protobuf:"varint,1,opt,name=minAvailable,proto3" json:"minAvailable,omitempty"`
-	Selector             *v1.LabelSelector `protobuf:"bytes,2,opt,name=selector,proto3" json:"selector,omitempty"`
-	MaxUnavailable       uint32            `protobuf:"varint,3,opt,name=maxUnavailable,proto3" json:"maxUnavailable,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
-	XXX_unrecognized     []byte            `json:"-"`
-	XXX_sizecache        int32             `json:"-"`
+	MinAvailable		uint32			`protobuf:"varint,1,opt,name=minAvailable,proto3" json:"minAvailable,omitempty"`
+	Selector		*v1.LabelSelector	`protobuf:"bytes,2,opt,name=selector,proto3" json:"selector,omitempty"`
+	MaxUnavailable		uint32			`protobuf:"varint,3,opt,name=maxUnavailable,proto3" json:"maxUnavailable,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}		`json:"-"`
+	XXX_unrecognized	[]byte			`json:"-"`
+	XXX_sizecache		int32			`json:"-"`
 }
 
-func (m *PodDisruptionBudgetSpec) Reset()         { *m = PodDisruptionBudgetSpec{} }
-func (m *PodDisruptionBudgetSpec) String() string { return proto.CompactTextString(m) }
-func (*PodDisruptionBudgetSpec) ProtoMessage()    {}
+func (m *PodDisruptionBudgetSpec) Reset()		{ *m = PodDisruptionBudgetSpec{} }
+func (m *PodDisruptionBudgetSpec) String() string	{ return proto.CompactTextString(m) }
+func (*PodDisruptionBudgetSpec) ProtoMessage()		{}
 func (*PodDisruptionBudgetSpec) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b13c6c8501de3a11, []int{16}
 }
@@ -908,16 +906,16 @@ func (m *PodDisruptionBudgetSpec) GetMaxUnavailable() uint32 {
 
 // Mirrors k8s.io.api.apps.v1.DeploymentStrategy for unmarshaling.
 type DeploymentStrategy struct {
-	Type                 string                   `protobuf:"bytes,1,opt,name=type,proto3" json:"type,omitempty"`
-	RollingUpdate        *RollingUpdateDeployment `protobuf:"bytes,2,opt,name=rollingUpdate,proto3" json:"rollingUpdate,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                 `json:"-"`
-	XXX_unrecognized     []byte                   `json:"-"`
-	XXX_sizecache        int32                    `json:"-"`
+	Type			string				`protobuf:"bytes,1,opt,name=type,proto3" json:"type,omitempty"`
+	RollingUpdate		*RollingUpdateDeployment	`protobuf:"bytes,2,opt,name=rollingUpdate,proto3" json:"rollingUpdate,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}			`json:"-"`
+	XXX_unrecognized	[]byte				`json:"-"`
+	XXX_sizecache		int32				`json:"-"`
 }
 
-func (m *DeploymentStrategy) Reset()         { *m = DeploymentStrategy{} }
-func (m *DeploymentStrategy) String() string { return proto.CompactTextString(m) }
-func (*DeploymentStrategy) ProtoMessage()    {}
+func (m *DeploymentStrategy) Reset()		{ *m = DeploymentStrategy{} }
+func (m *DeploymentStrategy) String() string	{ return proto.CompactTextString(m) }
+func (*DeploymentStrategy) ProtoMessage()	{}
 func (*DeploymentStrategy) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b13c6c8501de3a11, []int{17}
 }
@@ -956,16 +954,16 @@ func (m *DeploymentStrategy) GetRollingUpdate() *RollingUpdateDeployment {
 
 // Mirrors k8s.io.api.apps.v1.RollingUpdateDeployment for unmarshaling.
 type RollingUpdateDeployment struct {
-	MaxUnavailable       interface{} `protobuf:"bytes,1,opt,name=maxUnavailable,proto3" json:"maxUnavailable,omitempty"`
-	MaxSurge             interface{} `protobuf:"bytes,2,opt,name=maxSurge,proto3" json:"maxSurge,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                 `json:"-"`
-	XXX_unrecognized     []byte                   `json:"-"`
-	XXX_sizecache        int32                    `json:"-"`
+	MaxUnavailable		interface{}	`protobuf:"bytes,1,opt,name=maxUnavailable,proto3" json:"maxUnavailable,omitempty"`
+	MaxSurge		interface{}	`protobuf:"bytes,2,opt,name=maxSurge,proto3" json:"maxSurge,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *RollingUpdateDeployment) Reset()         { *m = RollingUpdateDeployment{} }
-func (m *RollingUpdateDeployment) String() string { return proto.CompactTextString(m) }
-func (*RollingUpdateDeployment) ProtoMessage()    {}
+func (m *RollingUpdateDeployment) Reset()		{ *m = RollingUpdateDeployment{} }
+func (m *RollingUpdateDeployment) String() string	{ return proto.CompactTextString(m) }
+func (*RollingUpdateDeployment) ProtoMessage()		{}
 func (*RollingUpdateDeployment) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b13c6c8501de3a11, []int{18}
 }
@@ -988,20 +986,18 @@ func (m *RollingUpdateDeployment) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_RollingUpdateDeployment proto.InternalMessageInfo
 
-
-
 type ObjectMeta struct {
 	// From k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta.
-	Name                 string   `protobuf:"bytes,5,opt,name=name,proto3" json:"name,omitempty"`
-	Namespace            string   `protobuf:"bytes,6,opt,name=namespace,proto3" json:"namespace,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	Name			string		`protobuf:"bytes,5,opt,name=name,proto3" json:"name,omitempty"`
+	Namespace		string		`protobuf:"bytes,6,opt,name=namespace,proto3" json:"namespace,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *ObjectMeta) Reset()         { *m = ObjectMeta{} }
-func (m *ObjectMeta) String() string { return proto.CompactTextString(m) }
-func (*ObjectMeta) ProtoMessage()    {}
+func (m *ObjectMeta) Reset()		{ *m = ObjectMeta{} }
+func (m *ObjectMeta) String() string	{ return proto.CompactTextString(m) }
+func (*ObjectMeta) ProtoMessage()	{}
 func (*ObjectMeta) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b13c6c8501de3a11, []int{19}
 }
@@ -1039,17 +1035,17 @@ func (m *ObjectMeta) GetNamespace() string {
 }
 
 type EnvVar struct {
-	Name                 string        `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	Value                string        `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
-	ValueFrom            *EnvVarSource `protobuf:"bytes,3,opt,name=valueFrom,proto3" json:"valueFrom,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
-	XXX_unrecognized     []byte        `json:"-"`
-	XXX_sizecache        int32         `json:"-"`
+	Name			string		`protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Value			string		`protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
+	ValueFrom		*EnvVarSource	`protobuf:"bytes,3,opt,name=valueFrom,proto3" json:"valueFrom,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *EnvVar) Reset()         { *m = EnvVar{} }
-func (m *EnvVar) String() string { return proto.CompactTextString(m) }
-func (*EnvVar) ProtoMessage()    {}
+func (m *EnvVar) Reset()		{ *m = EnvVar{} }
+func (m *EnvVar) String() string	{ return proto.CompactTextString(m) }
+func (*EnvVar) ProtoMessage()		{}
 func (*EnvVar) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b13c6c8501de3a11, []int{20}
 }
@@ -1094,18 +1090,18 @@ func (m *EnvVar) GetValueFrom() *EnvVarSource {
 }
 
 type EnvVarSource struct {
-	FieldRef             *ObjectFieldSelector   `protobuf:"bytes,1,opt,name=fieldRef,proto3" json:"fieldRef,omitempty"`
-	ResourceFieldRef     *ResourceFieldSelector `protobuf:"bytes,2,opt,name=resourceFieldRef,proto3" json:"resourceFieldRef,omitempty"`
-	ConfigMapKeyRef      *ConfigMapKeySelector  `protobuf:"bytes,3,opt,name=configMapKeyRef,proto3" json:"configMapKeyRef,omitempty"`
-	SecretKeyRef         *SecretKeySelector     `protobuf:"bytes,4,opt,name=secretKeyRef,proto3" json:"secretKeyRef,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
-	XXX_unrecognized     []byte                 `json:"-"`
-	XXX_sizecache        int32                  `json:"-"`
+	FieldRef		*ObjectFieldSelector	`protobuf:"bytes,1,opt,name=fieldRef,proto3" json:"fieldRef,omitempty"`
+	ResourceFieldRef	*ResourceFieldSelector	`protobuf:"bytes,2,opt,name=resourceFieldRef,proto3" json:"resourceFieldRef,omitempty"`
+	ConfigMapKeyRef		*ConfigMapKeySelector	`protobuf:"bytes,3,opt,name=configMapKeyRef,proto3" json:"configMapKeyRef,omitempty"`
+	SecretKeyRef		*SecretKeySelector	`protobuf:"bytes,4,opt,name=secretKeyRef,proto3" json:"secretKeyRef,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}		`json:"-"`
+	XXX_unrecognized	[]byte			`json:"-"`
+	XXX_sizecache		int32			`json:"-"`
 }
 
-func (m *EnvVarSource) Reset()         { *m = EnvVarSource{} }
-func (m *EnvVarSource) String() string { return proto.CompactTextString(m) }
-func (*EnvVarSource) ProtoMessage()    {}
+func (m *EnvVarSource) Reset()		{ *m = EnvVarSource{} }
+func (m *EnvVarSource) String() string	{ return proto.CompactTextString(m) }
+func (*EnvVarSource) ProtoMessage()	{}
 func (*EnvVarSource) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b13c6c8501de3a11, []int{21}
 }
@@ -1157,16 +1153,16 @@ func (m *EnvVarSource) GetSecretKeyRef() *SecretKeySelector {
 }
 
 type ObjectFieldSelector struct {
-	ApiVersion           string   `protobuf:"bytes,1,opt,name=apiVersion,proto3" json:"apiVersion,omitempty"`
-	FieldPath            string   `protobuf:"bytes,2,opt,name=fieldPath,proto3" json:"fieldPath,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	ApiVersion		string		`protobuf:"bytes,1,opt,name=apiVersion,proto3" json:"apiVersion,omitempty"`
+	FieldPath		string		`protobuf:"bytes,2,opt,name=fieldPath,proto3" json:"fieldPath,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *ObjectFieldSelector) Reset()         { *m = ObjectFieldSelector{} }
-func (m *ObjectFieldSelector) String() string { return proto.CompactTextString(m) }
-func (*ObjectFieldSelector) ProtoMessage()    {}
+func (m *ObjectFieldSelector) Reset()		{ *m = ObjectFieldSelector{} }
+func (m *ObjectFieldSelector) String() string	{ return proto.CompactTextString(m) }
+func (*ObjectFieldSelector) ProtoMessage()	{}
 func (*ObjectFieldSelector) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b13c6c8501de3a11, []int{22}
 }
@@ -1204,17 +1200,17 @@ func (m *ObjectFieldSelector) GetFieldPath() string {
 }
 
 type ResourceFieldSelector struct {
-	ContainerName        string             `protobuf:"bytes,1,opt,name=containerName,proto3" json:"containerName,omitempty"`
-	Resource             string             `protobuf:"bytes,2,opt,name=resource,proto3" json:"resource,omitempty"`
-	Divisor              *resource.Quantity `protobuf:"bytes,3,opt,name=divisor,proto3" json:"divisor,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
-	XXX_unrecognized     []byte             `json:"-"`
-	XXX_sizecache        int32              `json:"-"`
+	ContainerName		string			`protobuf:"bytes,1,opt,name=containerName,proto3" json:"containerName,omitempty"`
+	Resource		string			`protobuf:"bytes,2,opt,name=resource,proto3" json:"resource,omitempty"`
+	Divisor			*resource.Quantity	`protobuf:"bytes,3,opt,name=divisor,proto3" json:"divisor,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}		`json:"-"`
+	XXX_unrecognized	[]byte			`json:"-"`
+	XXX_sizecache		int32			`json:"-"`
 }
 
-func (m *ResourceFieldSelector) Reset()         { *m = ResourceFieldSelector{} }
-func (m *ResourceFieldSelector) String() string { return proto.CompactTextString(m) }
-func (*ResourceFieldSelector) ProtoMessage()    {}
+func (m *ResourceFieldSelector) Reset()		{ *m = ResourceFieldSelector{} }
+func (m *ResourceFieldSelector) String() string	{ return proto.CompactTextString(m) }
+func (*ResourceFieldSelector) ProtoMessage()	{}
 func (*ResourceFieldSelector) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b13c6c8501de3a11, []int{23}
 }
@@ -1259,17 +1255,17 @@ func (m *ResourceFieldSelector) GetDivisor() *resource.Quantity {
 }
 
 type ConfigMapKeySelector struct {
-	LocalObjectReference *LocalObjectReference `protobuf:"bytes,1,opt,name=localObjectReference,proto3" json:"localObjectReference,omitempty"`
-	Key                  string                `protobuf:"bytes,2,opt,name=key,proto3" json:"key,omitempty"`
-	Optional             bool                  `protobuf:"varint,3,opt,name=optional,proto3" json:"optional,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
-	XXX_unrecognized     []byte                `json:"-"`
-	XXX_sizecache        int32                 `json:"-"`
+	LocalObjectReference	*LocalObjectReference	`protobuf:"bytes,1,opt,name=localObjectReference,proto3" json:"localObjectReference,omitempty"`
+	Key			string			`protobuf:"bytes,2,opt,name=key,proto3" json:"key,omitempty"`
+	Optional		bool			`protobuf:"varint,3,opt,name=optional,proto3" json:"optional,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}		`json:"-"`
+	XXX_unrecognized	[]byte			`json:"-"`
+	XXX_sizecache		int32			`json:"-"`
 }
 
-func (m *ConfigMapKeySelector) Reset()         { *m = ConfigMapKeySelector{} }
-func (m *ConfigMapKeySelector) String() string { return proto.CompactTextString(m) }
-func (*ConfigMapKeySelector) ProtoMessage()    {}
+func (m *ConfigMapKeySelector) Reset()		{ *m = ConfigMapKeySelector{} }
+func (m *ConfigMapKeySelector) String() string	{ return proto.CompactTextString(m) }
+func (*ConfigMapKeySelector) ProtoMessage()	{}
 func (*ConfigMapKeySelector) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b13c6c8501de3a11, []int{24}
 }
@@ -1314,17 +1310,17 @@ func (m *ConfigMapKeySelector) GetOptional() bool {
 }
 
 type SecretKeySelector struct {
-	LocalObjectReference *LocalObjectReference `protobuf:"bytes,1,opt,name=localObjectReference,proto3" json:"localObjectReference,omitempty"`
-	Key                  string                `protobuf:"bytes,2,opt,name=key,proto3" json:"key,omitempty"`
-	Optional             bool                  `protobuf:"varint,3,opt,name=optional,proto3" json:"optional,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
-	XXX_unrecognized     []byte                `json:"-"`
-	XXX_sizecache        int32                 `json:"-"`
+	LocalObjectReference	*LocalObjectReference	`protobuf:"bytes,1,opt,name=localObjectReference,proto3" json:"localObjectReference,omitempty"`
+	Key			string			`protobuf:"bytes,2,opt,name=key,proto3" json:"key,omitempty"`
+	Optional		bool			`protobuf:"varint,3,opt,name=optional,proto3" json:"optional,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}		`json:"-"`
+	XXX_unrecognized	[]byte			`json:"-"`
+	XXX_sizecache		int32			`json:"-"`
 }
 
-func (m *SecretKeySelector) Reset()         { *m = SecretKeySelector{} }
-func (m *SecretKeySelector) String() string { return proto.CompactTextString(m) }
-func (*SecretKeySelector) ProtoMessage()    {}
+func (m *SecretKeySelector) Reset()		{ *m = SecretKeySelector{} }
+func (m *SecretKeySelector) String() string	{ return proto.CompactTextString(m) }
+func (*SecretKeySelector) ProtoMessage()	{}
 func (*SecretKeySelector) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b13c6c8501de3a11, []int{25}
 }
@@ -1369,15 +1365,15 @@ func (m *SecretKeySelector) GetOptional() bool {
 }
 
 type LocalObjectReference struct {
-	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	Name			string		`protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *LocalObjectReference) Reset()         { *m = LocalObjectReference{} }
-func (m *LocalObjectReference) String() string { return proto.CompactTextString(m) }
-func (*LocalObjectReference) ProtoMessage()    {}
+func (m *LocalObjectReference) Reset()		{ *m = LocalObjectReference{} }
+func (m *LocalObjectReference) String() string	{ return proto.CompactTextString(m) }
+func (*LocalObjectReference) ProtoMessage()	{}
 func (*LocalObjectReference) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b13c6c8501de3a11, []int{26}
 }
@@ -1408,27 +1404,27 @@ func (m *LocalObjectReference) GetName() string {
 }
 
 type ServiceSpec struct {
-	Ports                    []*ServicePort         `protobuf:"bytes,1,rep,name=ports,proto3" json:"ports,omitempty"`
-	Selector                 map[string]string      `protobuf:"bytes,2,rep,name=selector,proto3" json:"selector,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	ClusterIP                string                 `protobuf:"bytes,3,opt,name=clusterIP,proto3" json:"clusterIP,omitempty"`
-	Type                     string                 `protobuf:"bytes,4,opt,name=type,proto3" json:"type,omitempty"`
-	ExternalIPs              []string               `protobuf:"bytes,5,rep,name=externalIPs,proto3" json:"externalIPs,omitempty"`
-	SessionAffinity          string                 `protobuf:"bytes,7,opt,name=sessionAffinity,proto3" json:"sessionAffinity,omitempty"`
-	LoadBalancerIP           string                 `protobuf:"bytes,8,opt,name=loadBalancerIP,proto3" json:"loadBalancerIP,omitempty"`
-	LoadBalancerSourceRanges []string               `protobuf:"bytes,9,rep,name=loadBalancerSourceRanges,proto3" json:"loadBalancerSourceRanges,omitempty"`
-	ExternalName             string                 `protobuf:"bytes,10,opt,name=externalName,proto3" json:"externalName,omitempty"`
-	ExternalTrafficPolicy    string                 `protobuf:"bytes,11,opt,name=externalTrafficPolicy,proto3" json:"externalTrafficPolicy,omitempty"`
-	HealthCheckNodePort      int32                  `protobuf:"varint,12,opt,name=healthCheckNodePort,proto3" json:"healthCheckNodePort,omitempty"`
-	PublishNotReadyAddresses bool                   `protobuf:"varint,13,opt,name=publishNotReadyAddresses,proto3" json:"publishNotReadyAddresses,omitempty"`
-	SessionAffinityConfig    *SessionAffinityConfig `protobuf:"bytes,14,opt,name=sessionAffinityConfig,proto3" json:"sessionAffinityConfig,omitempty"`
-	XXX_NoUnkeyedLiteral     struct{}               `json:"-"`
-	XXX_unrecognized         []byte                 `json:"-"`
-	XXX_sizecache            int32                  `json:"-"`
+	Ports				[]*ServicePort		`protobuf:"bytes,1,rep,name=ports,proto3" json:"ports,omitempty"`
+	Selector			map[string]string	`protobuf:"bytes,2,rep,name=selector,proto3" json:"selector,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	ClusterIP			string			`protobuf:"bytes,3,opt,name=clusterIP,proto3" json:"clusterIP,omitempty"`
+	Type				string			`protobuf:"bytes,4,opt,name=type,proto3" json:"type,omitempty"`
+	ExternalIPs			[]string		`protobuf:"bytes,5,rep,name=externalIPs,proto3" json:"externalIPs,omitempty"`
+	SessionAffinity			string			`protobuf:"bytes,7,opt,name=sessionAffinity,proto3" json:"sessionAffinity,omitempty"`
+	LoadBalancerIP			string			`protobuf:"bytes,8,opt,name=loadBalancerIP,proto3" json:"loadBalancerIP,omitempty"`
+	LoadBalancerSourceRanges	[]string		`protobuf:"bytes,9,rep,name=loadBalancerSourceRanges,proto3" json:"loadBalancerSourceRanges,omitempty"`
+	ExternalName			string			`protobuf:"bytes,10,opt,name=externalName,proto3" json:"externalName,omitempty"`
+	ExternalTrafficPolicy		string			`protobuf:"bytes,11,opt,name=externalTrafficPolicy,proto3" json:"externalTrafficPolicy,omitempty"`
+	HealthCheckNodePort		int32			`protobuf:"varint,12,opt,name=healthCheckNodePort,proto3" json:"healthCheckNodePort,omitempty"`
+	PublishNotReadyAddresses	bool			`protobuf:"varint,13,opt,name=publishNotReadyAddresses,proto3" json:"publishNotReadyAddresses,omitempty"`
+	SessionAffinityConfig		*SessionAffinityConfig	`protobuf:"bytes,14,opt,name=sessionAffinityConfig,proto3" json:"sessionAffinityConfig,omitempty"`
+	XXX_NoUnkeyedLiteral		struct{}		`json:"-"`
+	XXX_unrecognized		[]byte			`json:"-"`
+	XXX_sizecache			int32			`json:"-"`
 }
 
-func (m *ServiceSpec) Reset()         { *m = ServiceSpec{} }
-func (m *ServiceSpec) String() string { return proto.CompactTextString(m) }
-func (*ServiceSpec) ProtoMessage()    {}
+func (m *ServiceSpec) Reset()		{ *m = ServiceSpec{} }
+func (m *ServiceSpec) String() string	{ return proto.CompactTextString(m) }
+func (*ServiceSpec) ProtoMessage()	{}
 func (*ServiceSpec) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b13c6c8501de3a11, []int{27}
 }
@@ -1543,19 +1539,19 @@ func (m *ServiceSpec) GetSessionAffinityConfig() *SessionAffinityConfig {
 }
 
 type ServicePort struct {
-	Name                 string                   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	Protocol             string                   `protobuf:"bytes,2,opt,name=protocol,proto3" json:"protocol,omitempty"`
-	Port                 int32                    `protobuf:"varint,3,opt,name=port,proto3" json:"port,omitempty"`
-	TargetPort           interface{} `protobuf:"bytes,4,opt,name=targetPort,proto3" json:"targetPort,omitempty"`
-	NodePort             int32                    `protobuf:"varint,5,opt,name=nodePort,proto3" json:"nodePort,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                 `json:"-"`
-	XXX_unrecognized     []byte                   `json:"-"`
-	XXX_sizecache        int32                    `json:"-"`
+	Name			string		`protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Protocol		string		`protobuf:"bytes,2,opt,name=protocol,proto3" json:"protocol,omitempty"`
+	Port			int32		`protobuf:"varint,3,opt,name=port,proto3" json:"port,omitempty"`
+	TargetPort		interface{}	`protobuf:"bytes,4,opt,name=targetPort,proto3" json:"targetPort,omitempty"`
+	NodePort		int32		`protobuf:"varint,5,opt,name=nodePort,proto3" json:"nodePort,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *ServicePort) Reset()         { *m = ServicePort{} }
-func (m *ServicePort) String() string { return proto.CompactTextString(m) }
-func (*ServicePort) ProtoMessage()    {}
+func (m *ServicePort) Reset()		{ *m = ServicePort{} }
+func (m *ServicePort) String() string	{ return proto.CompactTextString(m) }
+func (*ServicePort) ProtoMessage()	{}
 func (*ServicePort) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b13c6c8501de3a11, []int{28}
 }
@@ -1599,7 +1595,6 @@ func (m *ServicePort) GetPort() int32 {
 	return 0
 }
 
-
 func (m *ServicePort) GetNodePort() int32 {
 	if m != nil {
 		return m.NodePort
@@ -1608,15 +1603,15 @@ func (m *ServicePort) GetNodePort() int32 {
 }
 
 type SessionAffinityConfig struct {
-	ClientIP             *ClientIPConfig `protobuf:"bytes,1,opt,name=clientIP,proto3" json:"clientIP,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
-	XXX_unrecognized     []byte          `json:"-"`
-	XXX_sizecache        int32           `json:"-"`
+	ClientIP		*ClientIPConfig	`protobuf:"bytes,1,opt,name=clientIP,proto3" json:"clientIP,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *SessionAffinityConfig) Reset()         { *m = SessionAffinityConfig{} }
-func (m *SessionAffinityConfig) String() string { return proto.CompactTextString(m) }
-func (*SessionAffinityConfig) ProtoMessage()    {}
+func (m *SessionAffinityConfig) Reset()		{ *m = SessionAffinityConfig{} }
+func (m *SessionAffinityConfig) String() string	{ return proto.CompactTextString(m) }
+func (*SessionAffinityConfig) ProtoMessage()	{}
 func (*SessionAffinityConfig) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b13c6c8501de3a11, []int{29}
 }
@@ -1647,15 +1642,15 @@ func (m *SessionAffinityConfig) GetClientIP() *ClientIPConfig {
 }
 
 type ClientIPConfig struct {
-	TimeoutSeconds       int32    `protobuf:"varint,1,opt,name=timeoutSeconds,proto3" json:"timeoutSeconds,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	TimeoutSeconds		int32		`protobuf:"varint,1,opt,name=timeoutSeconds,proto3" json:"timeoutSeconds,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *ClientIPConfig) Reset()         { *m = ClientIPConfig{} }
-func (m *ClientIPConfig) String() string { return proto.CompactTextString(m) }
-func (*ClientIPConfig) ProtoMessage()    {}
+func (m *ClientIPConfig) Reset()		{ *m = ClientIPConfig{} }
+func (m *ClientIPConfig) String() string	{ return proto.CompactTextString(m) }
+func (*ClientIPConfig) ProtoMessage()		{}
 func (*ClientIPConfig) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b13c6c8501de3a11, []int{30}
 }
@@ -1686,18 +1681,18 @@ func (m *ClientIPConfig) GetTimeoutSeconds() int32 {
 }
 
 type HorizontalPodAutoscalerSpec struct {
-	ScaleTargetRef       *CrossVersionObjectReference `protobuf:"bytes,1,opt,name=scaleTargetRef,proto3" json:"scaleTargetRef,omitempty"`
-	MinReplicas          int32                        `protobuf:"varint,2,opt,name=minReplicas,proto3" json:"minReplicas,omitempty"`
-	MaxReplicas          int32                        `protobuf:"varint,3,opt,name=maxReplicas,proto3" json:"maxReplicas,omitempty"`
-	Metrics              []*MetricSpec                `protobuf:"bytes,4,rep,name=metrics,proto3" json:"metrics,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                     `json:"-"`
-	XXX_unrecognized     []byte                       `json:"-"`
-	XXX_sizecache        int32                        `json:"-"`
+	ScaleTargetRef		*CrossVersionObjectReference	`protobuf:"bytes,1,opt,name=scaleTargetRef,proto3" json:"scaleTargetRef,omitempty"`
+	MinReplicas		int32				`protobuf:"varint,2,opt,name=minReplicas,proto3" json:"minReplicas,omitempty"`
+	MaxReplicas		int32				`protobuf:"varint,3,opt,name=maxReplicas,proto3" json:"maxReplicas,omitempty"`
+	Metrics			[]*MetricSpec			`protobuf:"bytes,4,rep,name=metrics,proto3" json:"metrics,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}			`json:"-"`
+	XXX_unrecognized	[]byte				`json:"-"`
+	XXX_sizecache		int32				`json:"-"`
 }
 
-func (m *HorizontalPodAutoscalerSpec) Reset()         { *m = HorizontalPodAutoscalerSpec{} }
-func (m *HorizontalPodAutoscalerSpec) String() string { return proto.CompactTextString(m) }
-func (*HorizontalPodAutoscalerSpec) ProtoMessage()    {}
+func (m *HorizontalPodAutoscalerSpec) Reset()		{ *m = HorizontalPodAutoscalerSpec{} }
+func (m *HorizontalPodAutoscalerSpec) String() string	{ return proto.CompactTextString(m) }
+func (*HorizontalPodAutoscalerSpec) ProtoMessage()	{}
 func (*HorizontalPodAutoscalerSpec) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b13c6c8501de3a11, []int{31}
 }
@@ -1749,17 +1744,17 @@ func (m *HorizontalPodAutoscalerSpec) GetMetrics() []*MetricSpec {
 }
 
 type CrossVersionObjectReference struct {
-	Kind                 string   `protobuf:"bytes,1,opt,name=kind,proto3" json:"kind,omitempty"`
-	Name                 string   `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	ApiVersion           string   `protobuf:"bytes,3,opt,name=apiVersion,proto3" json:"apiVersion,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	Kind			string		`protobuf:"bytes,1,opt,name=kind,proto3" json:"kind,omitempty"`
+	Name			string		`protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	ApiVersion		string		`protobuf:"bytes,3,opt,name=apiVersion,proto3" json:"apiVersion,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *CrossVersionObjectReference) Reset()         { *m = CrossVersionObjectReference{} }
-func (m *CrossVersionObjectReference) String() string { return proto.CompactTextString(m) }
-func (*CrossVersionObjectReference) ProtoMessage()    {}
+func (m *CrossVersionObjectReference) Reset()		{ *m = CrossVersionObjectReference{} }
+func (m *CrossVersionObjectReference) String() string	{ return proto.CompactTextString(m) }
+func (*CrossVersionObjectReference) ProtoMessage()	{}
 func (*CrossVersionObjectReference) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b13c6c8501de3a11, []int{32}
 }
@@ -1804,19 +1799,19 @@ func (m *CrossVersionObjectReference) GetApiVersion() string {
 }
 
 type MetricSpec struct {
-	Type                 string                `protobuf:"bytes,1,opt,name=type,proto3" json:"type,omitempty"`
-	Object               *ObjectMetricSource   `protobuf:"bytes,2,opt,name=object,proto3" json:"object,omitempty"`
-	Pods                 *PodsMetricSource     `protobuf:"bytes,3,opt,name=pods,proto3" json:"pods,omitempty"`
-	Resource             *ResourceMetricSource `protobuf:"bytes,4,opt,name=resource,proto3" json:"resource,omitempty"`
-	External             *ExternalMetricSource `protobuf:"bytes,5,opt,name=external,proto3" json:"external,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
-	XXX_unrecognized     []byte                `json:"-"`
-	XXX_sizecache        int32                 `json:"-"`
+	Type			string			`protobuf:"bytes,1,opt,name=type,proto3" json:"type,omitempty"`
+	Object			*ObjectMetricSource	`protobuf:"bytes,2,opt,name=object,proto3" json:"object,omitempty"`
+	Pods			*PodsMetricSource	`protobuf:"bytes,3,opt,name=pods,proto3" json:"pods,omitempty"`
+	Resource		*ResourceMetricSource	`protobuf:"bytes,4,opt,name=resource,proto3" json:"resource,omitempty"`
+	External		*ExternalMetricSource	`protobuf:"bytes,5,opt,name=external,proto3" json:"external,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}		`json:"-"`
+	XXX_unrecognized	[]byte			`json:"-"`
+	XXX_sizecache		int32			`json:"-"`
 }
 
-func (m *MetricSpec) Reset()         { *m = MetricSpec{} }
-func (m *MetricSpec) String() string { return proto.CompactTextString(m) }
-func (*MetricSpec) ProtoMessage()    {}
+func (m *MetricSpec) Reset()		{ *m = MetricSpec{} }
+func (m *MetricSpec) String() string	{ return proto.CompactTextString(m) }
+func (*MetricSpec) ProtoMessage()	{}
 func (*MetricSpec) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b13c6c8501de3a11, []int{33}
 }
@@ -1875,19 +1870,19 @@ func (m *MetricSpec) GetExternal() *ExternalMetricSource {
 }
 
 type ObjectMetricSource struct {
-	Target               *CrossVersionObjectReference `protobuf:"bytes,1,opt,name=target,proto3" json:"target,omitempty"`
-	MetricName           string                       `protobuf:"bytes,2,opt,name=metricName,proto3" json:"metricName,omitempty"`
-	TargetValue          *resource.Quantity           `protobuf:"bytes,3,opt,name=targetValue,proto3" json:"targetValue,omitempty"`
-	Selector             *v1.LabelSelector            `protobuf:"bytes,4,opt,name=selector,proto3" json:"selector,omitempty"`
-	AverageValue         *resource.Quantity           `protobuf:"bytes,5,opt,name=averageValue,proto3" json:"averageValue,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                     `json:"-"`
-	XXX_unrecognized     []byte                       `json:"-"`
-	XXX_sizecache        int32                        `json:"-"`
+	Target			*CrossVersionObjectReference	`protobuf:"bytes,1,opt,name=target,proto3" json:"target,omitempty"`
+	MetricName		string				`protobuf:"bytes,2,opt,name=metricName,proto3" json:"metricName,omitempty"`
+	TargetValue		*resource.Quantity		`protobuf:"bytes,3,opt,name=targetValue,proto3" json:"targetValue,omitempty"`
+	Selector		*v1.LabelSelector		`protobuf:"bytes,4,opt,name=selector,proto3" json:"selector,omitempty"`
+	AverageValue		*resource.Quantity		`protobuf:"bytes,5,opt,name=averageValue,proto3" json:"averageValue,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}			`json:"-"`
+	XXX_unrecognized	[]byte				`json:"-"`
+	XXX_sizecache		int32				`json:"-"`
 }
 
-func (m *ObjectMetricSource) Reset()         { *m = ObjectMetricSource{} }
-func (m *ObjectMetricSource) String() string { return proto.CompactTextString(m) }
-func (*ObjectMetricSource) ProtoMessage()    {}
+func (m *ObjectMetricSource) Reset()		{ *m = ObjectMetricSource{} }
+func (m *ObjectMetricSource) String() string	{ return proto.CompactTextString(m) }
+func (*ObjectMetricSource) ProtoMessage()	{}
 func (*ObjectMetricSource) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b13c6c8501de3a11, []int{34}
 }
@@ -1946,17 +1941,17 @@ func (m *ObjectMetricSource) GetAverageValue() *resource.Quantity {
 }
 
 type PodsMetricSource struct {
-	MetricName           string             `protobuf:"bytes,1,opt,name=metricName,proto3" json:"metricName,omitempty"`
-	TargetAverageValue   *resource.Quantity `protobuf:"bytes,2,opt,name=targetAverageValue,proto3" json:"targetAverageValue,omitempty"`
-	Selector             *v1.LabelSelector  `protobuf:"bytes,3,opt,name=selector,proto3" json:"selector,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
-	XXX_unrecognized     []byte             `json:"-"`
-	XXX_sizecache        int32              `json:"-"`
+	MetricName		string			`protobuf:"bytes,1,opt,name=metricName,proto3" json:"metricName,omitempty"`
+	TargetAverageValue	*resource.Quantity	`protobuf:"bytes,2,opt,name=targetAverageValue,proto3" json:"targetAverageValue,omitempty"`
+	Selector		*v1.LabelSelector	`protobuf:"bytes,3,opt,name=selector,proto3" json:"selector,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}		`json:"-"`
+	XXX_unrecognized	[]byte			`json:"-"`
+	XXX_sizecache		int32			`json:"-"`
 }
 
-func (m *PodsMetricSource) Reset()         { *m = PodsMetricSource{} }
-func (m *PodsMetricSource) String() string { return proto.CompactTextString(m) }
-func (*PodsMetricSource) ProtoMessage()    {}
+func (m *PodsMetricSource) Reset()		{ *m = PodsMetricSource{} }
+func (m *PodsMetricSource) String() string	{ return proto.CompactTextString(m) }
+func (*PodsMetricSource) ProtoMessage()		{}
 func (*PodsMetricSource) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b13c6c8501de3a11, []int{35}
 }
@@ -2001,17 +1996,17 @@ func (m *PodsMetricSource) GetSelector() *v1.LabelSelector {
 }
 
 type ResourceMetricSource struct {
-	Name                     string                   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	TargetAverageUtilization interface{} `protobuf:"bytes,2,opt,name=targetAverageUtilization,proto3" json:"targetAverageUtilization,omitempty"`
-	TargetAverageValue       *resource.Quantity       `protobuf:"bytes,3,opt,name=targetAverageValue,proto3" json:"targetAverageValue,omitempty"`
-	XXX_NoUnkeyedLiteral     struct{}                 `json:"-"`
-	XXX_unrecognized         []byte                   `json:"-"`
-	XXX_sizecache            int32                    `json:"-"`
+	Name				string			`protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	TargetAverageUtilization	interface{}		`protobuf:"bytes,2,opt,name=targetAverageUtilization,proto3" json:"targetAverageUtilization,omitempty"`
+	TargetAverageValue		*resource.Quantity	`protobuf:"bytes,3,opt,name=targetAverageValue,proto3" json:"targetAverageValue,omitempty"`
+	XXX_NoUnkeyedLiteral		struct{}		`json:"-"`
+	XXX_unrecognized		[]byte			`json:"-"`
+	XXX_sizecache			int32			`json:"-"`
 }
 
-func (m *ResourceMetricSource) Reset()         { *m = ResourceMetricSource{} }
-func (m *ResourceMetricSource) String() string { return proto.CompactTextString(m) }
-func (*ResourceMetricSource) ProtoMessage()    {}
+func (m *ResourceMetricSource) Reset()		{ *m = ResourceMetricSource{} }
+func (m *ResourceMetricSource) String() string	{ return proto.CompactTextString(m) }
+func (*ResourceMetricSource) ProtoMessage()	{}
 func (*ResourceMetricSource) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b13c6c8501de3a11, []int{36}
 }
@@ -2041,7 +2036,6 @@ func (m *ResourceMetricSource) GetName() string {
 	return ""
 }
 
-
 func (m *ResourceMetricSource) GetTargetAverageValue() *resource.Quantity {
 	if m != nil {
 		return m.TargetAverageValue
@@ -2050,18 +2044,18 @@ func (m *ResourceMetricSource) GetTargetAverageValue() *resource.Quantity {
 }
 
 type ExternalMetricSource struct {
-	MetricName           string             `protobuf:"bytes,1,opt,name=metricName,proto3" json:"metricName,omitempty"`
-	MetricSelector       *v1.LabelSelector  `protobuf:"bytes,2,opt,name=metricSelector,proto3" json:"metricSelector,omitempty"`
-	TargetValue          *resource.Quantity `protobuf:"bytes,3,opt,name=targetValue,proto3" json:"targetValue,omitempty"`
-	TargetAverageValue   *resource.Quantity `protobuf:"bytes,4,opt,name=targetAverageValue,proto3" json:"targetAverageValue,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
-	XXX_unrecognized     []byte             `json:"-"`
-	XXX_sizecache        int32              `json:"-"`
+	MetricName		string			`protobuf:"bytes,1,opt,name=metricName,proto3" json:"metricName,omitempty"`
+	MetricSelector		*v1.LabelSelector	`protobuf:"bytes,2,opt,name=metricSelector,proto3" json:"metricSelector,omitempty"`
+	TargetValue		*resource.Quantity	`protobuf:"bytes,3,opt,name=targetValue,proto3" json:"targetValue,omitempty"`
+	TargetAverageValue	*resource.Quantity	`protobuf:"bytes,4,opt,name=targetAverageValue,proto3" json:"targetAverageValue,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}		`json:"-"`
+	XXX_unrecognized	[]byte			`json:"-"`
+	XXX_sizecache		int32			`json:"-"`
 }
 
-func (m *ExternalMetricSource) Reset()         { *m = ExternalMetricSource{} }
-func (m *ExternalMetricSource) String() string { return proto.CompactTextString(m) }
-func (*ExternalMetricSource) ProtoMessage()    {}
+func (m *ExternalMetricSource) Reset()		{ *m = ExternalMetricSource{} }
+func (m *ExternalMetricSource) String() string	{ return proto.CompactTextString(m) }
+func (*ExternalMetricSource) ProtoMessage()	{}
 func (*ExternalMetricSource) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b13c6c8501de3a11, []int{37}
 }
@@ -2111,8 +2105,6 @@ func (m *ExternalMetricSource) GetTargetAverageValue() *resource.Quantity {
 	}
 	return nil
 }
-
-
 
 func init() {
 	proto.RegisterType((*Resources)(nil), "istio.operator.v1alpha1.Resources")

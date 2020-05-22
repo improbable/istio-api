@@ -8,8 +8,8 @@ import (
 	_ "github.com/gogo/protobuf/gogoproto"
 	proto "github.com/gogo/protobuf/proto"
 	io "io"
-	v1 "istio.io/api/mixer/v1"
-	_ "istio.io/gogo-genproto/googleapis/google/api"
+	v1 "github.com/improbable/istio-api/mixer/v1"
+
 	math "math"
 	math_bits "math/bits"
 	reflect "reflect"
@@ -25,7 +25,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion3	// please upgrade the proto package
 
 // HTTPAPISpec defines the canonical configuration for generating
 // API-related attributes from HTTP requests based on the method and
@@ -106,9 +106,9 @@ type HTTPAPISpec struct {
 	// List of attributes that are generated when *any* of the HTTP
 	// patterns match. This list typically includes the "api.service"
 	// and "api.version" attributes.
-	Attributes *v1.Attributes `protobuf:"bytes,1,opt,name=attributes,proto3" json:"attributes,omitempty"`
+	Attributes	*v1.Attributes	`protobuf:"bytes,1,opt,name=attributes,proto3" json:"attributes,omitempty"`
 	// List of HTTP patterns to match.
-	Patterns []*HTTPAPISpecPattern `protobuf:"bytes,2,rep,name=patterns,proto3" json:"patterns,omitempty"`
+	Patterns	[]*HTTPAPISpecPattern	`protobuf:"bytes,2,rep,name=patterns,proto3" json:"patterns,omitempty"`
 	// List of APIKey that describes how to extract an API-KEY from an
 	// HTTP request. The first API-Key match found in the list is used,
 	// i.e. 'OR' semantics.
@@ -118,11 +118,11 @@ type HTTPAPISpec struct {
 	//
 	//     `query: key, `query: api_key`, and then `header: x-api-key`
 	//
-	ApiKeys []*APIKey `protobuf:"bytes,3,rep,name=api_keys,json=apiKeys,proto3" json:"api_keys,omitempty"`
+	ApiKeys	[]*APIKey	`protobuf:"bytes,3,rep,name=api_keys,json=apiKeys,proto3" json:"api_keys,omitempty"`
 }
 
-func (m *HTTPAPISpec) Reset()      { *m = HTTPAPISpec{} }
-func (*HTTPAPISpec) ProtoMessage() {}
+func (m *HTTPAPISpec) Reset()		{ *m = HTTPAPISpec{} }
+func (*HTTPAPISpec) ProtoMessage()	{}
 func (*HTTPAPISpec) Descriptor() ([]byte, []int) {
 	return fileDescriptor_fb6b15fd2f44b459, []int{0}
 }
@@ -166,19 +166,19 @@ type HTTPAPISpecPattern struct {
 	// List of attributes that are generated if the HTTP request matches
 	// the specified http_method and uri_template. This typically
 	// includes the "api.operation" attribute.
-	Attributes *v1.Attributes `protobuf:"bytes,1,opt,name=attributes,proto3" json:"attributes,omitempty"`
+	Attributes	*v1.Attributes	`protobuf:"bytes,1,opt,name=attributes,proto3" json:"attributes,omitempty"`
 	// HTTP request method to match against as defined by
 	// [rfc7231](https://tools.ietf.org/html/rfc7231#page-21). For
 	// example: GET, HEAD, POST, PUT, DELETE.
-	HttpMethod string `protobuf:"bytes,2,opt,name=http_method,json=httpMethod,proto3" json:"http_method,omitempty"`
+	HttpMethod	string	`protobuf:"bytes,2,opt,name=http_method,json=httpMethod,proto3" json:"http_method,omitempty"`
 	// Types that are valid to be assigned to Pattern:
 	//	*HTTPAPISpecPattern_UriTemplate
 	//	*HTTPAPISpecPattern_Regex
-	Pattern isHTTPAPISpecPattern_Pattern `protobuf_oneof:"pattern"`
+	Pattern	isHTTPAPISpecPattern_Pattern	`protobuf_oneof:"pattern"`
 }
 
-func (m *HTTPAPISpecPattern) Reset()      { *m = HTTPAPISpecPattern{} }
-func (*HTTPAPISpecPattern) ProtoMessage() {}
+func (m *HTTPAPISpecPattern) Reset()		{ *m = HTTPAPISpecPattern{} }
+func (*HTTPAPISpecPattern) ProtoMessage()	{}
 func (*HTTPAPISpecPattern) Descriptor() ([]byte, []int) {
 	return fileDescriptor_fb6b15fd2f44b459, []int{1}
 }
@@ -218,8 +218,8 @@ type HTTPAPISpecPattern_Regex struct {
 	Regex string `protobuf:"bytes,4,opt,name=regex,proto3,oneof"`
 }
 
-func (*HTTPAPISpecPattern_UriTemplate) isHTTPAPISpecPattern_Pattern() {}
-func (*HTTPAPISpecPattern_Regex) isHTTPAPISpecPattern_Pattern()       {}
+func (*HTTPAPISpecPattern_UriTemplate) isHTTPAPISpecPattern_Pattern()	{}
+func (*HTTPAPISpecPattern_Regex) isHTTPAPISpecPattern_Pattern()		{}
 
 func (m *HTTPAPISpecPattern) GetPattern() isHTTPAPISpecPattern_Pattern {
 	if m != nil {
@@ -263,8 +263,8 @@ type APIKey struct {
 	Key isAPIKey_Key `protobuf_oneof:"key"`
 }
 
-func (m *APIKey) Reset()      { *m = APIKey{} }
-func (*APIKey) ProtoMessage() {}
+func (m *APIKey) Reset()	{ *m = APIKey{} }
+func (*APIKey) ProtoMessage()	{}
 func (*APIKey) Descriptor() ([]byte, []int) {
 	return fileDescriptor_fb6b15fd2f44b459, []int{2}
 }
@@ -307,9 +307,9 @@ type APIKey_Cookie struct {
 	Cookie string `protobuf:"bytes,3,opt,name=cookie,proto3,oneof"`
 }
 
-func (*APIKey_Query) isAPIKey_Key()  {}
-func (*APIKey_Header) isAPIKey_Key() {}
-func (*APIKey_Cookie) isAPIKey_Key() {}
+func (*APIKey_Query) isAPIKey_Key()	{}
+func (*APIKey_Header) isAPIKey_Key()	{}
+func (*APIKey_Cookie) isAPIKey_Key()	{}
 
 func (m *APIKey) GetKey() isAPIKey_Key {
 	if m != nil {
@@ -360,14 +360,14 @@ func (*APIKey) XXX_OneofWrappers() []interface{} {
 type HTTPAPISpecReference struct {
 	// The short name of the HTTPAPISpec. This is the resource
 	// name defined by the metadata name field.
-	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Name	string	`protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Optional namespace of the HTTPAPISpec. Defaults to the encompassing
 	// HTTPAPISpecBinding's metadata namespace field.
-	Namespace string `protobuf:"bytes,2,opt,name=namespace,proto3" json:"namespace,omitempty"`
+	Namespace	string	`protobuf:"bytes,2,opt,name=namespace,proto3" json:"namespace,omitempty"`
 }
 
-func (m *HTTPAPISpecReference) Reset()      { *m = HTTPAPISpecReference{} }
-func (*HTTPAPISpecReference) ProtoMessage() {}
+func (m *HTTPAPISpecReference) Reset()		{ *m = HTTPAPISpecReference{} }
+func (*HTTPAPISpecReference) ProtoMessage()	{}
 func (*HTTPAPISpecReference) Descriptor() ([]byte, []int) {
 	return fileDescriptor_fb6b15fd2f44b459, []int{3}
 }
@@ -434,15 +434,15 @@ var xxx_messageInfo_HTTPAPISpecReference proto.InternalMessageInfo
 // -->
 type HTTPAPISpecBinding struct {
 	// One or more services to map the listed HTTPAPISpec onto.
-	Services []*IstioService `protobuf:"bytes,1,rep,name=services,proto3" json:"services,omitempty"`
+	Services	[]*IstioService	`protobuf:"bytes,1,rep,name=services,proto3" json:"services,omitempty"`
 	// One or more HTTPAPISpec references that should be mapped to
 	// the specified service(s). The aggregate collection of match
 	// conditions defined in the HTTPAPISpecs should not overlap.
-	ApiSpecs []*HTTPAPISpecReference `protobuf:"bytes,2,rep,name=api_specs,json=apiSpecs,proto3" json:"api_specs,omitempty"`
+	ApiSpecs	[]*HTTPAPISpecReference	`protobuf:"bytes,2,rep,name=api_specs,json=apiSpecs,proto3" json:"api_specs,omitempty"`
 }
 
-func (m *HTTPAPISpecBinding) Reset()      { *m = HTTPAPISpecBinding{} }
-func (*HTTPAPISpecBinding) ProtoMessage() {}
+func (m *HTTPAPISpecBinding) Reset()		{ *m = HTTPAPISpecBinding{} }
+func (*HTTPAPISpecBinding) ProtoMessage()	{}
 func (*HTTPAPISpecBinding) Descriptor() ([]byte, []int) {
 	return fileDescriptor_fb6b15fd2f44b459, []int{4}
 }
@@ -1951,6 +1951,6 @@ func skipApiSpec(dAtA []byte) (n int, err error) {
 }
 
 var (
-	ErrInvalidLengthApiSpec = fmt.Errorf("proto: negative length found during unmarshaling")
-	ErrIntOverflowApiSpec   = fmt.Errorf("proto: integer overflow")
+	ErrInvalidLengthApiSpec	= fmt.Errorf("proto: negative length found during unmarshaling")
+	ErrIntOverflowApiSpec	= fmt.Errorf("proto: integer overflow")
 )

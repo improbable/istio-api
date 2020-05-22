@@ -753,7 +753,7 @@ package v1beta1
 import (
 	fmt "fmt"
 	proto "github.com/gogo/protobuf/proto"
-	_ "istio.io/gogo-genproto/googleapis/google/api"
+
 	math "math"
 )
 

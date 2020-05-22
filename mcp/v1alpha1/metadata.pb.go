@@ -23,7 +23,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion3	// please upgrade the proto package
 
 // Metadata information that all resources within the Mesh Configuration Protocol must have.
 type Metadata struct {
@@ -59,26 +59,26 @@ type Metadata struct {
 	// Cluster scoped resources are located at the root of the hierarchy and are of the form:
 	//
 	//    "/<k8s resource name>"
-	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Name	string	`protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// The creation timestamp of the resource.
-	CreateTime *types.Timestamp `protobuf:"bytes,2,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
+	CreateTime	*types.Timestamp	`protobuf:"bytes,2,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
 	// Resource version. This is used to determine when resources change across
 	// resource updates. It should be treated as opaque by consumers/sinks.
-	Version string `protobuf:"bytes,3,opt,name=version,proto3" json:"version,omitempty"`
+	Version	string	`protobuf:"bytes,3,opt,name=version,proto3" json:"version,omitempty"`
 	// Map of string keys and values that can be used to organize and categorize
 	// resources within a collection.
-	Labels map[string]string `protobuf:"bytes,4,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Labels	map[string]string	`protobuf:"bytes,4,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Map of string keys and values that can be used by source and sink to communicate
 	// arbitrary metadata about this resource.
-	Annotations          map[string]string `protobuf:"bytes,5,rep,name=annotations,proto3" json:"annotations,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
-	XXX_unrecognized     []byte            `json:"-"`
-	XXX_sizecache        int32             `json:"-"`
+	Annotations		map[string]string	`protobuf:"bytes,5,rep,name=annotations,proto3" json:"annotations,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	XXX_NoUnkeyedLiteral	struct{}		`json:"-"`
+	XXX_unrecognized	[]byte			`json:"-"`
+	XXX_sizecache		int32			`json:"-"`
 }
 
-func (m *Metadata) Reset()         { *m = Metadata{} }
-func (m *Metadata) String() string { return proto.CompactTextString(m) }
-func (*Metadata) ProtoMessage()    {}
+func (m *Metadata) Reset()		{ *m = Metadata{} }
+func (m *Metadata) String() string	{ return proto.CompactTextString(m) }
+func (*Metadata) ProtoMessage()		{}
 func (*Metadata) Descriptor() ([]byte, []int) {
 	return fileDescriptor_12ba26a99e116dc7, []int{0}
 }
@@ -150,7 +150,7 @@ func init() {
 	proto.RegisterMapType((map[string]string)(nil), "istio.mcp.v1alpha1.Metadata.LabelsEntry")
 }
 
-func init() { proto.RegisterFile("mcp/v1alpha1/metadata.proto", fileDescriptor_12ba26a99e116dc7) }
+func init()	{ proto.RegisterFile("mcp/v1alpha1/metadata.proto", fileDescriptor_12ba26a99e116dc7) }
 
 var fileDescriptor_12ba26a99e116dc7 = []byte{
 	// 326 bytes of a gzipped FileDescriptorProto
@@ -889,6 +889,6 @@ func skipMetadata(dAtA []byte) (n int, err error) {
 }
 
 var (
-	ErrInvalidLengthMetadata = fmt.Errorf("proto: negative length found during unmarshaling")
-	ErrIntOverflowMetadata   = fmt.Errorf("proto: integer overflow")
+	ErrInvalidLengthMetadata	= fmt.Errorf("proto: negative length found during unmarshaling")
+	ErrIntOverflowMetadata		= fmt.Errorf("proto: integer overflow")
 )

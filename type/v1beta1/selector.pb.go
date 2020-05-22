@@ -7,7 +7,7 @@ import (
 	fmt "fmt"
 	proto "github.com/gogo/protobuf/proto"
 	io "io"
-	_ "istio.io/gogo-genproto/googleapis/google/api"
+
 	math "math"
 	math_bits "math/bits"
 )
@@ -21,7 +21,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion3	// please upgrade the proto package
 
 // WorkloadSelector specifies the criteria used to determine if a policy can be applied
 // to a proxy. The matching criteria includes the metadata associated with a proxy,
@@ -33,15 +33,15 @@ type WorkloadSelector struct {
 	// One or more labels that indicate a specific set of pods/VMs
 	// on which a policy should be applied. The scope of label search is restricted to
 	// the configuration namespace in which the resource is present.
-	MatchLabels          map[string]string `protobuf:"bytes,1,rep,name=match_labels,json=matchLabels,proto3" json:"match_labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
-	XXX_unrecognized     []byte            `json:"-"`
-	XXX_sizecache        int32             `json:"-"`
+	MatchLabels		map[string]string	`protobuf:"bytes,1,rep,name=match_labels,json=matchLabels,proto3" json:"match_labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	XXX_NoUnkeyedLiteral	struct{}		`json:"-"`
+	XXX_unrecognized	[]byte			`json:"-"`
+	XXX_sizecache		int32			`json:"-"`
 }
 
-func (m *WorkloadSelector) Reset()         { *m = WorkloadSelector{} }
-func (m *WorkloadSelector) String() string { return proto.CompactTextString(m) }
-func (*WorkloadSelector) ProtoMessage()    {}
+func (m *WorkloadSelector) Reset()		{ *m = WorkloadSelector{} }
+func (m *WorkloadSelector) String() string	{ return proto.CompactTextString(m) }
+func (*WorkloadSelector) ProtoMessage()		{}
 func (*WorkloadSelector) Descriptor() ([]byte, []int) {
 	return fileDescriptor_dd464a999980808d, []int{0}
 }
@@ -84,7 +84,7 @@ func init() {
 	proto.RegisterMapType((map[string]string)(nil), "istio.type.v1beta1.WorkloadSelector.MatchLabelsEntry")
 }
 
-func init() { proto.RegisterFile("type/v1beta1/selector.proto", fileDescriptor_dd464a999980808d) }
+func init()	{ proto.RegisterFile("type/v1beta1/selector.proto", fileDescriptor_dd464a999980808d) }
 
 var fileDescriptor_dd464a999980808d = []byte{
 	// 233 bytes of a gzipped FileDescriptorProto
@@ -476,6 +476,6 @@ func skipSelector(dAtA []byte) (n int, err error) {
 }
 
 var (
-	ErrInvalidLengthSelector = fmt.Errorf("proto: negative length found during unmarshaling")
-	ErrIntOverflowSelector   = fmt.Errorf("proto: integer overflow")
+	ErrInvalidLengthSelector	= fmt.Errorf("proto: negative length found during unmarshaling")
+	ErrIntOverflowSelector		= fmt.Errorf("proto: integer overflow")
 )

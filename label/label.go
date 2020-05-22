@@ -18,23 +18,23 @@ package label
 const (
 	// TLSMode is the name of label given to service instances to determine whether to use mTLS or
 	// fallback to plaintext/tls
-	TLSMode = "security.istio.io/tlsMode"
+	TLSMode	= "security.istio.io/tlsMode"
 
 	// IstioCanonicalServiceName is the name of label for the Istio Canonical Service for a workload instance.
-	IstioCanonicalServiceName = "service.istio.io/canonical-name"
+	IstioCanonicalServiceName	= "service.istio.io/canonical-name"
 
 	// IstioCanonicalServiceRevision is the name of label for the Istio Canonical Service revision for a workload instance.
-	IstioCanonicalServiceRevision = "service.istio.io/canonical-revision"
+	IstioCanonicalServiceRevision	= "service.istio.io/canonical-revision"
 
 	// IoIstioRev is the Istio control plane revision associated with the resource; e.g. "canary"
-	IstioRev = "istio.io/rev"
+	IstioRev	= "istio.io/rev"
 
 	// IstioOperatorComponent is the Istio operator component name of the resource, e.g. "Pilot"
-	IstioOperatorComponent = "operator.istio.io/component"
+	IstioOperatorComponent	= "operator.istio.io/component"
 
 	// IstioOperatorManaged is "Reconcile" if the Istio operator will reconcile the resource.
-	IstioOperatorManaged = "operator.istio.io/managed"
+	IstioOperatorManaged	= "operator.istio.io/managed"
 
 	// IstioOperatorVersion is the Istio operator version that installed the resource, e.g. "1.6.0"
-	IstioOperatorVersion = "operator.istio.io/version"
+	IstioOperatorVersion	= "operator.istio.io/version"
 )

@@ -9,8 +9,8 @@ import (
 	_ "github.com/gogo/protobuf/gogoproto"
 	github_com_gogo_protobuf_jsonpb "github.com/gogo/protobuf/jsonpb"
 	proto "github.com/gogo/protobuf/proto"
-	_ "istio.io/api/mixer/v1"
-	_ "istio.io/gogo-genproto/googleapis/google/api"
+	_ "github.com/improbable/istio-api/mixer/v1"
+
 	math "math"
 )
 
@@ -75,6 +75,6 @@ func (this *HTTPAPISpecBinding) UnmarshalJSON(b []byte) error {
 }
 
 var (
-	ApiSpecMarshaler   = &github_com_gogo_protobuf_jsonpb.Marshaler{}
-	ApiSpecUnmarshaler = &github_com_gogo_protobuf_jsonpb.Unmarshaler{}
+	ApiSpecMarshaler	= &github_com_gogo_protobuf_jsonpb.Marshaler{}
+	ApiSpecUnmarshaler	= &github_com_gogo_protobuf_jsonpb.Unmarshaler{}
 )

@@ -7,7 +7,7 @@ import (
 	fmt "fmt"
 	proto "github.com/gogo/protobuf/proto"
 	io "io"
-	v1beta1 "istio.io/api/type/v1beta1"
+	v1beta1 "github.com/improbable/istio-api/type/v1beta1"
 	math "math"
 	math_bits "math/bits"
 )
@@ -21,33 +21,33 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion3	// please upgrade the proto package
 
 type PeerAuthentication_MutualTLS_Mode int32
 
 const (
 	// Inherit from parent, if has one. Otherwise treated as PERMISSIVE.
-	PeerAuthentication_MutualTLS_UNSET PeerAuthentication_MutualTLS_Mode = 0
+	PeerAuthentication_MutualTLS_UNSET	PeerAuthentication_MutualTLS_Mode	= 0
 	// Connection is not tunneled.
-	PeerAuthentication_MutualTLS_DISABLE PeerAuthentication_MutualTLS_Mode = 1
+	PeerAuthentication_MutualTLS_DISABLE	PeerAuthentication_MutualTLS_Mode	= 1
 	// Connection can be either plaintext or mTLS tunnel.
-	PeerAuthentication_MutualTLS_PERMISSIVE PeerAuthentication_MutualTLS_Mode = 2
+	PeerAuthentication_MutualTLS_PERMISSIVE	PeerAuthentication_MutualTLS_Mode	= 2
 	// Connection is an mTLS tunnel (TLS with client cert must be presented).
-	PeerAuthentication_MutualTLS_STRICT PeerAuthentication_MutualTLS_Mode = 3
+	PeerAuthentication_MutualTLS_STRICT	PeerAuthentication_MutualTLS_Mode	= 3
 )
 
 var PeerAuthentication_MutualTLS_Mode_name = map[int32]string{
-	0: "UNSET",
-	1: "DISABLE",
-	2: "PERMISSIVE",
-	3: "STRICT",
+	0:	"UNSET",
+	1:	"DISABLE",
+	2:	"PERMISSIVE",
+	3:	"STRICT",
 }
 
 var PeerAuthentication_MutualTLS_Mode_value = map[string]int32{
-	"UNSET":      0,
-	"DISABLE":    1,
-	"PERMISSIVE": 2,
-	"STRICT":     3,
+	"UNSET":	0,
+	"DISABLE":	1,
+	"PERMISSIVE":	2,
+	"STRICT":	3,
 }
 
 func (x PeerAuthentication_MutualTLS_Mode) String() string {
@@ -157,19 +157,19 @@ func (PeerAuthentication_MutualTLS_Mode) EnumDescriptor() ([]byte, []int) {
 type PeerAuthentication struct {
 	// The selector determines the workloads to apply the ChannelAuthentication on.
 	// If not set, the policy will be applied to all workloads in the same namespace as the policy.
-	Selector *v1beta1.WorkloadSelector `protobuf:"bytes,1,opt,name=selector,proto3" json:"selector,omitempty"`
+	Selector	*v1beta1.WorkloadSelector	`protobuf:"bytes,1,opt,name=selector,proto3" json:"selector,omitempty"`
 	// Mutual TLS settings for workload. If not defined, inherit from parent.
-	Mtls *PeerAuthentication_MutualTLS `protobuf:"bytes,2,opt,name=mtls,proto3" json:"mtls,omitempty"`
+	Mtls	*PeerAuthentication_MutualTLS	`protobuf:"bytes,2,opt,name=mtls,proto3" json:"mtls,omitempty"`
 	// Port specific mutual TLS settings.
-	PortLevelMtls        map[uint32]*PeerAuthentication_MutualTLS `protobuf:"bytes,3,rep,name=port_level_mtls,json=portLevelMtls,proto3" json:"port_level_mtls,omitempty" protobuf_key:"varint,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	XXX_NoUnkeyedLiteral struct{}                                 `json:"-"`
-	XXX_unrecognized     []byte                                   `json:"-"`
-	XXX_sizecache        int32                                    `json:"-"`
+	PortLevelMtls		map[uint32]*PeerAuthentication_MutualTLS	`protobuf:"bytes,3,rep,name=port_level_mtls,json=portLevelMtls,proto3" json:"port_level_mtls,omitempty" protobuf_key:"varint,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	XXX_NoUnkeyedLiteral	struct{}					`json:"-"`
+	XXX_unrecognized	[]byte						`json:"-"`
+	XXX_sizecache		int32						`json:"-"`
 }
 
-func (m *PeerAuthentication) Reset()         { *m = PeerAuthentication{} }
-func (m *PeerAuthentication) String() string { return proto.CompactTextString(m) }
-func (*PeerAuthentication) ProtoMessage()    {}
+func (m *PeerAuthentication) Reset()		{ *m = PeerAuthentication{} }
+func (m *PeerAuthentication) String() string	{ return proto.CompactTextString(m) }
+func (*PeerAuthentication) ProtoMessage()	{}
 func (*PeerAuthentication) Descriptor() ([]byte, []int) {
 	return fileDescriptor_59c7062c50455f33, []int{0}
 }
@@ -224,15 +224,15 @@ func (m *PeerAuthentication) GetPortLevelMtls() map[uint32]*PeerAuthentication_M
 // Mutual TLS settings.
 type PeerAuthentication_MutualTLS struct {
 	// Defines the mTLS mode used for peer authentication.
-	Mode                 PeerAuthentication_MutualTLS_Mode `protobuf:"varint,1,opt,name=mode,proto3,enum=istio.security.v1beta1.PeerAuthentication_MutualTLS_Mode" json:"mode,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                          `json:"-"`
-	XXX_unrecognized     []byte                            `json:"-"`
-	XXX_sizecache        int32                             `json:"-"`
+	Mode			PeerAuthentication_MutualTLS_Mode	`protobuf:"varint,1,opt,name=mode,proto3,enum=istio.security.v1beta1.PeerAuthentication_MutualTLS_Mode" json:"mode,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}				`json:"-"`
+	XXX_unrecognized	[]byte					`json:"-"`
+	XXX_sizecache		int32					`json:"-"`
 }
 
-func (m *PeerAuthentication_MutualTLS) Reset()         { *m = PeerAuthentication_MutualTLS{} }
-func (m *PeerAuthentication_MutualTLS) String() string { return proto.CompactTextString(m) }
-func (*PeerAuthentication_MutualTLS) ProtoMessage()    {}
+func (m *PeerAuthentication_MutualTLS) Reset()		{ *m = PeerAuthentication_MutualTLS{} }
+func (m *PeerAuthentication_MutualTLS) String() string	{ return proto.CompactTextString(m) }
+func (*PeerAuthentication_MutualTLS) ProtoMessage()	{}
 func (*PeerAuthentication_MutualTLS) Descriptor() ([]byte, []int) {
 	return fileDescriptor_59c7062c50455f33, []int{0, 0}
 }
@@ -902,6 +902,6 @@ func skipPeerAuthentication(dAtA []byte) (n int, err error) {
 }
 
 var (
-	ErrInvalidLengthPeerAuthentication = fmt.Errorf("proto: negative length found during unmarshaling")
-	ErrIntOverflowPeerAuthentication   = fmt.Errorf("proto: integer overflow")
+	ErrInvalidLengthPeerAuthentication	= fmt.Errorf("proto: negative length found during unmarshaling")
+	ErrIntOverflowPeerAuthentication	= fmt.Errorf("proto: integer overflow")
 )

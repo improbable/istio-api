@@ -13,7 +13,7 @@ import (
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
 	io "io"
-	rpc "istio.io/gogo-genproto/googleapis/google/rpc"
+
 	math "math"
 	math_bits "math/bits"
 )
@@ -27,7 +27,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion3	// please upgrade the proto package
 
 // Identifies a specific MCP sink node instance. The node identifier is
 // presented to the resource source, which may use this identifier
@@ -36,17 +36,17 @@ const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 // from the underlying transport layer (e.g. rpc credentials).
 type SinkNode struct {
 	// An opaque identifier for the MCP node.
-	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Id	string	`protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// Opaque annotations extending the node identifier.
-	Annotations          map[string]string `protobuf:"bytes,2,rep,name=annotations,proto3" json:"annotations,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
-	XXX_unrecognized     []byte            `json:"-"`
-	XXX_sizecache        int32             `json:"-"`
+	Annotations		map[string]string	`protobuf:"bytes,2,rep,name=annotations,proto3" json:"annotations,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	XXX_NoUnkeyedLiteral	struct{}		`json:"-"`
+	XXX_unrecognized	[]byte			`json:"-"`
+	XXX_sizecache		int32			`json:"-"`
 }
 
-func (m *SinkNode) Reset()         { *m = SinkNode{} }
-func (m *SinkNode) String() string { return proto.CompactTextString(m) }
-func (*SinkNode) ProtoMessage()    {}
+func (m *SinkNode) Reset()		{ *m = SinkNode{} }
+func (m *SinkNode) String() string	{ return proto.CompactTextString(m) }
+func (*SinkNode) ProtoMessage()		{}
 func (*SinkNode) Descriptor() ([]byte, []int) {
 	return fileDescriptor_0713683a7297bd65, []int{0}
 }
@@ -102,32 +102,32 @@ type MeshConfigRequest struct {
 	// takes place by returning the new API config version as applied or
 	// the previous API config version respectively. Each type_url (see
 	// below) has an independent version associated with it.
-	VersionInfo string `protobuf:"bytes,1,opt,name=version_info,json=versionInfo,proto3" json:"version_info,omitempty"`
+	VersionInfo	string	`protobuf:"bytes,1,opt,name=version_info,json=versionInfo,proto3" json:"version_info,omitempty"`
 	// The sink node making the request.
-	SinkNode *SinkNode `protobuf:"bytes,2,opt,name=sink_node,json=sinkNode,proto3" json:"sink_node,omitempty"`
+	SinkNode	*SinkNode	`protobuf:"bytes,2,opt,name=sink_node,json=sinkNode,proto3" json:"sink_node,omitempty"`
 	// Type of the resource that is being requested, e.g.
 	// "type.googleapis.com/istio.io.networking.v1alpha3.VirtualService".
-	TypeUrl string `protobuf:"bytes,3,opt,name=type_url,json=typeUrl,proto3" json:"type_url,omitempty"`
+	TypeUrl	string	`protobuf:"bytes,3,opt,name=type_url,json=typeUrl,proto3" json:"type_url,omitempty"`
 	// The nonce corresponding to MeshConfigResponse being
 	// ACK/NACKed. See above discussion on version_info and the
 	// MeshConfigResponse nonce comment. This may be empty if no nonce is
 	// available, e.g. at startup.
-	ResponseNonce string `protobuf:"bytes,4,opt,name=response_nonce,json=responseNonce,proto3" json:"response_nonce,omitempty"`
+	ResponseNonce	string	`protobuf:"bytes,4,opt,name=response_nonce,json=responseNonce,proto3" json:"response_nonce,omitempty"`
 	// This is populated when the previous MeshConfigResponse failed to
 	// update configuration. The *message* field in *error_details*
 	// provides the client internal exception related to the failure. It
 	// is only intended for consumption during manual debugging, the
 	// string provided is not guaranteed to be stable across client
 	// versions.
-	ErrorDetail          *rpc.Status `protobuf:"bytes,5,opt,name=error_detail,json=errorDetail,proto3" json:"error_detail,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}    `json:"-"`
-	XXX_unrecognized     []byte      `json:"-"`
-	XXX_sizecache        int32       `json:"-"`
+	ErrorDetail		*rpc.Status	`protobuf:"bytes,5,opt,name=error_detail,json=errorDetail,proto3" json:"error_detail,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *MeshConfigRequest) Reset()         { *m = MeshConfigRequest{} }
-func (m *MeshConfigRequest) String() string { return proto.CompactTextString(m) }
-func (*MeshConfigRequest) ProtoMessage()    {}
+func (m *MeshConfigRequest) Reset()		{ *m = MeshConfigRequest{} }
+func (m *MeshConfigRequest) String() string	{ return proto.CompactTextString(m) }
+func (*MeshConfigRequest) ProtoMessage()	{}
 func (*MeshConfigRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_0713683a7297bd65, []int{1}
 }
@@ -197,14 +197,14 @@ func (m *MeshConfigRequest) GetErrorDetail() *rpc.Status {
 // same type in response to a MeshConfigRequest.
 type MeshConfigResponse struct {
 	// The version of the response data.
-	VersionInfo string `protobuf:"bytes,1,opt,name=version_info,json=versionInfo,proto3" json:"version_info,omitempty"`
+	VersionInfo	string	`protobuf:"bytes,1,opt,name=version_info,json=versionInfo,proto3" json:"version_info,omitempty"`
 	// The response resources wrapped in the common MCP *Resource*
 	// message.
-	Resources []Resource `protobuf:"bytes,2,rep,name=resources,proto3" json:"resources"`
+	Resources	[]Resource	`protobuf:"bytes,2,rep,name=resources,proto3" json:"resources"`
 	// Type URL for resources wrapped in the provided resources(s). This
 	// must be consistent with the type_url in the wrapper messages if
 	// resources is non-empty.
-	TypeUrl string `protobuf:"bytes,3,opt,name=type_url,json=typeUrl,proto3" json:"type_url,omitempty"`
+	TypeUrl	string	`protobuf:"bytes,3,opt,name=type_url,json=typeUrl,proto3" json:"type_url,omitempty"`
 	// The nonce provides a way to explicitly ack a specific
 	// MeshConfigResponse in a following MeshConfigRequest. Additional
 	// messages may have been sent by client to the management server for
@@ -213,15 +213,15 @@ type MeshConfigResponse struct {
 	// time. The nonce allows the management server to ignore any
 	// further MeshConfigRequests for the previous version until a
 	// MeshConfigRequest bearing the nonce.
-	Nonce                string   `protobuf:"bytes,4,opt,name=nonce,proto3" json:"nonce,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	Nonce			string		`protobuf:"bytes,4,opt,name=nonce,proto3" json:"nonce,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *MeshConfigResponse) Reset()         { *m = MeshConfigResponse{} }
-func (m *MeshConfigResponse) String() string { return proto.CompactTextString(m) }
-func (*MeshConfigResponse) ProtoMessage()    {}
+func (m *MeshConfigResponse) Reset()		{ *m = MeshConfigResponse{} }
+func (m *MeshConfigResponse) String() string	{ return proto.CompactTextString(m) }
+func (*MeshConfigResponse) ProtoMessage()	{}
 func (*MeshConfigResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_0713683a7297bd65, []int{2}
 }
@@ -289,33 +289,33 @@ func (m *MeshConfigResponse) GetNonce() string {
 //      ACK or NACK is determined by the absence or presence of error_detail.
 type IncrementalMeshConfigRequest struct {
 	// The sink node making the request.
-	SinkNode *SinkNode `protobuf:"bytes,1,opt,name=sink_node,json=sinkNode,proto3" json:"sink_node,omitempty"`
+	SinkNode	*SinkNode	`protobuf:"bytes,1,opt,name=sink_node,json=sinkNode,proto3" json:"sink_node,omitempty"`
 	// Type of the resource that is being requested, e.g.
 	// "type.googleapis.com/istio.io.networking.v1alpha3.VirtualService".
-	TypeUrl string `protobuf:"bytes,2,opt,name=type_url,json=typeUrl,proto3" json:"type_url,omitempty"`
+	TypeUrl	string	`protobuf:"bytes,2,opt,name=type_url,json=typeUrl,proto3" json:"type_url,omitempty"`
 	// When the IncrementalMeshConfigRequest is the first in a stream,
 	// the initial_resource_versions must be populated. Otherwise,
 	// initial_resource_versions must be omitted. The keys are the
 	// resources names of the MCP resources known to the MCP client. The
 	// values in the map are the associated resource level version info.
-	InitialResourceVersions map[string]string `protobuf:"bytes,3,rep,name=initial_resource_versions,json=initialResourceVersions,proto3" json:"initial_resource_versions,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	InitialResourceVersions	map[string]string	`protobuf:"bytes,3,rep,name=initial_resource_versions,json=initialResourceVersions,proto3" json:"initial_resource_versions,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// When the IncrementalMeshConfigRequest is a ACK or NACK message in response
 	// to a previous IncrementalMeshConfigResponse, the response_nonce must be the
 	// nonce in the IncrementalMeshConfigResponse.
 	// Otherwise response_nonce must be omitted.
-	ResponseNonce string `protobuf:"bytes,4,opt,name=response_nonce,json=responseNonce,proto3" json:"response_nonce,omitempty"`
+	ResponseNonce	string	`protobuf:"bytes,4,opt,name=response_nonce,json=responseNonce,proto3" json:"response_nonce,omitempty"`
 	// This is populated when the previous IncrementalMeshConfigResponses
 	// failed to update configuration. The *message* field in *error_details*
 	// provides the client internal exception related to the failure.
-	ErrorDetail          *rpc.Status `protobuf:"bytes,5,opt,name=error_detail,json=errorDetail,proto3" json:"error_detail,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}    `json:"-"`
-	XXX_unrecognized     []byte      `json:"-"`
-	XXX_sizecache        int32       `json:"-"`
+	ErrorDetail		*rpc.Status	`protobuf:"bytes,5,opt,name=error_detail,json=errorDetail,proto3" json:"error_detail,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *IncrementalMeshConfigRequest) Reset()         { *m = IncrementalMeshConfigRequest{} }
-func (m *IncrementalMeshConfigRequest) String() string { return proto.CompactTextString(m) }
-func (*IncrementalMeshConfigRequest) ProtoMessage()    {}
+func (m *IncrementalMeshConfigRequest) Reset()		{ *m = IncrementalMeshConfigRequest{} }
+func (m *IncrementalMeshConfigRequest) String() string	{ return proto.CompactTextString(m) }
+func (*IncrementalMeshConfigRequest) ProtoMessage()	{}
 func (*IncrementalMeshConfigRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_0713683a7297bd65, []int{3}
 }
@@ -395,27 +395,27 @@ func (m *IncrementalMeshConfigRequest) GetErrorDetail() *rpc.Status {
 // system_version_info is present for debugging purposes only.
 type IncrementalMeshConfigResponse struct {
 	// The version of the response data (used for debugging).
-	SystemVersionInfo string `protobuf:"bytes,1,opt,name=system_version_info,json=systemVersionInfo,proto3" json:"system_version_info,omitempty"`
+	SystemVersionInfo	string	`protobuf:"bytes,1,opt,name=system_version_info,json=systemVersionInfo,proto3" json:"system_version_info,omitempty"`
 	// The response resources wrapped in the common MCP *Resource*
 	// message. These are typed resources that match the type url in the
 	// IncrementalMeshConfigRequest.
-	Resources []Resource `protobuf:"bytes,2,rep,name=resources,proto3" json:"resources"`
+	Resources	[]Resource	`protobuf:"bytes,2,rep,name=resources,proto3" json:"resources"`
 	// Resources names of resources that have be deleted and to be
 	// removed from the MCP Client.  Removed resources for missing
 	// resources can be ignored.
-	RemovedResources []string `protobuf:"bytes,3,rep,name=removed_resources,json=removedResources,proto3" json:"removed_resources,omitempty"`
+	RemovedResources	[]string	`protobuf:"bytes,3,rep,name=removed_resources,json=removedResources,proto3" json:"removed_resources,omitempty"`
 	// The nonce provides a way for IncrementalMeshConfigRequests to
 	// uniquely reference an IncrementalMeshConfigResponse. The nonce is
 	// required.
-	Nonce                string   `protobuf:"bytes,4,opt,name=nonce,proto3" json:"nonce,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	Nonce			string		`protobuf:"bytes,4,opt,name=nonce,proto3" json:"nonce,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *IncrementalMeshConfigResponse) Reset()         { *m = IncrementalMeshConfigResponse{} }
-func (m *IncrementalMeshConfigResponse) String() string { return proto.CompactTextString(m) }
-func (*IncrementalMeshConfigResponse) ProtoMessage()    {}
+func (m *IncrementalMeshConfigResponse) Reset()		{ *m = IncrementalMeshConfigResponse{} }
+func (m *IncrementalMeshConfigResponse) String() string	{ return proto.CompactTextString(m) }
+func (*IncrementalMeshConfigResponse) ProtoMessage()	{}
 func (*IncrementalMeshConfigResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_0713683a7297bd65, []int{4}
 }
@@ -488,37 +488,37 @@ func (m *IncrementalMeshConfigResponse) GetNonce() string {
 //
 type RequestResources struct {
 	// The sink node making the request.
-	SinkNode *SinkNode `protobuf:"bytes,1,opt,name=sink_node,json=sinkNode,proto3" json:"sink_node,omitempty"`
+	SinkNode	*SinkNode	`protobuf:"bytes,1,opt,name=sink_node,json=sinkNode,proto3" json:"sink_node,omitempty"`
 	// Type of resource collection that is being requested, e.g.
 	//
 	// istio/networking/v1alpha3/VirtualService
 	// k8s/<apiVersion>/<kind>
-	Collection string `protobuf:"bytes,2,opt,name=collection,proto3" json:"collection,omitempty"`
+	Collection	string	`protobuf:"bytes,2,opt,name=collection,proto3" json:"collection,omitempty"`
 	// When the RequestResources is the first in a stream, the initial_resource_versions must
 	// be populated. Otherwise, initial_resource_versions must be omitted. The keys are the
 	// resources names of the MCP resources known to the MCP client. The values in the map
 	// are the associated resource level version info.
-	InitialResourceVersions map[string]string `protobuf:"bytes,3,rep,name=initial_resource_versions,json=initialResourceVersions,proto3" json:"initial_resource_versions,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	InitialResourceVersions	map[string]string	`protobuf:"bytes,3,rep,name=initial_resource_versions,json=initialResourceVersions,proto3" json:"initial_resource_versions,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// When the RequestResources is an ACK or NACK message in response to a previous RequestResources,
 	// the response_nonce must be the nonce in the RequestResources. Otherwise response_nonce must
 	// be omitted.
-	ResponseNonce string `protobuf:"bytes,4,opt,name=response_nonce,json=responseNonce,proto3" json:"response_nonce,omitempty"`
+	ResponseNonce	string	`protobuf:"bytes,4,opt,name=response_nonce,json=responseNonce,proto3" json:"response_nonce,omitempty"`
 	// This is populated when the previously received resources could not be applied
 	// The *message* field in *error_details* provides the source internal error
 	// related to the failure.
-	ErrorDetail *rpc.Status `protobuf:"bytes,5,opt,name=error_detail,json=errorDetail,proto3" json:"error_detail,omitempty"`
+	ErrorDetail	*rpc.Status	`protobuf:"bytes,5,opt,name=error_detail,json=errorDetail,proto3" json:"error_detail,omitempty"`
 	// Request an incremental update for the specified collection. The source may choose to
 	// honor this request or ignore and and provide a full-state update in the corresponding
 	// `Resource` response.
-	Incremental          bool     `protobuf:"varint,6,opt,name=incremental,proto3" json:"incremental,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	Incremental		bool		`protobuf:"varint,6,opt,name=incremental,proto3" json:"incremental,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *RequestResources) Reset()         { *m = RequestResources{} }
-func (m *RequestResources) String() string { return proto.CompactTextString(m) }
-func (*RequestResources) ProtoMessage()    {}
+func (m *RequestResources) Reset()		{ *m = RequestResources{} }
+func (m *RequestResources) String() string	{ return proto.CompactTextString(m) }
+func (*RequestResources) ProtoMessage()		{}
 func (*RequestResources) Descriptor() ([]byte, []int) {
 	return fileDescriptor_0713683a7297bd65, []int{5}
 }
@@ -603,12 +603,12 @@ func (m *RequestResources) GetIncremental() bool {
 // Resources to an RequestResources ACK or NACK.
 type Resources struct {
 	// The version of the response data (used for debugging).
-	SystemVersionInfo string `protobuf:"bytes,1,opt,name=system_version_info,json=systemVersionInfo,proto3" json:"system_version_info,omitempty"`
+	SystemVersionInfo	string	`protobuf:"bytes,1,opt,name=system_version_info,json=systemVersionInfo,proto3" json:"system_version_info,omitempty"`
 	// Type of resource collection that is being requested, e.g.
 	//
 	// istio/networking/v1alpha3/VirtualService
 	// k8s/<apiVersion>/<kind>
-	Collection string `protobuf:"bytes,2,opt,name=collection,proto3" json:"collection,omitempty"`
+	Collection	string	`protobuf:"bytes,2,opt,name=collection,proto3" json:"collection,omitempty"`
 	// The response resources wrapped in the common MCP *Resource* message.
 	// These are typed resources that match the type url in the
 	// RequestResources message.
@@ -618,7 +618,7 @@ type Resources struct {
 	//
 	// When `incremental` is false, this contains the full set of resources for the
 	// specified collection. This replaces any previously delivered resources.
-	Resources []Resource `protobuf:"bytes,3,rep,name=resources,proto3" json:"resources"`
+	Resources	[]Resource	`protobuf:"bytes,3,rep,name=resources,proto3" json:"resources"`
 	// Names of resources that have been deleted and to be
 	// removed from the MCP sink node. Removed resources for missing
 	// resources can be ignored.
@@ -628,21 +628,21 @@ type Resources struct {
 	// the sink.
 	//
 	// When `incremental` is false, this field should be ignored.
-	RemovedResources []string `protobuf:"bytes,4,rep,name=removed_resources,json=removedResources,proto3" json:"removed_resources,omitempty"`
+	RemovedResources	[]string	`protobuf:"bytes,4,rep,name=removed_resources,json=removedResources,proto3" json:"removed_resources,omitempty"`
 	// Required. The nonce provides a way for RequestChange to uniquely
 	// reference a RequestResources.
-	Nonce string `protobuf:"bytes,5,opt,name=nonce,proto3" json:"nonce,omitempty"`
+	Nonce	string	`protobuf:"bytes,5,opt,name=nonce,proto3" json:"nonce,omitempty"`
 	// This resource response is an incremental update. The source should only send
 	// incremental updates if the sink requested them.
-	Incremental          bool     `protobuf:"varint,6,opt,name=incremental,proto3" json:"incremental,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	Incremental		bool		`protobuf:"varint,6,opt,name=incremental,proto3" json:"incremental,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *Resources) Reset()         { *m = Resources{} }
-func (m *Resources) String() string { return proto.CompactTextString(m) }
-func (*Resources) ProtoMessage()    {}
+func (m *Resources) Reset()		{ *m = Resources{} }
+func (m *Resources) String() string	{ return proto.CompactTextString(m) }
+func (*Resources) ProtoMessage()	{}
 func (*Resources) Descriptor() ([]byte, []int) {
 	return fileDescriptor_0713683a7297bd65, []int{6}
 }
@@ -728,7 +728,7 @@ func init() {
 	proto.RegisterType((*Resources)(nil), "istio.mcp.v1alpha1.Resources")
 }
 
-func init() { proto.RegisterFile("mcp/v1alpha1/mcp.proto", fileDescriptor_0713683a7297bd65) }
+func init()	{ proto.RegisterFile("mcp/v1alpha1/mcp.proto", fileDescriptor_0713683a7297bd65) }
 
 var fileDescriptor_0713683a7297bd65 = []byte{
 	// 774 bytes of a gzipped FileDescriptorProto
@@ -1262,24 +1262,24 @@ func (x *aggregatedMeshConfigServiceIncrementalAggregatedResourcesServer) Recv()
 }
 
 var _AggregatedMeshConfigService_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "istio.mcp.v1alpha1.AggregatedMeshConfigService",
-	HandlerType: (*AggregatedMeshConfigServiceServer)(nil),
-	Methods:     []grpc.MethodDesc{},
+	ServiceName:	"istio.mcp.v1alpha1.AggregatedMeshConfigService",
+	HandlerType:	(*AggregatedMeshConfigServiceServer)(nil),
+	Methods:	[]grpc.MethodDesc{},
 	Streams: []grpc.StreamDesc{
 		{
-			StreamName:    "StreamAggregatedResources",
-			Handler:       _AggregatedMeshConfigService_StreamAggregatedResources_Handler,
-			ServerStreams: true,
-			ClientStreams: true,
+			StreamName:	"StreamAggregatedResources",
+			Handler:	_AggregatedMeshConfigService_StreamAggregatedResources_Handler,
+			ServerStreams:	true,
+			ClientStreams:	true,
 		},
 		{
-			StreamName:    "IncrementalAggregatedResources",
-			Handler:       _AggregatedMeshConfigService_IncrementalAggregatedResources_Handler,
-			ServerStreams: true,
-			ClientStreams: true,
+			StreamName:	"IncrementalAggregatedResources",
+			Handler:	_AggregatedMeshConfigService_IncrementalAggregatedResources_Handler,
+			ServerStreams:	true,
+			ClientStreams:	true,
 		},
 	},
-	Metadata: "mcp/v1alpha1/mcp.proto",
+	Metadata:	"mcp/v1alpha1/mcp.proto",
 }
 
 // ResourceSourceClient is the client API for ResourceSource service.
@@ -1378,18 +1378,18 @@ func (x *resourceSourceEstablishResourceStreamServer) Recv() (*RequestResources,
 }
 
 var _ResourceSource_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "istio.mcp.v1alpha1.ResourceSource",
-	HandlerType: (*ResourceSourceServer)(nil),
-	Methods:     []grpc.MethodDesc{},
+	ServiceName:	"istio.mcp.v1alpha1.ResourceSource",
+	HandlerType:	(*ResourceSourceServer)(nil),
+	Methods:	[]grpc.MethodDesc{},
 	Streams: []grpc.StreamDesc{
 		{
-			StreamName:    "EstablishResourceStream",
-			Handler:       _ResourceSource_EstablishResourceStream_Handler,
-			ServerStreams: true,
-			ClientStreams: true,
+			StreamName:	"EstablishResourceStream",
+			Handler:	_ResourceSource_EstablishResourceStream_Handler,
+			ServerStreams:	true,
+			ClientStreams:	true,
 		},
 	},
-	Metadata: "mcp/v1alpha1/mcp.proto",
+	Metadata:	"mcp/v1alpha1/mcp.proto",
 }
 
 // ResourceSinkClient is the client API for ResourceSink service.
@@ -1488,18 +1488,18 @@ func (x *resourceSinkEstablishResourceStreamServer) Recv() (*Resources, error) {
 }
 
 var _ResourceSink_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "istio.mcp.v1alpha1.ResourceSink",
-	HandlerType: (*ResourceSinkServer)(nil),
-	Methods:     []grpc.MethodDesc{},
+	ServiceName:	"istio.mcp.v1alpha1.ResourceSink",
+	HandlerType:	(*ResourceSinkServer)(nil),
+	Methods:	[]grpc.MethodDesc{},
 	Streams: []grpc.StreamDesc{
 		{
-			StreamName:    "EstablishResourceStream",
-			Handler:       _ResourceSink_EstablishResourceStream_Handler,
-			ServerStreams: true,
-			ClientStreams: true,
+			StreamName:	"EstablishResourceStream",
+			Handler:	_ResourceSink_EstablishResourceStream_Handler,
+			ServerStreams:	true,
+			ClientStreams:	true,
 		},
 	},
-	Metadata: "mcp/v1alpha1/mcp.proto",
+	Metadata:	"mcp/v1alpha1/mcp.proto",
 }
 
 func (m *SinkNode) Marshal() (dAtA []byte, err error) {
@@ -4061,6 +4061,6 @@ func skipMcp(dAtA []byte) (n int, err error) {
 }
 
 var (
-	ErrInvalidLengthMcp = fmt.Errorf("proto: negative length found during unmarshaling")
-	ErrIntOverflowMcp   = fmt.Errorf("proto: integer overflow")
+	ErrInvalidLengthMcp	= fmt.Errorf("proto: negative length found during unmarshaling")
+	ErrIntOverflowMcp	= fmt.Errorf("proto: integer overflow")
 )

@@ -189,7 +189,7 @@ import (
 	github_com_gogo_protobuf_jsonpb "github.com/gogo/protobuf/jsonpb"
 	proto "github.com/gogo/protobuf/proto"
 	_ "github.com/gogo/protobuf/types"
-	_ "istio.io/gogo-genproto/googleapis/google/api"
+
 	math "math"
 )
 
@@ -342,6 +342,6 @@ func (this *EnvoyFilter_EnvoyConfigObjectPatch) UnmarshalJSON(b []byte) error {
 }
 
 var (
-	EnvoyFilterMarshaler   = &github_com_gogo_protobuf_jsonpb.Marshaler{}
-	EnvoyFilterUnmarshaler = &github_com_gogo_protobuf_jsonpb.Unmarshaler{}
+	EnvoyFilterMarshaler	= &github_com_gogo_protobuf_jsonpb.Marshaler{}
+	EnvoyFilterUnmarshaler	= &github_com_gogo_protobuf_jsonpb.Unmarshaler{}
 )

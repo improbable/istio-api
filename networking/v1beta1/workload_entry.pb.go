@@ -213,7 +213,7 @@ import (
 	fmt "fmt"
 	proto "github.com/gogo/protobuf/proto"
 	io "io"
-	_ "istio.io/gogo-genproto/googleapis/google/api"
+
 	math "math"
 	math_bits "math/bits"
 )
@@ -227,7 +227,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion3	// please upgrade the proto package
 
 // WorkloadEntry enables specifying the properties of a single non-Kubernetes workload such a VM or a bare metal services that can be referred to by service entries.
 //
@@ -258,13 +258,13 @@ type WorkloadEntry struct {
 	// port.  Domain names can be used if and only if the resolution is set
 	// to DNS, and must be fully-qualified without wildcards. Use the form
 	// unix:///absolute/path/to/socket for Unix domain socket endpoints.
-	Address string `protobuf:"bytes,1,opt,name=address,proto3" json:"address,omitempty"`
+	Address	string	`protobuf:"bytes,1,opt,name=address,proto3" json:"address,omitempty"`
 	// Set of ports associated with the endpoint. The ports must be
 	// associated with a port name that was declared as part of the
 	// service. Do not use for `unix://` addresses.
-	Ports map[string]uint32 `protobuf:"bytes,2,rep,name=ports,proto3" json:"ports,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"varint,2,opt,name=value,proto3"`
+	Ports	map[string]uint32	`protobuf:"bytes,2,rep,name=ports,proto3" json:"ports,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"varint,2,opt,name=value,proto3"`
 	// One or more labels associated with the endpoint.
-	Labels map[string]string `protobuf:"bytes,3,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Labels	map[string]string	`protobuf:"bytes,3,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	// Network enables Istio to group endpoints resident in the same L3
 	// domain/network. All endpoints in the same network are assumed to be
 	// directly reachable from one another. When endpoints in different
@@ -273,7 +273,7 @@ type WorkloadEntry struct {
 	// `AUTO_PASSTHROUGH` mode in a Gateway Server). This is
 	// an advanced configuration used typically for spanning an Istio mesh
 	// over multiple clusters.
-	Network string `protobuf:"bytes,4,opt,name=network,proto3" json:"network,omitempty"`
+	Network	string	`protobuf:"bytes,4,opt,name=network,proto3" json:"network,omitempty"`
 	// The locality associated with the endpoint. A locality corresponds
 	// to a failure domain (e.g., country/region/zone). Arbitrary failure
 	// domain hierarchies can be represented by separating each
@@ -291,23 +291,23 @@ type WorkloadEntry struct {
 	// locality. Endpoint e2 could be the IP associated with a gateway
 	// (that bridges networks n1 and n2), or the IP associated with a
 	// standard service endpoint.
-	Locality string `protobuf:"bytes,5,opt,name=locality,proto3" json:"locality,omitempty"`
+	Locality	string	`protobuf:"bytes,5,opt,name=locality,proto3" json:"locality,omitempty"`
 	// The load balancing weight associated with the endpoint. Endpoints
 	// with higher weights will receive proportionally higher traffic.
-	Weight uint32 `protobuf:"varint,6,opt,name=weight,proto3" json:"weight,omitempty"`
+	Weight	uint32	`protobuf:"varint,6,opt,name=weight,proto3" json:"weight,omitempty"`
 	// The service account associated with the workload if a sidecar
 	// is present in the workload. The service account must be present
 	// in the same namespace as the configuration ( WorkloadEntry or a
 	// ServiceEntry)
-	ServiceAccount       string   `protobuf:"bytes,7,opt,name=service_account,json=serviceAccount,proto3" json:"service_account,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	ServiceAccount		string		`protobuf:"bytes,7,opt,name=service_account,json=serviceAccount,proto3" json:"service_account,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *WorkloadEntry) Reset()         { *m = WorkloadEntry{} }
-func (m *WorkloadEntry) String() string { return proto.CompactTextString(m) }
-func (*WorkloadEntry) ProtoMessage()    {}
+func (m *WorkloadEntry) Reset()		{ *m = WorkloadEntry{} }
+func (m *WorkloadEntry) String() string	{ return proto.CompactTextString(m) }
+func (*WorkloadEntry) ProtoMessage()	{}
 func (*WorkloadEntry) Descriptor() ([]byte, []int) {
 	return fileDescriptor_82f01b2f412f1f06, []int{0}
 }
@@ -1131,6 +1131,6 @@ func skipWorkloadEntry(dAtA []byte) (n int, err error) {
 }
 
 var (
-	ErrInvalidLengthWorkloadEntry = fmt.Errorf("proto: negative length found during unmarshaling")
-	ErrIntOverflowWorkloadEntry   = fmt.Errorf("proto: integer overflow")
+	ErrInvalidLengthWorkloadEntry	= fmt.Errorf("proto: negative length found during unmarshaling")
+	ErrIntOverflowWorkloadEntry	= fmt.Errorf("proto: integer overflow")
 )

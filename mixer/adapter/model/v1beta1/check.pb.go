@@ -10,7 +10,7 @@ import (
 	_ "github.com/gogo/protobuf/types"
 	github_com_gogo_protobuf_types "github.com/gogo/protobuf/types"
 	io "io"
-	rpc "istio.io/gogo-genproto/googleapis/google/rpc"
+
 	math "math"
 	math_bits "math/bits"
 	reflect "reflect"
@@ -28,21 +28,21 @@ var _ = time.Kitchen
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion3	// please upgrade the proto package
 
 // Expresses the result of a precondition check.
 type CheckResult struct {
 	// A status code of OK indicates preconditions were satisfied. Any other code indicates preconditions were not
 	// satisfied and details describe why.
-	Status rpc.Status `protobuf:"bytes,1,opt,name=status,proto3" json:"status"`
+	Status	rpc.Status	`protobuf:"bytes,1,opt,name=status,proto3" json:"status"`
 	// The amount of time for which this result can be considered valid.
-	ValidDuration time.Duration `protobuf:"bytes,2,opt,name=valid_duration,json=validDuration,proto3,stdduration" json:"valid_duration"`
+	ValidDuration	time.Duration	`protobuf:"bytes,2,opt,name=valid_duration,json=validDuration,proto3,stdduration" json:"valid_duration"`
 	// The number of uses for which this result can be considered valid.
-	ValidUseCount int32 `protobuf:"varint,3,opt,name=valid_use_count,json=validUseCount,proto3" json:"valid_use_count,omitempty"`
+	ValidUseCount	int32	`protobuf:"varint,3,opt,name=valid_use_count,json=validUseCount,proto3" json:"valid_use_count,omitempty"`
 }
 
-func (m *CheckResult) Reset()      { *m = CheckResult{} }
-func (*CheckResult) ProtoMessage() {}
+func (m *CheckResult) Reset()		{ *m = CheckResult{} }
+func (*CheckResult) ProtoMessage()	{}
 func (*CheckResult) Descriptor() ([]byte, []int) {
 	return fileDescriptor_b5cd393dc2a446fd, []int{0}
 }
@@ -450,6 +450,6 @@ func skipCheck(dAtA []byte) (n int, err error) {
 }
 
 var (
-	ErrInvalidLengthCheck = fmt.Errorf("proto: negative length found during unmarshaling")
-	ErrIntOverflowCheck   = fmt.Errorf("proto: integer overflow")
+	ErrInvalidLengthCheck	= fmt.Errorf("proto: negative length found during unmarshaling")
+	ErrIntOverflowCheck	= fmt.Errorf("proto: integer overflow")
 )

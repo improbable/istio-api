@@ -7,7 +7,7 @@ import (
 	fmt "fmt"
 	proto "github.com/gogo/protobuf/proto"
 	io "io"
-	v1beta1 "istio.io/api/type/v1beta1"
+	v1beta1 "github.com/improbable/istio-api/type/v1beta1"
 	math "math"
 	math_bits "math/bits"
 )
@@ -21,7 +21,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion3	// please upgrade the proto package
 
 // RequestAuthentication defines what request authentication methods are supported by a workload.
 // If will reject a request if the request contains invalid authentication information, based on the
@@ -145,22 +145,22 @@ const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 type RequestAuthentication struct {
 	// The selector determines the workloads to apply the RequestAuthentication on.
 	// If not set, the policy will be applied to all workloads in the same namespace as the policy.
-	Selector *v1beta1.WorkloadSelector `protobuf:"bytes,1,opt,name=selector,proto3" json:"selector,omitempty"`
+	Selector	*v1beta1.WorkloadSelector	`protobuf:"bytes,1,opt,name=selector,proto3" json:"selector,omitempty"`
 	// Define the list of JWTs that can be validated at the selected workloads' proxy. A valid token
 	// will be used to extract the authenticated identity.
 	// Each rule will be activated only when a token is presented at the location recorgnized by the
 	// rule. The token will be validated based on the JWT rule config. If validation fails, the request will
 	// be rejected.
 	// Note: if more than one token is presented (at different locations), the output principal is nondeterministic.
-	JwtRules             []*JWTRule `protobuf:"bytes,2,rep,name=jwt_rules,json=jwtRules,proto3" json:"jwt_rules,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
-	XXX_unrecognized     []byte     `json:"-"`
-	XXX_sizecache        int32      `json:"-"`
+	JwtRules		[]*JWTRule	`protobuf:"bytes,2,rep,name=jwt_rules,json=jwtRules,proto3" json:"jwt_rules,omitempty"`
+	XXX_NoUnkeyedLiteral	struct{}	`json:"-"`
+	XXX_unrecognized	[]byte		`json:"-"`
+	XXX_sizecache		int32		`json:"-"`
 }
 
-func (m *RequestAuthentication) Reset()         { *m = RequestAuthentication{} }
-func (m *RequestAuthentication) String() string { return proto.CompactTextString(m) }
-func (*RequestAuthentication) ProtoMessage()    {}
+func (m *RequestAuthentication) Reset()		{ *m = RequestAuthentication{} }
+func (m *RequestAuthentication) String() string	{ return proto.CompactTextString(m) }
+func (*RequestAuthentication) ProtoMessage()	{}
 func (*RequestAuthentication) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4a3374592471772b, []int{0}
 }
@@ -555,6 +555,6 @@ func skipRequestAuthentication(dAtA []byte) (n int, err error) {
 }
 
 var (
-	ErrInvalidLengthRequestAuthentication = fmt.Errorf("proto: negative length found during unmarshaling")
-	ErrIntOverflowRequestAuthentication   = fmt.Errorf("proto: integer overflow")
+	ErrInvalidLengthRequestAuthentication	= fmt.Errorf("proto: negative length found during unmarshaling")
+	ErrIntOverflowRequestAuthentication	= fmt.Errorf("proto: integer overflow")
 )

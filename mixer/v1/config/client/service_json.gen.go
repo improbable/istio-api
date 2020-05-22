@@ -29,6 +29,6 @@ func (this *IstioService) UnmarshalJSON(b []byte) error {
 }
 
 var (
-	ServiceMarshaler   = &github_com_gogo_protobuf_jsonpb.Marshaler{}
-	ServiceUnmarshaler = &github_com_gogo_protobuf_jsonpb.Unmarshaler{}
+	ServiceMarshaler	= &github_com_gogo_protobuf_jsonpb.Marshaler{}
+	ServiceUnmarshaler	= &github_com_gogo_protobuf_jsonpb.Unmarshaler{}
 )

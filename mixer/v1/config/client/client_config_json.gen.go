@@ -12,7 +12,7 @@ import (
 	github_com_gogo_protobuf_jsonpb "github.com/gogo/protobuf/jsonpb"
 	proto "github.com/gogo/protobuf/proto"
 	_ "github.com/gogo/protobuf/types"
-	_ "istio.io/api/mixer/v1"
+	_ "github.com/improbable/istio-api/mixer/v1"
 	math "math"
 )
 
@@ -77,6 +77,6 @@ func (this *TcpClientConfig) UnmarshalJSON(b []byte) error {
 }
 
 var (
-	ClientConfigMarshaler   = &github_com_gogo_protobuf_jsonpb.Marshaler{}
-	ClientConfigUnmarshaler = &github_com_gogo_protobuf_jsonpb.Unmarshaler{}
+	ClientConfigMarshaler	= &github_com_gogo_protobuf_jsonpb.Marshaler{}
+	ClientConfigUnmarshaler	= &github_com_gogo_protobuf_jsonpb.Unmarshaler{}
 )

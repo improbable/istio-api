@@ -19,7 +19,7 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion3	// please upgrade the proto package
 
 // ValueType describes the types that values in the Istio system can take. These
 // are used to describe the type of Attributes at run time, describe the type of
@@ -29,59 +29,59 @@ type ValueType int32
 
 const (
 	// Invalid, default value.
-	VALUE_TYPE_UNSPECIFIED ValueType = 0
+	VALUE_TYPE_UNSPECIFIED	ValueType	= 0
 	// An undiscriminated variable-length string.
-	STRING ValueType = 1
+	STRING	ValueType	= 1
 	// An undiscriminated 64-bit signed integer.
-	INT64 ValueType = 2
+	INT64	ValueType	= 2
 	// An undiscriminated 64-bit floating-point value.
-	DOUBLE ValueType = 3
+	DOUBLE	ValueType	= 3
 	// An undiscriminated boolean value.
-	BOOL ValueType = 4
+	BOOL	ValueType	= 4
 	// A point in time.
-	TIMESTAMP ValueType = 5
+	TIMESTAMP	ValueType	= 5
 	// An IP address.
-	IP_ADDRESS ValueType = 6
+	IP_ADDRESS	ValueType	= 6
 	// An email address.
-	EMAIL_ADDRESS ValueType = 7
+	EMAIL_ADDRESS	ValueType	= 7
 	// A URI.
-	URI ValueType = 8
+	URI	ValueType	= 8
 	// A DNS name.
-	DNS_NAME ValueType = 9
+	DNS_NAME	ValueType	= 9
 	// A span between two points in time.
-	DURATION ValueType = 10
+	DURATION	ValueType	= 10
 	// A map string -> string, typically used by headers.
-	STRING_MAP ValueType = 11
+	STRING_MAP	ValueType	= 11
 )
 
 var ValueType_name = map[int32]string{
-	0:  "VALUE_TYPE_UNSPECIFIED",
-	1:  "STRING",
-	2:  "INT64",
-	3:  "DOUBLE",
-	4:  "BOOL",
-	5:  "TIMESTAMP",
-	6:  "IP_ADDRESS",
-	7:  "EMAIL_ADDRESS",
-	8:  "URI",
-	9:  "DNS_NAME",
-	10: "DURATION",
-	11: "STRING_MAP",
+	0:	"VALUE_TYPE_UNSPECIFIED",
+	1:	"STRING",
+	2:	"INT64",
+	3:	"DOUBLE",
+	4:	"BOOL",
+	5:	"TIMESTAMP",
+	6:	"IP_ADDRESS",
+	7:	"EMAIL_ADDRESS",
+	8:	"URI",
+	9:	"DNS_NAME",
+	10:	"DURATION",
+	11:	"STRING_MAP",
 }
 
 var ValueType_value = map[string]int32{
-	"VALUE_TYPE_UNSPECIFIED": 0,
-	"STRING":                 1,
-	"INT64":                  2,
-	"DOUBLE":                 3,
-	"BOOL":                   4,
-	"TIMESTAMP":              5,
-	"IP_ADDRESS":             6,
-	"EMAIL_ADDRESS":          7,
-	"URI":                    8,
-	"DNS_NAME":               9,
-	"DURATION":               10,
-	"STRING_MAP":             11,
+	"VALUE_TYPE_UNSPECIFIED":	0,
+	"STRING":			1,
+	"INT64":			2,
+	"DOUBLE":			3,
+	"BOOL":				4,
+	"TIMESTAMP":			5,
+	"IP_ADDRESS":			6,
+	"EMAIL_ADDRESS":		7,
+	"URI":				8,
+	"DNS_NAME":			9,
+	"DURATION":			10,
+	"STRING_MAP":			11,
 }
 
 func (ValueType) EnumDescriptor() ([]byte, []int) {
@@ -92,7 +92,7 @@ func init() {
 	proto.RegisterEnum("istio.policy.v1beta1.ValueType", ValueType_name, ValueType_value)
 }
 
-func init() { proto.RegisterFile("policy/v1beta1/value_type.proto", fileDescriptor_72649b1dc07496e9) }
+func init()	{ proto.RegisterFile("policy/v1beta1/value_type.proto", fileDescriptor_72649b1dc07496e9) }
 
 var fileDescriptor_72649b1dc07496e9 = []byte{
 	// 309 bytes of a gzipped FileDescriptorProto

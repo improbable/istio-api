@@ -24,29 +24,29 @@ var _ = math.Inf
 // is compatible with the proto package it is being compiled against.
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
-const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
+const _ = proto.GoGoProtoPackageIsVersion3	// please upgrade the proto package
 
 // IstioService identifies a service and optionally service version.
 // The FQDN of the service is composed from the name, namespace, and implementation-specific domain suffix
 // (e.g. on Kubernetes, "reviews" + "default" + "svc.cluster.local" -> "reviews.default.svc.cluster.local").
 type IstioService struct {
 	// The short name of the service such as "foo".
-	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Name	string	`protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// Optional namespace of the service. Defaults to value of metadata namespace field.
-	Namespace string `protobuf:"bytes,2,opt,name=namespace,proto3" json:"namespace,omitempty"`
+	Namespace	string	`protobuf:"bytes,2,opt,name=namespace,proto3" json:"namespace,omitempty"`
 	// Domain suffix used to construct the service FQDN in implementations that support such specification.
-	Domain string `protobuf:"bytes,3,opt,name=domain,proto3" json:"domain,omitempty"`
+	Domain	string	`protobuf:"bytes,3,opt,name=domain,proto3" json:"domain,omitempty"`
 	// The service FQDN.
-	Service string `protobuf:"bytes,4,opt,name=service,proto3" json:"service,omitempty"`
+	Service	string	`protobuf:"bytes,4,opt,name=service,proto3" json:"service,omitempty"`
 	// Optional one or more labels that uniquely identify the service version.
 	//
 	// *Note:* When used for a VirtualService destination, labels MUST be empty.
 	//
-	Labels map[string]string `protobuf:"bytes,5,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Labels	map[string]string	`protobuf:"bytes,5,rep,name=labels,proto3" json:"labels,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
-func (m *IstioService) Reset()      { *m = IstioService{} }
-func (*IstioService) ProtoMessage() {}
+func (m *IstioService) Reset()		{ *m = IstioService{} }
+func (*IstioService) ProtoMessage()	{}
 func (*IstioService) Descriptor() ([]byte, []int) {
 	return fileDescriptor_3358a28a51c817d5, []int{0}
 }
@@ -678,6 +678,6 @@ func skipService(dAtA []byte) (n int, err error) {
 }
 
 var (
-	ErrInvalidLengthService = fmt.Errorf("proto: negative length found during unmarshaling")
-	ErrIntOverflowService   = fmt.Errorf("proto: integer overflow")
+	ErrInvalidLengthService	= fmt.Errorf("proto: negative length found during unmarshaling")
+	ErrIntOverflowService	= fmt.Errorf("proto: integer overflow")
 )

@@ -386,7 +386,7 @@ import (
 	fmt "fmt"
 	github_com_gogo_protobuf_jsonpb "github.com/gogo/protobuf/jsonpb"
 	proto "github.com/gogo/protobuf/proto"
-	_ "istio.io/gogo-genproto/googleapis/google/api"
+
 	math "math"
 )
 
@@ -462,6 +462,6 @@ func (this *Localhost) UnmarshalJSON(b []byte) error {
 }
 
 var (
-	SidecarMarshaler   = &github_com_gogo_protobuf_jsonpb.Marshaler{}
-	SidecarUnmarshaler = &github_com_gogo_protobuf_jsonpb.Unmarshaler{}
+	SidecarMarshaler	= &github_com_gogo_protobuf_jsonpb.Marshaler{}
+	SidecarUnmarshaler	= &github_com_gogo_protobuf_jsonpb.Unmarshaler{}
 )

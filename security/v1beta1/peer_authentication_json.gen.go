@@ -8,7 +8,7 @@ import (
 	fmt "fmt"
 	github_com_gogo_protobuf_jsonpb "github.com/gogo/protobuf/jsonpb"
 	proto "github.com/gogo/protobuf/proto"
-	_ "istio.io/api/type/v1beta1"
+	_ "github.com/improbable/istio-api/type/v1beta1"
 	math "math"
 )
 
@@ -40,6 +40,6 @@ func (this *PeerAuthentication_MutualTLS) UnmarshalJSON(b []byte) error {
 }
 
 var (
-	PeerAuthenticationMarshaler   = &github_com_gogo_protobuf_jsonpb.Marshaler{}
-	PeerAuthenticationUnmarshaler = &github_com_gogo_protobuf_jsonpb.Unmarshaler{}
+	PeerAuthenticationMarshaler	= &github_com_gogo_protobuf_jsonpb.Marshaler{}
+	PeerAuthenticationUnmarshaler	= &github_com_gogo_protobuf_jsonpb.Unmarshaler{}
 )
